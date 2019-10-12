@@ -1,0 +1,1223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Layer 7 Models</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+
+<p class="MainHeading1">Layer 7 Models</p>
+<hr>
+<p class="MainHeading2">How DHCP clients work </p>
+<p class="myList">DHCP client sends a DHCP-DISCOVER packet (<A href="flowcharts/DHCPClientFlowChart.jpg" target="_blank">flowchart</A> here):</p>
+<p class="myList">When a DHCP client device receives a packet:</p>
+<p class="myList">&nbsp;</p>
+<ul>
+	<li>
+		It drops the packet if (any):
+		<ul>
+			<li>
+			The packet is not a valid DHCP packet.
+			<li>
+				The packet's destination MAC address does not match its own MAC address.</li>
+		</ul>
+	<li>
+		It checks the packet's DHCP type (its DHCP message).
+		<ul>
+			<li>
+			If the packet is a DHCP-OFFER packet, it uses the information in the packet
+			(including client IP address, offered IP address, server IP address, and
+			gateway address) to construct a DHCP-REQUEST packet and sends it back to the
+			server.
+			<li>
+			If the packet is a DHCP-ACK packet, it gets the IP address, subnet mask, and
+			the gateway IP address from the packet and sets its IP address configuration
+			accordingly.
+			<li>
+				If the packet is not a DHCP-OFFER or a DHCP-ACK packet, it will drop the
+				packet.</li>
+		</ul>
+	</li>
+</ul>
+<p class="myList">When a DHCP client device does not receive a packet:</p>
+<p class="myList">&nbsp;</p>
+
+<ul>
+	<li>
+		It starts to assign an auto-configuration ip address in the 169.254.0.0/16 address block.
+	<li>
+		It sends out ARP Gratuitous to detect duplicate ip address.
+		<ul>
+			<li>
+			If it gets an arp reply, it starts to assign the next available ip address from the 169.254.0.0/16 address block and sends out another ARP Gratuitous.
+			<li>
+			If it does not get an arp reply, it assigns the ip address to the port and continue sending out DHCP-DISCOVER packet.
+		</ul>
+	</li>
+
+</ul>
+
+<p class="myList">&nbsp;</p>
+<p class="MainHeading2">How DHCP servers process incoming packets</p>
+<p class="myList">When a DHCP server device receives a packet (<A href="flowcharts/DHCPServerFlowChart.jpg" target="_blank">flowchart</A> here):</p>
+<p class="myList">&nbsp;</p>
+<ul>
+	<li>
+		It drops the packet if:
+		<ul>
+			<li>
+				The packet is not a valid DHCP packet.</li>
+		</ul>
+	<li>
+		It checks the packet's DHCP type (its DHCP message).
+		<ul>
+			<li>
+				If the packet is a DHCP-DISCOVER packet:</li>
+			<UL>
+				<LI>
+					If the client already has&nbsp;a lease:</LI>
+				<UL>
+					<LI>
+						Send a DHCP-OFFER packet with the associated IP to the client.</LI>
+				</UL>
+				<LI>
+					If the client does not already have a lease:</LI>
+				<UL>
+					<LI>
+						If there is an available IP address:</LI>
+					<UL>
+						<LI>
+							Send a DHCP-OFFER packet with the available IP address to the client.</LI>
+					</UL>
+					<LI>
+						Otherwise, drop the packet and stop.</LI>
+				</UL>
+			</UL>
+			<li>
+				If the packet is a DHCP-REQUEST packet:</li>
+			<UL>
+				<LI>
+					If the requested IP address is available:</LI>
+				<UL>
+					<LI>
+					Send a DHCP-ACK packet with the available IP address to the client.
+					<LI>
+						Bind the client to the IP address.</LI>
+				</UL>
+				<LI>
+					Otherwise, drop the packet and stop.</LI>
+			</UL>
+			<LI>
+				If the packet is a DHCP-RELEASE packet:</LI>
+			<UL>
+				<LI>
+					If the client is bound to the IP address:</LI>
+				<UL>
+					<LI>
+						Unbind the IP address and the client.</LI>
+				</UL>
+				<LI>
+					Otherwise, drop the packet and stop.</LI>
+			</UL>
+			<li>
+				If the packet is a DHCP-OFFER or a DHCP-ACK packet, drop the packet.</li>
+		</ul>
+  </li>
+</ul>
+<p>&nbsp;</p>
+<p class="MainHeading2">How DHCP for  IPv6 clients process incoming packets</p>
+<p>When a DHCP for IPv6  client device receives a packet (<A href="flowcharts/ClientReceiveDHCPv6.jpg" target="_blank">flowchart</A> here):</p>
+<ul>
+  <li>It       drops the packet if (any):
+	<ul>
+	  <li>The        packet is a Solicit message. </li>
+	  <li>The        packet is an Advertise message that meets any of the following        conditions:
+		  <ul>
+			<li>The         message does not include a Server Identifier option.</li>
+			<li>The         message does not include a Client Identifier option.</li>
+			<li>The         content of the Client Identifier option does not match the client’s         DUID.</li>
+			<li>The         “transaction-id” field does not match the value the client used in its         Solicit message.</li>
+		</ul>
+	  </li>
+	  <li>The        packet is a Request message.</li>
+	  <li>The        packet is a Reply message that meets any of the following conditions:
+		  <ul>
+			<li>The         message does not include a Server Identifier option.</li>
+			<li>The         “transaction-id” field does not match the value used in the original         message.</li>
+		</ul>
+	  </li>
+	</ul>
+  </li>
+  <li>It       checks the packet's DHCP type (its DHCP message).
+	<ul>
+	  <li>If        the packet is an Advertise message, it will do the following actions:
+		  <ul>
+			<li>It         terminates retransmission of its Solicit message.</li>
+			<li>It         sends a Request message to the DHCP server that the Advertise message         was sent from.</li>
+		</ul>
+	  </li>
+	  <li>If        the packet is a Reply message, it gets the prefix and prefix length from        the message and combines with its received interface’s local link address        to create an IPv6 address and subnet mask.  It also retrieves the gateway IPv6 address        from the packet.  Then the client        sets its IPv6 address configuration accordingly. &nbsp;</li>
+	</ul>
+  </li>
+</ul>
+<p>&nbsp;</p>
+<p class="MainHeading2">How DHCP for  IPv6 servers process incoming packets</p>
+<p>When a DHCP for IPv6  server device receives a packet (<A href="flowcharts/ServerReceiveDHCPv6.jpg" target="_blank">flowchart</A> here):</p>
+<ul>
+  <li>It       drops the packet if:
+	<ul>
+	  <li>The        packet is a Solicit message that meets any of the following conditions:
+		  <ul>
+			<li>The         message does not include a Client Identifier option.</li>
+			<li>The         message does not include a Server Identifier option.</li>
+		</ul>
+	  </li>
+	  <li>The        packet is an Advertise message.</li>
+	  <li>The        packet is a Request message that meets any of the following conditions:
+		  <ul>
+			<li>The         message does not include a Server Identifier option</li>
+			<li>The         content of the Server Identifier option does not match the server’s         DUID.</li>
+			<li>The         message does not include a Client Identifier option.</li>
+		</ul>
+	  </li>
+	  <li>The        packet is a Reply message.</li>
+	</ul>
+  </li>
+  <li>It       checks the packet's DHCP type (its DHCP message).
+	<ul>
+	  <li>If        the packet is a Solicit message, it uses the information in the packet and        its server configuration to construct an Advertise message and sends it        back to the client. </li>
+	  <li>If        the packet is a Request message, it uses the information in the packet        and its prefix pool configuration to construct a Reply message and sends        it back to the client.</li>
+	</ul>
+  </li>
+</ul>
+<p>&nbsp;</p>
+<p class="MainHeading2">How FTP client processes work</p>
+<ul>
+<li>File Transfer Protocol (FTP) is a standard network protocol used to exchange and manipulate files over a TCP/IP-based network, such as the Internet. FTP is built on a client-server architecture and utilizes separate control and data connections between
+ the client and server applications. FTP uses user-based password authentication and is used for transferring configuration files between Cisco Switches and Routers and also available as a command in PC device.
+</li></ul>
+<p class="myList">When a FTP client receives a packet (<a href="flowcharts/FTPClientReceivePacket.jpg" target="_blank">flowchart</a> here):</p>
+<ul>
+<li>If the packet is not a valid FTP response packet, it drops the packet. </li><li>Otherwise, it writes the received information stored in the packet onto the screen.
+<ul>
+<li>Informs the application that uses FTP whether the response is successful or not.
+</li><li>It then checks to see if any further FTP commands are expected to be sent and sends them out.
+</li></ul>
+</li></ul>
+<p>&nbsp;</p>
+<p class="MainHeading2">How FTP server processes work</p>
+<ul>
+<li>The FTP server listens on the TCP port 21 for control connections and awaits FTP commands from the client. FTP can be run in active mode or passive mode, which control how the data connection is opened.
+</li><li>In active mode the client sends the server the IP address port number that the client will use for the data connection, and the server opens the connection. Passive mode was devised for use where the client is behind a firewall and unable to accept incoming
+ TCP connections. The server sends the client an IP address and port number and the client opens the connection to the server. By default passive mode is supported in this version of PT.
+</li><li>The FTP server is available in Server device and is enabled by default. It can be configured via FTP configuration page for customizing FTP server behavior.
+</li></ul>
+<p class="myList">When a FTP server receives a packet (<a href="flowcharts/FTPServerReceivePacket.jpg" target="_blank">flowchart</a> here):</p>
+<ul>
+<li>If the user is not valid or fails authentication, then it informs the FTP client and terminates the control connection.
+</li><li>If the packet is not a valid FTP packet, it drops the packet. </li><li>Otherwise, it checks the packet and:
+<ul>
+<li>If the FTP command is not supported by the server, an error message is sent back to the client.
+</li><li>If the FTP command is supported by the server, the action is performed and result of the operation is sent back to the client.
+</li><li>The list of supported FTP commands are:
+<ul>
+<li>USER </li><li>PASS </li><li>TYPE </li><li>PASV </li><li>RETR </li><li>STOR </li><li>RNFR </li><li>RNTO </li><li>DELE </li><li>QUIT </li></ul>
+</li></ul>
+</li></ul>
+<p>&nbsp;</p>
+<p class="MainHeading2">How TELNET client processes work</p>
+<ul>
+	<li>
+		TELetype NETwork is a network protocol that utilizes TCP/IP protocol stack to
+		establish a client/server connection. The user starts a TELNET client process
+		on a PC or a Cisco device using telnet command with server IP address. The
+		TELNET server usually listens on TCP port 23 and awaits client connection
+		requests. A TELNET packet is generated from the client process when a key is
+		pressed.</li>
+</ul>
+<p class="myList">&nbsp;</p>
+<p class="myList">When a TELNET client receives a packet (<A href="flowcharts/TELNETClientReceivePacket.jpg" target="_blank">flowchart</A>
+	here):</p>
+<p class="myList">&nbsp;</p>
+<ul>
+	<li>
+	If the packet is not a valid TELNET packet, it drops the packet.
+	<li>
+		Otherwise, it writes the received information stored in the packet onto the
+		screen.
+	</li>
+</ul>
+<p class="myList">&nbsp;</p>
+<p class="MainHeading2">How TELNET server processes work</p>
+<ul>
+	<li>
+		TELetype NETwork is a network protocol that utilizes TCP/IP protocol stack to
+		establish a client/server connection. The user starts a TELNET client process
+		on a PC or a Cisco device using telnet command with server IP address. The
+		TELNET server is started automatically on a Cisco router or switch. The server
+		listens on TCP port 23 awaiting client connection requests.
+	</li>
+</ul>
+<p class="myList">When a TELNET server receives a packet (<A href="flowcharts/TELNETServerReceivePacket.jpg" target="_blank">flowchart</A>
+	here):</p>
+<p class="myList">&nbsp;</p>
+<UL>
+	<li>
+	If the packet is not a valid TELNET packet, it drops the packet.
+	<LI>
+		Otherwise, it checks the packet and:
+		<UL>
+			<li>
+			If the information received is part of a command, it sends an echo back to the
+			client.
+			<li>
+			If the server is able to determine the command entered by the client, it sends
+			the result back to the client.
+			<li>
+				If the server does not understand the information received, it sends an error
+				message back to the client.</li>
+		</UL>
+	</LI>
+</UL>
+<P>&nbsp;</P>
+<P class="MainHeading2">How SSH client processes work</P>
+<ul>
+  <li>SSH client utilizes TCP/IP       protocol stack to establish a client/server connection. </li>
+  <li>Before a SSH connection could       be established between client and server,       both need to have an RSA key pairs generated,       if the keys are not generated connection will be refused by the other       side.</li>
+  <li>In order for the Cisco device       to generate RSA keys it needs to be configured with       hostname and IP domain name.</li>
+  <li>The user starts a SSH client       process on a PC or a router using “ssh –l” (-l is for login) command with       the associated client’s user name which is already configured on the SSH       server, and IP address of the       SSH server. The SSH server,       usually listens on TCP port 22,       awaits client connection requests. A SSH packet is generated from the       client process when a key is pressed. </li>
+</ul>
+<p>When a SSH client receives a packet:</p>
+<ul>
+  <li>If the packet is not a valid       SSH packet, it drops the       packet. </li>
+  <li>Otherwise, it writes the received the information stored       in the packet onto the screen. </li>
+</ul>
+<p>&nbsp;</p>
+<p class="MainHeading2">How SSH server processes work</p>
+<ul type="disc">
+  <li>SSH is a network protocol       that utilizes TCP/IP protocol stack and RSA key pairs to establish a       secure client/server connection. The user starts a SSH client process on a       PC or a Cisco device using ssh –l command with client’s associated user       name and also the server’s IP address. The SSH server is started automatically       on a Cisco router. The server listens on TCP port 22 awaiting client       connection requests. </li>
+</ul>
+<p>When a SSH server receives a packet: </p>
+<ul>
+  <li>If the packet is not a valid SSH       packet it drops the packet. </li>
+  <li>If both client and server are       not configured with RSA keys the connection will be refused by SSH server.</li>
+  <li>Otherwise, it checks the packet and:
+	<ul>
+	  <li>If the username        received in the connection request packet is configured on the server it        will prompt the client for the password
+		  <ul>
+			<li>Client will be         prompted for the correct password up to 3 times. If the password that         the client provides is not valid for the third time it will be         disconnected by the server.</li>
+		</ul>
+	  </li>
+	  <li>If the information        received is part of a command,        it sends an echo back to the client. </li>
+	  <li>If the server is able        to determine the command entered by the client,        it sends the result back to the client. </li>
+	  <li>If the server does not        understand the information received,        it sends an error message back to the client.</li>
+	</ul>
+  </li>
+</ul>
+
+<!-- HTTP -->
+
+<p class="myList">&nbsp;</p>
+<P class="MainHeading2">How HTTP works (HTTPS works the same as HTTP)</P>
+<P class="myList">When a client needs to find a webpage from a server:</P>
+<p class="myList">&nbsp;</p>
+<UL>
+	<LI>
+	If the address is empty or starts with anything else other than http protocol,
+	it drops the request since it is not supported in Packet Tracer.
+	<LI>
+		If the address is an IP address or starts with http:// the HTTP client
+		processes it.
+		<UL>
+			<LI>
+				The HTTP client first finds the server IP through the server name by parsing
+				the address in the address bar and:
+				<UL>
+					<LI>
+					If server name is not found, it tries to resolve the domain name through a DNS
+					query.
+					<LI>
+						If server name is found, it gets the IP address.</LI>
+				</UL>
+			<LI>
+				The HTTP client constructs a request HTTP segment and connects the server through
+				TCP sockets and starts a timer for its request.</LI>
+		</UL>
+	</LI>
+</UL>
+<P class="myList">When an HTTP client receives a packet (<A href="flowcharts/HTTPClientReceivePacket.jpg" target="_blank">flowchart</A>
+	here):</P>
+<p class="myList">&nbsp;</p>
+<UL>
+	<LI>
+	If the HTTP message has the HTTP OK code, it fetches the page from the message
+	and displays the message.
+	<LI>
+		Otherwise, the HTTP page displays an error page.</LI>
+</UL>
+<P class="myList">When HTTP server receives a request (<A href="flowcharts/HTTPServerReceiveRequest.jpg" target="_blank">flowchart</A>
+	here):
+</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>If the HTTP service is enabled, and a TCP connection with the HTTP client is established:</LI>
+		<UL>
+			<LI>If the HTTP request is an HTTP GET:
+			<UL>
+				<LI>If the username and password in the HTTP request are not correct:</UL>
+				<UL>
+					<LI>The server sends back an unauthorized error message to the client.</LI>
+				</UL>
+				<LI>If the Request is for an html page:</LI>
+				<UL>
+					<LI>If the requested page exists on the server, the server creates a response packet and sends back an HTTP reply to the client.</LI>
+					<LI>If the requesting page does not exist on the server, the server sends back an error message to the client.</LI>
+				</UL>
+				<LI>If the Request is for an image:</LI>
+				<UL>
+					<LI>If the requested image exists on the server, the server creates a response packet and sends back an HTTP reply to the client.</LI>
+					<LI>If the requesting page does not exist on the server, the server sends back an error message to the client.</LI>
+				</UL>
+			</UL>
+			<LI>If the HTTP request is an HTTP Post:</LI>
+			<UL>
+				<LI>If the post request  is successful, the sever sends an HTTP success reply to the client.</LI>
+				<LI>If the post request  fails, the server sends an HTTP error reply to the client.</LI>
+
+			</UL>
+			<LI>Other message codes are not supported in this version of PT, and the server drops the packet.</LI>
+		</UL>
+	</LI>
+</UL>
+
+<!-- SMTP -->
+
+<p class="myList">&nbsp;</p>
+<P class="MainHeading2">How SMTP works</P>
+<P class="myList">When a client needs to send a mail:</P>
+<p class="myList">&nbsp;</p>
+<UL>
+	<LI>If there is no outgoing  mail server configured, it drops the request.</LI>
+	<LI>
+		If outgoing mail server name is not found it tries to resolve the domain name through a
+		DNS query.</LI>
+	<LI>If outgoing mail server name is found it gets the IP address.</LI>
+	<LI>The SMTP client constructs a request SMTP segment and connects the server through TCP sockets and starts a timer for its request.</LI>
+</UL>
+
+<P class="myList">When an SMTP client receives a packet (<A href="flowcharts/SMTPClientReceivePacket.jpg" target="_blank">flowchart</A>
+	here):</P>
+<p class="myList">&nbsp;</p>
+<UL>
+	<LI>
+	If the SMTP message has the SMTP success codes it indicate that mail has been sent successfully
+	<LI>
+		Else the error message from server is passed to mail browser to display appropriate error  message.</LI>
+</UL>
+<P class="myList">When SMTP server receives a request (<A href="flowcharts/SMTPServerReceivePacket.jpg" target="_blank">flowchart</A>
+	here):
+</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>If the SMTP service is enabled, and a TCP connection with the SMTP client is established:
+		<UL>
+			<LI>If the SMTP request is not for this server:</LI>
+				   <UL><LI>Send a error message to client</UL></LI>
+
+			<LI>If sender of mail does not  exist on this server:</LI>
+				   <UL><LI>Send user does not exist error message to client</UL></LI>
+
+			<LI>If receiver of mail does not  exist on remote server:</LI>
+				   <UL><LI>Send user does not exist error mail to sender of mail.</UL></LI>
+
+			<LI>If mail belong to this server:</LI>
+				   <UL><LI>If receiver of mail exist at this server:</LI>
+				   			  <UL><LI>Add mail to users account</LI></UL>
+					<LI>Else</LI>
+								<UL><LI>If sender of this mail has user account on this server:</LI>
+										   <UL><LI>Add a delivery failure mail to this users account</LI></UL>
+								<LI>If Sender of this mail does not have user account on this server:</LI>
+											<UL><LI>Send a delivery failure mail to sender of mail</LI></UL></UL></UL>
+			<LI>Else ( Mail does not belong to this server)</LI>
+						<UL><LI>If the request is forward request and sender does not have user account on this server:</LI>
+								   <UL><LI>Send a error mail to sender of a mail</LI></UL>
+								   	<LI>Forward mail to receiver's server</LI>
+						</UL>
+		</UL>
+	</LI>
+</UL>
+
+<!-- POP3 -->
+
+<p class="myList">&nbsp;</p>
+<P class="MainHeading2">How POP3 works</P>
+<P class="myList">When a client needs to receive a mail:</P>
+<p class="myList">&nbsp;</p>
+<UL>
+	<LI>If there is no incoming  mail server configured, it drops the request .</LI>
+	<LI>
+		If incoming mail server name is not found it tries to resolve the domain name through a
+		DNS query.</LI>
+	<LI> If incoming mail server name is found it gets the IP address</LI>
+	The POP3 client constructs a request POP3 segment and connects the server through TCP sockets and starts a timer for its request.</LI>
+</UL>
+
+<P class="myList">When an POP3 client receives a packet (<A href="flowcharts/POP3ClientReceivePacket.jpg" target="_blank">flowchart</A>
+	here):</P>
+<p class="myList">&nbsp;</p>
+<UL>
+	<LI>
+	If the Pop3 message has the Pop3 success codes it indicate that mail has been received successfully and mail/mails are displayed in mail browser
+	<LI>
+		Else the error message from server is passed to mail browser to display appropriate error message.</LI>
+</UL>
+<P class="myList">When POP3 server receives a request (<A href="flowcharts/POP3ServerReceivePacket.jpg" target="_blank">flowchart</A>
+	here):
+</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>If the SMTP service is enabled, and a TCP connection with the SMTP client is established:
+		<UL>
+			<LI>Verify the user</LI>
+			<LI>If User Exist:</LI>
+				   <UL><LI>Fetch the mail/mails from mail server and send to client</UL></LI>
+			<LI>Else:</LI>
+				   <UL><LI>Send user does not exist error message to client</UL></LI>
+			</UL>
+	</LI>
+</UL>
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How TFTP servers process incoming packets</P>
+<P class="myList">When a TFTP server receives a packet (<A href="flowcharts/TFTPServersProcessIncomingPackets.jpg" target="_blank">flowchart</A>
+	here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>
+		If the packet is a READ request:
+		<UL>
+			<LI>
+				If the file with the requested name exists on the TFTP server:
+				<UL>
+					<LI>
+						Start a write session with the client.</LI>
+				</UL>
+			<LI>
+				If the file with the requested name does not exist on the TFTP server:
+				<UL>
+					<LI>
+						Send back a TFTP ERROR packet to the client.</LI>
+				</UL>
+			</LI>
+		</UL>
+	<LI>
+		If the packet is a WRITE request:
+		<UL>
+			<LI>
+				Start a read session with the client.</LI>
+		</UL>
+	<LI>
+		If the packet is anything else:
+		<UL>
+			<LI>
+				Drop the packet and stop.</LI>
+		</UL>
+	</LI>
+</UL>
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How TFTP servers and clients process incoming packets
+	during a session</P>
+<P class="myList">When a TFTP server or client receives a packet during a session (<A href="flowcharts/TFTPServersClientsProcessIncomingPackets.jpg" target="_blank">flowchart</A>
+	here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>
+		If the packet is a READ or WRITE request:
+		<UL>
+			<LI>
+				Drop the packet and stop.</LI>
+		</UL>
+	<LI>
+		If the packet is a DATA packet:
+		<UL>
+			<LI>
+				If the session is a WRITE session or the block number on the packet is not the
+				expecting one:
+				<UL>
+					<LI>
+						Drop the packet and stop.</LI>
+				</UL>
+			<LI>
+			Save the data on the packet.
+			<LI>
+			Send back an ACK packet.
+			<LI>
+			Increment the block number.
+			<LI>
+				If this is the last packet:
+				  <UL>
+					<LI>
+					Write data to file.
+					<LI>
+						Stop the TFTP session.</LI>
+				  </UL>
+		  </LI>
+		</UL>
+	<LI>
+		If the packet is an ACK packet:
+		  <UL>
+			<LI>
+				If the session is a READ session or the block number on the packet is not the
+				expecting one:
+				  <UL>
+					<LI>
+						Drop the packet and stop.</LI>
+				  </UL>
+			<LI>
+				If this is not the last packet:
+				  <UL>
+					<LI>
+					Increment the block number.
+					<LI>
+						Send the next block of data in a DATA packet.</LI>
+				  </UL>
+			<LI>
+				If this is the last packet:
+				  <UL>
+					<LI>
+						Stop the TFTP session.</LI>
+				  </UL>
+			</LI>
+		</UL>
+  <LI>
+		If the packet is an ERROR packet:
+		  <UL>
+			<LI>
+				Stop the TFTP session.</LI>
+		  </UL>
+  </LI>
+</UL>
+
+<!-- SNMP ---------------------------------->
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How an SNMP Manager processes a command from the User</P>
+<P class="myList">When an SNMP Manager processes a command (<A href="flowcharts/SNMPManager_processes_command_from_user.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>If it is a GET-Request command:</LI>
+	<UL>
+		<LI>The SNMP Manager creates an SNMP GET-Request packet and sends to the destination agent.</LI>
+	</UL>
+	<LI>If it is a GET-BULK-Request command:</LI>
+	<UL>
+		<LI>The SNMP Manager checks against the selected SNMP version and only sends out an SNMP GET-BULK-Request packet if the SNMP version is of version 2 or above.</LI>
+	</UL>
+	<LI>If it is a SET-Request command:</LI>
+	<UL>
+		<LI>The SNMP Manager creates an SNMP-SET-Request packet and sends to the destination agent.</LI>
+	</UL>
+</UL>
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How an SNMP Manager processes incoming packets</P>
+<P class="myList">When an SNMP Manager receives an incoming packet (<A href="flowcharts/SNMPManager_processes_incoming_packets.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>It checks if the packet has a correct SNMP header.  If it's correct, it goes to the next step.  Otherwise, it drops the packet.</LI>
+	<LI>It checks if the timeout from the last sent request to this destination has expired. If it's not expired, it goes to the next step.  Otherwise, it drops the packet.</LI>
+	<LI>It checks if the SNMP header contains a correct SNMP PDU. If it's correct, it goes to the next step.  Otherwise, it drops the packet.</LI>
+	<LI>It checks if the SNMP PDU is of the SNMP-GET-Response type. If it's correct, it goes to the next step.  Otherwise, it drops the packet.</LI>
+	<LI>It checks for the error status of the PDU:
+	<UL>
+		<LI>If there is an error, it will signal the MIB browser to display the error string.  Or the error string can be displayed via the command line.</LI>
+		<LI>If there is no error:</LI>
+		<UL>
+			<LI>It processes the PDU Variable Bindings in the SNMP PDU.</LI>
+			<LI>It signals the MIB browser to display the result.  Or the result can be displayed via the command line.</LI>
+		</UL>
+	</UL>
+</UL>
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How an SNMP Agent processes incoming requests</P>
+<P class="myList">When an SNMP Agent receives an incoming packet (<A href="flowcharts/SNMPAgent_processes_incoming_packets.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>It checks if the packet has a correct SNMP header. If it's correct, it goes to the next step.  Otherwise, it drops the packet.</LI>
+	<LI>It checks if it has configured the same community string as in the received SNMP header. If it has the community string configured, it goes to the next step.  Otherwise, it drops the packet.</LI>
+	<LI>It checks if the SNMP header contains a correct SNMP PDU.</LI>
+	<LI>From the PDU Variable Binding section in the SNMP PDU, the agent obtains the OID and checks if it has the MIB for this OID.</LI>
+	<LI>Based on the type of the request:</LI>
+	<UL>
+		<LI>If it is an SNMP GET-Request, the SNMP Agent obtains the value configured for this OID and sends back an SNMP-GET-Response packet.</LI>
+		<LI>If it is an SNMP GET-BULK-Request, the SNMP Agent obtains the values of all the child OIDs and sends back an SNMP-GET-Response packet.</LI>
+		<LI>If it is an SNMP SET-Request, the SNMP Agent checks the type of the value, and if it is correct, it configures the new value to the device and sends back an SNMP-Get-Response method.</LI>
+	</UL>
+</UL>
+
+<!-- Syslog ---------------------------------->
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How a Syslog Client works</P>
+<P class="myList">When a client needs to send a log message to the syslog server (<A href="flowcharts/Syslog_client.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>If logging is disabled, the syslog client does nothing.</LI>
+	<LI>If logging is enabled:</LI>
+	<UL>
+		<LI>If the client has syslog servers (1 - N) configured, it constructs a syslog packet and sends the packet to the configured servers (1- N) over UDP.</LI>
+		<LI>Otherwise, the syslog client does nothing.</LI>
+	</UL>
+</UL>
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How a Syslog Server works</P>
+<P class="myList">When Syslog server receives a packet (<A href="flowcharts/Syslog_server.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>If the Syslog server  is enabled:</LI>
+	<UL>
+		<LI>If the received packet is a valid syslog packet:</LI>
+		<UL>
+			<LI>Information from packet is extracted and stored in syslog table.</LI>
+		</UL>
+		<LI>If the received packet is not a valid syslog packet, server drops the packet.</LI>
+	</UL>
+</UL>
+
+<!-- NTP ---------------------------------->
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How NTP works</P>
+<P class="myList">When a client needs to update its time from a server:
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>If the NTP server address is configured, the NTP client creates and sends a time update request to the NTP server over UPD.</LI>
+</UL>
+
+<P class="myList">When an NTP server receives a request (<A href="flowcharts/NTP_server.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>If the received packet is a valid NTP request:</LI>
+	<UL>
+		<LI>The server updates the NTP request packet with current time and other relevant information and sends it back to client over UDP.</LI>
+	</UL>
+	<LI>Otherwise, the server drops the packet.</LI>
+</UL>
+
+<P class="myList">When an NTP client receives a packet (<A href="flowcharts/NTP_client.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>If the received packet is not a valid packet, the packet is dropped.</LI>
+	<LI>If authentication is not enabled at the NTP server, and the NTP client or authentication is not enabled at the client but enabled at the server:</LI>
+	<UL>
+		<LI>Time is fetched from the packet, and device time is updated with this time.</LI>
+	</UL>
+	<LI>Else If the authentication is enabled at the client but not enabled at the server:</LI>
+	<UL>
+		<LI>Server authorization is not there, hence the packet is dropped.</LI>
+	</UL>
+	<LI>Else (authentication is enabled at the NTP server as well as at the NTP client)</LI>
+	<UL>
+		<LI>If key & password are not same for both the client and server:</LI>
+		<UL>
+			<LI>It drops the packet, and clock is unsynchronized.</LI>
+		</UL>
+		<LI>Else If trusted key is not same for client and server:</LI>
+		<UL>
+			<LI>It drops the packet, and clock is unsynchronized.</LI>
+		</UL>
+		<LI>Else If key is a valid key:</LI>
+		<UL>
+			<LI>Time is fetched from the packet, and device time is updated with this time to make clock synchronized.</LI>
+		</UL>
+	</UL>
+</UL>
+
+<!-- DNS ---------------------------------->
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How a DNS Client resolves a name to an IP Address</P>
+<P class="myList">When a domain name resolution process starts, a DNSClient gets the DNS Resolver. The DNS Resolver:</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>Creates DNS query packet.</LI>
+	<LI>Generates a random query id and set it in the packet.</LI>
+	<LI>Sets type= A Record.</LI>
+	<LI>Sends the DNS query message to the DNS server over UDP.</LI>
+</UL>
+<P class="myList">The response will be received in the DNS Resolver.</P>
+<P class="myList">&nbsp;</P>
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How a DNS Resolver handles receiving messages</P>
+<P class="myList">When a DNS Resolver receives a message (<A href="flowcharts/DNS_client_recv.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>If the packet received is a valid DNS Response packet , it continues  else drops the packet.</LI>
+	<LI>It checks if the Query Id matches with the pending request’s Query Id:</LI>
+	<UL>
+		<LI>If yes, it continues.</LI>
+		<LI>If not, it drops the packet.</LI>
+	</UL>
+	<LI>If this DNS Resolver belongs to a DNS Server (which means, this DNS Resolver is used by a DNS Server for sending secondary queries to servers pointed by the NS records.)</LI>
+	<UL>
+		<LI>It deletes the corresponding query from the waiting-query-vector.</LI>
+		<LI>It checks for the condition if the response code = 0 (which means failure) OR  if the number of answer Resource Records =0,</LI>
+		<UL>
+			<LI>If yes, it adds the query into the failed queries list.</LI>
+			<LI>Else, it adds the answer records to the Cache.</LI>
+		</UL>
+		<LI>The DNS Resolver gets the DNS server to which it belongs to  and calls the step - <u><b>SearchDnsRecursively</b></u>. (This step: gets the name to translate and searches the local Database and Cache. If required, it searches other Name Servers as pointed by the NS records. Then it returns the answers in a result vector.)</LI>
+		<LI>If the step SearchDnsRecursively  returns  failure:</LI>
+		<UL>
+			<LI>The DNS Resolver creates a DNS Error response packet with,</LI>
+			<UL>
+				<LI>Response Code=3,</LI>
+				<LI>Number of Answers=0,</LI>
+			</UL>
+			<LI>Then, it sends  to the waiting client, through the UDP Process.</LI>
+		</UL>
+		<LI>Otherwise it continues execution.</LI>
+		<LI>If the step  <u><b>SearchDnsRecursively</b></u>‘s result Vector size > 0  (which means, the address resolution is success)</LI>
+		<UL>
+			<LI>The DNS Resolver creates a DNS Response packet.</LI>
+			<LI>Sets response code=0.</LI>
+			<LI>Adds all the answer records.</LI>
+			<LI>Sets the number of answer records field.</LI>
+			<LI>Sends  to the waiting client, through the UDP Process.</LI>
+		</UL>
+	</UL>
+	<LI>If this Resolver DOES NOT  belong  to a DNS Server (which means it is functioning  as part of a DNS Client)</LI>
+	<UL>
+		<LI>If number of answers in the response = 0, the resolver sends an event "<i>name resolution failure</i>" through a callback.</LI>
+		<LI>Else if,</LI>
+		<UL>
+			<LI>The  resolved IP is  present in the answers, the resolver extracts the IP Addresses.</LI>
+			<LI>The resolver sends an event "<i>domain name resolution success</i>" and sends the  IP Addresses through a  callback.</LI>
+		</UL>
+        <LI>Else, the resolver sends an event, "<i>name resolution failure</i>" through a callback.</LI>
+	</UL>
+</UL>
+
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How a DNS server works</P>
+<P class="myList">When a DNS server receives a message (<A href="flowcharts/DNS_server_recv.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>If the Service is disabled the server drops the message.</LI>
+	<LI>If the Message is an invalid or a non-DNS message ignore it.</LI>
+	<LI>Otherwise,</LI>
+	<UL>
+		<LI>The server extracts the DNS query.</LI>
+		<LI>The server calls the step  - <b><u>SearchDnsRecursively</u></b>.  (This step: gets the name to translate and searches the local Database and Cache. If required, it searches other Name Servers as pointed by the NS records. Then it returns the answers in a result vector.)</LI>
+	</UL>
+	<LI>If the step <u><b>SearchDnsRecursively</b></u> returns Failure</LI>
+	<UL>
+		<LI>The DNS Server creates a DNS search failure Message.</LI>
+		<LI>It sets Response Code=3,</LI>
+		<LI>It sets Number of Answer records=  0,</LI>
+		<LI>It sends back to the client.</LI>
+	</UL>
+	<LI>If the step <u><b>SearchDnsRecursively</b></u>‘s  result Vector size > 0</LI>
+	<UL>
+		<LI>The DNS Server creates a DNS reply Message.</LI>
+		<LI>It Adds all the answer records. (Which contains the resolved IP Addresses)</LI>
+		<LI>It checks if the answer record is from the local database and if an SOA record is present in the Database:</LI>
+		<UL>
+			<LI>If yes, it sets the  TTL = minimum TTL Value.</LI>
+			<LI>Otherwise, it sets the  TTL=default value.</LI>
+		</UL>
+		<LI>The server then sends the reply to the client.</LI>
+	</UL>
+</UL>
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How the step - <u>SearchDNSRecursively</u> works</P>
+<P class="myList">(<A href="flowcharts/DNS_searchDNSRecursively.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>If the DNS query is in waiting-query-vector,</LI>
+	<UL>
+		It returns success and result vector with size=0.
+	</UL>
+	Otherwise
+	<UL>
+		It continues.
+	</UL>
+	<LI>It adds the DNS-query to the waiting-query-vector.</LI>
+	<LI>It searches the Database and the Cache for the queried name. Find all the matching Resource Records (RRs).</LI>
+	<LI>If a matching  A-record is found.</LI>
+	<UL>
+ 		It returns success (true) and the result vector, with all matching RRs.</LI>
+ 	</UL>
+	Otherwise
+	<UL>
+		Performs the step  - <b><u>CnameSearchRecursively</u></b>. (This step tries to resolve the name searching for CNAME records recursively.)
+	</UL>
+	<LI>If a matching A-record is found.</LI>
+	<UL>
+		It returns success (true) and the result vector, with all matching RRs .
+	</UL>
+	Otherwise
+	<UL>
+		It performs the step  - <b><u>NSSearchRecursively</u></b> -  (This step searches for NS records,
+		and if required sends query to servers pointed by NS records )
+	</UL>
+	<LI>If the step  <b><u>NSSearchRecursively</u></b> returns false, (i.e., failed to find a related name server).</LI>
+	<UL>
+		It gets the next level domain name ie; parent of the name (unless it reduces to null string)
+		and repeats the same process recursively  SearchDnsRecursively
+	</UL>
+	Otherwise
+	<UL>
+		It returns success (true) and result vector of size zero.
+	</UL>
+</UL>
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How the step - <u>NSSearchRecursively</u> works</P>
+<P class="myList">(<A href="flowcharts/DNS_NSSearchRecursively.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>If the DNS query is in waiting-query-vector,</LI>
+	<UL>
+		It returns failure ( false)
+	</UL>
+	Otherwise
+	<UL>
+		It continues.
+	</UL>
+	<LI>Adds the DNS-query to the waiting-query-vector.</LI>
+	<LI>Searches the Database (DB) and Cache for the queried name. Finds all matching NS - Resource Records (RRs).</LI>
+	<LI>If NO  matching NS-record is found.</LI>
+	<UL>
+		Reduce the name to next level domain name Ie; parent of the domain name  and <br>
+		Perform the step - <b><u>NSSearchRecursively</u></b>.
+	</UL>
+	<LI>If matching NS-record is found,</LI>
+	<UL>
+		It adds the NS record to Answer Records Vector
+	</UL>
+	<LI>Iterates through the matching NS records and searches for one which is not in the failed-queries list.</LI>
+	<LI>Perform the step - <b><u>SearchDnsRecursively</u></b>  for the name pointed by the NS Record.
+(this is for finding out the IP address pointed by the NS record. This step gets the name-to-translate from NS record. Searches the local Database and Cache and if required searches other Name Servers as pointed by NS records.)</LI>
+	<LI>If  the step <u><b>SearchDnsRecursively</b></u> returns failure or the  result vector size=0,</LI>
+	<UL>
+		Returns failure (false) and exits
+	</UL>
+	Otherwise,
+	<UL>
+		If IP is resolved , Get the DNSClient  from the owner device. From the DNS client, it sends a new DNS  query to the resolved IP (of name server) with the original query.<br>
+		it returns success/true
+	</UL>
+</UL>
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How the step - <u>CNAMESearchRecursively</u> works</P>
+<P class="myList">(<A href="flowcharts/DNS_CNAMESearchRecursively.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>It searches in the given vector of RRs, for CNAME resource records (RR) matching with the given name.</LI>
+	<UL>
+		Lets the result be stored in resultVect.
+	</UL>
+	<LI>If No records found in resultVect,</LI>
+	<UL>
+		Returns failure (false)<br>
+		Returns zero size vector as result.
+	</UL>
+	Otherwise
+	<UL>
+		Gets the first record from resultVect and extract the cname.<br>
+		Lets name-to-translate=cname
+	</UL>
+	<LI>Performs the step  - <b><u>SearchDnsRecursively</u></b> for the name-to-translate.  (SearchDnsRecursively: It searches the local Database and Cache, and if required, it searches other Name Servers as pointed by NS records for the name-to-translate).</LI>
+	<LI>If the step <b><u>SearchDnsRecursively</u></b> returns failure,</LI>
+	<UL>
+		It repeats <b><u>SearchDnsRecursively</u></b> for next matching CNAME record in the resultVect until no matching records are left in the resultVect.
+	</UL>
+	<LI>If <b><u>SearchDnsRecursively</u></b> result Vector size = 0</LI>
+	<UL>
+		Returns failure (false).<br>
+		Returns zero size vector as result.
+	</UL>
+	<LI>Iterates through the result vector search for A-record  matching the initial query name.</LI>
+	<LI>If matching RR found,</LI>
+	<UL>
+		Returns success (true).<br>
+		Returns matching RRs in a vector as the result.
+	</UL>
+	Otherwise,
+	<UL>
+		Returns failure (false).<br>
+		Returns zero size vector as result
+	</UL>
+</UL>
+
+
+<!-- Radius -->
+
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How Radius Clients process incoming packets</P>
+<P class="myList">When a Radius client receives a packet (<A href="flowcharts/Radius_client_recv.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>It checks if the  received Packet is NOT a valid Radius Packet.</LI>
+	<UL>
+		<LI>If yes, it drops the packet</LI>
+		<LI>Otherwise, if the received packet is NOT A response for a pending authentication request.</LI>
+		<UL>
+			<LI>If yes, it drops the packet.</LI>
+			<LI>Otherwise, it extracts the Authentication result.</LI>
+		</UL>
+	</UL>
+	<LI>It checks if the result is Access Accept,</LI>
+	<UL>
+		<LI>If yes, it sends the event <i>authentication success</i>  to  the user module through call back.</LI>
+		<LI>Otherwise</LI>
+		<UL>
+			<LI>If the result is  Access Reject, it sends  event-authentication failure   to  the user module through call back.</LI>
+			<LI>Otherwise, it sends the event <i>authentication Error</i> to  the user module through call back.</LI>
+		</UL>
+	</UL>
+</UL>
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How Radius servers process incoming packets</P>
+<P class="myList">When a Radius Server receives a packet (<A href="flowcharts/Radius_server_recv.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>It checks if the radius service is disabled.</LI>
+	<UL>
+		<LI>If yes, it drops the packet.</LI>
+		<LI>Otherwise, if the received packet is NOT a valid Radius Packet.</LI>
+		<UL>
+			<LI>If yes, it drops the packet.</LI>
+			<LI>Otherwise, it continues.</LI>
+		</UL>
+	</UL>
+	<LI>The Radius server verifies  Client IP-client key matching and client type matching.</LI>
+	<UL>
+		<LI>If  any of the above  NOT matching, it drops the packet.</LI>
+		<LI>Otherwise:</LI>
+		<UL>
+			<LI>The Radius server extracts UserName and Password.</LI>
+			<LI>Authenticates.</LI>
+			<LI>Checks if the authentication is success.</LI>
+			<UL>
+				<LI>If yes, it creates Access Accept packet and sends back to the client.</LI>
+				<LI>Otherwise, it creates Access Reject packet and sends back to the client.</LI>
+			</UL>
+		</UL>
+	</UL>
+</UL>
+
+
+<!-- Tacacs -->
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How Tacacs Clients  process incoming packets</P>
+<P class="myList">When a Tacacs Client  receives a packet (<A href="flowcharts/Tacacs_client_recv.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>It checks if the Tacacs service is disabled:</LI>
+	<UL>
+		<LI>If yes, it drops the packet.</LI>
+		<LI>Otherwise</LI>
+		<UL>
+			<LI>If the received packet is NOT a valid Tacacs Packet, it drops the packet.</LI>
+			<LI>Otherwise, it continues.</LI>
+		</UL>
+	</UL>
+	<LI>It checks if the TCP connection is NOT in the ESTABLISHED state:</LI>
+	<UL>
+		<LI>If yes, it drops the packet.</LI>
+		<LI>Otherwise</LI>
+		<UL>
+			<LI>If the packet is NOT a  proper reply for a pending request, it drops the packet.</LI>
+			<LI>Otherwise, it extracts the Tacacs packet type:</LI>
+			<UL>
+				<LI>If the packet is - user name prompt:</LI>
+				<UL>
+					<LI>If yes, it sends the event <i>user name prompt</i> to the client module through the call back.</LI>
+					<LI>If no, it checks if the packet is - Password  prompt</LI>
+					<UL>
+						<LI>It sends the event <i>password  prompt</i> to the client module through the call back.</LI>
+					</UL>
+				</UL>
+				<LI>If the packet is Authentication Result</LI>
+				<UL>
+					<LI>If it is authentication Success, it sends the event <i>Authentication Success</i>  to the client module through the call back.</LI>
+					<LI>Otherwise, it sends the event <i>Authentication Failure</i>  to the client module through the call back.</LI>
+				</UL>
+			</UL>
+		</UL>
+	</UL>
+</UL>
+
+
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How Tacacs servers process incoming packets</P>
+<P class="myList">When a Tacacs Server  receives a packet (<A href="flowcharts/Tacacs_server_recv.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>It checks if the Tacacs service is disabled</LI>
+	<UL>
+		<LI>If yes, it drops the packet.</LI>
+		<LI>Otherwise</LI>
+		<UL>
+			<LI>If the received packet is NOT a valid Tacacs Packet, it drops the packet.</LI>
+			<LI>Otherwise</LI>
+			<UL>
+				<LI>If  Client IP-client key not matching  or  client type does not match:</LI>
+				<UL>
+					<LI>The Tacacs server creates an Authentication Reject Packet and sends back to the Client.</LI>
+				</UL>
+				<LI>If  the packet contains - request for user name prompt</LI>
+				<UL>
+					<LI>It gets the  UserName Prompt.</LI>
+					<LI>It creates the Reply packet and sends back to the client.</LI>
+				</UL>
+				<LI>If the packet  contains - request for Password  prompt</LI>
+				<UL>
+					<LI>It gets Password  Prompt .</LI>
+					<LI>It creates the reply packet and sends back to the client.</LI>
+				</UL>
+				<LI>If the packet contains - user name, it stores the UserName.</LI>
+				<LI>If the packet contains - password, it authenticates the username and password:</LI>
+				<UL>
+					<LI>If Authentication Success, it creates Authentication Accept Packet and sends back to the Client.</LI>
+					<LI>Otherwise, it creates Authentication Reject Packet and sends back to the Client.</LI>
+				</UL>
+			</UL>
+		</UL>
+	</UL>
+</UL>
+
+
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How VoIP registration works</P>
+<P class="myList">When IP phone connected to a configured CME is powered on (<A href="flowcharts/VoIP_registration_flowchart.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>Initiates a dhcp request</LI>
+	<UL>
+		<LI>IP phone receives an ip address. Check if tftp is enabled by default or manually entered. If tftp is not configured</LI>
+		<UL>
+			<LI>Ip phone will not register. It will retry in 10 seconds.</LI>
+		</UL>
+		<LI>Else if tftp is configured</LI>
+		<UL>
+			<LI>Start connecting to server/CME. If connection is not successful,</LI>
+			<UL>
+				<LI>Will retry in 10 seconds.</LI>
+			</UL>
+			<LI>Else</LI>
+			<UL>
+				<LI>Send registration request to server</LI>
+				<LI>Server checks if the MAC is permitted. If NOT permitted,</LI>
+				<UL>
+					<LI>Server throws a phone rejected log message</LI>
+					<LI>Phone will retry in 10 seconds</LI>
+				</UL>
+				<LI>Else</LI>
+				<UL>
+					<LI>Check if CME has a line number available for this phone. If NOT,</LI>
+					<UL>
+						<LI>Registration is failed. Close connection</LI>
+						<LI>Will retry in 10 seconds</LI>
+					</UL>
+					<LI>Else</LI>
+					<UL>
+						<LI>Returns line number and registration ACK to the client/phone.</LI>
+						<LI>Registration successful.</LI>
+					</UL>
+				</UL>
+			</UL>
+		</UL>
+	</UL>
+</UL>
+
+
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How local call works in VoIP</P>
+<P class="myList">When IP phone lifts handset and start dialing number, :</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>Router receives the number</LI>
+	<LI>Checks in the local directory to find the number. If NOT found,</LI>
+	<UL>
+		<LI>Send back “Unknown number” to the client/phone.</LI>
+	</UL>
+	<LI>Else if called number is in another call,</LI>
+	<UL>
+		<LI>Send back “busy” to the client/caller.</LI>
+	</UL>
+	<LI>Else</LI>
+	<UL>
+		<LI>Send Sccp Ringermessage to the destination phone.</LI>
+		<LI>Destination phone starts ringing.</LI>
+		<LI>Also send Ringout to the caller phone.</LI>
+		<LI>When destination phone picks up handset, </LI>
+		<UL>
+			<LI>Create an RTP port.</LI>
+			<LI>Sends openReceiveChannelAck to the CME with the udp port.</LI>
+			<LI>Caller phone creates udp port and sends openReceiveChannelAck to the CME with this udp port.</LI>
+			<LI>Both phones now start media transmission.</LI>
+		</UL>
+	</UL>
+</UL>
+
+
+
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How remote call works in VoIP</P>
+<P class="myList">When IP phone lifts handset and start dialing number, (<A href="flowcharts/VoIP_remote_call_flowchart.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>Router receives the number.</LI>
+	<LI>Sccp session is updated with callstate and incoming/outgoing number</LI>
+	<LI>If dial-peer finds target router for the number,</LI>
+	<UL>
+		<LI>Create an RTP port.</LI>
+		<LI>Send H.323 setup message with RTP port to the target router.</LI>
+		<LI>Target router looks up local directory for the dialed number. If NOT found,</LI>
+		<UL>
+			<LI>Send back “unknown number” to the client/phone.</LI>
+		</UL>
+		<LI>Else if target phone is in another call,</LI>
+		<UL>
+			<LI>Send back a “busy” to the source phone.</LI>
+			<LI>Do a release complete of the connection</LI>
+		</UL>
+		<LI>Else</LI>
+		<UL>
+			<LI>Create RTP port. Send Ringin to the client/phone.</LI>
+			<LI>Send back H.323 callProceeding to the source router/CME with the RTP port created.</LI>
+			<LI>Creates a call information with caller/callee number.</LI>
+			<LI>Call is answered by lifting handset.</LI>
+			<LI>Sends a connect H.323 message to the source router.</LI>
+			<LI>Target phone create another udp port and sends openReceiveChannelAck to the CME with the udp port.</LI>
+			<LI>Source router send openReceiveChannel SCCP message to the caller phone.</LI>
+			<LI>Caller phone creates udp port and sends openReceiveChannelAck to the CME with this udp port.</LI>
+			<LI>Both phones  now start media transmission.</LI>
+		</UL>
+	</UL>
+	<LI>Else if doesn’t find target router</LI>
+	<UL>
+		<LI>Send back “unknown number” to the client/phone.</LI>
+	</UL>
+
+</UL>
+
+	</body>
+</html>

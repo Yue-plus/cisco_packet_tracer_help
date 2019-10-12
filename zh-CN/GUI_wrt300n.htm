@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>WRT300N: GUI</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+
+
+<p class="MainHeading1">
+WRT300N: GUI
+<hr>
+
+<p>The <strong>GUI</strong> tab offers the same configurations and settings as the <strong>Config</strong> tab with some additional features for access restrictions, port forwarding, DMZ access, administration, as well as router and network status. Make sure you click on the <strong>Save Settings</strong> button at the bottom to apply the new settings to the WRT300N before going to any other tab.</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Setup Configuration</p>
+<p>In the <strong>Setup</strong> tab under the Basic Setup sub-tab, you can set the <strong>Internet Connection Type</strong> to either automatically obtain IP configurations with <strong>Automatic Configuration - DHCP</strong>, manually set IP configurations with <strong>Static IP </strong>, or <strong>PPPoE</strong>. You can also set the LAN IP configurations and DHCP server settings under the <strong>Network Setup</strong> section.</p>
+<p class="myPic">
+<img src="images/GUI_wrt300n_1.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Wireless Configuration</p>
+<p>On the <strong>Wireless</strong> tab under the <strong>Basic Wireless Settings</strong> sub-tab, the only settings you can change are the <strong>Network Name (SSID)</strong> and the <strong>Standard Channel</strong>.</p>
+<p>Under the <strong>Wireless Security</strong> sub-tab, you can set the Security Mode to <strong>Disabled</strong>, <strong>WEP</strong>, <strong>WPA Personal</strong>, <strong>WPA Enterprise</strong>, <strong>WPA2 Personal</strong>, or <strong>WPA2 Enterprise</strong>. Depending on the security mode that you select, you will need to enter a WEP key, passphrase and encryption type for WPA/WPA2 Personal, or the RADIUS server IP address, shared secret, and encryption type for WPA/WPA2 Enterprise.</p>
+<p>Under the <strong>Wireless MAC Filter</strong> sub-tab, you can setup a wireless MAC address filter list to permit or prevent wireless clients from accessing the wireless network. To setup the wireless MAC filter, set the wireless MAC filter to <strong>Enabled</strong> and then select whether you want the MAC filter to prevent the listed clients from accessing the wireless network or to permit only the listed clients from being able to access the wireless network. Afterwards, begin entering the MAC addresses of the clients that you want to include in the MAC filter and then click the <strong>Save Settings</strong> button. </p>
+<p class="myPic">
+<img src="images/GUI_wrt300n_2.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Security Configuration</p>
+<p>On the Security tab, there are no additional viewable sub-tabs and there are no parameters that you can edit.</p>
+<p class="myPic">
+<img src="images/GUI_wrt300n_3.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Access Restrictions Configuration</p>
+<p>On the <strong>Access Restrictions</strong> tab under the <strong>Internet Access Policy</strong> sub-tab, you can apply various  access restrictions policies on the connected hosts. To add a policy to the router, first select a policy you would like to edit from the <strong>Access Policy</strong> drop-down menu and then Enter a <strong>Policy Name</strong> for the policy. Then, set the <strong>Status</strong> to <strong>Enabled</strong>. Next, click on the <strong>Edit List</strong> button and enter the host IP addresses you would like to apply the policy on in the <strong>List of PCs</strong> dialog that shows up. After editing the list, click on <strong>Save Settings </strong>and <strong>Close</strong> inside the dialog. Back in the GUI, select <strong>Deny</strong> to restrict all applications or select <strong>Allow</strong> for specific application access restriction. If you select <strong>Allow</strong>, you can choose up to three applications to block. To block an application, select the application from the <strong>Applications</strong> list and click on the <strong>&gt;&gt;</strong> button to add it to the <strong>Blocked List</strong>. To unblock an application, select the application from the Blocked List and click on the <strong>&lt;&lt;</strong> button. If you want to remove a policy, select the policy from the <strong>Access Policy</strong> drop-down menu and click <strong>Delete This Entry</strong>.</p>
+<p class="myPic">
+<img src="images/GUI_wrt300n_4.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Applications &amp; Gaming  Configuration </p>
+<p>In the <strong>Applications & Gaming</strong>  tab under the <strong>Single Port Forwarding</strong> sub-tab, you can forward packets destined to specific ports to an IP Address. To forward a port, select the appropriate application under the <strong>Application Name</strong> drop-down menu, enter the IP Address under the <strong>To IP Address</strong> column to which you want the packets to be forwarded, and then click on the box under the <strong>Enabled</strong> column. To forward a custom port, enter an application name and then enter the appropriate <strong>Externet Port</strong>, <strong>Internet Port</strong>, and <strong>Protocol</strong>. The <strong>Externet Port</strong> is the port to which the router will listen from the WAN side. The <strong>Internet Port</strong> is the port on your local server to which the router will forward packets.</p>
+<p>Under the <strong>DMZ</strong> sub-tab, you can set a specific host to have DMZ access. To do so, click on <strong>Enabled</strong> to enable the DMZ feature and then enter the IP address of the host you want to have DMZ access. </p>
+<p class="myPic">
+<img src="images/GUI_wrt300n_5.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Administration Management </p>
+<p>In the <strong>Administration</strong>  tab under the <strong>Management</strong> sub-tab, you can change the default password to access the router through the Web Configuration using the <strong>Web Browser</strong> and toggle <strong>Remote Management</strong>. In addition to this, if you are logged in using the Web Configuration, you can  <strong>Backup</strong> and <strong>Restore Configurations</strong>.</p>
+<p>Under the <strong>Factory Defaults</strong> sub-tab, the only available feature is <strong>Restore Factory Defaults</strong>. This will reset the configuration back to default settings.</p>
+<p>Under the <strong>Firmware Upgrade</strong> sub-tab, you can upgrade the firmware of the WRT300N. To upgrade the firmware, click on <strong>Browse</strong>, select a valid firmware image from the dialog that shows up, and then click <strong>OK</strong>. Once you have selected a firmware, click on the <strong>Start to Upgrade</strong> button to upgrade the firmware.</p>
+<p class="myPic">
+<img src="images/GUI_wrt300n_6.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Status</p>
+<p>On the <strong>Status</strong> tab under the <strong>Router</strong> sub-tab, you can view <strong>Router Information</strong> and <strong>Internet Connection</strong> configurations. You can <strong>Release</strong> and <strong>Renew</strong> the IP address of the Internet port.</p>
+<p>Under the <strong>Local Network</strong> sub-tab, you can view the <strong>Local Network</strong> and <strong>DHCP Server</strong> configuration. You can  view the <strong>DHCP Client Table</strong> as well.</p>
+<p>Under the <strong>Wireless Network</strong> sub-tab, you can view the various wireless configurations on the router.</p>
+<p class="myPic">
+<img src="images/GUI_wrt300n_7.jpg">
+</p>
+</body>
+</html>

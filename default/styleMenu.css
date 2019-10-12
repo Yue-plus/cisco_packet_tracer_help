@@ -1,0 +1,64 @@
+p {
+text-align: left;
+margin-top:0 ;
+margin-bottom:0 ;
+}
+
+body {
+background-color: #58585B;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 12pt;
+color: white; /*This is the basic body text color*/
+}
+
+/*
+br {
+margin-top:0 ;
+margin-bottom:0 ;
+padding-bottom:0 ; 
+padding-right:0 ;
+}
+*/
+
+.Title {  
+font-family: Arial, Helvetica, sans-serif;
+color:white; 
+font-size:16pt; 
+font-weight:bold; 
+}
+
+.myBR1 {
+margin-top:0 ;
+margin-bottom:5pt ;
+color: white;
+}
+
+.MenuHeading1 { 
+font-family: Arial, Helvetica, sans-serif;
+font-size:13pt; 
+font-weight:bold; 
+color: white;
+}
+
+.MenuHeading2 { 
+font-family: Arial, Helvetica, sans-serif;
+font-size:12pt; 
+margin-left:13pt ;
+color: white;
+}
+
+.MenuHeading3 { 
+font-family: Arial, Helvetica, sans-serif;
+font-size:11pt; 
+margin-left:23pt ;
+color: white;
+}
+
+A:link { color: white; text-decoration:none }
+A:active { color: black; text-decoration:underline ; background: white }
+A:visited { color: white; text-decoration:none }
+A:hover { color: black; text-decoration:underline ; background: white }
+
+
+
+

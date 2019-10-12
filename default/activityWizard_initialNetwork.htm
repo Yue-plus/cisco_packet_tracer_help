@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Initial Network</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+
+  <p class="MainHeading1">
+    
+    Initial Network
+  <hr>
+<p class="myPic">
+<img src="images/activityWizard_initialNetwork_1.jpg">
+</p>
+<p> In the Initial Network panel, you set the network from which the user will start the activity. One option for setting up the initial network is to simply copy from the answer network and edit parts of it. Do this by pressing the <strong>Copy from Answer Network</strong> button. Another option is to import a file using the <strong>Import File to Init Network</strong> button and to edit that file. After creating the initial network, you can export it using the <strong>Export Init Network to File</strong> button.</p>
+<p class="myPic">
+<img src="images/activityWizard_initialNetwork_2.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Using the Locking Tree</p>
+<p>The tree in this mode is used to lock out functions to which you do not wish the student to have access. For example, you can prevent the student from switching to the Physical Workspace (under the <strong>Interface </strong> branch). The restrictions can be much more specific, such as preventing changes to the interface type on a specific port on a specific device (under the <strong>Topology </strong>&gt; <strong>Existing Devices </strong> branch). Be careful about what functions you lock because certain restrictions may prevent the student from finishing the activity.</p>
+<p>The first screenshot above shows some appropriate items that should be locked for our simple example. This configuration takes away the student's ability to use Simulation Mode features. Without Simulation Mode, the student has to use the  command prompt on a PC to send pings and troubleshoot.</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Initial Network Setup</p>
+<p>By default, an activity will use the values defined in the Initial Network. The tree in the <strong>Initial Network Setup</strong> tab allows you to define alternative initial values for some items. For example, a server  may have the default gateway set to 192.168.1.1 in the Initial Network. However, as shown in the screenshot below, by selecting the Default Gateway item for the server in the Initial Network Setup tree and then changing the value to 192.168.4.1, the server  would have the default gateway set to 192.168.4.1 instead of 192.168.1.1.</p>
+<p class="myPic">
+<img src="images/activityWizard_initialNetwork_3.jpg">
+</p>
+
+<p>&nbsp;</p>
+<p class="MainHeading2">Object Locations</p>
+<p>You can create some sets of location for devices on answer network. For this purpose create a set of logical workspace object locations. Then click on <strong>Append Current Locations</strong> to create a location set. You can create multiple location sets and append them to this list.</p><p>
+To overwrite, load or delete that location set, input a number into the <strong>Edit Set</strong> text field. Enter a value in the <strong>Index Variable</strong> text field to use a variable to determine the device location set to choose from when an activity starts or rests. If you leave the field blank, a random one will be selected when the activity starts.</p>
+<p class="myPic">
+<img src="images/activityWizard_initialNetwork_4.jpg">
+</p>
+</body>
+</html>

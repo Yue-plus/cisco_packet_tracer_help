@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Scoring Model/Scripting</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+
+<p class="MainHeading1">Scoring Model/Scripting</p>
+<hr>
+<p>The <strong>Scoring Model</strong> is an Evidence Centered Design process by which to assess work products through the application of scoring rules and textual feedback. The Scoring Model is used to create complex rules for the grading of activities. When using the new Scoring Model, it is possible to display customized feedback for every work product in the assessment tree (both positive and negative feedback) as well as overall and partial feedback. It is not even necessary to link the feedback text to a work product if the purpose  is to provide a simple message to the user.</p>
+<p>The <strong>Scripting</strong> engine is a component of Packet Tracer that was designed to allow greater flexibility in creating scoring rules for Packet Tracer activities that use the new Scoring Model. The Scripting engine is what allows this complex scoring model to exist. Each item created in the Scoring Model exists as an object in the Scripting engine so that it can be accessed by any expression/scoring rule that the user creates.</p>
+<p>An example of where the Scoring Model and Scripting engine would be beneficial is when an instructor wants to display a  message to the user indicating that the IP addressing is mostly correct, but not completely correct and not totally incorrect. This may happen when there are several devices on the stage and one or two of the three are correctly addressed, but the third is not. Using the new Scoring Model, it is possible to provide this sort of  feedback based on the combination of multiple work products. The major benefit here is the ease of customization in complex scoring scenarios, as well as a model that more closely aligns with the Evidence Centered Design process.</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Scoring Model Interface</p>
+<p>The <strong>Scoring Model</strong> tab allows you to define individual <strong>Work Product Features</strong> along with corresponding <strong>Scoring Rules</strong>. For each section, there are buttons to <strong>Add</strong>, <strong>Remov</strong><strong>e</strong>, <strong>Edit</strong>, and <strong>Move</strong> the work product features and scoring rules. Refer to the "Example" & "Terms" sections below for further explanation and terminology.</p>
+<p class="myPic">
+<img src="images/activityWizard_scoringModelAndScripting_1.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Scripting Interface</p>
+<p> Packet Tracer comes bundled with four important scripts written in JavaScript. <strong>EventManager.js</strong> stores custom event handlers for Core Events. <strong>ProficiencyModel.js</strong> stores and evaluates the Scoring Model. <strong>ScoringModel.js</strong> holds the data classes for the Scoring Model. <strong>Main.js</strong> is the main function called from the core, where subsequent communication from the core is processed via Events. By default, Main.js supports the  Scoring Model by adding events for saving, loading, evaluating, and reporting for the Proficiency Model.</p>
+<p>In the <strong>Scripting</strong> tab, you can <strong>add</strong>, <strong>remove</strong>, <strong>edit</strong>, <strong>rename</strong>, <strong>import</strong>, and <strong>export</strong> scripts including the four  core scripts described above. Optionally, you can click on the <strong>debug</strong> button to reveal a debug window, which can assist you in scripting.</p>
+<p>In most use cases, you will not need to edit the four  core scripts. However, should you have any reason to edit these scripts, each script is fully editable and removable per activity file. If you edited or removed any of the four  core scripts and you want to restore them, go to Info tab and select <strong>PT 5.2 Activity</strong> from the template list to bring back the scripts to their original configurations.</p>
+<p>In the screenshot below, an XML file called <strong>PROFICIENCY_MODEL</strong> is also in the list. Refer to the "Example" & "Terms" sections below for further explanation and terminology.</p>
+<p class="myPic">
+<img src="images/activityWizard_scoringModelAndScripting_2.jpg">
+</p>
+<p>&nbsp;</p>
+<table class="tableTip">
+  <tr>
+    <td class="TDtableTip"><p class="myList">Scripts defined in Activity Wizard are per activity file and not per instance of Packet Tracer. Included scripts can be extended or removed per activity file.</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="MainHeading2">Example</p>
+<p>An instructor wants to test that students  know how to properly power on three devices in a network. However, the instructor wants to provide positive feedback if all devices are turned on, and  a single negative feedback if at least one of the devices is not powered. This  particular style of feedback doesn’t fit the standard Packet Tracer model of  scoring and feedback so it is necessary to use the Scoring Model.</p>
+<p class="myPic">
+<img src="images/activityWizard_scoringModelAndScripting_3.jpg">
+</p>
+<p class="myPic">
+<img src="images/activityWizard_scoringModelAndScripting_4.jpg">
+</p>
+<p>The instructor starts by placing three devices on the stage, Router0, Router1, and Router2. The Activity Wizard is then started and the existing network is to be used as the answer network.</p>
+<p class="myPic">
+<img src="images/activityWizard_scoringModelAndScripting_5.jpg">
+</p>
+<p>In the Answer Network page, the instructor will select the <strong>Scoring Model</strong> tab instead of using the Assessment Tree tab. Here, the instructor will need to make a work product feature for each item that is to be retrieved from the user’s network. Since the activity is to test the power status of three devices, three work product features will be needed. For simplicity, the items created will be named <strong>r0power</strong>, <strong>r1power</strong>, and <strong>r2power</strong>.</p>
+<p class="myPic">
+<img src="images/activityWizard_scoringModelAndScripting_6.jpg">
+</p>
+<p>To create one of these work product features, the instructor clicks the <strong>+</strong> button under the <strong>Work Product Features</strong> section. In the dialog that pops up, the name "<strong>r0power</strong>" is entered into the <strong>Name</strong> field. The <strong>Description</strong> is optional and left blank. For the expression, the instructor must use the help in the nodes box at the bottom to find the proper path to the network setting that is to be checked. By default, the search starts in the "<strong>Network</strong>" and moves into devices from there. Clicking after the string "<strong>Network:</strong>", the instructor then types any character to see the updated available nodes. Noticing that Router0 is available, the phrase is completed to form "<strong>Network:Router0:</strong>". Once the final colon is entered, the list of options inside Router0 is shown. Since, the purpose is to test the power, the final phrase is "<strong>Network:Router0:Power</strong>". The instructor would then create a work product feature for each of Router1 and Router2 as well.</p>
+<p>Now that the work product features are created, the instructor needs to compose the tests for each of the work product features. This is done using the <strong>Scoring Rules</strong> section beneath that. According to Evidenced Centered Designed process, each work product feature must be assessed by applying a scoring rule to it, which creates a <strong>Primary Observable</strong>. Previously, the work product features just defined the items we were interested in. Primary observables take those interesting pieces of information and test them against some rule or expression. In this case, the instructor needs to determine if the devices are powered, which is to say that our work product features have the value '1'. To make naming simple, the primary observables are to be called <strong>r0poweron</strong>, <strong>r1poweron</strong>, and <strong>r2poweron</strong>.</p>
+<p class="myPic">
+<img src="images/activityWizard_scoringModelAndScripting_7.jpg">
+</p>
+<p>To do this, the instructor clicks the <strong>+</strong> button under the Scoring Rules section, and selects <strong>Primary Observable</strong> from the <strong>Type</strong> drop-down list. In the <strong>Name</strong> field, "<strong>r0poweron</strong>" is entered. The <strong>Description</strong> again is optional so is not entered. Next is the expression. This is a JavaScript string that will be used to test the value of the work product feature. The template contains a portion for the <strong>condition</strong>, a <strong>true value</strong>, and a <strong>false value</strong>. The evaluation of this expression is directly assigned to the value of the primary observable created. For this instance, the instructor wants to assign the value 1 if the test is true and the value 0 if the test is false (it could also be assigned text strings, other numbers, scores, or other valid script commands as well). The condition part of the expression is to test to see that our work product feature <strong>r0power</strong> has the value '1'. Erasing the condition part of the template, it is replaced with "<strong>r0power == '1'</strong>". This directly compares the work product feature <strong>r0power</strong> against the string value of '1'. Since the instructor wants to assign the number 1 when true, and 0 when false, each of those portions is replaced with 1 and 0 respectively. This produces the final expression of "<strong>( r0power == ‘1’ ) ? 1 : 0;</strong>". This JavaScript command will assign the value 1 to <strong>r0poweron</strong> when the work product feature <strong>r0power</strong> is equal to '1', and the value 0 for everything else. The instructor then repeats the process for the other two primary observables.</p>
+<p>Next, the instructor needs to create an indicator for all three devices. This particular type of observable is called a <strong>Compound Observable</strong> since it will be combining multiple primary observables in some manner into a single value. This value could be a score, or just another indicator of correctness. To keep things simple, the instructor has decided to create it as an indicator which will take on the value 1 if all three devices are turned on and 0 if at least one of the devices is off. The observable will be named "<strong>allpower</strong>".</p>
+<p class="myPic">
+<img src="images/activityWizard_scoringModelAndScripting_8.jpg">
+</p>
+<p>To create this observable, the instructor again clicks the <strong>+</strong> button underneath Scoring Rules, but this time selects <strong>Compound Observable</strong> in the <strong>Type</strong> drop-down list. In the <strong>Name</strong> field, "<strong>allpower</strong>" is entered and the <strong>Description</strong> is left blank. Like the primary observable, the same template applies to compound observables. Here, the instructor needs to test that all three primary observables have the value 1 and assign the compound the value 1 if they do, or 0 if they do not. One way the instructor can do this is to add up the values of all three primary observables and determine if the value is 3. If it is, then all devices are powered on. If it is less than 3, at least one device is unpowered. The expression the instructor enters is the following "<strong>( r0poweron + r1poweron + r2poweron == 3 ) ? 1 : 0;</strong>".</p>
+<p>Lastly, the instructor wants to display some feedback. Since Packet Tracer has only one text to display feedback in it is necessary to place the entire string into the unique <strong>Reporting Variable</strong> called <strong>OVERALL_REPORT</strong>. If all devices are powered on, the feedback should be "You have powered all devices." If at least one device is unpowered the feedback should read "X devices are unpowered. Please fix the error and try again." The value X should be the number of devices that are incorrectly powered.</p>
+<p class="myPic">
+<img src="images/activityWizard_scoringModelAndScripting_9.jpg">
+</p>
+<p>Again, the instructor clicks the <strong>+</strong> under the Scoring Rules section and creates a <strong>Reporting Variable</strong> this time. In the <strong>Name</strong> field, the special name "<strong>OVERALL_REPORT</strong>" is used. The expression this time is a little more complicated since the observable <strong>allpower</strong> does not contain the number of devices, but a correctness indicator. It is possible to create another compound observable to show this, but the instructor decides to do the calculations right in the expression to save time. The resulting expression is:</p>
+<p><center><strong>( allpower == 1 ) ? "You have powered all devices." : (3 – ( r0poweron + r1poweron + r2poweron)) + " devices are unpowered. Please fix the error and try again.";</strong></center></p>
+<p>This particular expression checks the value <strong>allpower</strong>. If it is true then it display the first string, otherwise it composes an alternate string that contains the value 3 – the number of correct devices (the number of incorrect devices).</p>
+<p>When the instructor checks the <strong>Scripting</strong> tab, the instructor will notice that a new  XML file called <strong>DATA: PROFICIENCY_MODEL</strong> has been automatically generated which includes all of the work product features and scoring rules that were created as seen in the screenshot in the "Scripting" section above. </p>
+<p>Before the instructor can test the activity, the initial network is configured by copying it from the answer network and turning off the power to all three devices. Instructions are entered to tell the student what to do, and then the activity is tested.</p>
+<p class="myPic">
+<img src="images/activityWizard_scoringModelAndScripting_10.jpg">
+</p>
+<p class="myPic">
+<img src="images/activityWizard_scoringModelAndScripting_11.jpg">
+</p>
+<p class="myPic">
+<img src="images/activityWizard_scoringModelAndScripting_12.jpg">
+</p>
+<p>When the instructor tests the activity without turning any devices on it displayed "3 devices are unpowered. Please fix the error and try again." However, if two devices are powered on, the feedback is "1 devices are unpowered. Please fix the error and try again." And lastly, when all three devices are powered on, the feedback is "You have powered all devices."</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Terms</p>
+<p><strong>Expression</strong> - A sequence of JavaScript commands that results in a value that can be assigned to an observable.</p>
+<p><strong>Work Product Feature</strong> - A particular element of interest in the Packet Tracer  network. For example, the IP address assigned to Router0’s FastEthernet0/0 port.</p>
+<p><strong>Primary Observable</strong> - The result of the application of a scoring rule or expression against a work product feature. Usually there is one primary observable for each work product feature, and typically the value is true or false. As an example, if the IP address on Router0’s FastEthernet0/0 port is equal to 10.0.0.1, then award 2 points.</p>
+<p><strong>Compound Observable</strong> - An application of aggregation rules to multiple Primary Observables. The values stored in a compound observable can be any legal JavaScript value but typically are numerical scores or correctness indicators. As an example, add the points from IP addressing and routing together.</p>
+<p><strong>Reporting Observable</strong> - Typically a string value named that represents some portion of feedback. For example: If the score is greater the 70, display "Passed".</p>
+</body>
+</html>

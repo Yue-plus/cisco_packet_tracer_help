@@ -1,0 +1,359 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE>Packet Tracer Translation Process</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice 4.1.5  (Win32)">
+	<META NAME="CREATED" CONTENT="0;0">
+	<META NAME="CHANGEDBY" CONTENT="Alex Bilyk">
+	<META NAME="CHANGED" CONTENT="20180725;10415959">
+	<META NAME="CHANGEDBY" CONTENT="Alex Bilyk">
+    <link rel="stylesheet" type="text/css" href="styleNormal.css">
+</HEAD>
+<BODY LANG="en-US" TEXT="#39393b" LINK="#1152b1" BGCOLOR="#ffffff" DIR="LTR">
+<P CLASS="mainheading1">Packet Tracer Translation Process</P>
+<HR>
+<P>Packet Tracer supports semi-automated translation to all
+Unicode-supported languages. The first part of this guide explains
+the translation process for the main application. The second part
+explains the process for translating the help files. A short FAQ
+guide is provided at the end of each part to answer questions
+regarding the processes.</P>
+<P CLASS="mainheading2">Overview</P>
+<P>The translation process involves the translation of three separate
+parts of the program, each one with a small dependency on the
+translation of the Main Application. The most important translation
+is the main application as described in Part 1 and 1a. This will
+translate the interface of the program. The help file screenshots
+depend on the translation of the main application in order to display
+the graphics in the translated language. The save files reference the
+language files to use upon opening the program so that the program
+will display in the native language of the save file if available. 
+</P>
+<P>To standardize the language files, the naming convention for
+language filenames should follow ISO 639-2. Packet Tracer uses the
+Alpha-3 code for representation of names of languages. A list of
+language names to code is defined here:
+<A HREF="ISO-639-2_values_8bits-utf-8.csv">ISO-639-2_values_8bits-utf-8.csv</A>.
+An example of an appropriate name is: &quot;English_eng&quot;. 
+</P>
+<P CLASS="mainheading2">Translation Best Practices</P>
+<P CLASS="mylist" STYLE="margin-bottom: 0.2in"><STRONG>Please
+consider the following best practices when translating:</STRONG></P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0in">Agree on terminology that will be
+	used BEFORE starting translation 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in">Ensure terminology is consistent
+	throughout the GUI 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in">Have a subject matter expert,
+	other than the translator, review the translation when it is
+	complete 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in">Allow for text expansion, words
+	may need to be translated differently to accommodate limited space 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in">Formatting should be the same as
+	English version 
+	</P>
+	<LI><P>Where possible, try to utilize a tool that enables the use of
+	translation memory. 
+	</P>
+</UL>
+<P CLASS="mainheading2">Part 1: Translating the Main Application</P>
+<P CLASS="mylist" STYLE="margin-bottom: 0.2in"><STRONG>Required Tools</STRONG></P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0in">Cisco Packet Tracer 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in">Qt Linguist 
+	</P>
+	<LI><P>File to be translated (*.ts file) 
+	</P>
+</UL>
+<P>Qt Linguist is a part of general Qt distribution packages. At the
+time of this writing Cisco Packet Tracer was built with <I>Qt5.5.1,</I>
+which could be downloaded from <A HREF="https://download.qt.io/archive/qt/">Qt
+    archives</A>. Given that WWW hyperlinks may change over time, a more general solution may be to search the web for "<i>qt linguest download</i>" phrase.
+</P>
+<P CLASS="mylist" STYLE="margin-bottom: 0.2in"><STRONG>Setup:</STRONG>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT SIZE=3>You can
+translate to another language or change/continue translations on a
+previously translated language file. If you are translating to a new
+language, copy &quot;template.ts&quot; to &quot;&lt;new language
+name&gt;.ts&quot;. Be sure that the &lt;new language name&gt; follows
+the ISO 639-2 standard defined in the overview section above. </FONT>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><BR>
+</P>
+<P CLASS="mylist" ALIGN=LEFT STYLE="margin-bottom: 0.2in"><STRONG><FONT SIZE=3>Instructions:</FONT></STRONG></P>
+<OL>
+	<LI><P STYLE="margin-bottom: 0in">Open Qt Linguist. 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in">Go to <STRONG>File</STRONG>--&gt;<STRONG>Open</STRONG>
+	and choose the &quot;&lt;language name&gt;.ts&quot; file to
+	translate. 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in">Select an unfinished context on
+	the left navigation bar. 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in">Enter the text in the <STRONG>Translation</STRONG>
+	text field and mark <STRONG>finish</STRONG> by pressing <STRONG>Ctrl</STRONG>
+	+ <STRONG>Enter</STRONG>. (See additional important notes below.) 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in">Release the language file
+	[<STRONG>File</STRONG>--&gt;<STRONG>Release As</STRONG>&hellip;],
+	from fromat type menue select <STRONG>All files (*)</STRONG> and
+	save it as &quot;&lt;language name&gt;.ptl&quot; in the &quot;\languages&quot;
+	folder. Remember to save this project (the .ts file) by [<STRONG>File</STRONG>--&gt;<STRONG>Save
+	As</STRONG>&hellip;] as well as releasing it. The help files will
+	reference this project file. 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in">Open Packet Tracer. In the
+	<STRONG>Options</STRONG>--&gt;<STRONG>Preferences</STRONG>,
+	<STRONG>Interface</STRONG> tab, select the recently translated
+	language and <STRONG>restart</STRONG> Packet Tracer. 
+	</P>
+	<LI><P>Packet Tracer is now translated. 
+	</P>
+</OL>
+<P CLASS="mylist" STYLE="margin-bottom: 0.2in"><STRONG>Some Important
+Notes:</STRONG> 
+</P>
+<OL>
+	<LI><P STYLE="margin-bottom: 0in">Variables: %1, %2, %3, %n, and
+	[[SOME_VAR_NAME]]. Do NOT translate those variable names. However,
+	moving the variables as makes sense is fine. 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in">Accelerators: The character &quot;&amp;&quot;
+	defines an accelerator key. An example of an accelerator is &amp;File,
+	pressing Alt-F on the keyboard is equivalent to clicking on the file
+	menu. When you are translating to another language, an accelerator
+	key can be placed on any character, but be sure to not use the same
+	character twice. 
+	</P>
+	<LI><P>Rich text: HTML tags may be used to manipulate the text shown
+	on screen. Rich text is useful for certain language fonts that are
+	too small or too large. 
+	</P>
+</OL>
+<P CLASS="mylist" STYLE="margin-bottom: 0.2in"><STRONG>FAQ:</STRONG> 
+</P>
+<P><STRONG>Q1.</STRONG> Where do I find the &quot;template.ts&quot;
+file?<BR><STRONG>A1. </STRONG>It is located in the &quot;languages&quot;
+folder of the installation path for the application. Example:
+&quot;C:\Program Files\Packet Tracer 5.2.1\languages&quot;</P>
+<P><STRONG>Q2. </STRONG>Do I need to translate the whole file before
+I can see the results?<BR><STRONG>A2.</STRONG> To see the results at
+any point in the installation, just release the file and place it in
+the languages folder. Then select the language in the Preferences
+window of Packet Tracer.</P>
+<P><STRONG>Q3. </STRONG>I have some network files (.pkt) and some
+activity files (.pka) that need to be translated. How do I go about
+translating those?<BR><STRONG>A3.</STRONG> To translate the content
+in the saved files (e.g., device names, information boxes, or
+activity instructions), you must open those files and edit them in
+Packet Tracer.</P>
+<P CLASS="mainheading2">Part 1a: Translating the Main Application
+Using Prior Translations</P>
+<P CLASS="mylist" STYLE="margin-bottom: 0.2in"><FONT FACE="Arial, sans-serif"><BR>This
+section provides guidelines for updating translation files created
+for prior releases of Cisco Packet Tracer. Initial Requirements and
+Setup, when following this route, are identical to those from Part 1
+above. For the purposes of this section we will assume the following:</FONT></P>
+<OL>
+	<LI><P STYLE="margin-bottom: 0in; line-height: 100%"><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">You
+	have a file from a preexisting version of Packet Tracer:
+	</FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>translated.ts</I></FONT></FONT><FONT COLOR="#39393b">
+	</FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">or
+	</FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>translated.ptl.</I></FONT></FONT></P>
+	<LI><P STYLE="margin-bottom: 0in; line-height: 100%"><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">Qt
+	Linguist environment and tools have been setup per instructions from
+	Part 1 above. This ensures you have a command line tool called
+	</FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>lconvert</I></FONT></FONT><FONT COLOR="#39393b">
+	</FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">that can
+	be located in your </FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>Qt-Install/bin</I></FONT></FONT><FONT COLOR="#39393b">
+	</FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">folder.</FONT></FONT></P>
+	<LI><P STYLE="margin-bottom: 0in; line-height: 100%"><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">Cisco
+	Packet Tracer is installed in a folder we would refer to as
+	</FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>App-Install</I></FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">.</FONT></FONT></P>
+</OL>
+<P>&nbsp;</P>
+<P><FONT FACE="Arial, sans-serif"><B>Additional Setup:</B></FONT></P>
+<P><FONT FACE="Arial, sans-serif">In the case you already have a
+<I>translated.ts</I> file for some other version of Cisco Packet
+Tracer, copy it to the directory <I>App-Install/languages</I>.<BR>In
+case you do not have translated.ts file, but rather have
+translation.ptl instead, you would need to convert the latter to
+<I>translated.ts</I> by running the following:</FONT></P>
+<OL>
+	<LI><P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif">Start
+	command line or terminal.</FONT></P>
+	<LI><P STYLE="margin-bottom: 0in"><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">Change
+	current directory to </FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>App-Install/languages.</I></FONT></FONT></P>
+	<LI><P STYLE="margin-bottom: 0in"><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">Copy
+	your existing file </FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>translated.ptl</I></FONT></FONT><FONT COLOR="#39393b">
+	</FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">to the
+	directory you are in.</FONT></FONT></P>
+	<LI><P STYLE="margin-bottom: 0in"><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">Rename
+	</FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>translated.ptl</I></FONT></FONT><FONT COLOR="#39393b">
+	</FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">to
+	</FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>translated.qm</I></FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">.</FONT></FONT></P>
+	<LI><P STYLE="margin-bottom: 0in"><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">Run
+	the following command on the command line:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>Qt-Install/bin/lconvert
+	-i translated.qm -o translated.ts</I></FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><BR>After
+	this you will see a file named </FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>translated.ts</I></FONT></FONT><FONT COLOR="#39393b">
+	</FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">alongside
+	</FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>translation.qm</I></FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">.<BR>This
+	operation can only be attempted by loading </FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>translated.qm</I></FONT></FONT><FONT COLOR="#39393b">
+	</FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">into Qt
+	Linguist and saving it as </FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>translated.ts</I></FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">.</FONT></FONT></P>
+</OL>
+<P CLASS="mylist" STYLE="margin-bottom: 0.2in"><STRONG><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">Translation
+Instructions:</FONT></FONT></STRONG></P>
+<OL>
+	<LI><P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif">Follow
+	steps 1,2,3 from the Additional Setup section above.</FONT></P>
+	<LI><P STYLE="margin-bottom: 0in"><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">Merge
+	existing </FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>translated.ts</I></FONT></FONT><FONT COLOR="#39393b">
+	</FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">file
+	with the file containing all untranslated application text from your
+	current version of Cisco Packet Tracer. The latter is stored in
+	</FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>App-Install/languages/template.ts</I></FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">.
+	In order to perform this merge, run the following on the command
+	line:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>Qt-Install/bin/lconvert
+	-i template.ts translated.ts -o translated-new.ts -no-obsolete</I></FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><BR>After
+	this step </FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>translated-new.ts</I></FONT></FONT><FONT COLOR="#39393b">
+	</FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">file
+	will contain all text untranslated from current application release
+	as well as the text from your original </FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>translated.ts</I></FONT></FONT><FONT COLOR="#39393b">
+	</FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">merged
+	together and saved in </FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>translated-new.ts</I></FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">.
+	The order of the file names in the above command listed after </FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>-i
+	</I></FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">option
+	</FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><U>is
+	important!</U></FONT></FONT></P>
+	<LI><P STYLE="margin-bottom: 0in"><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">Update
+	un-translated text from </FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>translated-new.ts</I></FONT></FONT><FONT COLOR="#39393b">
+	</FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">as
+	described in the previous section, using Qt Linguist, and then
+	release as described there as well.<BR>&nbsp;</FONT></FONT></P>
+</OL>
+<P><STRONG><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">Notes:</FONT></FONT></STRONG><FONT COLOR="#39393b">
+</FONT>
+</P>
+<OL>
+	<LI><P STYLE="margin-bottom: 0.08in"><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">Having
+	performed step 2, from Instructions section above, it is possible to
+	run the following command in order to obtain a
+	</FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>translated-untranslated-only.ts</I></FONT></FONT><FONT COLOR="#39393b">
+	</FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">file,
+	which would contain only text that is untranslated in
+	</FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>translated-new.ts</I></FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">.<BR></FONT></FONT><FONT COLOR="#39393b">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>Qt-Install/bin/lconvert
+	-i translated-new.ts translated-new.ts -o
+	translated-untranslated-only.ts --no-finished<BR></I></FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">After
+	this, you would follow up with translating the
+	</FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>translated-untranslated-only.ts</I></FONT></FONT><FONT COLOR="#39393b">
+	</FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">using Qt
+	Lingust, as described above and after this is done you would merge
+	it back with your </FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>translated-new.ts</I></FONT></FONT><FONT COLOR="#39393b">
+	</FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">by
+	running the following<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>Qt-Install/bin/lconvert
+	-i translated-new.ts translated-untranslated-only.ts -o
+	translated-new.ts <BR></I></FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">After
+	this step you can release the </FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>translated-new.ts,</I></FONT></FONT><FONT COLOR="#39393b">
+	</FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">using Qt
+	Lingist as described in above sections.</FONT></FONT></P>
+	<LI><P STYLE="margin-bottom: 0.08in"><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">After
+	you load any </FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>.ts</I></FONT></FONT><FONT COLOR="#39393b">
+	</FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">file
+	into Qt Linguist, make sure to check that translation settings for
+	it are set correctly by navigating to </FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>Edit/Translation
+	File Settings</I></FONT></FONT><FONT COLOR="#39393b">&hellip; </FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">menu
+	and updating the form as needed in the dialog that opens.
+	Alternatively, often times, this dialog form will open up on its own
+	when you load a </FONT></FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif"><I>.ts</I></FONT></FONT><FONT COLOR="#39393b">
+	</FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">file for
+	which translations settings have not been set.</FONT></FONT></P>
+</OL>
+<P CLASS="mainheading2">Part 2: Translating the Help Files 
+</P>
+<P CLASS="mylist" STYLE="margin-bottom: 0.2in"><STRONG><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">Required
+Tools</FONT></FONT></STRONG></P>
+<OL>
+	<LI><P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif">Fully
+	translated Cisco Packet Tracer </FONT>
+	</P>
+	<LI><P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif">A
+	text editor (for example, Notepad++); however, it is recommended
+	that you use an HTML editor (for example, Adobe Dreamweaver)</FONT></P>
+	<LI><P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif">GIMP
+	to take and edit screenshots.</FONT></P>
+	<LI><P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif">Adobe
+	Captivate for translating tutorials</FONT></P>
+</OL>
+<P CLASS="mylist" STYLE="margin-bottom: 0.2in"><STRONG><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">Translating
+HTML Text Content:</FONT></FONT></STRONG></P>
+<P><FONT FACE="Arial, sans-serif">Working in the duplicate folder
+(e.g., &quot;\help\japanese_jpn&quot;), open each .htm file in a text
+editor or HTML editor (recommended). Translate the text content in
+each file and save when finished.</FONT></P>
+<P><FONT FACE="Arial, sans-serif">Note that the HTML source code uses
+the style sheet definitions found in the &quot;styleMenu.css&quot;
+and &quot;styleNormal.css&quot; files.</FONT></P>
+<P CLASS="mylist" STYLE="margin-bottom: 0.2in"><STRONG><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">Recapturing
+Screenshots:</FONT></FONT></STRONG><FONT COLOR="#39393b"> </FONT>
+</P>
+<OL>
+	<LI><P STYLE="margin-bottom: 0in"><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">Start
+	Cisco Packet Tracer.</FONT></FONT> 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in"><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">If
+	Packet Tracer is not already using the desired language, go to
+	Options-&gt;Preferences and change to the desired language. Also
+	disable screen reader support if not already done so. Restart Packet
+	Tracer.</FONT></FONT> 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in"><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">Click
+	on the desired window to capture (e.g., the Activity Wizard Answer
+	Network page).</FONT></FONT> 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in"><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">Hold
+	down the </FONT></FONT><STRONG><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">Alt</FONT></FONT></STRONG><FONT COLOR="#39393b">
+	</FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">key on
+	the keyboard and press </FONT></FONT><STRONG><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">Print
+	Screen</FONT></FONT></STRONG><FONT COLOR="#39393b"> </FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">on
+	the keyboard. </FONT></FONT>
+	</P>
+	<LI><P STYLE="margin-bottom: 0in"><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">Open
+	an image manipulator program and create a new blank document.</FONT></FONT>
+		</P>
+	<LI><P STYLE="margin-bottom: 0in"><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">Go
+	to </FONT></FONT><STRONG><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">Edit</FONT></FONT></STRONG><FONT COLOR="#39393b">
+	</FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">&gt;
+	</FONT></FONT><STRONG><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">Paste</FONT></FONT></STRONG><FONT COLOR="#39393b">
+	</FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">to paste
+	the screen capture into the new blank document.</FONT></FONT> 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in"><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">Add
+	any additional edits to the screenshot.</FONT></FONT> 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in"><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">Go
+	to </FONT></FONT><STRONG><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">File</FONT></FONT></STRONG><FONT COLOR="#39393b">
+	</FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">&gt;
+	</FONT></FONT><STRONG><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">Save
+	As</FONT></FONT></STRONG><FONT COLOR="#39393b"> </FONT><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">and
+	browse to the images directory (e.g., &quot;\help\japanese_jpn\images\&quot;).</FONT></FONT>
+		</P>
+	<LI><P><FONT COLOR="#39393b"><FONT FACE="Arial, sans-serif">Save the
+	image using the same name as the original screenshot and in the JPEG
+	format (e.g., &quot;activityWizard_answerNetwork_1.jpg&quot;).</FONT></FONT>
+		</P>
+</OL>
+</BODY>
+</HTML>

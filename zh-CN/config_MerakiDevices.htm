@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE>Configuring Tri-Band Home Router</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice 4.1.0  (Win32)">
+    <link rel="stylesheet" type="text/css" href="styleNormal.css">
+</HEAD>
+<BODY LANG="en-US" TEXT="#39393b" LINK="#1152b1" BGCOLOR="#ffffff" DIR="LTR">
+<P CLASS="mainheading1">Configuring Meraki Devices
+</P>
+<HR>
+
+<P>Cisco Packet Tracer supports a simplified version of the Meraki Security Appliance (SA), MX65W, and a cloud based Meraki web server.</P> Configuring these devices is done via web configuration.
+
+<P>&nbsp;</P>
+<P CLASS="mainheading2">Meraki Security Appliance</P>
+
+<p>A powered up Meraki Security Appliance (SA) can be configured via an HTTP session from a PC to the SA with the URL <strong>http://setup.meraki.com</strong>. The user name is the SA's serial number with no password. The SA's serial number can be found on the Config tab of the SA. Prior to the HTTP session, the PC is either configured with a static IP address of the network 192.168.0.0 or is obtained a DHCP address from the SA.</p>
+
+<p class="myPic"><img src="images/config_meraki_SA_1.jpg"></p>
+<P>&nbsp;</P>
+
+<p class="myPic"><img src="images/config_meraki_SA_2.jpg"></p>
+<P>&nbsp;</P>
+
+<p>Once logged in, the <strong>Connection</strong> page will display the current status of the SA.</p>
+<p class="myPic"><img src="images/config_meraki_SA_5.jpg"></p>
+<P>&nbsp;</P>
+
+
+<p>On the <strong>Configure</strong> page, the internet ports can be configured with an IP address either via DHCP, static, or PPPoE.</p>
+<p class="myPic"><img src="images/config_meraki_SA_3.jpg"></p>
+<P>&nbsp;</P>
+
+<p>On the <strong>Ethernet</strong> page, settings of power and link negotiation can be configured for each port.</p>
+<p class="myPic"><img src="images/config_meraki_SA_4.jpg"></p>
+<P>&nbsp;</P>
+
+
+
+<P CLASS="mainheading2">Meraki Server</P>
+<p>Further configuration of the Meraki SA can be done on the Meraki cloud, a web server, that provides unified management of the Meraki SAs from a centralized dashboard.</p>
+<p>Below is an example of a topology that has both a Meraki SA and a Meraki server.</p>
+<p class="myPic"><img src="images/config_meraki_server_1.jpg"></p>
+<P>&nbsp;</P>
+
+<p>From any PC, connect to the Meraki server via an HTTPS session to the URL <strong>https://dashboard.meraki.com</strong>.</b>
+<p class="myPic"><img src="images/config_meraki_server_2.jpg"></p>
+<P>&nbsp;</P>
+
+<p>Use the registered email address and password to log onto the dashboard.  New users need to create an account by clicking on the <i>Create an account</i> link.</p>
+<p class="myPic"><img src="images/config_meraki_server_3.jpg"></p>
+<P>&nbsp;</P>
+
+<p><strong>Meraki Dashboard:</strong> if it's the first time log-in or the account doesn't have any network or devices added, the dashboard and left side navigation are limited as displayed below.</p>
+<p class="myPic"><img src="images/config_meraki_server_4.jpg"></p>
+<P>&nbsp;</P>
+
+<p>If a network and a device are added, the dashboard will display a list of networks and devices, and the left side navigation has more options. This page can also be accessed by clicking on the mouse-over menu <strong>Organization</strong> > <strong>Overview</strong>.</p>
+<p class="myPic"><img src="images/config_meraki_server_8.jpg"></p>
+<P>&nbsp;</P>
+
+<p><strong>Account Information:</strong> the account's email address and password can be changed by clicking on the <i>My profile</i> link on the top right of the web page.</p>
+<p class="myPic"><img src="images/config_meraki_server_5.jpg"></p>
+<P>&nbsp;</P>
+
+<p><strong>Create Networks and Register Devices:</strong> This page can be accessed by clicking on the <i>Create a network</i> link on the left side navigation or under the mouse-over menu <strong>Organization</strong> > <strong>Create a network</strong>.</p>
+<p class="myPic"><img src="images/config_meraki_server_6.jpg"></p>
+<P>&nbsp;</P>
+
+<p><strong>Administrators:</strong> This page can be accessed by clicking on the mouse-over menu <strong>Organization</strong> > <strong>Administrators</strong>.</p>
+<p class="myPic"><img src="images/config_meraki_server_7.jpg"></p>
+<P>&nbsp;</P>
+
+<p><strong>Inventory:</strong> This page can be accessed by clicking on the mouse-over menu <strong>Organization</strong> > <strong>Inventory</strong>.</p>
+<p class="myPic"><img src="images/config_meraki_server_9.jpg"></p>
+<P>&nbsp;</P>
+
+<p><strong>General:</strong> This page can be accessed by clicking on the mouse-over menu <strong>Network-wide</strong> > <strong>General</strong>. The network name and description can be changed here.  The main account user is the organization admin, which means this admin can have privileged-access to all the networks added into the account.  The organization admin can also add additional network admins who only have access to one network.</p>
+<p class="myPic"><img src="images/config_meraki_server_10.jpg"></p>
+<P>&nbsp;</P>
+
+<p><strong>Appliance Status:</strong> This page can be accessed by clicking on the mouse-over menu <strong>Security Appliance</strong> > <strong>Appliance Status</strong>. The page shows the live data of the port status.</p>
+<p class="myPic"><img src="images/config_meraki_server_11.jpg"></p>
+<P>&nbsp;</P>
+<p>The <i>Uplink</i> link shows the WAN configuration of the internet port.</p>
+<p class="myPic"><img src="images/config_meraki_server_12.jpg"></p>
+<P>&nbsp;</P>
+<p>The <i>DHCP</i> link shows the network addresses and VLANs for the DHCP servers residing on each of the Meraki SAs.</p>
+<p class="myPic"><img src="images/config_meraki_server_13.jpg"></p>
+<P>&nbsp;</P>
+
+<p><strong>Addressing & VLANs:</strong> This page can be accessed by clicking on the mouse-over menu <strong>Security Appliance</strong> > <strong>Addressing & VLANs</strong>. This page displays the NAT network mode and routing information.</p>
+<p class="myPic"><img src="images/config_meraki_server_14.jpg"></p>
+<P>&nbsp;</P>
+
+<p><strong>Wireless Settings:</strong> This page can be accessed by clicking on the mouse-over menu <strong>Security Appliance</strong> > <strong>Wireless Settings</strong>. The page enables the configuration for the wireless access point on the Meraki SA. Supported security modes are Open, WEP, WPA2 PSK, and WPA2 Enterprise.</p>
+<p class="myPic"><img src="images/config_meraki_server_15.jpg"></p>
+<P>&nbsp;</P>
+<p>Here is an example topology that wireless clients can connect to the SA after the wireless setting is configured on the Meraki server.</p>
+<p class="myPic"><img src="images/config_meraki_server_16.jpg"></p>
+<P>&nbsp;</P>
+
+<p><strong>DHCP:</strong> This page can be accessed by clicking on the mouse-over menu <strong>Security Appliance</strong> > <strong>DHCP</strong>. This page shows DHCP settings on the SA. DHCP settings are currently not configurable by the user.</p>
+<p class="myPic"><img src="images/config_meraki_server_17.jpg"></p>
+<P>&nbsp;</P>
+
+<p><strong>Firewall:</strong> This page can be accessed by clicking on the mouse-over menu <strong>Security Appliance</strong> > <strong>Firewall</strong>. This page enables the configuration of firewall outbound rules on the SA.</p>
+<p class="myPic"><img src="images/config_meraki_server_18.jpg"></p>
+<P>&nbsp;</P>
+
+
+</BODY>
+</HTML>

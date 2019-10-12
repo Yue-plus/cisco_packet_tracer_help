@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Variable Manager</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+
+<p class="MainHeading1">Variable Manager</p>
+<hr>
+<p>The <strong>Variable Manager</strong> provides the ability for an activity author to add dynamic capabilities into an activity. These capabilities allow an author to create activities that change each time they are loaded or reset. This capability is enabled by creating pools of values and then creating variables which use the pool values to enable dynamic capabilities. The variables allow you to change many aspects of an activity, including but not limited too, Device names, IP addressing, Routing statements, DHCP and DNS records.</p>
+
+<p>There are four types of variables that can be created in the Variable Manager and they are <strong>Seeds, Number, Strings and IP Addresses</strong>. With the exception of the Seeds, the variables are created using a combination of a resource pool and an associated variable. Each type tab has a place to enter both the pool and the variable information. The seeds tab, due to the simplicity of the type combine both parts into one operation.</p>
+
+<p class="myPic">
+<img src="images/activityWizard_variableManager_1.jpg">
+</p>
+
+<p>You can set variables to select values in one of 4 ways. From drop-down menu if you select <strong>Random</strong> then the value will be selected randomly from any values in the pool. By selecting <strong>Element Position</strong> the value will be an integer that selects the same position from the pool each time. <strong>Seed</strong> refers to a position defined by a Seed variable in the Seed tab. This is a method for allowing the same position to be used in multiple variable selections. <strong>Entire Range</strong> is a variable used in the <strong>Activity Wizard answer network</strong> to accept any input as correct as long as it is contained in the associated pool. The typical sequence for creating a variable is:
+<ol>
+  <li>Fill in the variable Name</li>
+  <li>Select the associated Pool Name (the pool must be already created to show in the dropdown list)</li>
+  <li>Specify the Variable Type (dropdown: Random, Element Position, Seed, Entire Range)</li>
+  <li>Specify the Value (if Element Position is selected a number within the range of values is specified, if seed is selected a seed name is entered for the value)</li></ol></p>
+
+<p>An important setting to notice is the Show Variable Manager Interface at the bottom of the screen. By checking this checkbox you can set or assign variables in the <strong>Instructions</strong> text, <strong>Assessment Items</strong>, and <strong>Initial Items</strong>. You can add all of the variables created by clicking on the Arrow (<--) next to the variable name. In the <strong>Instructions</strong> panel, place the cursor where you want the variable to be placed at and then click on the <strong>Insert</strong> "<--" button in the <strong>Variable Manager Interface</strong>. In the <strong>Assessment Items</strong> and <strong>Initial Items</strong>, only the items marked with a green dot can be assigned a variable. To remove an assignment of the variable, select the appropriate variable and hit Delete on the keyboard.</p>
+<p class="myPic">
+<img src="images/activityWizard_variableManager_2.jpg">
+</p>
+
+<p>&nbsp;</p>
+<p class="MainHeading2">Seeds</p>
+<p>Seed values should be thought of as Index values for selecting other data variables, while not required. Make sure the pool range in greater or equal to the Seed range of values. Valid Seed range is from 0 to 2,147,483,647. A seed should be a positive value, although negative values are legal, otherwise using them as indexes in other variable pools and variables can cause unpredictable results.</p>
+
+<p>To add Seeds you should fill in the required fields like <strong>Name, Minimum</strong> (usually "0")  and <strong>Maximum</strong> Values by clicking on each cell of table and typing in. The maximum value should match the total number of pool entries that the seed is used to select. If left blank, both values are set to zero (0), so the first value in any pool is always selected.</p>
+
+<p>Inserting the <strong>Test Value</strong> is optional and will specify the value to be used for the seed. This overrides random selection and is only used during <strong>Test Activity</strong> mode. If a value is specified in the Test Value cell, it is used during any subsequent testing or running of the activity, until the value in the cell is deleted or changed. To test all combinations simply increment the value in the Test Value cell until you have reached the value specified in the <strong>Maximum</strong> cell.</p>
+<p class="myPic">
+<img src="images/activityWizard_variableManager_6.jpg">
+</p>
+<p>For Edit entire rows just like Adding new Seed you can double-click in the cell and change the value and to Remove click anywhere in the row to be deleted and press the Delete key. So to delete a value in the Variable Manager tables you must select and highlight the value, then delete. <strong>Do not</strong> just click in the cell of the value you want to delete, because if you press delete after just selecting the cell and not the actual value, you will delete the entire row in the table.</p>
+
+<p>Seed values can be placed anywhere in Packet Tracer that a variable is accepted, in the <strong>Initial Network</strong>, the <strong>Answer Network</strong>, the <strong>Instructions</strong>, as well as Device names and Notes on the workspace. The format for using a seed is the same as for any variable, using two braces to open and close with the seed name in between the braces like this [[Index1]]. This is the same format that is used when Seeds are used in other pools or variables setup. The value that is selected from the seed range will be displayed or used in other variable selections.</p>
+
+<p>&nbsp;</p>
+<p class="MainHeading2">Number</p>
+<p>Number Values enable the ability to add dynamic numbers into a PT scenario. These are often used like the graphic shows, creating a range of numbers that can be concatenated and used as IP addresses. An example of how that would be done would be to use the four variables created like this [[Oct1]]. [[Oct2]]. [[Oct3]]. [[Oct4]].</p>
+
+<p class="myPic">
+<img src="images/activityWizard_variableManager_7.jpg">
+<p>Numeric variables may be used in <strong>String</strong> <strong>and IP address</strong> pools using the [[Variable]] format after they have been created on the Number page.</p>
+
+<p><strong>Number Pools:</strong><br>
+To Add Number Pools: fill in the required <strong>Name, Minimum and Maximum Values</strong>. You can edit entire rows of Number Pools by double-click on the cell and change the value and for removing click anywhere in the row to be deleted and press the Delete key. Valid numbers range is positive and negative integer. But remember to not use negative numbers as selection or index variables. Both of these values are required or the entry will not remain in the table. <strong>Seed variables</strong> can also be substituted for integers by using this format: [[variablename]].<br>
+
+
+To Edit a Pool: just click in the cell and type a new value or new name.<br>
+
+To Remove a Pool value: Highlight the contents of any cell in the row and press the "Delete" Key, it you just click on the cell and  delete the entire row will be deleted and any associated number variables will be deleted also.<br>
+
+To Remove a Pool (an entire row in the table): click on a cell in the row and press delete. The entire row will be deleted and any number variables using this Pool Name will be deleted also.</p>
+
+<p><strong>Number Variables:</strong><br>
+After the number Pool has been created a variable can be created to use with the pool by entering a <strong>Variable Name</strong>, selecting a <strong>Pool Name</strong> from the dropdown list, and then specifying a <strong>Value Type</strong> from its dropdown list. The four choices are:<br>
+
+<strong>Random</strong>: Select any value from the pool choices
+<strong>Element Position</strong>: Will select the Pool value as the specified position for the variable
+<strong>Seed</strong>: Will select the Pool value specified by the resolved Seed variable value
+<strong>Entire Range</strong>: Used in the <strong>Answer Network</strong>, any value entered into the <strong>AW Answer Tree</strong> that is included in the Pool will be considered correct.</p>
+
+<p>If <strong>Element Position</strong> or <strong>Seed</strong> is specified, the associated integer value or Seed name must be entered in the Value cell. In the graphic above the Oct1 variable would resolve to a value of between 198 to 210 inclusive, based on the table and variable values. You can double-click in the cell and change the value or reselect the dropdowns values. Clicking anywhere in the row and press the Delete key will cause the cell be deleted.</p>
+
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Strings</p>
+<p>String Pools can be used to create different names for devices in the Packet Tracer activity, or again like <strong>Seeds</strong> and <strong>Numbers</strong> anywhere a variable can be used. Text variables can also be used in the instructions area to change the scenario text. Since Packet Tracer initially converts every to strings, text strings can also be used for IP addresses like the IP octet pool shows.</p>
+<p class="myPic">
+<img src="images/activityWizard_variableManager_8.jpg">
+</p>
+<p>String variables may be used in IP Address Pools, using the <strong>[[Variable]]</strong> format.</p>
+
+<p><strong>String Pool:</strong><br>
+To Add a Pool: Fill in the required <strong>Name</strong> and <strong>Text Field</strong>. The Text field can contain text, numbers, Seeds and Number Variable data, separated by semi-colons. Seed and Number variables can be substituted for text data using <strong>[[variablename]]</strong>.<br>
+
+To Edit a Pool: Select and highlight the text to be change and type over it.<br>
+
+To Remove a Pool value: Select and highlight the text, then press the "Delete" Key,<br>
+
+To Remove a Pool (an entire row in the table): click on a cell in the row and press delete. The entire row will be deleted and any number variables using this Pool Name will be deleted also.</p>
+
+<p><strong>String Variables:</strong><br>
+You can also add String Variables by filling in the required <strong>Name, Pool Name</strong> and <strong>Value type</strong> field. If <strong>Value Type</strong> is <strong>Element Position</strong>, an integer value or <strong>Number Variable</strong> is specified in the value field. In case of <strong>Value Type</strong> is <strong>Seed</strong>, a Seed variable name is used in the Value field. See also Number Variables.</p>
+
+<p>&nbsp;</p>
+<p class="MainHeading2">IP Addresses</p>
+<p>IP address pools allow for dynamic addressing schemes in Packet Tracer, they also allow for dynamic configurations in the initial network including DNS and DHCP records. They also allow for multiple correct answers, for example in addressing schemes, when used in the answer network.</p>
+<p class="myPic">
+<img src="images/activityWizard_variableManager_9.jpg">
+</p>
+<p><strong>IP Address Pool:</strong><br>
+To Add a pool: Fill in the required <strong>Name, Network Address,</strong> and <strong>Mask Values</strong>. The <strong>First</strong> and <strong>Last IP Address</strong> fields will automatically filled in based on the Network and Mask fields, although they can be manually changed to the specific range of addresses needed. <strong>Seed, Number</strong>, and <strong>String variables</strong> can be substituted for address data using <strong>[[variablename]]</strong>.<br>
+To Edit a Pool: Double-Click in the cell and change the value. The First and Last IP Address fields can be edited to specify a smaller range of addresses that is set by default.<br>
+To Remove: Click anywhere in the row to be deleted and press the Delete key</p>
+
+<p><strong>IP Address Variables:</strong><br>
+To Add IP Address Variable fill in the required <strong>Name, Pool Name and Value type</strong> fields. If Value Type is <strong>Element Position</strong>, an integer value or Numeric Variable is specified in the value field. If Value Type is <strong>Seed</strong>, a Seed variable name is used in the Value field. Editing and removing any rows is just like IP Address Pool. See also Number variables.
+
+<p>&nbsp;</p>
+<p class="MainHeading2">Using Regular Expressions</p>
+<p>An alternative to using the conventional variables in the Variable Manager is to use regular expressions to check dynamic assessment items like default gateway or IP addresses. Instead of assigning a variable in the assessment items tree to an assessment item as described in the previous section, you may insert a regular expression. The syntax to use a regular expression in Activity Wizard is <strong>{{RegEx:expression}}</strong>. For example, the following is a valid regular expression to check if an IP address is in the 192.168.1.0 network:</p>
+<table class="tableTip">
+	<tr>
+		<td class="TDtableTip"><strong>{{RegEx:\b(192?)\.(168?)\.(1?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b}}</strong></td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<p>You would then insert the  regular expression in replacement of a variable in assessment items tree by selecting the assessment item (e.g. IP Address) and clicking once more on the current value of the assessment item (e.g. 0.0.0.0) such that field would becomes editable. Once the field is editable, you can type in the regular expression and pressing Enter after you are done.</p>
+<p class="myPic">
+<img src="images/activityWizard_variableManager_5.jpg">
+</p>
+<p>&nbsp;</p>
+
+<p>For more help with regular expressions, visit the Qt QRegExp documentation here:</p>
+<table class="tableTip">
+	<tr>
+		<td class="TDtableTip"><strong><center><a href="http://qt-project.org/doc/qt-4.8/qregexp.html">http://qt-project.org/doc/qt-4.8/qregexp.html</a></strong></td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+
+</body>
+</html>

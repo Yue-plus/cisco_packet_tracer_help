@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Realtime Mode</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+
+
+<p class="MainHeading1">Realtime Mode
+<hr>
+  <p>In Realtime Mode, your network is always running (like a real network) whether you are working on the network or not. Your configurations are done in real time, and the network responds in near real time. When you view network statistics, they are displayed in real time, as shown in the Realtime toolbar. In addition to using the Cisco IOS to configure and diagnose networks, you can use the <strong>Add Simple PDU</strong> and <strong>User Created PDU List</strong> buttons to graphically send pings.</p>
+  <p>&nbsp;</p>
+  <p class="MainHeading2">Inspecting Devices</p>
+  <p>As the network is running, you can use the <strong>Inspect</strong> tool to view tables of the device as they are populated and updated. For example, to inspect the ARP table of a router, choose the <strong>Inspect</strong> tool, click on the router to bring up the list of available tables, and then choose <strong>ARP</strong> Table.</p>
+  <p>In addition to the <strong>Inspect</strong> tool, you can simply mouse-over a device to view details such as the link status, IP address, and MAC address of all the ports on a device. Note that the mouse-over feature does NOT show the state of the tables maintained by a device, like a switch, but rather a convenient summary display of port-related information. For example, when you mouse-over a switch, you will see a list of ports and MAC addresses: this is not the switch MAC address table (CAM table, switching table) but rather a list of the MAC addresses of the switch built-in Ethernet interface hardware addresses.</p>
+<p class="myPic">
+<img src="images/mode_realtime_1.jpg" alt="Mouse Over information for Device">
+</p>
+<p>&nbsp;</p>
+  <p class="MainHeading2">Sending PDUs graphically</p>
+  <p>Although Simulation Mode is the preferred mode for sending PDUs graphically, you can use the <strong>Add Simple PDU</strong> and <strong>User Created PDU List</strong> buttons to ping or send other PDUs (see the "Simulation Mode" section for details). The drawback is that you will not see PDU icons traveling slowly through the network; the entire ping sequence happens in real time. However, you can view the result of the ping from the <strong>User Created Packet Window</strong>.</p>
+  <p>&nbsp;</p>
+  <p class="MainHeading2">Power Cycle Devices </p>
+  <p>The <strong>Power Cycle Devices</strong>  button on the <strong>Realtime Bar</strong> allows you to power-cycle all of the devices in your network. Pressing it turns all devices off and then turns them back on. Pressing this button will also clear all events if you are running a simulation with the network. The Power Cycle Devices button is also available in Simulation Mode. See the "Simulation Mode" help section for more information.</p>
+  <table class="tableTip">
+    <tr>
+      <td class="TDtableTip">If you reset the network, you will lose the current running configuration on all routers and switches. Before you click the <strong>Power Cycle Devices</strong>  button, be sure to issue the <strong>copy running-config startup-config</strong> Cisco IOS command sequence on all routers and switches to retain the current network configuration after the reset.</td>
+    </tr>
+  </table>
+<p>&nbsp;</p>
+  <p class="MainHeading2">Fast Forward Time</p>
+  <p>You can converge a network quickly by clicking on the <strong>Fast Forward Time</strong> button which will advance the realtime by 30 seconds each click. A use case would be where you have a large network of switches connected in loops and STP convergence may take a considerable amount of time. By clicking on the button a few times, STP to converge within a couple seconds instead of up to minutes.</p>
+</body>
+</html>

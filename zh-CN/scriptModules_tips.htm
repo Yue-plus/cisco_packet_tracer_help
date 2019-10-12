@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Script Modules</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+
+<p class="MainHeading1">Script Modules - Tips</p>
+<hr>
+
+<ul>
+    <li>The <strong>dprint()</strong> function is per Script Module.  Check the Debug Dialog of the correct Script Module for these outputs.</li>
+    <li>Changes made to the Script Engine after it has started DO NOT take effect until it has been stopped and started again.</li>
+    <li>A web view can only be owned by one Script Module at a time.  When a Script Module points a web view to a custom interface in another Script Module, it transfer the web view's ownership to the other Script Module, and will no longer have access to it.</li>
+    <li>Local resources for custom interface such as images, css, and js files should be imported into the Custom Interface tab.  External resources may not be resolved if an absolute path is not supplied.</li>
+    <li>Editing a Script Module does not save it to disk until you click on Save in the Scripting Interface for PT Script Modules, or File Save for File Script Modules.</li>
+    <li>Script Modules need to clean up when stopping by placing clean-up code in the <strong>cleanUp()</strong> function.  Menu items added, web views created, GUI locked, and anything else done at or after the Script Module started should be cleaned up.</li>
+    <li>Data store files of all Script Modules are saved in PT options.  They are not saved to the pts file unless the user edits the Script Module and saves it to pts file.</li>
+    <li>Events and delegates are not supported in web views.</li>
+    <li>JavaScript statements to web views that may change the GUI, such as alert popups, layouts, HTML element changes should use <strong>evaluateJavaScriptAsync()</strong>.  Using <strong>evaluateJavaScript()</strong> may crash PT. </li>
+    <li>After creating a new web view, <strong>show()</strong> needs to be called in order to show the web view.</li>
+    <li>To check a connectivity test PDU, use <strong>AssessmentModel.getLastConnectivityTestResultsAt(index)</strong>.</li>
+    <li>To check a PDU from the user's working network, use <strong>AssessmentModel.getPDUStatus("Scenario Name", index)</strong>. If the user's PDU is a periodic PDU, you must stop it first, otherwise the status will always be "In Progress". To stop it, use <strong>AssessmentModel.stopPeriodicPDU("Scenario name", index)</strong>.</li>
+    <li>JavaScript's <strong>setTimeout()</strong>, <strong>setInterval()</strong>, <strong>clearTimeout()</strong>, and <strong>clearInterval()</strong> are supported in both the Script Engine and web views.</li>
+    <li>Use <strong>AssessmentModel</strong> for activity file related calls. See API for reference.</li>
+    <li><strong>setExclusive()</strong> in <strong>CIpcManager.pki</strong> affects both ExApps and Script Modules.  Once an ExApp or Script Module makes this call, all other ExApps and Script Modules will be disconnected.</li>
+</ul>
+<p>&nbsp;</p>
+
+</body>
+</html>

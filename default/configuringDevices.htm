@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Configuring Devices</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+
+  <p class="MainHeading1">
+    
+    Configuring Devices
+<hr>
+
+<p align="left">As with real networks, the networks you make in Packet Tracer must be properly configured before they "work." For simple devices, this may just mean entering some fields (such as an IP address and subnet mask) or selecting options in a graphical configuration panel (accessed by the <strong>Config</strong> tab). Routers and switches, on the other hand, are advanced devices that can be configured with much more sophistication. Some of their settings can be configured in the <strong>Config</strong> tab, but most advanced configurations will need to be done through the Cisco IOS. This section explains the <strong>Config</strong> tab for all devices. You will also find the complete listing of supported IOS commands for routers and switches in this section.</p>
+<p >&nbsp;</p>
+
+<p class="MainHeading2">Booting Sequence and IOS Image Loading in Routers and Switches</p>
+<p>When a router or switch boots up, the booting sequence is displayed in the <strong>CLI</strong> tab of the Edit device dialog. The startup file is loaded if it is present, and the IOS image stored in Flash memory will be loaded into RAM for execution. While the model IOS image is loading, you cannot access the <strong>Config</strong> tab or enter any commands in the CLI tab. If there is no valid image stored in Flash memory or the image file instructed to load is not valid, the device will boot into ROM Monitor Mode. ROM Monitor Mode can also be entered using the break sequence (i.e., press <strong>Ctrl + Break</strong> or <strong>Ctrl + C</strong>) for the device in the first 60 seconds when it boots. Packet Tracer uses 10 seconds to give you faster access to the device. ROM Monitor Mode is a minimalist environment where you can manipulate files in the NVRAM and Flash memory, download IOS images via TFTP, and choose how the device is to be booted.</p>
+<p>When the booting sequence and the IOS image loading has been completed, the logout mode is loaded so that you can press ENTER to start.</p>
+<p>&nbsp;</p>
+
+<p class="MainHeading2">Logging IOS Commands</p>
+<p>If you enabled the IOS logging feature (found in <strong>Options</strong> > <strong>Preferences</strong>), you can keep track of all IOS commands you entered in a work session. Click the <strong>View</strong> button to bring up the <strong>IOS Command Log</strong> window.</p>
+<p class="myPic">
+<img src="images/configuringDevices_1.jpg">
+</p>
+<p>The <strong>IOS Command Log</strong> window will keep track of all the IOS commands you entered in any given work session. You need to manually click the <strong>Update</strong> button to see your commands. You can export the log into a text file with the <strong>Export</strong> button (found in the <strong>Preferences</strong> window). The log clears any time you start a new workspace or open a file.</p>
+<p class="myPic">
+<img src="images/configuringDevices_2.jpg">
+</p>
+</body>
+</html>

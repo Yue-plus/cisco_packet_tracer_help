@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Script Modules</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+
+<p class="MainHeading1">Script Modules</p>
+<hr>
+<p>Script Modules are independent entities that add new functionality to Packet Tracer similar to External Applications (ExApps). But unlike ExApps, Script Modules run within PT rather than as external processes, and therefore, provide better integration with PT.  Also unlike ExApps, Script Modules are developed directly in PT with no external development environment needed.  While the basic components of Script Modules are not new -- PT already has had a script engine, web views, and IPC in various internal components for some time, Script Modules simply unite them and provide a generic way to extend PT functionality.</p>
+
+
+<p>&nbsp;</p>
+<p class="MainHeading2">Packet Tracer Architecture</p>
+<p class="myPic">
+<img src="images/scriptModules_PT_architecture.png">
+<p>Illustrated above is an architectural view of PT's run-time components showing that Script Modules are running inside the PT process.  Script Modules communicate with the PT core the same way that ExApps communicate with PT, using Inter-Process Communication (IPC) calls.  The IPC framework in PT has been extended to allow direct object manipulation, using objects in calls, event callbacks, and delegates.  Script Modules and ExApps can also talk to each other using the PT messaging mechanism between ExApps.</p>
+</p>
+<p>&nbsp;</p>
+
+<p class="MainHeading2">Script Module Architecture</p>
+<p>Each Script Module can be described using the Model-View-Controller architectural pattern.</p>
+<ul>
+    <li><strong>Model</strong> - PT engine and GUI accessed via IPC, Script Module data store, and save data in each pka/pkt file</li>
+    <li><strong>View</strong> - custom interfaces in web views, written in html, css, images, js</li>
+    <li><strong>Controller</strong> - scripts in script engine, written in ECMAScript (JavaScript)</li>
+</ul>
+<p>Each Script Module has its own sandbox, and cannot access or change the sandbox of other Script Modules.</p>
+
+<p class="myPic">
+<img src="images/scriptModules_architecture.png">
+</p>
+<p>&nbsp;</p>
+
+<p class="MainHeading2">Types of Script Modules</p>
+<p>There are two places where Script Modules can exist, and so they are named appropriately.</p>
+<ul>
+    <li><strong>PT Script Modules</strong> are encrypted <strong>.pts</strong> files.  They are like ExApps, added to PT by the user (or auto-detected during PT launch), and they persist as long as PT is running.  They can be started or stopped manually, started on PT launch, or on demand.</li>
+    <li>The <strong>File Script Module</strong> is contained inside each pka/pkt file.  When the pka/pkt file opens, the Script Module starts; when the file closes, the Script Module stops.  The File Script Module is backwards compatible with activity files before 5.3.3 -- scripts in these pka files are loaded into the File Script Module.</li>
+</ul>
+<p>The following table is a summary of differences between the two types of Script Modules:</p>
+
+<table border=1><tbody>
+<tr>
+<th>&nbsp;</th>
+<th> PT Script Module  </th>
+<th> File Script Module  </th>
+</tr>
+<tr>
+<td> Location  </td>
+<td><ul class="noindent">
+    <li>Per PT install</li>
+    <li>PT can have multiple PT Script Modules</li>
+</ul>
+</td>
+<td> One per pka/pkt file  </td>
+</tr>
+<tr>
+<td> Manage  </td>
+<td> Add/remove in Extensions-&gt;Scripting-&gt;Configure PT Script Modules...  </td>
+<td> Open the pka/pkt file, and go to Extensions-&gt;Scripting-&gt;Edit File Script Module...  </td>
+</tr>
+<tr>
+<td> Start  </td>
+<td><ul class="noindent">
+    <li>On PT start</li>
+    <li>On demand</li>
+    <li>Disabled</li>
+</ul>
+</td>
+<td><ul class="noindent">
+    <li>On file open</li>
+    <li>Cannot disable</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td> Stop  </td>
+<td> On PT close  </td>
+<td> On file close  </td>
+</tr>
+<tr>
+<td> Manual start/stop  </td>
+<td> Yes </td>
+<td> Yes </td>
+</tr>
+<tr>
+<td> Security privileges  </td>
+<td><ul class="noindent">
+    <li>When the user adds a PT Script Module, it shows in the dialog</li>
+    <li>If a user does not feel safe with the requested privileges, the Script Module can be removed</li>
+</ul>
+</td>
+<td><ul class="noindent">
+    <li>When the file opens, PT prompts the user to allow the File Script Module to run</li>
+    <li>If denied, the pka/pkt file may still open but not function  correctly or may be prevented from opening. The File Script Module developer decides which action</li>
+</ul>
+</td>
+</tr>
+</tbody></table>
+<p>&nbsp;</p>
+
+</body>
+</html>

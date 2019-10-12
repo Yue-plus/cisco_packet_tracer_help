@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Using Things</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+	<p class="MainHeading1">Using Things</p>
+    <p>&nbsp;</p>
+	<p class="MainHeading2">Where are the Things?</p>
+	<p>In addition to routers and switches, the Network Component Box now contains a variety of Smart Things and components.
+    They can be created by selecting the device and then clicking on a blank area either on the Logical Workspace or the Physical
+    Workspace.</p>
+	<p><strong>Smart Things</strong> are physical objects that can connect to the Registration Server or Home Gateway through a network interface. They are separated into subcategories under End Devices. The categories consist of Home, Smart City, Industrial, and Power Grid. Pictured below are a few Smart Thing devices that are in the Home category. </p>
+	<img alt="Internet of Thing Smart Devices in the Home" src="images/iot_nwb_home.png"><br>
+    
+    <br>
+    <p><strong>Components</strong> are physical objects that connect to microcontroller (MCU-PT) or single boarded computers
+    (SBC-PT) and typically does not have a network interface. These are simple devices that only communicate through their
+    analog or digital slots. </p>
+    <p>There are three subcategories for Components, they are:</p>
+    <ul>
+    <li><em>Boards</em>: microcontrollers (MCU-PT), single boarded computers (SBC-PT), and a special device called Thing. Things
+    are used to create self-contained physical objects like coffee makers or smoke alarms.</li>
+    <li><em>Actuators</em>: these components manipulate the Environment, themselves, or the area around them.</li>
+    <li><em>Sensors</em>: these components sense the Environment (photo detectors, temperature sensor), the area around them (RFID,
+    metal sensor), or interactions (potentiometer, push button).</li>
+    </ul>
+    <p>Below is an image some sensor components:</p>
+    <img alt="Internet of Thing Component Sensors" src="images/iot_nwb_sensors.png"><br>
+    
+    
+    <p>&nbsp;</p>
+	<p class="MainHeading2">Interacting with Smart Things</p>
+    
+    <p>There are many ways to interact with Things. The Specifications tab of the Device Dialog will list the types of interactions that are allowed for that specific Thing.</p>
+    <p>The types of interactions are:</p>
+    <ul>
+    <li><em>Direct Control</em>: interact with the object directly on the workspace using the mouse. The mouse interactions are usually modified by pressing "ALT" on the keyboard
+    at the same time as moving the mouse or clicking.</li>
+    <li><em>Local Control</em>: interact with the object using the digital or analog slots.</li>
+    <li><em>Remote Control</em>: interact with the object over an IP network. In most cases, this means interacting with the Registration Server or Home Gateway.</li>
+    </ul>
+
+	<p>Below is a sample specification for the prepackaged Thing, Appliance. In this case, ALT-clicking directly on the Appliance in the workspace will turn it on.</p>    
+    <img alt="Different ways to interact with Things" src="images/iot_specifications_dialog.png"><br>    
+    <p>&nbsp;</p>
+    
+    <p>It is also possible to control the Appliance locally through the digital and analog ports as shown in the image below. The SBC sends an on or off command to the 
+    Appliance depending on the Rocker Switch state.</p>
+    <img alt="Different ways to interact with Things" src="images/iot_interacting_with_things.png"><br>
+    <p>&nbsp;</p>
+    
+    <p>Finally, it is possible to remotely control the Thing through the Registration Server or Home Gateway. The Appliance is registered to the DLC100 Home Gateway.
+    The Home Gateway also provides wireless connectivity to the PC and Appliance. Using the PC and connecting to the Home Gateway web service, it is possible to remotely control
+    the Appliance over the network.</p>
+    <img alt="Different ways to interact with Things" src="images/iot_registration_server.png"><br>
+    <p>&nbsp;</p>
+    
+    <p>&nbsp;</p>
+	<p class="MainHeading2">Interacting with Components</p>
+    <p>Components do not have network interface cards. Typically, they are connected to the digital or analog slots on the MCU or SBC. 
+    It is important to read the Specifications page for the component because it typically describes the data specifications.
+    For example, see the specification for the Temperature Sensor below:    
+    </p>
+    <img alt="Specifications page for the Temperature Sensor" src="images/iot_temperature_sensor_spec.png"><br>
+    <p>&nbsp;</p>
+    
+    
+    <p>&nbsp;</p>
+  	<p class="MainHeading2">Cabling Things</p>
+    <p>Cabling Things is similar to cabling networking devices. Please refer to the Workspace Basics, Logical Workspace for more information.
+    The main difference is the addition of digital and analog slots (D0, D1, A0, A1, etc). These slots only accept the IoE Custom
+    Cable. The IoE Custom Cable is a bundle of wires, which are inaccessible to the user, that provides all the ground, power, and
+    data connections necessary for communication between all Things, components, MCU, and SBCs.        
+    </p>
+    <p>Currently, the model does not let you unwrap the IoE Custom cable and create circuit schematics.</p>
+    
+
+    <p>&nbsp;</p>
+    <p class="MainHeading2">Attributes Tab, Properties</p>
+    Under the Attributes tab, the Properties section, information specific to the Thing is listed there. In the image below, we see
+    the "level" attribute for the Temperature Sensor; this is the ambient temperature in Celsius as reported to the Registration
+    Server.</p>
+    <img alt="Attributes tab for the Temperature Sensor" src="images/iot_temperature_sensor_attributes.png"><br>
+    <p>&nbsp;</p>
+    <p>In some cases, the Properties section is editable. Please refer to the Specifications tab on the Device Dialog for these cases.</p>
+	
+	
+    <p>&nbsp;</p>    
+  	<p class="MainHeading2">IoE Registration Server</p>
+	<p>
+		Things can be connected to an IoE Registration Server on a Server or Home Gateway device for remote monitoring, configuration, or programming.
+		The Server device defaults the IoE Registration Service to off. It can be turned on in the Server device's Services tab IoE page.
+	</p>
+	<img alt="Turning on IoE Registration Service in the Server device's Services tab" src="images/iot_server_registration_service.png"><br>
+    <p>&nbsp;</p>
+    <p>
+		The Home Gateway device provides similar functionalities as a WRT300N wireless router but with the IoE Registration Service always turned on.
+		It also provides auto discovery service for Things in the local Ethernet and wireless network.
+	</p>
+
+    <p>&nbsp;</p>
+  	<p class="MainHeading3">Connecting Things to IoE Registration Server</p>
+    <p>
+		To connect boards and Things to an IoE Registration Server, select either Home Gateway or Remote Server in the Config tab Settings page.
+		Selecting Home Gateway automatically discovers the Home Gateway in the LAN.
+		Selecting Remote Server requires providing the server's IP or domain name, user name, and password.
+	</p>
+	<img alt="Setting the IoE Server in Thing device's Config tab Settings page" src="images/iot_thing_settings_ioe_server.png"><br>
+    <p>&nbsp;</p>
+
+  	<p class="MainHeading3">Accessing IoE Registration Server</p>
+    <p>
+		To access an IoE Registration Server on a Server or Home Gateway device, use a PC's Web Browser and enter the server's IP address or domain name.
+		If the IoE Registration Server is running on a Server device, you must first create a new user using the "Sign up now" link at the bottom of the page.
+		If the IoE Registration Server is running on a Home Gateway device, the user name and password are both "admin".	
+	</p>
+	<img alt="Accessing IoE Registration Server using PC's Web Browser" src="images/iot_access_ioe_server.png"><br>
+    <p>&nbsp;</p>
+    <p>
+		There are three pages on the IoE Registration Server: Home, Conditions, and Editor.
+	</p>
+
+    <p>&nbsp;</p>
+  	<p class="MainHeading4">Home Page</p>
+    <p>
+		The Home page allows the user to monitor and manually  control Things remotely.
+		Each connected Thing has a list of states. Each state can be of type boolean, number, string, or image.
+		Except for the image, the other types of states can be remotely controlled from the IoE Registration Server.
+		The numbers type can have a unit label, which can be in Metric or Imperial systems.
+		To change between the two systems, go to Options->Preferences, under the Interface tab.
+	</p>
+	<img alt="IoE Registration Server Home Page" src="images/iot_ioe_server_home_page.png"><br>
+
+    <p>&nbsp;</p>
+  	<p class="MainHeading4">Conditions Page</p>
+    <p>
+		The Conditions page allows the user to configure Things to react to certain conditions from other Things.
+		Each rule has a list of conditions and a list of actions. If the conditions are met, the actions would be executed.
+		Both conditions and actions are states of Things.
+		For example, the rule below shows if the condition of CO level higher than 35 or CO2 level higher than 35,
+		then it would execute the actions of opening the garage door and opening the window.
+	</p>
+	<img alt="IoE Registration Server Conditions Page" src="images/iot_ioe_server_conditions_page.png"><br>
+
+    <p>&nbsp;</p>
+  	<p class="MainHeading4">Editor Page</p>
+    <p>
+		The Editor page allows the user to edit programming projects and deploy them to Things or boards remotely.
+		The programming projects are saved on the IoE Registration Server, under the user's account.
+		By selecting a Thing's name, the user can see outputs from that Thing's currently executing project.
+	</p>
+	<img alt="IoE Registration Server Editor Page" src="images/iot_ioe_server_editor_page.png"><br>
+<hr>	
+</body>
+</html>

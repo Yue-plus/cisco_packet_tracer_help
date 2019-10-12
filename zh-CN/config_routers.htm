@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Configuring Routers</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+
+  <p class="MainHeading1">Configuring Routers
+  <hr>
+
+<p>The <strong>Config</strong> tab offers four general levels of configuration: global, routing, switching (Cisco 1841 and Cisco 2811 only), and interface. To perform a global configuration, click the <strong>GLOBAL</strong> button to expand the <strong>Settings</strong> button (if it has not already been expanded). To configure routing, click the <strong>ROUTING</strong> button, and then choose <strong>Static</strong> or <strong>RIP</strong>. To configure switching, click the <strong>SWITCHING</strong> button to expand the VLAN Database button. To configure an interface, click the <strong>INTERFACE</strong> button to expand the list of interfaces, and then choose the interface. Note that the <strong>Config</strong> tab provides an alternative to the Cisco IOS CLI only for some simple, common features; to access the full set of router commands that have been modeled you must use the Cisco IOS CLI.</p>
+<p>Throughout your configurations in the Config tab, the lower window will display the equivalent Cisco IOS commands for all your actions.</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Global Settings</p>
+<p class="myList">In global settings, you can change the display name of the router as it appears on the workspace and the hostname as it appears in the Cisco IOS. You can also manipulate the router configurations files in these various ways:</p>
+<p class="myList">&nbsp;</p>
+<ul>
+  <li>Erase the NVRAM (where the startup configuration is stored).</li>
+  <li>Save the current running configuration to the NVRAM.</li>
+  <li>Export the startup and running configuration to an external text file.</li>
+  <li>Load an existing configuration file (in .txt format) into the startup configuration.</li>
+  <li>Merge the current running configuration with another configuration file.</li>
+</ul>
+<p class="myPic">
+<img src="images/config_routers_1.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Algorithm Settings</p>
+<p>In the <strong>Algorithm Settings</strong>, you can override the global Algorithm Settings by removing the check mark <strong>Global Settings</strong> and then set your own values for the <strong>Half-Open Session Multiplier</strong>, <strong>Maximum Number of Connections</strong>, <strong>Maximum Number of Opened Sessions</strong>, and <strong>Maximum Retransmission Timeout in Milliseconds</strong>. For the Cisco 1841 and Cisco 2811, you can also set the <strong>Storm Control Multiplier</strong>.</p>
+<p class="myPic">
+<img src="images/config_routers_2.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Routing Configuration</p>
+<p>You can make static routes on the router by choosing the <strong>Static</strong> sub-panel. Each static route you add requires a network address, subnet mask, and next hop address.</p>
+<p class="myPic">
+<img src="images/config_routers_3.jpg">
+</p>
+<p>You can enable RIP version 1 on specified networks by choosing the <strong>RIP</strong> sub-panel. Enter an IP address into the <strong>Network</strong> field and click the <strong>Add</strong> button. The RIP-enabled network is added to the <strong>Network Address</strong> list. You can disable RIP on a network by clicking the <strong>Remove</strong> button to remove it from the list.</p>
+<p class="myPic">
+<img src="images/config_routers_4.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">VLAN Database Configuration (Cisco 1841 and Cisco 2811 only)</p>
+<p>The Cisco 1841 and 2811 routers support VLAN configuration. You can manage the VLANs on the router from the <strong>VLAN Database</strong> sub-panel. You can add VLANs by entering a name and a VLAN number and pressing the <strong>Add</strong> button. You can see all existing VLAN entries in the list below the button. You can remove a VLAN by selecting it in the list and then pressing the <strong>Remove</strong> button.</p>
+<p class="myPic">
+<img src="images/config_routers_5.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Interface Configuration</p>
+<p>A router can support a wide range of interfaces including serial, modem, copper Ethernet, and fiber Ethernet. Each interface type may have different configuration options, but in general, you can set the <strong>Port Status</strong> (on or off), <strong>IP Address</strong>,  <strong>Subnet Mask</strong>, and <strong>Tx Ring Limit</strong>. For Ethernet interfaces, you can also set the <strong>MAC Address</strong>, <strong>Bandwidth</strong>, and <strong>Duplex</strong> setting. For serial interfaces, you can set the <strong>Clock Rate</strong> setting.</p>
+<p class="myPic">
+<img src="images/config_routers_6.jpg">
+</p>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE>Tri-Band Home Router: GUI</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice 4.1.0  (Win32)">
+    <link rel="stylesheet" type="text/css" href="styleNormal.css">
+</HEAD>
+<BODY LANG="en-US" TEXT="#39393b" LINK="#1152b1" BGCOLOR="#ffffff" DIR="LTR">
+<P CLASS="mainheading1">Tri-Band Home Router: GUI 
+</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<HR>
+<P>The <STRONG>GUI</STRONG> tab offers the same configurations and
+settings as the <STRONG>Config</STRONG> tab with some additional
+features for access restrictions, ISP VLAN setup, port forwarding,
+DMZ access, administration, as well as router and network status.
+Make sure you click on the <STRONG>Save Settings</STRONG> button at
+the bottom to apply the new settings to the Home Router before going
+to any other tab.</P>
+<P>&nbsp;</P>
+<P CLASS="mainheading2">Setup Configuration</P>
+<P>In the <STRONG>Setup</STRONG> tab under the Basic Setup sub-tab,
+you can set the <STRONG>Internet Connection Type</STRONG> to either
+automatically obtain IP configurations with <STRONG>Automatic
+Configuration - DHCP</STRONG>, manually set IP configurations with
+<STRONG>Static IP</STRONG>, or setup the router to operate as either
+<B>Wireless A</B><STRONG><B>P</B></STRONG><STRONG> </STRONG><STRONG><SPAN STYLE="font-weight: normal">or
+</SPAN></STRONG><STRONG><B>Media Bridge</B></STRONG>. You can also
+set the LAN IP configurations and DHCP server settings under the
+<STRONG>Network Setup</STRONG> section. 
+</P>
+<P CLASS="mypic"><IMG SRC="images/GUI_home_router_1.jpg" NAME="graphics8"  BORDER=0><BR ><BR><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in">In order to illustrate
+router operation in <I><B>Media Bridge</B></I> and <I><B>Wireless AP</B></I>
+<SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">modes,</SPAN></SPAN>
+Packet Tracer has the following samples:</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-left: 0.79in; margin-bottom: 0in">hr-wireless-ap.pkt</P>
+<P ALIGN=LEFT STYLE="margin-left: 0.79in; margin-bottom: 0in">hr-wireless-media-bridge.pkt</P>
+<P ALIGN=LEFT STYLE="margin-left: 0.79in; margin-bottom: 0in"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-left: 0.79in; margin-bottom: 0in"><BR>
+</P>
+<I><B>ISP Vlans </B></I>sub-section of
+<I>Network Setup,</I> allows you to configure VLANs for situation
+when they are used by ISP providers for service delivery.<BR><BR><BR>
+<P CLASS="mypic" ><IMG SRC="images/GUI_home_router_1_vlans.jpg" NAME="graphics1"  BORDER=0><BR ><BR><BR>
+</P>
+<P >Packet Tracer comes with the following
+sample networks illustrating this feature:</P>
+<P STYLE="margin-left: 0.79in">hr-isp-vlans-ip-dhcp.pkt<BR>hr-isp-vlans-ip-static.pkt</P>
+<BR />
+<P CLASS="mainheading2">Wireless Configuration</P>
+<P>On the <STRONG>Wireless</STRONG> tab under the <STRONG>Basic
+Wireless Settings</STRONG> sub-tab, the only settings you can change
+are the <STRONG>Network Name (SSID)</STRONG> and the <STRONG>Standard
+Channel </STRONG><STRONG><SPAN STYLE="font-weight: normal">for each
+radio band</SPAN></STRONG>.</P>
+<P>Under the <STRONG>Wireless Security</STRONG> sub-tab, you can set
+the Security Mode to <STRONG>Disabled</STRONG>, <STRONG>WEP</STRONG>,
+<STRONG>WPA Personal</STRONG>, <STRONG>WPA Enterprise</STRONG>, <STRONG>WPA2
+Personal</STRONG>, or <STRONG>WPA2 Enterprise</STRONG>. Depending on
+the security mode that you select, you will need to enter a WEP key,
+pass phrase and encryption type for WPA/WPA2 Personal, or the RADIUS
+server IP address, shared secret, and encryption type for WPA/WPA2
+Enterprise. The settings are also available for each radio band.</P>
+<P>Under the <STRONG>Wireless MAC Filter</STRONG> sub-tab, you can
+setup a wireless MAC address filter list to permit or prevent
+wireless clients from accessing the wireless network. To setup the
+wireless MAC filter, set the wireless MAC filter to <STRONG>Enabled</STRONG>
+and then select whether you want the MAC filter to prevent the listed
+clients from accessing the wireless network or to permit only the
+listed clients from being able to access the wireless network.
+Afterwords, begin entering the MAC addresses of the clients that you
+want to include in the MAC filter and then click the <STRONG>Save
+Settings</STRONG> button. 
+</P>
+<P CLASS="mypic"><BR><BR>
+</P>
+<P CLASS="mypic"><IMG SRC="images/GUI_home_router_2.jpg" NAME="graphics9"  BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P>&nbsp;</P>
+<P CLASS="mainheading2">Security Configuration</P>
+<P>On the Security tab, there are no additional viewable sub-tabs and
+there are no parameters that you can edit.</P>
+<P><BR><BR>
+</P>
+<P CLASS="mypic"><IMG SRC="images/GUI_home_router_3.jpg" NAME="graphics2"  BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="mypic"><BR><BR>
+</P>
+<P CLASS="mainheading2">Access Restrictions Configuration</P>
+<P>On the <STRONG>Access Restrictions</STRONG> tab under the <STRONG>Internet
+Access Policy</STRONG> sub-tab, you can apply various access
+restrictions policies on the connected hosts. To add a policy to the
+router, first select a policy you would like to edit from the <STRONG>Access
+Policy</STRONG> drop-down menu and then Enter a <STRONG>Policy Name</STRONG>
+for the policy. Then, set the <STRONG>Status</STRONG> to <STRONG>Enabled</STRONG>.
+Next, click on the <STRONG>Edit List</STRONG> button and enter the
+host IP addresses you would like to apply the policy on in the <STRONG>List
+of PCs</STRONG> dialog that shows up. After editing the list, click
+on <STRONG>Save Settings </STRONG>and <STRONG>Close</STRONG> inside
+the dialog. Back in the GUI, select <STRONG>Deny</STRONG> to restrict
+all applications or select <STRONG>Allow</STRONG> for specific
+application access restriction. If you select <STRONG>Allow</STRONG>,
+you can choose up to three applications to block. To block an
+application, select the application from the <STRONG>Applications</STRONG>
+list and click on the <STRONG>&gt;&gt;</STRONG> button to add it to
+the <STRONG>Blocked List</STRONG>. To unblock an application, select
+the application from the Blocked List and click on the <STRONG>&lt;&lt;</STRONG>
+button. If you want to remove a policy, select the policy from the
+<STRONG>Access Policy</STRONG> drop-down menu and click <STRONG>Delete
+This Entry</STRONG>. The restrictions configured on this page can
+also be applied on schedule by setting <I>from</I> and t<I>o</I>
+times of the day in the Schedule sub-section of the page. Time values
+refer to the <I>Environment</I> clock displayed in the top -right
+corner of the application's main window. Using this feature allows
+for all configured restrictions to take place only within the time
+frame specified. <BR><BR><BR>
+</P>
+<P CLASS="mypic"><IMG SRC="images/GUI_home_router_4.jpg" NAME="graphics3"  BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="mypic"><BR><BR>
+</P>
+<P CLASS="mainheading2">Applications &amp; Gaming Configuration 
+</P>
+<P>In the <STRONG>Applications &amp; Gaming</STRONG> tab under the
+<STRONG>Single Port Forwarding</STRONG> sub-tab, you can forward
+packets destined to specific ports to an IP Address. To forward a
+port, select the appropriate application under the <STRONG>Application
+Name</STRONG> drop-down menu, enter the IP Address under the <STRONG>To
+IP Address</STRONG> column to which you want the packets to be
+forwarded, and then click on the box under the <STRONG>Enabled</STRONG>
+column. To forward a custom port, enter an application name and then
+enter the appropriate <STRONG>Externet Port</STRONG>, <STRONG>Internet
+Port</STRONG>, and <STRONG>Protocol</STRONG>. The <STRONG>Externet
+Port</STRONG> is the port to which the router will listen from the
+WAN side. The <STRONG>Internet Port</STRONG> is the port on your
+local server to which the router will forward packets.</P>
+<P>Under the <STRONG>DMZ</STRONG> sub-tab, you can set a specific
+host to have DMZ access. To do so, click on <STRONG>Enabled</STRONG>
+to enable the DMZ feature and then enter the IP address of the host
+you want to have DMZ access. 
+</P>
+<P><BR><BR>
+</P>
+<P CLASS="mypic"><IMG SRC="images/GUI_home_router_5.jpg" NAME="graphics4"  BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="mypic"><BR><BR>
+</P>
+<P CLASS="mainheading2">Administration Management 
+</P>
+<P>In the <STRONG>Administration</STRONG> tab under the <STRONG>Management</STRONG>
+sub-tab, you can change the default password to access the router
+through the Web Configuration using the <STRONG>Web Browser</STRONG>
+and toggle <STRONG>Remote Management</STRONG>. In addition to this,
+if you are logged in using the Web Configuration, you can <STRONG>Backup</STRONG>
+and <STRONG>Restore Configurations</STRONG>.</P>
+<P>Under the <STRONG>Factory Defaults</STRONG> sub-tab, the only
+available feature is <STRONG>Restore Factory Defaults</STRONG>. This
+will reset the configuration back to default settings.</P>
+<P>Under the <STRONG>Firmware Upgrade</STRONG> sub-tab, you can
+upgrade the firmware of the Home Router. To upgrade the firmware,
+click on <STRONG>Browse</STRONG>, select a valid firmware image from
+the dialog that shows up, and then click <STRONG>OK</STRONG>. Once
+you have selected a firmware, click on the <STRONG>Start to Upgrade</STRONG>
+button to upgrade the firmware.</P>
+<P><BR><BR>
+</P>
+<P CLASS="mypic"><IMG SRC="images/GUI_home_router_6.jpg" NAME="graphics5"  BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="mypic"><BR><BR>
+</P>
+<P CLASS="mainheading2">Status</P>
+<P>On the <STRONG>Status</STRONG> tab under the <STRONG>Router</STRONG>
+sub-tab, you can view <STRONG>Router Information</STRONG> and
+<STRONG>Internet Connection</STRONG> configurations. You can <STRONG>Release</STRONG>
+and <STRONG>Renew</STRONG> the IP address of the Internet port.</P>
+<P>Under the <STRONG>Local Network</STRONG> sub-tab, you can view the
+<STRONG>Local Network</STRONG> and <STRONG>DHCP Server</STRONG>
+configuration. You can view the <STRONG>DHCP Client Table</STRONG> as
+well.</P>
+<P>Under the <STRONG>Wireless Network</STRONG> sub-tab, you can view
+the various wireless configurations on the router.</P>
+<P><BR><BR>
+</P>
+<P CLASS="mypic"><IMG SRC="images/GUI_home_router_7.jpg" NAME="graphics6"  BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="mypic"><BR><BR>
+</P>
+</BODY>
+</HTML>

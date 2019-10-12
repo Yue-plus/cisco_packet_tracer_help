@@ -1,0 +1,211 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>My First Packet Tracer Lab</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+		<script src="Scripts/main.js"></script>
+	</head>
+<body>
+
+  <p class="MainHeading1">My First Packet Tracer Lab</p>
+  <hr>
+
+<p class="MainHeading2"> Introduction </p>
+<p> Welcome to Packet Tracer. Research has shown that users who master a few basic tasks when first starting to use Packet Tracer get much more out of the software. This lab is designed to familiarize a user with Packet Tracer's features. This activity should take approximately 30 minutes to complete. Use these directions to go through the lab yourself, or view the animated tutorial version of the lab. </p>
+<p class="myList">&nbsp;</p>
+<p class="MainHeading2"> Lab Objectives </p>
+<table width="723">
+<tr>
+<td width="12">&nbsp;</td>
+<td width="38">I.</td>
+<td width="430"><a href="#I">Viewing Help and Tutorials</a></td>
+</tr>
+<tr>
+  <td>&nbsp;</td>
+  <td>II.</td>
+  <td><a href="#II">Creating Your First Network</a></td>
+  </tr>
+<tr>
+  <td>&nbsp;</td>
+  <td>III.</td>
+  <td><a href="#III">Sending Simple Test Messages in Realtime Mode</a></td>
+  </tr>
+<tr>
+  <td>&nbsp;</td>
+  <td>IV.</td>
+  <td><a href="#IV">Establishing a Web Server Connection Using the PC’s Web Browser</a></td>
+  </tr>
+<tr>
+  <td>&nbsp;</td>
+  <td>V.</td>
+  <td><a href="#V">Capturing Events and Viewing Animations in Simulation Mode</a></td>
+  </tr>
+<tr>
+  <td>&nbsp;</td>
+  <td>VI.</td>
+  <td><a href="#VI">Looking Inside Packets in Simulation Mode</a></td>
+  </tr>
+<tr>
+  <td>&nbsp;</td>
+  <td>VII.</td>
+  <td><a href="#VII">Viewing Device Tables and Resetting the Network</a></td>
+  </tr>
+<tr>
+  <td>&nbsp;</td>
+  <td>VIII.</td>
+  <td><a href="#VIII">Reviewing Your New Skills</a></td>
+  </tr>
+</table>
+
+
+<p>&nbsp;</p>
+<p><span class="MainHeading2">Important Terminology</span></p>
+<ol>
+  <li>ICMP ping: command consisting of an echo request message from one device to another, and the returning echo reply.</li>
+  <li>IP address: 32-bit address assigned to devices as identification in the network.</li>
+  <li>Ethernet: one of the most common LAN standards for hardware, communication and cabling.</li>
+  <li>Fast Ethernet Interface: 100 Mbps Ethernet port. In Packet Tracer, a GUI may be used to configure such interfaces.</li>
+  <li>OSI model: 7-layer framework for looking at network protocols and devices, consisting of the application, presentation, session, transport, network, data link, and physical layers.</li>
+  <li>PDU: protocol data unit, a grouping of data appropriate to a given layer in the OSI model.</li>
+  <li>Packets: OSI Layer 3 protocol data units. Represented by envelopes in Packet Tracer Simulation Mode.</li>
+  <li>Device Tables: includes ARP, switching, and routing tables. They contain information regarding the devices and protocols in the network.</li>
+  <li>ARP Table: Address Resolution Protocol (ARP) table, stores pairings of IP Addresses and Ethernet MAC addresses.</li>
+  <li>Scenario: one topology with a set of PDUs  placed in the network to be sent at specific times. Using different scenarios,  experiment with different combinations of packets using the same base topology.</li>
+</ol>
+<a name="I"></a>
+<p><span class="MainHeading2">I. Viewing Help and Tutorials</span></p>
+<ol>
+  <li>Launch Packet Tracer.</li>
+  <li>Open the help content by clicking Help &gt; Contents on the Menu bar. You can also click the question mark on the Main toolbar. Another option is the F1 shortcut key.</li>
+  <li>The menu will always be visible on the left side of the window while browsing through the help files. Skim through the help sections to get an idea of the functionality of Cisco Packet Tracer.</li>
+  <li>The What's New section under Introduction provides an overview of features that have been added to this version of Packet Tracer</li>
+  <li>Pay close attention to the Interface Overview section under Getting Started to familiarize yourself quickly to the Packet Tracer interface.</li>
+  <li>Browse the Tutorials to be shown how various components in Packet Tracer work.</li>
+  <li>Open the Interface Overview tutorial to learn the basics of the Packet Tracer graphical user interface. <strong>Note:</strong> The tutorials require Internet access and also some browsers may prevent the tutorial from playing. Configure your browser to allow active content to enable the viewing of the tutorial.</li>
+  <li>Click the Forward button to start the tutorial. Then click Pause.</li>
+  <li>Continue viewing the tutorial by pressing the Play button. Parts of the tutorial can also be skipped by dragging the slider to the right. If needed, click the Rewind button to restart the tutorial.</li>
+  <li>Click Exit (X) to close the tutorial window. Close the help content as well.</li>
+</ol>
+<p>Congratulations on learning more about resources that will help you get the most out of Packet Tracer.</p>
+<p>&nbsp;</p>
+<a name="II"></a>
+<p><span class="MainHeading2">II. Creating a First Network</span></p>
+<ol>
+  <li>Start creating a network by first selecting the End Devices. Add a Generic PC and a Generic Server to the workspace.</li>
+  <li>Under Connections, select the Copper Straight-through cable (solid black line) and connect the devices with it. The red lights on the link indicate that the connection is not working. Now, use the Delete tool to remove the Copper Straight-through cable, and use a Copper Cross-over cable (dashed line) instead. The lights should turn green at this point. If the mouse pointer is held over either devices, the link status will be shown as “Up.” The network should look similar to this:</li>
+
+  <p align="center"><img src="images/myFirstPTLab_2.jpg"></p>
+
+  <li>Click on the PC. While paying attention to the link lights, turn the power off (as shown in the graphic below), and on again. Follow the same steps for the server. The link lights turn red when the device is off. This means that the link is down or is not working. The link lights turn green when the device is turned back on.</li>
+  <li>Try all three ways to learn about the devices. First, mouse over the devices to see basic configuration information about them. Second, click on each device with the Select tool to show the device configuration window, which provides several ways to configure the device. Third, use the Inspect tool to view the tables the network device will build as it learns about the network around it. In this example, open the ARP table. Since the devices have not been configured yet, the ARP tables are empty. Always remember to close the windows after viewing them or they will clutter the workspace.</li>
+  <li>Open the PC configuration window and change the settings using the Config tab. Change the display name to Client and set the DNS server to 192.168.0.105. Under Interface, click FastEthernet0 and set the IP address as 192.168.0.110. Packet Tracer automatically calculates other parameters. Make sure that the Port Status box is checked. For future reference, note that other Ethernet interface settings, such as bandwidth, duplex, MAC address, and subnet mask can be modified using this window.</li>
+  <li>Go to the Desktop Tab and click on IP Configuration. Notice that the IP address, subnet mask and DNS server can be changed here as well.</li>
+  <li>Open the Server configuration window and go to the Config tab. Change the display name to Web Server. Click FastEthernet0 and set the IP address as 192.168.0.105. Make sure that the Port Status is also on. Click on the Services Tab, then on the DNS selection and set the domain name as www.firstlab.com. Set the IP address as 192.168.0.105 and click Add. Finally, check to make sure that the service for DNS is on.</li>
+  <li>Reposition the network devices by dragging them to a new location. Add a network description by using the “i” button on the upper right corner. Then add some text labels within the Logical Workspace by using the Place Note tool.</li>
+  <li>Save your work using the File &gt; Save As option and create a meaningful filename.</li>
+</ol>
+<p>Congratulations on creating your first network.</p>
+<p>&nbsp;</p>
+<a name="III"></a>
+<p><span class="MainHeading2">III. Sending Simple Test Messages in Realtime Mode</span></p>
+<ol>
+  <li>Start by opening the file saved in the last section.</li>
+  <li>Notice that the file opens in Realtime Mode. Use the Add Simple PDU tool to send a simple one-time ping message, called an echo request, to the server. The server responds with an echo reply because all devices have properly configured IP address settings.</li>
+  <li>Open the User Created Packet Window by clicking on the left facing arrow in the lower right corner of the Packet Tracer program to see the different capabilities of this ping message, including an indication that the ping was successful.</li>
+  <li>Toggle the PDU List Window to see a larger display of this message. One or more of these messages can be saved as a scenario. Scenario 0 is displayed when starting. Label this first scenario with an “i” note. Different scenarios allow the use of the same topology for experiments with different groupings of user created packets.</li>
+  <li>Click New to create a new scenario. New scenarios will initially be blank.</li>
+  <li>Add two packets using the Simple PDU tool, a PDU from the PC to the Server and a different PDU from the Server to the PC. Then add an “i” note describing the scenario, to complete Scenario 1. An example is shown below:</li>
+
+  <p align="center"><img src="images/myFirstPTLab_3.jpg"></p>
+
+  <li>Several scenarios can be saved with a single network. Alternate between Scenario 0 and 1.</li>
+  <li>Now, remove Scenario 0 using the Delete button.</li>
+  <li>Scenario 1 is now visible. Go to the last column in the User Created Packet Window and double-click (delete) to remove a PDU.</li>
+  <li>Delete the whole scenario. Notice that the list went back to the default Scenario 0.</li>
+</ol>
+<p>Congratulations on being able to send and organize simple test messages in Realtime Mode.</p>
+<p>&nbsp;</p>
+<a name="IV"></a>
+<p><span class="MainHeading2">IV. Establishing a Web Server Connection Using the PC’s Web Browser</span></p>
+<ol>
+  <li>Open the file saved from the previous section.</li>
+  <li>Click on the PC to view the configuration window.</li>
+  <li>Select the Desktop tab, and then click Web Browser. Type in www.firstlab.com as the URL and click the Go button. The Packet Tracer welcome page, shown below, appears, indicating that the web connection has been successfully established.</li>
+  <li>Clear the URL, type www and click Go. Since the address entered is not complete, a “Host Name Unresolved” message appears.</li>
+  <li>Type 192.168.0.105 as the URL entry and click on Go. Notice that the Packet Tracer welcome page appears again. This is because the Server IP address can also be used to establish a web connection.</li>
+  <li>Close the window and try the same steps, detailed below, in Simulation Mode. In this mode, the user controls time, so the network can be viewed running at a slower pace, allowing observation of the paths packets take and inspection of packets in detail (packet tracing!).</li>
+  <li>Enter into Simulation mode by clicking on the stopwatch tab lin the lower right corner of the workspace. Select the PC again and go to the Web Browser in the Desktop tab. Type www.firstlab.com as the URL again and click Go. The welcome page should not appear yet.</li>
+  <li>Switch to the main interface of Packet Tracer without closing the PC configuration window. Notice that a DNS packet is added to the event list.</li>
+  <li>Click Auto Capture/Play or repeatedly click the Capture/Forward button until the HTTP packet appears on the PC. Go back to the PC configuration window. The Packet Tracer welcome page is now shown.</li>
+  <li>Close the PC configuration window.</li>
+</ol>
+<p>Congratulations on successfully establishing a web server connection.</p>
+<p>&nbsp;</p>
+<a name="V"></a>
+<p><span class="MainHeading2">V. Capturing Events and Viewing Animations in Simulation Mode</span></p>
+<ol>
+  <li>Open the previously saved file.</li>
+  <li>In Realtime Mode, send a simple PDU from the PC to the Server.</li>
+  <li>Delete the PDU by using the method learned in the previous section.</li>
+  <li>Switch to Simulation Mode.</li>
+  <li>Click All/None to uncheck all fields and click Edit Filters. Then click ICMP to only view ICMP packets in the animation.</li>
+  <li>Add a simple PDU from the PC to the Server. Notice that the newly created PDU is added to the User Created PDU List. This packet has been captured as the first event in the event list and a new packet icon (envelope) appears in the workspace. The eye icon to the left of the event list indicates that this packet is currently displayed.</li>
+  <li>Click the Capture/Forward button once. This simulates a network sniffing program, capturing the next event that occurs on the network. Note that after clicking Capture/Forward, the packet in the workspace moves from one device to another (this is the ICMP echo request message from the PC to the Server). Another event is added in the event list – this reflects the change in the workspace. The first time through an animation, the meaning of the Capture/Forward is capture; after resetting the simulation, the meaning is forward.</li>
+  <li>Adjust the speed of the animation by dragging the Play Speed slider to the right making it go faster. Dragging the speed slider in the opposite direction (to the left) will slow down the animation.</li>
+  <li>Click the Capture/Forward button a second time. This captures the next network event (this is the echo reply from the Server to the PC, shown as successful with a green check mark on the envelope).</li>
+  <li>Click Capture/Forward button again. The Server has already sent an echo reply to the PC therefore, there are no more ICMP events left to capture.</li>
+
+  <p align="center"><img src="images/myFirstPTLab_4.jpg"></p>
+</ol>
+<p>Congratulations on successfully capturing events and viewing animations in Simulation Mode.</p>
+<p>&nbsp;</p>
+<a name="VI"></a>
+<p><span class="MainHeading2">VI. Looking Inside Packets in Simulation Mode</span></p>
+<ol>
+  <li>Continuing from the last activity, click Reset Simulation. This clears the entries in the event list except for the original packet.</li>
+  <li>Select the packet envelope on the workspace to show the PDU Information window like the one shown in the screenshot below. This window contains the OSI Model tab, which shows how the packet is processed at each layer of the OSI model by the current device. Close this window, noting that this packet is indicated in the event list by the eye icon. The whole row in the event list is also highlighted. Clicking on the color square in the Info column is equivalent to clicking directly on the packet envelope (try it!).</li>
+
+  <p align="center"><img src="images/myFirstPTLab_5.jpg"></p>
+
+  <li>Use the Next Layer and Previous Layer buttons to see details of the packet processing at the relevant OSI layers. Note that only the Out Layers can be viewed in the case of this original echo request message.</li>
+  <li>Click on the Outbound PDU Details tab. This tab shows exactly what makes up the PDU headers. It is organized into header type and the individual fields in each header.</li>
+  <li>Close the PDU Information window. Click on Capture/Forward button once.</li>
+  <li>Click on the packet in the workspace again to open the PDU Information window. Notice that this time, information regarding both the In Layers and Out Layers can be viewed.</li>
+  <li>Click on the Inbound PDU Details tab. This shows the details of the inbound echo request packet from the PC to the Server. The Outbound PDU Details tab, shows similar information, but for the echo reply packet from the Server to the PC.</li>
+  <li>Click on Reset Simulation again. Now click on Auto Capture/Play. The echo request and echo reply are automatically captured. Click on the Back Button to rewind the animation one step at a time. Now click on the Capture/Forward button to forward the packet through the animation. Note the change in the event list and the workspace. Remember that at any time, a PDU Information Window can be opened by clicking directly on the envelope on the workspace, or by clicking the Info column in the Event List.</li>
+  <li>Click on the Back Button twice to rewind the animation. Now click Auto Capture/Play and the packet animation will automatically occur.</li>
+</ol>
+<p>Congratulations on being able to manipulate the Play Controls and PDU Information Window to understand more about packet processing details.</p>
+<p>&nbsp;</p>
+<a name="VII"></a>
+<p><span class="MainHeading2">VII. Viewing Device Tables and Resetting the Network</span></p>
+<ol>
+  <li>Open the file saved from the previous section.</li>
+  <li>Open the ARP Tables for both devices by clicking them with the Inspect tool. The ARP tables always appear on the same spot. Reposition them to make them both visible. You can also resize the tables for better viewing.</li>
+  <li>In Realtime Mode, send a simple PDU from the PC to the Server. Notice that the ARP tables are filled in automatically, as shown here:</li>
+
+  <p align="center"><img src="images/myFirstPTLab_6.jpg"></p>
+
+  <li>Delete the PDU using the method covered in the previous sections. Notice that the entries in the ARP tables are NOT cleared. ARP entries for both devices have already been learned. Deleting the user created PDUs does not reset events what has already occurred in the network.</li>
+  <li>Click Power Cycle Devices. ARP tables are cleared because the Power Cycle Devices button turns the devices off and back on again therefore, losing temporary information like the ARP table entries.</li>
+  <li>Go to Simulation Mode. In the event list filters, make sure that ICMP and ARP are checked so that you can view ICMP and ARP packets in the animation.</li>
+  <li>Create a new simple PDU from the Server to the PC.</li>
+  <li>Notice that since the devices were power cycled earlier, the ARP tables are empty. ARP request packets need to be issued before the ICMP ping packets, so that the devices in the network can learn about each other. Click on Auto Capture/Play to watch the animation.</li>
+  <li>Click Reset Simulation. Notice that even though the event list is cleared (except for the user created PDU), the ARP tables remain full. Click Auto Capture/Play. This time, since the ARP tables are full, there are no new ARP packets issued.</li>
+  <li>Click Power Cycle Devices. Doing so will empty the tables. Notice that new ARP request packets appear automatically in the event list.</li>
+</ol>
+<p>Congratulations! You can now view device tables, reset a simulation, and reset the network.</p>
+<p>&nbsp;</p>
+<a name="VIII"></a>
+<p><span class="MainHeading2">VIII. Reviewing Your New Skills</span></p>
+<ul>
+  <li>Single-clicking on the Delete button removes the entire scenario including all the PDUs associated with it.</li>
+  <li>Double-clicking on (delete) in the far right column in the PDU List window deletes individual PDUs.</li>
+  <li>The Reset Simulation button clears all entries in the Event List, except for User Created PDUs, and allows the animation to restart. This, however, does not reset the device tables.</li>
+  <li>The Power Cycle Devices button turns all of the devices in the network off and on so the tables that the devices built are lost along with configurations and other information not saved.</li>
+  <li>Saving work periodically prevents lost configurations and state changes in the network.</li>
+</ul>
+<p>Congratulations on being ready to build and analyze many different networks in Packet Tracer! Be aware that there are many other features that were not covered in this lab. To learn more, please view the other available tutorials and review the help files. Have Fun!</p>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Simulation Mode: PDU Information</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+    </head>
+	<body>
+
+
+<p class="MainHeading1">Simulation Mode: PDU Information</p>
+<hr>
+<p>During a simulation, you can click on a packet (on the topology or the corresponding event in the Event List) to bring up its information window and view its details. The details window contains three possible tabs: <strong>OSI Model</strong>, <strong>Inbound PDU Details</strong>, and <strong>Outbound PDU Details</strong>.</p>
+<p class="myPic">
+<img src="images/mode_simulation_PDUinfo_1.jpg" alt="PDU Information Window">
+</p>
+<p>&nbsp;</p>
+<p>The <strong>OSI Model</strong> tab shows how the packet is processed at each layer of the OSI model by the current device. The process is further separated by the direction in which the packets are traveling, incoming versus outgoing. The incoming layers (<strong>In Layer</strong>) show how the device processes an incoming or a buffered packet, and the outgoing layers (<strong>Out Layer</strong>) show the process a device goes through when it sends a packet to one or multiple ports.</p>
+<table class="tableTip">
+  <tr>
+    <td class="TDtableTip" >The <strong>In Layer</strong> is meant to be read starting from bottom to top (from Layer 1 to Layer 7), while the <strong>Out Layer</strong> is read from top to bottom (from Layer 7 to Layer 1). This is because the physical layer is the first layer at which incoming PDUs are processed, and it is the last layer at which outgoing PDUs are processed when they exit the device.</td>
+  </tr>
+</table>
+<p class="myList">&nbsp;</p>
+<p>The <strong>Inbound PDU Details</strong> tab only applies if the PDU you clicked on is being received on the device; it will not appear if the PDU originated from that device. The tab 
+  
+  shows exactly what is in the  headers of the PDU, broken up into header type and the individual fields in each header. For example, a PDU may have an Ethernet II and an ARP header, so the tab will show information such as the preamble, FCS, and source and destination addresses.</p>
+<p>The <strong>Outbound PDU Details</strong> tab shows similar information for outgoing packets. This tab only applies if the device has a PDU to send.</p>
+<p>Most of the time, a device will receive a PDU and then, as a result, send out a PDU. In this case, both the <strong>Inbound PDU Details</strong> and the <strong>Outbound PDU Details</strong> tabs apply.</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Challenge Mode</p>
+<p class="myList">
+  
+  You can quiz yourself on the encapsulation process by entering Challenge Mode when viewing PDU information. Click the <strong>Challenge Me</strong> button to do so. The layer details are hidden, and the information window is replaced by a question window that asks you what the device does to a PDU at a given layer. Select from a multiple-choice list. If you answer correctly, the details for that layer are shown and the question window advances to the next layer. You can click the <strong>Hint</strong> button if you need help.</p>
+<p class="myList">&nbsp;</p>
+<p class="myPic">
+<img src="images/mode_simulation_PDUinfo_2.jpg" alt="PDU Information Challenge Mode">
+</p>
+<p class="myList">&nbsp;</p>
+<p class="myList">Each Challenge Question may contain the following answers:</p>
+<p class="myList">&nbsp;</p>
+<ul>
+<li><strong>Encapsulate:</strong> Adds a header or a header and trailer to the PDU on this layer to create the PDU at the next lower layer.</li>
+<li><strong>De-encapsulate:</strong> Removes a header or a header and trailer from the PDU on this layer to create the PDU at the next higher layer.</li>
+<li><strong>Transfer:</strong> Moves the PDU from the inbound OSI stack to the outbound OSI stack.</li>
+<li><strong>Accept:</strong> Accepts and finishes processing of the PDU.</li>
+<li><strong>Queue:</strong> Holds the PDU for processing or sending at a later time.</li>
+<li><strong>Drop:</strong> Eliminates the PDU.</li>
+<li><strong>Transmit:</strong> Sends the signal out the physical media.</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Script Modules</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+
+<p class="MainHeading1">Script Modules - Custom UDP Processes</p>
+<hr>
+
+<p>With Script Modules, instructors and students can now develop and add new protocols to PT.  They are called custom processes and for now, PT only supports custom processes on top of UDP.</p>
+<p>&nbsp;</p>
+
+<p class="MainHeading3">Create</p>
+<p>The process can be created and started as follow:</p>
+<table class="tableCode">
+  <tr>
+    <td class="TDtableCode"><pre>// create the custom process on the device
+var process = device.getProcess('UdpProcess').createCustomUdpProcess();
+
+// start the process listening on a specified UDP port
+process.start(1234);</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p class="MainHeading3">Send Data</p>
+<p>It can send data, but only supports a text payload right now.</p>
+<table class="tableCode">
+  <tr>
+    <td class="TDtableCode"><pre>// send data to IP and UDP port
+process.sendData("text data", "1.1.1.1", 1234, null, null);</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p>The last argument in <strong>sendData()</strong> is the outgoing port.  If null, the lower processes, such as routing process on routers, would decide the outgoing port.  Or it can be supplied: </p>
+<table class="tableCode">
+  <tr>
+    <td class="TDtableCode"><pre>// send data to IP and UDP port and FastEthernet port
+var outPort = device.getPort("FastEthernet");
+process.sendData("some data", "1.1.1.1", 1234, null, outPort);</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p>The second to last argument in <strong>sendData()</strong> is the frame instance.  It is used in Simulation Mode to show the PDU color and details, such as what decisions are made on the PDU.  There is currently no representation of the PDU format in PDU Details. </p>
+<table class="tableCode">
+  <tr>
+    <td class="TDtableCode"><pre>// create a frame instance with color and destination
+var frameInstance = process.createFrameInstance(0xff0000, "1.1.1.1");
+
+// add a decision node so it shows in PDU Info
+if (frameInstance != null)
+    frameInstance.addDecision("CHAT_SEND", "The chat process sends a message.", false, 7);
+
+process.sendData(data, dstIp, dstPort, frameInstance, null);
+
+// finalize the frame instance so it shows up in Simulation Mode
+process.finalizeFrameInstance(frameInstance);</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p class="MainHeading3">Receive Data</p>
+<p>When the custom UDP process receives a packet, it would use the delegate mechanism to have a Script Module do custom processing with the packet.  First, the Script Module needs to register for the delegate, and then in the delegate function, process the data.</p>
+<table class="tableCode">
+  <tr>
+    <td class="TDtableCode"><pre>// register for the processData delegate
+process.registerDelegate("processData", null, processData);
+
+processData = function(src, args)
+{
+    doSomething(args.data, args.srcIp, args.srcPort);
+}</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+</body>
+</html>

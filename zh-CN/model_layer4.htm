@@ -1,0 +1,289 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Layer 4 Models</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+		<p class="MainHeading1">Layer 4 Models</p>
+		<hr>
+
+
+<p class="MainHeading2">How devices process UDP segments</p>
+<p class="myList">This procedure explains how a device sends and receives UDP
+	segments.</p>
+<p class="myList">&nbsp;</p>
+<ul>
+	<li>
+		When the device receives a segment:
+		<ul>
+			<li>
+			It de-encapsulates it and examines the UDP header for port information.
+			<li>
+				It then maps the local port information and sends the payload up to a higher
+				layer (the application layer) for processing.
+				<ul>
+					<li>
+						If it cannot find the upper process based on the port information, it drops the segment.</li>
+				</ul>
+			</li>
+		</ul>
+	<li>
+		When the device wants to send a segment:
+		<ul>
+			<li>
+			It encapsulates the payload with a UDP header.
+			<li>
+				It sends the segment to the lower layer for processing.</li>
+		</ul>
+	</li>
+</ul>
+
+
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How TCP Connection handles outgoing data</P>
+<P class="myList">When TCP Connection is ready to send data in the out buffer: (<A href="flowcharts/tcp_sending.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>It checks if the TCP connection State is Established:</LI>
+	<UL>
+		<LI>If no, it drops the data.</LI>
+		<LI>If yes,</LI>
+		<UL>
+			<LI>It adds the new data onto the out buffer.</LI>
+			<LI>It checks if the Nagle service is turned on:</LI>
+			<UL>
+				<LI>If yes, it checks if the size of the out buffer is greater than the MSS:</LI>
+				<UL>
+					<LI>If yes, it starts <u>the initial data sending step</u>.</LI>
+					<LI>If no, it checks if there is any unacknowledged data:</LI>
+					<UL>
+						<LI>If no, it starts <u>the initial data sending step</u>.</LI>
+						<LI>If yes, it continues to wait for more incoming data.</LI>
+					</UL>
+				</UL>
+				<LI>If no, it starts <u>the initial data sending step</u>.</LI>
+			</UL>
+		</UL>
+	</UL>
+	<LI><b>The initial data sending step:</b></LI>
+	<UL>
+		<LI>TCP checks if there are any segments to be retransmitted:</LI>
+		<UL>
+			<LI>If yes, it stops and waits.</LI>
+			<LI>If no, it checks if the usable window is smaller than the MSS, and there is more data in the out buffer than usable window size:</LI>
+			<UL>
+				<LI>If yes, it stops and waits.</LI>
+				<LI>If no, it starts <u>the new segment sending step</u>.</LI>
+			</UL>
+		</UL>
+	</UL>
+	<LI><b>The new segment sending step:</b></LI>
+	<UL>
+		<LI>It checks if there are any segments to be retransmitted:</LI>
+		<UL>
+			<LI>If yes, it stops and waits.</LI>
+			<LI>If no, it goes through the following steps:</LI>
+			<UL>
+				<LI>It updates and checks the unacknowledged data buffer for any segments needed to be retransmitted and transmits those first.</LI>
+				<LI>Otherwise, it prepares the data in the out buffer into TCP segments, and it will eventually send all segments out.</LI>
+			</UL>
+		</UL>
+	</UL>
+</UL>
+
+<p class="myList">&nbsp;</p>
+<p class="MainHeading2">How TCP Connection handles incoming TCP segments</p>
+<p class="myList">When TCP connection receives a TCP segment (<A href="flowcharts/DeviceReceiveTCPSegment.jpg" target=_blank>flowchart</A> here):</p>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>It updates the Receive-Window variable from the TCP header.</LI>
+	<LI>If the connection is not in the LISTEN state:</LI>
+	<UL>
+		<LI>It resets the inactivity timer.</LI>
+		<LI>If the sequence number is equal to the ReceiveNext variable:</LI>
+		<UL>
+			<LI>The TCP segment is expected.</LI>
+			<LI>Proceeds to the next step.</LI>
+		</UL>
+		<LI>Else</LI>
+		<UL>
+			<LI>If the sequence number in the received TCP header is less than the Receive-Next variable.</LI>
+			<UL>
+				<LI>If connection is not ESTABLISHED, the segment is a duplicate.</LI>
+				<LI>If the header is not a RST.</LI>
+				<UL>
+					<LI>Clears the ACK timer.</LI>
+					<LI>Resets the received ACK counter.</LI>
+					<LI>Sends an ACK out.</LI>
+				</UL>
+				<LI>Else</LI>
+				<UL>
+					<LI>This is an unexpected segment.</LI>
+					<LI>If the header is a RST, processes RESET.</LI>
+				</UL>
+				<LI>Drops this segment.</LI>
+			</UL>
+		</UL>
+	</UL>
+	<LI>If the connection is in the LISTEN state:</LI>
+	<UL>
+		<LI>If this is a SYN segment, the server port accepts the connection.</LI>
+		<LI>Else the server port sends back a RST and drops the segment.</LI>
+	</UL>
+	<LI>If the connection is in the SYN_SENT state:</LI>
+	<UL>
+		<LI>If the TCP header is a SYN or ACK:</LI>
+		<UL>
+			<LI>Clears the timer for retransmitting control data.</LI>
+			<LI>Calculates the Receive-MSS and Send-MSS variables from the advertised MSS in the TCP header.</LI>
+			<LI>Updates the local IP.</LI>
+			<LI>Updates the Receive-Next with the ACK number in the TCP header.</LI>
+			<LI>Sets the connection's state to ESTABLISHED.</LI>
+		</UL>
+		<LI>If the TCP header is a FIN:</LI>
+		<UL>
+			<LI>The TCP connection is refused.</LI>
+			<LI>Processes FIN.</LI>
+		</UL>
+		<LI>If the TCP header is a RST:</LI>
+		<UL>
+			<LI>The TCP connection was refused.</LI>
+			<LI>Processes RESET.</LI>
+		</UL>
+	</UL>
+	<LI>If the connection is in the SYN_RECEIVED state:</LI>
+	<UL>
+		<LI>If the header is a SYN or RST</LI>
+		<UL>
+			<LI>The connection was reset.</LI>
+			<LI>Processes RESET.</LI>
+		</UL>
+		<LI>If the TCP header is FIN
+		<UL>
+			<LI>Processes FIN.</LI>
+		</UL>
+		<LI>If the TCP header is an ACK</LI>
+		<UL>
+			<LI>Clears the timer for retransmitting control data</LI>
+			<LI>Sets the connection's state to ESTABLISHED.</LI>
+		</UL>
+	</UL>
+	<LI>If the connection is in the ESTABLISHED state:</LI>
+	<UL>
+		<LI>If the header is a SYN or RST</LI>
+		<UL>
+			<LI>The connection was reset.</LI>
+			<LI>Processes RESET.</LI>
+		</UL>
+		<LI>If the header is a FIN:</LI>
+		<UL>
+			<LI>The TCP connection was disconnected.</LI>
+			<LI>Increments the Receive-Next variable.</LI>
+			<LI>Processes FIN.</LI>
+			<LI>If it is an ACK:</LI>
+			<UL>
+				<LI>Processes ACK.</LI>
+				<LI>Clears the timer for retransmitting data.</LI>
+			</UL>
+			<LI>If the header is an ACK and it's not a RST:</LI>
+			<UL>
+				<LI>Checks if it is a duplicate segment.</LI>
+				<LI>If it's not duplicate and not an empty ACK:</LI>
+				<UL>
+					<LI>Increments the Receive-Next variable with the size of the received data segment.</LI>
+				</UL>
+				<LI>Processes ACK.</LI>
+				<LI>If it's duplicate and not an empty ACK:</LI>
+				<UL>
+					<LI>Drops the duplicate segment.</LI>
+					<LI>Clears the timer for sending ACK.</LI>
+					<LI>Sends an ACK.</LI>
+				</UL>
+				<LI>Else</LI>
+				<UL>
+					<LI>If it is not an empty ACK:</LI>
+					<UL>
+						<LI>Processes the data.</LI>
+					</UL>
+					<LI>If the connection is ESTABLISHED:</LI>
+					<UL>
+						<LI>If acked some packets, and nothing is being retransmitted, and there is buffer data,</LI>
+						<UL>
+							<LI>Sends buffer data.</LI>
+						</UL>
+						<LI>If it is not an empty ACK:</LI>
+						<UL>
+							<LI>Checks if an ACK needs to be sent out.</LI>
+						</UL>
+					</UL>
+				</UL>
+			</UL>
+		</UL>
+	</UL>
+	<LI>If the connection is in the FIN_WAIT_1 state:</LI>
+	<UL>
+		<LI>If the header is a SYN or RST</LI>
+		<UL>
+			<LI>Processes RESET.</LI>
+		</UL>
+		<LI>If the TCP header is a FIN:</LI>
+		<UL>
+			<LI>Clears the timer for retransmitting control data.</LI>
+			<LI>Sets the connection's state to CLOSING.</LI>
+			<LI>Sends an ACK.</LI>
+		</UL>
+		<LI>If the TCP header is an ACK:</LI>
+		<UL>
+			<LI>Clears the timer for retransmitting control data.</LI>
+			<LI>Sets the connection's state to FIN_WAIT_2.</LI>
+		</UL>
+	</UL>
+	<LI>If the connection is in the FIN_WAIT_2 state:</LI>
+	<UL>
+		<LI>If the header is a SYN or RST</LI>
+		<UL>
+			<LI>Processes RESET.</LI>
+		</UL>
+		<LI>If the TCP header is a FIN</LI>
+		<UL>
+			<LI>Sets the connection's state to TIMED_WAIT.</LI>
+		</UL>
+	</UL>
+	<LI>If the connection is in the LAST_ACK state:</LI>
+	<UL>
+		<LI>If the header is a SYN or RST</LI>
+		<UL>
+			<LI>Processes RESET.</LI>
+		</UL>
+		<LI>If the TCP header is an ACK or FIN:</LI>
+		<UL>
+			<LI>Processes ACK.</LI>
+			<LI>Clears the timer for retransmitting control data.</LI>
+			<LI>Sets the connection's state to CLOSED.</LI>
+		</UL>
+	</UL>
+	<LI>If the connection is in the CLOSING state:</LI>
+	<UL>
+		<LI>If the header is a SYN or RST</LI>
+		<UL>
+			<LI>Processes RESET.</LI>
+		</UL>
+		<LI>If the TCP header is an ACK</LI>
+		<UL>
+			<LI>Sets the connection's state to TIMED_WAIT.</LI>
+		</UL>
+	</UL>
+	<LI>If the connection is in the CLOSED state:</LI>
+	<UL>
+		<LI>Clears the timer for retransmitting control data.</LI>
+	</UL>
+</UL>
+
+
+
+
+	</body>
+</html>

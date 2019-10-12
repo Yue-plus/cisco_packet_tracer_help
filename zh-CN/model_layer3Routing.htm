@@ -1,0 +1,761 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Layer 3 Routing Models</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+		<p class="MainHeading1">Layer 3 Routing Models - RIPv1 RIPv2 EIGRP OSPF</p>
+		<hr>
+		<p class="MainHeading2">How a router starts the RIP process</p>
+		<p class="myList">The router generates a RIP request packet to be sent out all
+			ports. The packet will successfully exit a port if the port is (all):</p>
+		<p class="myList">&nbsp;</p>
+		<ul>
+			<li>
+			Functional (the port exists, and the line protocol is up).
+			<li>
+			RIP-enabled.
+			<li>
+				Not RIP-passive.</li>
+		</ul>
+		<p class="myList">&nbsp;</p>
+		<p class="MainHeading2">RIP versions</p>
+		<p class="myList">The router deals with RIP packets differently depending on what
+			version of RIP it is running.</p>
+		<p class="myList">&nbsp;</p>
+		<ul>
+			<li>
+				If it is running RIPv1, it can:
+				<ul>
+					<li>
+					Send and receive RIPv1 packets.
+					<li>
+						Send broadcasts.</li>
+				</ul>
+			<li>
+				If it is running RIPv2, it can:
+				<ul>
+					<li>
+					Send and receive RIPv2 packets.
+					<li>
+						Send multicasts.</li>
+				</ul>
+			<li>
+				If the RIP version is not set, it can
+				<ul>
+					<li>
+					Send RIPv1 packets.
+					<li>
+					Receive RIPv1 and RIPv2 packets.
+					<li>
+						Send broadcasts.</li>
+				</ul>
+			</li>
+		</ul>
+		<p class="myList">&nbsp;</p>
+		<p class="MainHeading2">How a router sends RIP updates</p>
+		<p class="myList">There are two types of RIP updates: regular and triggered.</p>
+		<p class="myList">&nbsp;</p>
+		<ul>
+			<li>
+			The router sends regular updates every 30 seconds. The update contains all of
+			the information in the routing table.
+			<li>
+				The router sends triggered updates only when a route has changed or an
+				interface changes state (up or down).</li>
+		</ul>
+		<p class="myList">&nbsp;</p>
+		<p class="MainHeading2">How a router processes incoming RIP packets</p>
+		<p class="myList">When a router receives a RIP packet (<a href="flowcharts/RouterReceiveRip.jpg" target="_blank">flowchart</a>
+			here):</p>
+		<p class="myList">&nbsp;</p>
+		<ul>
+			<li>
+				It drops the packet if (any):
+				<ul>
+					<li>
+					The incoming port does not have a valid IP address or is not RIP-enabled.
+					<li>
+					The source IP address is not from a directly connected network.
+					<li>
+					The packet came from the router itself.
+					<li>
+						The packet's RIP version does not match the router's RIP version.</li>
+				</ul>
+			<li>
+				If the packet is a request packet:
+				  <ul>
+					<li>
+						Check the port to see if it is a passive interface.
+						<ul>
+							<li>
+							If it is, drop the packet.
+							<li>
+								If it is not a passive interface, process the packet:
+								<ul>
+									<li>
+									Create a RIP response packet, which contains information about a route or the
+									entire routing table (depending on the request).
+									<li>
+										Send the RIP response out the same port.</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+		  <li>
+				If the packet is a response packet, process it:
+				<ul>
+					<li>
+						Look through each RIP route portion of the packet (the portion from address
+						family identifier, or AFI, to the metric). A RIP packet can contain up to 25
+						RIP route portions.
+						<ul>
+							<li>
+								Ignore any portions where (any):
+								<ul>
+									<li>
+									The metric is greater than infinity.
+									<li>
+									The AFI is not the IP family.
+									<li>
+										It is a broadcast, Class D, or Class E address.</li>
+								</ul>
+							</li>
+						</ul>
+					<li>
+					Set the next hop to the incoming port's address.
+					<li>
+					For new routes, ignore the route portion if the metric is now 16.
+					<li>
+					For existing routes, the metric is set to 16.
+					<li>
+					If the packet contains information about a network that does not exist in the
+					RIP database, it is added to the database.
+					<li>
+					If a network already has an entry in the RIP database, update it with the
+					latest information.
+					<li>
+						Send out new and updated routes on the next triggered update.</li>
+				</ul>
+		  </li>
+		</ul>
+		<p class="myList">&nbsp;</p>
+		<p class="MainHeading2">How a router processes incoming EIGRP packets</p>
+		<p class="myList">When a router receives an EIGRP packet (<a href="flowcharts/RouterReceiveEIGRP.jpg" target="_blank">flowchart</a>
+			here):</p>
+		<p class="myList">&nbsp;</p>
+		<ul>
+			<li>
+				It checks to see if the EIGRP process for the autonomous system that is
+				specified in the packet is enabled.
+				<ul>
+					<li>If it is not enabled, then the router drops the packet.</li>
+					<li>Otherwise, it sends the packet to that EIGRP process.</li>
+				</ul>
+			</li>
+		</ul>
+		<p class="myList">When an EIGRP process receives an EIGRP packet:</p>
+		<p class="myList">&nbsp;</p>
+		<ul>
+			<li>
+				It makes the following checks and drops the packet if (any):
+				<ul>
+					<li>
+					The receiving interface does not have EIGRP enabled.
+					<li>
+					The packet does not come from the same subnet as the receiving interface.
+					<li>
+						The receiving interface is passive.</li>
+				</ul>
+			<li>
+				It checks if the packet is a Hello packet.
+				<ul>
+					<li>
+					If so, then it processes the Hello packet (skip to next section).
+					<li>
+						Otherwise, it checks if the packet came from an existing neighbor.
+						<ul>
+							<li>
+							If not, then it drops the packet.
+							<li>
+								If the packet did come from an existing neighbor:
+								<ul>
+									<li>
+										It checks if the packet is an Acknowledgment packet.
+										<ul>
+											<li>
+											If so, then it removes the acknowledged packet from the neighbor's output
+											queue.
+											<li>
+												Otherwise, it checks the sequence number on the packet and the neighbor's last
+												heard sequence number.
+												<ul>
+													<li>
+													If the sequence number on the packet is larger than the last heard, then update
+													the last heard.
+													<li>
+														If the sequence numbers are the same or the one on the packet is smaller than
+														the last heard, then it drops the packet.</li>
+												</ul>
+											<li>
+												It checks if the packet piggybacks an Acknowledgment.
+												<ul>
+													<li>
+														If so, it removes the acknowledged packet from the neighbor's output queue.
+														<ul>
+															<li>
+																It checks if there are any packets in the neighbor's output queue.
+																<ul>
+																	<li>
+																		If there are not, then it sends an Acknowledgment packet back to the neighbor.</li>
+																</ul>
+															</li>
+														</ul>
+													</li>
+												</ul>
+											<li>
+											It checks if the packet is an Update packet. If so, then it processes the
+											Update packet.
+											<li>
+											It checks if the packet is a Query packet. If so, then it processes the Query
+											packet.
+											<li>
+												It checks if the packet is a Reply packet. If so, then it processes the Reply packet.</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<p class="myList">When an EIGRP process processes a Hello packet:</p>
+		<p class="myList">&nbsp;</p>
+		<ul>
+			<li>
+				It checks if the Hello packet has matching K values as the EIGRP process.
+				<ul>
+					<li>
+						If not, then it removes the neighbor from the router's neighbor table.</li>
+				</ul>
+			<li>
+				It checks if the neighbor already exists in the neighbor table.
+				<ul>
+					<li>
+					If so, then it updates the last-heard time and hold timer.
+					<li>
+						If not, it adds the new neighbor to the neighbor table, and sends a full update
+						of its topology table to the new neighbor.</li>
+				</ul>
+			</li>
+		</ul>
+		<p class="myList">When an EIGRP process processes an Update packet:</p>
+		<p class="myList">&nbsp;</p>
+		<ul>
+			<li>
+				It goes through all routes in the Update packet and updates the topology table.</li>
+		</ul>
+		<p class="myList">When an EIGRP process processes a Query packet:</p>
+		<p class="myList">&nbsp;</p>
+		<ul>
+			<li>
+			It updates the topology table with the route in the query.
+			<li>
+			It checks if updating the topology table does not cause the process to query
+			other neighbors.
+			<li>
+				If it does not, then reply the best route to the queried neighbor.</li>
+		</ul>
+		<p class="myList">When an EIGRP process processes a Reply packet:</p>
+		<p class="myList">&nbsp;</p>
+		<ul>
+			<li>
+				It makes the following checks and drops the packet if (any):
+				<ul>
+					<li>
+					The replied route does not exist.
+					<li>
+					The network is not in ACTIVE state.
+					<li>
+						The neighbor who replied was not queried.</li>
+				</ul>
+			<li>
+				It checks if the replied route is better than the best heard in the reply
+				table.
+				<ul>
+					<li>
+						If so, then it replaces the best heard in the reply table with the replied
+						route.</li>
+				</ul>
+			<li>
+				It checks if the replied route is the last expected reply.
+				<ul>
+					<li>
+						If it is, then processes the last Reply packet to a query.</li>
+				</ul>
+			</li>
+		</ul>
+		<p class="myList">When an EIGRP process processes a last Reply packet to a query:</p>
+		<p class="myList">&nbsp;</p>
+		<ul>
+			<li>
+			It replies to all queried neighbors with the best-heard route from the reply
+			table.
+			<li>
+			It sets the network to PASSIVE state.
+			<li>
+				It updates the topology table with the best route.</li>
+		</ul>
+		<p class="myList">When an EIGRP process updates the topology table with a route:</p>
+		<p class="myList">&nbsp;</p>
+		<ul>
+			<li>
+				Checks if the network is in ACTIVE state.
+				  <ul>
+					<li>
+						If so, it ignores the update.</li>
+				</ul>
+			<li>
+			It gets the old best route and old best metric to the network.
+			<li>
+			It adds the route to the topology table.
+			<li>
+			It gets the new best route and new best metric to the network.
+			<li>
+				It checks if the new best route is unreachable or there is no feasible
+				successor.
+				<ul>
+					<li>
+						If either is true, then it queries neighbors about the route.
+						<ul>
+							<li>
+								If there is no neighbor to query, then it removes the network from topology and
+								routing table.</li>
+						</ul>
+					<li>
+						If the new best route is feasible, then it adds all successors for the network
+						to the routing table.
+						<ul>
+							<li>
+								Update neighbors.</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<p class="myList">&nbsp;</p>
+		<p class="MainHeading2">How a router processes incoming OSPF packets</p>
+		<p class="myList">When a router receives an OSPF packet (<A
+href="flowcharts/RouterReceiveOSPFPacket.jpg" target=_blank>flowchart</A> here):</p>
+		<p class="myList">&nbsp;</p>
+		<ul>
+			<li>
+				It checks to see if an OSPF process is enabled on the port that received the
+				packet.
+				<ul>
+					<li>
+					If it is not enabled, then the router drops the packet.
+					<li>
+						Otherwise, it sends the packet to that OSPF process.</li>
+				</ul>
+			</li>
+		</ul>
+		<p class="myList">
+			When an OSPF process receives an OSPF
+packet (<A href="flowcharts/OSPFProcessReceiveOSPFPacket.jpg" target=_blank>flowchart</A> here):</p>
+		<p class="myList">&nbsp;</p>
+		<ul>
+			<li>
+				It makes the following checks and drops the packet if (any):
+				<ul>
+					<li>
+					The receiving interface does not have OSPF enabled.
+					<li>
+					The packet does not come from the same subnet as the receiving interface.
+					<li>
+					The receiving interface is passive.
+					<li>
+					The packet is for (backup) designated router and the router is not.
+					<li>The receiving interface does not have the same area id as indicated in the packet.
+<li>
+						The authentication failed for the packet.</li>
+				</ul>
+		  <li>
+				It checks if the packet is a Hello packet.
+				<ul>
+					<li>
+					If so, then it processes the Hello packet (skip to next section).
+					<li>
+						Otherwise, it checks if the packet came from an existing neighbor.
+						<ul>
+							<li>
+							If not, then it drops the packet.
+							<li>
+								If the packet did come from an existing neighbor:
+								<ul>
+									<li>
+									It checks if the packet is a Database Description packet (DDP). If so, then it
+									processes the DDP.
+									<li>
+									It checks if the packet is a Link State Request (LSR) packet. If so, then it
+									processes the LSR.
+									<li>
+									It checks if the packet is a Link State Update (LSU) packet. If so, then it
+									processes the LSU.
+									<li>
+										It checks if the packet is a Link State Acknowledgment (LSAck) packet. If so,
+										then it processes the LSAck.
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<p class="myList">When an OSPF process processes a Hello
+packet (<A href="flowcharts/OSPFProcessHelloPacket.jpg" target=_blank>flowchart</A> here):</p>
+		<p class="myList">&nbsp;</p>
+		<ul>
+			<li>
+				It checks if the Hello packet has matching hello &amp; dead timer values as the
+				OSPF process.
+				<ul>
+					<li>
+						If not, then it prints out a warning message and drops the packet.</li>
+				</ul>
+			<li>
+				It checks if the neighbor already exists in the neighbor table.
+				<ul>
+					<li>
+					If so, then it resets the dead timer.
+					<li>
+						If not, it adds the new neighbor to the neighbor table and sets the neighbor
+						state to 2-WAY.
+						<ul>
+							<li>
+								The adjacency is established with the neighbor if:
+								<ul>
+									<li>
+									The underlying network is point-to-point.
+									<li>
+										The underlying network is broadcast and the router itself is designated router,
+										backup designated router, the neighboring router is designated router, or the
+										neighboring router is backup designated router.</li></ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			<li>
+				It checks if backup designated router is present.
+				<ul>
+					<li>
+						If not, then it performs designated router election after wait timer expires.</li>
+				</ul>
+			</li>
+		</ul>
+		<p class="myList">When an OSPF process processes a Database
+Description packet (<A href="flowcharts/OSPFProcessDatabaseDescriptionPacket.jpg"
+target=_blank>flowchart</A> here):</p>
+		<p class="myList">&nbsp;</p>
+		<ul>
+			<li>
+			If the state is start, the master/slave relationship is formed based on
+			router ID. The neighbor state is updated to exchange.
+			<li>
+			During the exchange state, the OSPF process goes through all the link state
+			advertisement (LSA) headers stored in the packet. If the router does not have
+			the LSA described in the header, it stores the header in the queue.
+			<li>
+				If there are no more DDPs, the neighbor state transitions to loading. The
+				headers stored in the queue are used to generate LSRs.</li>
+		</ul>
+		<p class="myList">When an OSPF process processes a Link State
+Request (LSR) packet (<A href="flowcharts/OSPFProcessLSRPacket.jpg"
+target=_blank>flowchart</A> here):</p>
+		<p class="myList">&nbsp;</p>
+		<ul>
+			<li>
+			It looks up its Link State Database and puts the information in the Link State
+			Update (LSU) packet and sends to the adjacent neighbor.
+			<li>
+				After all the corresponding LSUs are received for the LSRs, the neighbor state
+				transitions to full.</li>
+		</ul>
+		<p class="myList">When an OSPF process processes a Link State
+Update (LSU) packet (<A href="flowcharts/OSPFProcessLSU.jpg"
+target=_blank>flowchart</A> here):</p>
+		<p class="myList">&nbsp;</p>
+		<ul>
+			<li>
+			It validates the LSA's checksum. If the checksum is invalid, discard the LSA.
+			<li>
+			It checks the LSA's type. If the type is unknown, discard the LSA.
+			<li>
+			It checks the LSA's age. If the age is equal to maximum allowed value and there
+			is currently no instance of the LSA in the router's database, and none of
+			router's neighbors are in states exchange or loading states, then the router sends an
+			acknowledge.
+			<li>
+			If the LSA is not in the database or is newer, add to the database.
+			<li>
+			If the LSA is the same instance as the database copy, and the LSU is not used
+			as an implied acknowledgment, send a LSAck to the neighbor.
+			<li>
+				If the database copy is more recent, discard the LSA without acknowledging it.</li>
+		</ul>
+		<p class="myList">When an OSPF process processes a Link State
+Acknowledgment packet (<A href="flowcharts/OSPFProcessLSAPacket.jpg"
+target=_blank>flowchart</A>
+			here):</p>
+		<p class="myList">&nbsp;</p>
+<UL>
+			<li>
+			It checks neighbor's state. If the neighbor is in a lesser state than exchange,
+			discards the packet.
+			<li>
+			It checks if the acknowledgment is for an instance of a LSA stored in the retransmission list for the neighbor. If yes, the OSPF
+  process removes the LSU from the retransmission list.</li>
+</UL>
+		<p class="myList">When an OSPF process updates the routing
+table with a route (<A href="flowcharts/OSPFProcessUpdateRoutingTable.jpg"
+target=_blank>flowchart</A> here):</p>
+		<p class="myList">&nbsp;</p>
+		<UL>
+			<li>
+			All routers in the same autonomous system belonging to the same area should
+			have identical database.
+			<li>
+				After a LSA has been added to the database, the OSPF process starts a timer.
+				The router performs shortest path first (SPF) calculation after the timer
+				expires. The SPF algorithm uses LSAs stored in the database to generate OSPF
+				routes. The routes are added to the routing table.
+			</li>
+		</UL>
+	    <p>&nbsp;</p>
+	    <p class="MainHeading2">How routes are Redistributed using Redistribution  feature. </p>
+        <ul>
+          <li>Redistribution commands can       be configured in the router mode of the routers for all types of the       routing protocols including EIGRP,       EIGRPv6, OSPF, OSPFv3,       RIP, and RIPv6.</li>
+          <li>Once a redistribution command       is configured.
+              <ul>
+                <li>Router checks for that        specific type of the route in its routing table
+                    <ul>
+                      <li> If any exists that matches the         redistribution command it will add the route to the destination         protocol’s database or topology table and sends out an update to its neighbors         for that route.</li>
+                      <li>If there is not any         matching route in the routing table,         it checks back the routing table for the newly receiving routes. If any         matches the command it will add it to the destination protocol’s         database and sends out an update for that route to its neighbors.</li>
+                      <li>If route which         matches the redistribution command’s protocol gets deleted from the         routing table the router sends out an update to its neighbor and         announces that specific route’s status as down.</li>
+                    </ul>
+                </li>
+              </ul>
+          </li>
+          <li>Once a redistribution command       is removed from the router
+              <ul>
+                <li>The router marks the        metric of the matching routes as unreachable and sends an update to its        neighbor about that route.</li>
+              </ul>
+          </li>
+          <li>Once an interface comes up or       a network commands gets added to any routing protocols.
+            <ul>
+              <li>Router checks whether a        redistribution command is configured. If  there is any configured it will send an        update out of that interface.</li>
+            </ul>
+          </li>
+        </ul>
+        <p>&nbsp;</p>
+        <p class="MainHeading2">How CEF works</p>
+        <ul>
+          <li>Cisco Express Forwarding uses a cache table for fast forwarding.</li>
+          <li>The CEF cache table contains entries matching destination networks to next hop IP address, next hop layer 2 information, and outgoing interface.</li>
+          <li>The CEF cache table is built from lookups in the routing table and IP address to layer 2 information.</li>
+          <li>When packets are needed to be sent out, whether receiving from an interface or sending from the local device, it looks up the destination network in the CEF cache table first.</li>
+          <li>If it is found, it  uses that information to encapsulate and modify the frame and sends it out.</li>
+          <li>If it is not found, it uses process routing, which is same as looking up routing table and passing to lower layer for layer 2 encapsulation. It also records the information in the cache table when the layer 2 information is complete.</li>
+        </ul>
+        <p>&nbsp;</p>
+        <p class="MainHeading2">IPv6 Routing and Routing Protocols </p>
+        <ul>
+          <li>Routing in IPv6 works the same way as in IPv4 with &quot;ip classless&quot; enabled, which is always enabled in Packet Tracer.</li>
+          <li>Display of routing table in IPv6 does not group networks together as in different classes in IPv4.</li>
+          <li>RIPv6 works the same way as RIPv2.</li>
+          <li>Multiple instances of RIP can be run at the same time on the same device.</li>
+          <li>EIGRPv6 and OSPFv3 work the same way as in IPv4 except the router-id's are still using  IPv4 addresses. They can be either automatically chosen from the assigned IPv4 addresses on the device or manually configured for the routing protocol instance.</li>
+        </ul>
+
+
+
+		<p class="myList">&nbsp;</p>
+		<p class="MainHeading2">How a router processes incoming BGP packets</p>
+		<p class="myList">When a BGP peer receives an open packet (<a href="flowcharts/bgp_rcvd_open.jpg" target="_blank">flowchart</a>
+			here):</p>
+		<p class="myList">&nbsp;</p>
+		<ul>
+			<li>
+				If versions are different
+				<ul>
+					<li>
+					Send BGP error open version notice back
+					<li>
+					Stop neighbor peering
+					<li>
+					Start Connect retry timer
+				</ul>
+			<li>
+				If neighbor's AS is not the same as this router's configured neighbor AS:
+				<ul>
+					<li>
+					Send BGP error open Bad AS notice back
+					<li>
+					Stop neighbor peering
+					<li>
+					Start Connect retry timer
+				</ul>
+		  <li>
+				If neighbor's speaker ID is the same as this router's speaker ID:
+				<ul>
+					<li>
+					Send BGP error open Bad ID notice back
+					<li>
+					Stop neighbor peering
+					<li>
+					Start Connect retry timer
+				</ul>
+		  </li>
+		  <li>
+				If neighbor's holdtime is less than 3:
+				<ul>
+					<li>
+					Send BGP error open Bad Holdtime notice back
+					<li>
+					Stop neighbor peering
+					<li>
+					Start Connect retry timer
+				</ul>
+		  </li>
+		  <li>
+		  Negotiate holdtimes, using the smaller of the neighbor's and this router's hold time.
+		  </li>
+		  <li>
+			Change state to OPEN CONFIRM
+		  </li>
+		  <li>
+			Send keepalive to neighbor
+		  </li>
+		</ul>
+		<p class="myList">&nbsp;</p>
+		<p class="myList">When a BGP peer receives a notification packet (<a href="flowcharts/bgp_rcvd_notice.jpg" target="_blank">flowchart</a>
+			here):</p>
+		<p class="myList">&nbsp;</p>
+		<ul>
+			<li>
+				If error code is Cease
+				<ul>
+					<li>
+					Send Cease back
+				</ul>
+			<li>
+				If error code is hold time expire
+				<ul>
+					<li>
+					Close TCP connection
+				</ul>
+		  <li>
+			Stop neighbor peering
+		  </li>
+		  <li>
+			Start connect retry timer
+		  </li>
+		</ul>
+		<p class="myList">&nbsp;</p>
+		<p class="myList">When a BGP peer receives an update packet: (<a href="flowcharts/bgp_rcvd_update.jpg" target="_blank">flowchart</a>
+			here):</p>
+		<p class="myList">&nbsp;</p>
+		<ul>
+			<li>
+				If Update packet contains withdrawn routes
+				<ul>
+					<li>
+					Set withdrawn route in neighbor's incoming routing information base table to be unfeasible
+				</ul>
+			<li>
+				If Update packet contains route updates
+				<ul>
+					<li>
+					If new route:
+					<ul>
+						<li>
+						Add route to the neighbor's incoming routing information base table
+					</ul>
+					<li>
+					If existing route exists:
+					<ul>
+						<li>
+						Update routing information
+					</ul>
+				</ul>
+		  <li>
+				Run decision process to pick best routes to the main routing information base and install routes to the routing table
+		  </li>
+
+		</ul>
+		<p class="myList">&nbsp;</p>
+		<p class="myList">When a BGP peer receives a keepalive packet: (<a href="flowcharts/bgp_rcvd_keepalive.jpg" target="_blank">flowchart</a>
+			here):</p>
+		<p class="myList">&nbsp;</p>
+		<ul>
+			<li>
+				Increment keepalive count
+			<li>
+				Refresh hold down timer
+		  <li>
+				Run decision process to pick best routes to the main routing information base and install routes to the routing table
+		  </li>
+
+		</ul>
+		<p class="myList">&nbsp;</p>
+		<p class="myList">BGP Decision Process: (<a href="flowcharts/bgp_decision_process.jpg" target="_blank">flowchart</a>
+			here):</p>
+		<p class="myList">&nbsp;</p>
+		<ul>
+			<li>
+				Check all network statements
+				<ul>
+					<li>
+					If network is not installed in the main BGP routing information base table
+					<ul>
+						<li>
+						If network is reachable
+						<ul>
+							<li>
+							If another route is already installed, make the other route unfeasible
+							<li>
+							If route is not already installed, add route to routing table if not there
+						</ul>
+					</ul>
+				</ul>
+			<li>
+				Check all neighbor's incoming routing information base table
+				<ul>
+					<li>
+					Verify route is loop free (AS Path does not go through local AS)
+					<li>
+					If synchronization is enabled, verify the route's next hop is reachable through an IGP
+					<li>
+					If the route is the best route available, add route to routing table if not there
+				</ul>
+		  <li>
+				Send routing update for redistributed routes
+		  </li>
+		  <li>
+				Remove all unfeasible routes from the main routing information base and send withdraws if necessary
+		  </li>
+		  <li>
+		  		Send out route updates for all new routes installed
+		  </li>
+		  <li>
+				Remove all unfeasible routes from the main routing table
+		  </li>
+		</ul>
+<p>
+</body>
+</html>

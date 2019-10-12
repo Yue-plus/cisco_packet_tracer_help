@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Configuring Wireless LAN Controllers</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+
+
+<p class="MainHeading1">Configuring Wireless LAN Controllers
+<hr>
+<p>The <strong>Config</strong> tab of the Wireless LAN Controller (WLC) offers two general levels of configuration: global and interface.
+To configure at the global level, click the <strong>GLOBAL</strong> button to expand the <strong>Settings</strong> button (if it has not already been expanded).
+To configure an interface, click the <strong>INTERFACE</strong> button to expand the list of interfaces, and then choose the interface.</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Global Settings</p>
+<p>The only global setting available for a WLC is its display name.</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Wireless LANs</p>
+<p>The Wireless LANs settings sub-panel allows you to manage wireless LANs on the WLC-PT. To manage wireless LANs on the Cisco 2504 WLC, access its web interface from the Web Browser on an end device.
+To add a wireless LAN, click the <strong>New</strong> button, enter the necessary information, and click the <strong>Save</strong> button.
+To edit a wireless LAN, click the <strong>Select WLAN</strong> drop-down box, select the name of the wireless LAN, edit the necessary information, and click the <strong>Save</strong> button.
+To remove a wireless LAN, click the <strong>Select WLAN</strong> drop-down box, select the name of the wireless LAN, and click the <strong>Remove</strong> button.
+<br/><br/>
+The name of a wireless LAN is used for identification.  The VLAN is used to tag the frames going out of this WLC if using central switching or out of the AP if using local switching.
+The SSID, authentication, and encryption are same as you would configure on an AP.
+The central control types are to indicate whether frames on this wireless LAN will be switched centrally (forwarded to the WLC) or locally at the AP, and whether wireless clients are authenticated centrally at the WLC or locally at the AP.
+<p>&nbsp;</p>
+<p class="myPic">
+<img src="images/config_WLCs_1.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">AP Groups</p>
+<p>The AP Groups settings sub-panel allows you to manage AP groups on the WLC-PT. To manage AP groups on the Cisco 2504 WLC, access its web interface from the Web Browser on an end device.
+To add an AP group, click the <strong>New</strong> button, enter the necessary information, and click the <strong>Save</strong> button.
+To edit an AP group, click the <strong>Select AP Group</strong> drop-down box, select the name of the AP group, edit the necessary information, and click the <strong>Save</strong> button.
+To remove an AP group, click the <strong>Select AP Group</strong> drop-down box, select the name of the AP group, and click the <strong>Remove</strong> button. The "default-group" AP group cannot be removed.
+<br/><br/>
+The name of an AP group is used for identification.
+Click on the check box next to each wireless LAN you want to assign to the current AP group. Each wireless LAN can belong to multiple AP groups.
+Click on the check box next to each AP you want to assign to the current AP group. Each AP can belong to only one AP group.
+<p>&nbsp;</p>
+<p class="myPic">
+<img src="images/config_WLCs_2.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">DHCP</p>
+<p>The DHCP settings sub-panel allows you to manage the internal DHCP server on the WLC-PT. To manage the internal DHCP server on the Cisco 2504 WLC, access its web interface from the Web Browser on an end device.
+The configuration is the same as the DHCP Service configuration on the Server device.
+<p>&nbsp;</p>
+<p class="myPic">
+<img src="images/config_WLCs_3.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Interface Configuration</p>
+<p>Wireless LAN Controllers has two interface types: GigabitEthernet and management.
+The GigabitEthernet interface is a switched port, which only allows <strong>Port Status</strong>, <strong>Bandwidth</strong>, and <strong>Duplex</strong> to be configured.
+The management interface allows only IP configuration.</p>
+<p class="myPic">
+<img src="images/config_WLCs_4.jpg">
+</p>
+</body>
+</html>

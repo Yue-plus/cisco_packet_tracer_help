@@ -1,0 +1,774 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Supported Commands: ASA</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+		<p class="MainHeading1">
+			ASA
+	<HR>
+		<p>Packet Tracer uses a simplified model of the Cisco Adaptive Security Appliance Software. Click on the <strong>CLI</strong> tab in the ASA configuration window to access the Cisco command line interface. Use the <strong>Copy</strong> and <strong>Paste</strong> buttons to copy and paste text to and from the command line. This page lists the command tree for Packet Tracer ASA. The tree contains only command chains that are supported in Packet Tracer.</p>
+		<p class="myPic">
+		<img src="images/CLI_ASA.jpg">
+		</p>
+		<p>&nbsp;</p>
+		<p class="MainHeading2">User Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded">
+					<ul>
+						<li>
+							<strong>enable</strong> [ &lt;0-15&gt; ]
+						<li>
+						  <strong>exit</strong>
+						<li>
+							<strong>logout</strong>
+						<li>
+							<strong>ping </strong>
+						[ ip | ipv6 | WORD ]
+						<li>
+							<strong>quit </strong>
+						<li>
+							<strong>show</strong>
+						  <ul>
+						  <li>version
+						  </ul>
+						<li>
+							<strong>traceroute</strong> [ ip | WORD ]</li>
+				</ul>				</td>
+		  </tr>
+		</table>
+		<p class="MainHeading2">Enable Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+						<li>
+						    <strong>configure </strong>
+						[ terminal ]
+						<li>
+							<strong>copy</strong>
+							<ul>
+								<li>disk0:
+								<ul>
+									<li>running-config
+									<li>startup-config
+									<li>tftp:
+									</li>
+								</ul>
+								<li>flash:
+								<ul>
+									<li>running-config
+									<li>startup-config
+									<li>tftp:
+									</li>
+								</ul>
+								<li>
+									running-config
+									<ul>
+										<li>
+										disk0:
+										<li>
+										flash:
+										<li>
+										startup-config
+										<li>
+										tftp:</li>
+									</ul>
+								<li>
+									startup-config
+									<ul>
+										<li>
+										disk0:
+										<li>
+										flash:
+										<li>
+										running-config
+										<li>
+										tftp:</li>
+									</ul>
+								<li>
+									tftp:
+									<ul>
+										<li>
+										disk0:
+										<li>
+										flash:
+										<li>
+										running-config
+										<li>
+										startup-config</li>
+									</ul>
+								</li>
+									</ul>
+								</li>
+						<li>
+							<strong>dir </strong>
+						<li>
+							<strong>exit </strong>
+						<li>
+							<strong>logout </strong>
+						<li>
+							<strong>ping </strong>[ ip | ipv6 | WORD ]
+							<ul>
+								<li>
+									tcp [ ip | ipv6 | WORD ]
+								</li>
+							</ul>
+						<li>
+							<strong>reload</strong>
+						<li>
+							<strong>show</strong>
+							<ul>
+								<li>access-list
+								<li>activation-key
+								<li>arp
+								<li>clock
+								<li>crypto
+								  <ul>
+								    <li>isakmp [ sa ]</li>
+						            <li>ipsec [ sa ]</li>
+								    <li>map  </li>
+									<li>crypto key mypubkey rsa</li>
+								  </ul>
+								</li>
+								<li>dhcpd
+								<ul>
+									<li>binding all
+									<li>state
+								</ul>
+								</li>
+								<li>disk0:
+								<li>file system
+								<li>flash:
+								<li>interface
+									<ul>
+									    <li>inside
+										<li>outside
+										<li>Ethernet &lt;0&gt;/&lt;0-7&gt;
+										<li>Vlan [<1-4090>]
+										<li>ip brief
+									</ul>
+								</li>
+								<li>ip address
+								<li>ipv6
+									<ul>
+										<li>access-list
+										<li>interface brief
+										<li>neighbor
+										<li>route
+									</ul>
+								<li>nat
+								<li>ntp status
+								<li>route
+								<li>running-config
+								<li>ssh
+								<li>startup-config
+								<li>switch vlan
+								<li>version
+								<li>vlan
+								<li>xlate
+								</li>
+								</ul>
+						<li>
+				 			<strong>traceroute</strong> [ ip | WORD ]
+				  		<li>
+							<strong>write</strong> [ erase | memory  ]</li>
+				</ul>				</td>
+		  </tr>
+
+
+
+
+
+
+
+
+
+
+
+		</table>
+		<p class="MainHeading2">Global Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+						<li><strong>aaa</strong>
+						  <ul>
+						    <li>authentication
+						      <ul>
+						        <li>ssh
+						          <ul>
+						            <li>console LOCAL</li>
+					              </ul>
+								  <li>telnet
+								  <ul>
+									<li>console LOCAL</li>
+								  </ul>
+		                       </ul>
+						    </li>
+						   </ul>
+						<li><strong>access-group</strong> [ WORD ]
+							<ul>
+								<li>in [ interface ] [inside | outside ]
+								<li>out [ interface ] [inside | outside ]
+							</ul>
+						<li><strong>access-list</strong> [ WORD ]
+					        <ul>
+						        <li>[ deny | permit ]
+						        <ul>
+						        	<li> [ A.B.C.D A.B.C.D | any | host A.B.C.D | icmp A.B.C.D ]
+						        	<li> [ icmp | icmp6 | object-group WORD | tcp | udp ]
+						        	<ul>
+						        		<li> [A.B.C.D A.B.C.D A.B.C.D | any A.B.C.D A.B.C.D | host A.B.C.D A.B.C.D | object WORD A.B.C.D A.B.C.D ]
+						        		<ul>
+						        			<li> [ echo | echo-reply | unreachable ]
+						        		</ul>
+						        	</ul>
+						        </ul>
+
+						        <li>extended
+						        <ul>
+						        	<li>[ deny | permit ]
+						        	<ul>
+							        	<li> [ A.B.C.D A.B.C.D | any | host A.B.C.D | icmp A.B.C.D ]
+						        		<li> [ icmp | icmp6 | object-group WORD | tcp | udp ]
+						        			<ul>
+						        				<li> [A.B.C.D A.B.C.D A.B.C.D | any A.B.C.D A.B.C.D | host A.B.C.D A.B.C.D | object WORD A.B.C.D A.B.C.D ]
+						        			<ul>
+						        		<li> [ echo | echo-reply | unreachable ]
+						        	</ul>
+						        </ul>
+						        </ul>
+						      </ul>
+						      </ul>
+				  		<li><strong>class-map</strong> WORD
+				  <li><strong>clock</strong> set hh:mm:ss [ MONTH | Day of Month] [ Day of Month | MONTH ] [ Year ]
+				  <li><strong>configure</strong> terminal
+				  <li><strong>crypto</strong>
+							<ul>
+								<li>ikev1
+								<ul>
+									<li>policy [ 1-65535 ]
+									<li>enable [ inside | outside ]
+								</ul>
+								<li>ipsec
+								<ul>
+									<li>ikev1 transform-set WORD
+									<ul>
+										<li> [ esp-3des | esp-aes | esp-aes-192 | esp-aes-256 | esp-des | esp-md5-hmac | esp-sha-hmac] [ esp-md5-hmac | esp-sha-hmac ]
+									</ul>
+									<li>security-association lifetime seconds &lt;120-2147483647&gt;
+								</ul>
+								<li>key generate rsa modulus [ 1024 | 2048 | 512 | 768 ]
+				                <li>map WORD
+					              <ul>
+					              	<li>interface [ inside | outside ]
+					                <li>&lt;1-65535&gt;
+					                <ul>
+					                	<li>match address WORD
+					                	<li>set
+					                	<ul>
+					                		<li>ikev1 transform-set [ WORD ]
+					                		<li>peer [ A.B.C.D |  X:X:X:X::X ] [ A.B.C.D |  X:X:X:X::X ] [ A.B.C.D |  X:X:X:X::X ]
+					                		<li>security-association lifetime seconds &lt;120-2147483647&gt;
+					                	</ul>
+					                </ul>
+				                  </ul>
+				            </ul>
+				  <li><strong>dhcpd</strong>
+				  <ul>
+				  	<li>address [ WORD ] [ inside | outside ]
+				  	<li>auto-config [ inside | outside ]
+				  	<li>dns [ Hostname | A.B.C.D ] interface [ inside | outside ]
+				  	<li>domain [ WORD ] interface [ inside | outside ]
+				  	<li>enable [ inside | outside ]
+				  	<li>lease &lt;300-1048575&gt; [ inside | outside ]
+				  </ul>
+				  <li><strong>domain-name</strong> [ WORD ]
+				  <li><strong>enable</strong> password [ WORD ] [ encrypted | level &lt;1-15&gt; encrypted ]
+				  <li><strong>end</strong>
+				  <li><strong>exit</strong>
+				  <li><strong>group-policy</strong> [ WORD ] [ attributes | internal ]
+				  <li><strong>hostname</strong> WORD
+				  <li><strong>http</strong>
+				  <ul>
+				  	<li>[ WORD ] [ A.B.C.D ] [ inside | outside ]
+				  	<li>enable
+				  	<li>X:X:X:X::X/&lt;0-128&gt; [ inside | outside ]
+				  </ul>
+				  <li><strong>interface</strong>
+							<ul>
+								<li>Ethernet &lt;0&gt;/&lt;0-7&gt;
+								<li>Vlan &lt;1-4090&gt;
+							</ul>
+				  <li><strong>ipv6</strong>
+							<ul>
+							<li>access-list WORD
+							<ul>
+								<li> [ deny | permit ]
+						        <ul>
+						        	<li> [ icmp | icmp6 | object-group WORD | tcp | udp ]
+						        	<ul>
+						        		<li> [A.B.C.D A.B.C.D A.B.C.D | any A.B.C.D A.B.C.D | host A.B.C.D A.B.C.D | object WORD A.B.C.D A.B.C.D ]
+						        		<ul>
+						        			<li> [ echo | echo-reply | unreachable ]
+						        		</ul>
+						        	</ul>
+						        </ul>
+							</ul>
+							<li>route [ inside | outside ] [ Hostname | X:X:X:X::X ] [  &lt;1-255&gt; ]
+						</ul>
+						<li><strong>name</strong> [ A.B.C.D | X:X:X:X::X  ] [ WORD ]
+						<li><strong>names</strong>
+
+
+
+
+<li><strong>no</strong>
+<ul>
+						<li> aaa
+						  <ul>
+						    <li>authentication
+						      <ul>
+						        <li>ssh
+						          <ul>
+						            <li>console LOCAL</li>
+					              </ul>
+								  <li>telnet
+								  <ul>
+									<li>console LOCAL</li>
+								  </ul>
+		                       </ul>
+						    </li>
+						   </ul>
+						<li> access-group  [ WORD ]
+							<ul>
+								<li>in [ interface ] [inside | outside ]
+								<li>out [ interface ] [inside | outside ]
+							</ul>
+						<li> access-list  [ WORD ]
+					        <ul>
+						        <li>[ deny | permit ]
+						        <ul>
+						        	<li> [ A.B.C.D A.B.C.D | any | host A.B.C.D | icmp A.B.C.D ]
+						        	<li> [ icmp | icmp6 | object-group WORD | tcp | udp ]
+						        	<ul>
+						        		<li> [A.B.C.D A.B.C.D A.B.C.D | any A.B.C.D A.B.C.D | host A.B.C.D A.B.C.D | object WORD A.B.C.D A.B.C.D ]
+						        		<ul>
+						        			<li> [ echo | echo-reply | unreachable ]
+						        		</ul>
+						        	</ul>
+						        </ul>
+
+						        <li>extended
+						        <ul>
+						        	<li>[ deny | permit ]
+						        	<ul>
+							        	<li> [ A.B.C.D A.B.C.D | any | host A.B.C.D | icmp A.B.C.D ]
+						        		<li> [ icmp | icmp6 | object-group WORD | tcp | udp ]
+						        			<ul>
+						        				<li> [A.B.C.D A.B.C.D A.B.C.D | any A.B.C.D A.B.C.D | host A.B.C.D A.B.C.D | object WORD A.B.C.D A.B.C.D ]
+						        			<ul>
+						        		<li> [ echo | echo-reply | unreachable ]
+						        	</ul>
+						        </ul>
+						        </ul>
+						      </ul>
+						      </ul>
+				  		<li> class-map  WORD
+				  <li> clock  set hh:mm:ss [ MONTH | Day of Month] [ Day of Month | MONTH ] [ Year ]
+				  <li> configure  terminal
+				  <li> crypto
+							<ul>
+								<li>ikev1
+								<ul>
+									<li>policy [ 1-65535 ]
+									<li>enable [ inside | outside ]
+								</ul>
+								<li>ipsec
+								<ul>
+									<li>ikev1 transform-set WORD
+									<ul>
+										<li> [ esp-3des | esp-aes | esp-aes-192 | esp-aes-256 | esp-des | esp-md5-hmac | esp-sha-hmac] [ esp-md5-hmac | esp-sha-hmac ]
+									</ul>
+									<li>security-association lifetime seconds &lt;120-2147483647&gt;
+								</ul>
+								<li>key generate rsa modulus [ 1024 | 2048 | 512 | 768 ]
+				                <li>map WORD
+					              <ul>
+					              	<li>interface [ inside | outside ]
+					                <li>&lt;1-65535&gt;
+					                <ul>
+					                	<li>match address WORD
+					                	<li>set
+					                	<ul>
+					                		<li>ikev1 transform-set [ WORD ]
+					                		<li>peer [ A.B.C.D |  X:X:X:X::X ] [ A.B.C.D |  X:X:X:X::X ] [ A.B.C.D |  X:X:X:X::X ]
+					                		<li>security-association lifetime seconds &lt;120-2147483647&gt;
+					                	</ul>
+					                </ul>
+				                  </ul>
+				            </ul>
+				  <li> dhcpd
+				  <ul>
+				  	<li>address [ WORD ] [ inside | outside ]
+				  	<li>auto-config [ inside | outside ]
+				  	<li>dns [ Hostname | A.B.C.D ] interface [ inside | outside ]
+				  	<li>domain [ WORD ] interface [ inside | outside ]
+				  	<li>enable [ inside | outside ]
+				  	<li>lease &lt;300-1048575&gt; [ inside | outside ]
+				  </ul>
+				  <li> domain-name  [ WORD ]
+				  <li> enable  password [ WORD ] [ encrypted | level &lt;1-15&gt; encrypted ]
+				  <li> end
+				  <li> exit
+				  <li> group-policy  [ WORD ] [ attributes | internal ]
+				  <li> hostname  WORD
+				  <li> http
+				  <ul>
+				  	<li>[ WORD ] [ A.B.C.D ] [ inside | outside ]
+				  	<li>enable
+				  	<li>X:X:X:X::X/&lt;0-128&gt; [ inside | outside ]
+				  </ul>
+				  <li> interface
+							<ul>
+								<li>Ethernet &lt;0&gt;/&lt;0-7&gt;
+								<li>Vlan &lt;1-4090&gt;
+							</ul>
+				  <li> ipv6
+							<ul>
+							<li>access-list WORD
+							<ul>
+								<li> [ deny | permit ]
+						        <ul>
+						        	<li> [ icmp | icmp6 | object-group WORD | tcp | udp ]
+						        	<ul>
+						        		<li> [A.B.C.D A.B.C.D A.B.C.D | any A.B.C.D A.B.C.D | host A.B.C.D A.B.C.D | object WORD A.B.C.D A.B.C.D ]
+						        		<ul>
+						        			<li> [ echo | echo-reply | unreachable ]
+						        		</ul>
+						        	</ul>
+						        </ul>
+							</ul>
+							<li>route [ inside | outside ] [ Hostname | X:X:X:X::X ] [  &lt;1-255&gt; ]
+						</ul>
+						<li> name  [ A.B.C.D | X:X:X:X::X  ] [ WORD ]
+						<li> names
+				  <li> ntp
+				    <ul>
+				      <li>authenticate</li>
+		              <li>authentication-key &lt;1-4294967295&gt; md5 WORD [ &lt;0-4294967295&gt; ] </li>
+			          <li>server A.B.C.D [ key &lt;0-4294967295&gt; ]</li>
+			          <li>trusted-key &lt;1-4294967295&gt;</li>
+			      </ul>
+				  <li> object   network [ WORD ]
+				  <li> object-group   service [ WORD ]
+				  <ul>
+				  	<li> tcp
+				  	<li> tcp-udp
+				  	<li> udp
+				  </ul>
+				  <li> passwd   [ WORD ] encrypted
+				  <li> policy-map
+				  <ul>
+				  <li> WORD
+				  <li> type inspect dns WORD
+				  </ul>
+				  <li> route   [ inside | outside ] [ Hostname | A.B.C.D ] [ Hostname | A.B.C.D ] [ Hostname | A.B.C.D ] [&lt;1-255&gt;]
+				  <li> service-policy  [ WORD ] [ global | interface inside | interface outside ]
+				  <li> setup
+                  <li> ssh
+                      <ul>
+                        <li>WORD A.B.C.D [ inside | outside ]
+					    <li>X:X:X:X::X/&lt;0-128&gt; [ inside | outside ]
+                        <li>timeout &lt;1-1440&gt;</li>
+			        </ul>
+                  <li> telnet
+                      <ul>
+                        <li>WORD A.B.C.D [ inside | outside ]
+					    <li>X:X:X:X::X/&lt;0-128&gt; [ inside | outside ]
+                        <li>timeout &lt;1-1440&gt;</li>
+			        </ul>
+				  <li> tunnel-group  [ WORD ]
+				  <ul>
+				  	<li>general-attributes
+				  	<li>ipsec-attributes
+				  	<li>type [ ipsec-121 | remote-access ]
+				  </ul>
+				  <li> username  [ WORD ] [ attributes | password WORD encrypted ]
+				  <li> webvpn
+                  </li>
+				</ul>
+
+
+
+				  <li><strong>ntp</strong>
+				    <ul>
+				      <li>authenticate</li>
+		              <li>authentication-key &lt;1-4294967295&gt; md5 WORD [ &lt;0-4294967295&gt; ] </li>
+			          <li>server A.B.C.D [ key &lt;0-4294967295&gt; ]</li>
+			          <li>trusted-key &lt;1-4294967295&gt;</li>
+			      </ul>
+				  <li><strong>object </strong> network [ WORD ]
+				  <li><strong>object-group </strong> service [ WORD ]
+				  <ul>
+				  	<li> tcp
+				  	<li> tcp-udp
+				  	<li> udp
+				  </ul>
+				  <li><strong>passwd </strong> [ WORD ] encrypted
+				  <li><strong>policy-map</strong>
+				  <ul>
+				  <li> WORD
+				  <li> type inspect dns WORD
+				  </ul>
+				  <li><strong>route </strong> [ inside | outside ] [ Hostname | A.B.C.D ] [ Hostname | A.B.C.D ] [ Hostname | A.B.C.D ] [&lt;1-255&gt;]
+				  <li><strong>service-policy</strong> [ WORD ] [ global | interface inside | interface outside ]
+				  <li><strong>setup</strong>
+                  <li><strong>ssh</strong>
+                      <ul>
+                        <li>WORD A.B.C.D [ inside | outside ]
+					    <li>X:X:X:X::X/&lt;0-128&gt; [ inside | outside ]
+                        <li>timeout &lt;1-1440&gt;</li>
+			        </ul>
+                  <li><strong>telnet</strong>
+                      <ul>
+                        <li>WORD A.B.C.D [ inside | outside ]
+					    <li>X:X:X:X::X/&lt;0-128&gt; [ inside | outside ]
+                        <li>timeout &lt;1-1440&gt;</li>
+			        </ul>
+				  <li><strong>tunnel-group</strong> [ WORD ]
+				  <ul>
+				  	<li>general-attributes
+				  	<li>ipsec-attributes
+				  	<li>type [ ipsec-121 | remote-access ]
+				  </ul>
+				  <li><strong>username</strong> [ WORD ] [ attributes | password WORD encrypted ]
+				  <li><strong>webvpn</strong>
+                  </li>
+				</ul>
+				</td>
+		  </tr>
+		</table>
+
+
+
+
+
+		<p class="MainHeading2">Ethernet Interface Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded">
+				<ul>
+				<li><strong>exit</strong>
+				<li><strong>ip </strong>
+							<ul>
+								<li>
+									address
+									<ul>
+										<li>
+										A.B.C.D A.B.C.D
+										<li>
+											dhcp</li>
+									</ul>
+								<li>
+							</ul>
+				  <li> <strong>nameif</strong> [ WORD ]
+				  <li> <strong>security-level</strong> &lt;0-100&gt;
+				  <li> <strong>shutdown</strong>
+				  <li> <strong>switchport</strong> access vlan &lt;1-4090&gt;
+                   </ul></td>
+		  </tr>
+		</table>
+
+
+
+
+
+
+
+
+
+
+
+		<p class="MainHeading2">VLAN Interface Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+				<li><strong>exit </strong>
+				<li><strong>forward </strong>
+				<li><strong>ip </strong>
+				<ul>
+					<li>address
+					<ul>
+						<li>A.B.C.D A.B.C.D
+						<li>dhcp
+						</li>
+					</ul>
+</ul>
+				<li><strong>ipv6</strong>
+				<ul>
+					<li>access-list [ WORD ] [ deny | permit ]
+					<ul>
+					<li> [ icmp | icmp6 | object-group WORD | tcp | udp ]
+											        	<ul>
+											        		<li> [A.B.C.D A.B.C.D  | any A.B.C.D | host A.B.C.D | object WORD A.B.C.D ]
+											        		<ul>
+											        			<li> [ echo | echo-reply | unreachable ]
+											        		</ul>
+						        	</ul>
+						        	</ul>
+					<li>route
+				</ul>
+				  <li> <strong>nameif</strong> [ WORD ]
+				  <li> <strong>security-level</strong> &lt;0-100&gt;
+				  <li> <strong>shutdown</strong>
+
+				</td>
+			</tr>
+		</table>
+
+
+		<p class="MainHeading2">Class-Map Configuration Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+				<li><strong>exit</strong>
+				<li><strong>match </strong>
+				<ul>
+					<li>access-list [ WORD ]
+					<li>any
+					<li>default-inspection-traffic
+				</ul>
+				</td>
+		  </tr>
+		</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<p class="MainHeading2">Group-policy Configuration Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded">
+				<ul>
+						<li><strong>exit</strong>
+						<li><strong>webvpn</strong>
+						<li><strong>vpn-tunnel-protocol ssl-clientless </strong>
+				</ul>
+				</td>
+			</tr>
+		</table>
+
+
+
+
+
+
+
+
+
+
+		<p class="MainHeading2">Object Configuration Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded">
+				<ul>
+						<li><strong>description</strong> [ LINE ]
+						<li><strong>host</strong> [ A.B.C.D | X:X:X:X::X ]
+						<li><strong>nat</strong> (  Open parenthesis for (&lt;internal_if_name&gt;,&lt;external_if_name&gt;) pair
+						<li><strong>subnet</strong> [ A.B.C.D A.B.C.D | X:X:X:X::X&lt;0-128&gt;]
+				</ul>
+				</td>
+			</tr>
+		</table>
+
+
+		<p class="MainHeading2">Object-group Configuration Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded">
+				<ul>
+						<li><strong>description</strong> [ LINE ]
+						<li><strong>port-object</strong>
+						<ul>
+							<li>eq [ domain | www | &lt;0-65535&gt; ]
+							<li>range [ &lt;0-65535&gt; ] [ &lt;0-65535&gt; ]
+							<li>
+						</ul>
+				</ul>
+				</td>
+			</tr>
+		</table>
+
+
+		<p class="MainHeading2">Webvpn Configuration Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded">
+				<ul>
+						<li><strong>enable</strong> password [ WORD ] [ encrypted | level &lt;1-15&gt; encrypted ]
+						<li><strong>exit</strong>
+				</ul>
+				</td>
+			</tr>
+		</table>
+
+		<p class="MainHeading2">Rommon Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+						<li>
+							<strong>address</strong> <em>addr</em>
+						<li>
+							<strong>boot</strong> <em>args</em>
+						<li>
+							<strong>clear</strong>
+						<li>
+							<strong>confreg</strong> <em>value</em>
+						<li>
+							<strong>dev</strong>
+						<li>
+							<strong>file</strong> <em>name</em>
+						<li>
+							<strong>gateway</strong> <em>addr</em>
+						<li>
+							<strong>help</strong>
+						<li>
+							<strong>history</strong>
+						<li>
+							<strong>interface</strong> <em>name</em>
+						<li>
+							<strong>reboot</strong>
+						<li>
+							<strong>reload</strong>
+						<li>
+							<strong>repeat</strong> <em>arg</em>
+						<li>
+							<strong>reset</strong>
+						<li>
+							<strong>server</strong> <em>addr</em>
+						<li>
+							<strong>set</strong>
+						<li>
+							<strong>show</strong> <em>cmd</em>
+						<li>
+							<strong>tftpdnld</strong>
+						<li>
+							<strong>unset</strong> <em>varname</em>
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Environment</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+	<p class="MainHeading1">Environment</p>
+	<hr>
+	<p>The intercity, city, buildings, wiring closets, and generic containers all have an environment. There are a couple dozen default environments, such as temperature, rain, water level, wind speed, and snow. When no devices are affecting the environment, their values are looped on a 24-hour cycle. For example, the sun will come up at 6am and set at 6pm. The ambient temperature will peak at 25°C at noon. This cycle is set on the intercity level and its ambient temperature range will propagate all the way down to the main wiring closet automatically. If a heater is added to the Corporate Office and turned on, the temperature inside the Corporate Office will increase along with all the containers within it. Note however, the heater does not heat up the parent container, Home City, it will only heat up the child containers. When the heater is turned off, the Corporate Office will eventually converge to the parent container's ambient temperature, Home City, based on its transference value. Different containers may have different levels of insulation and thus different transference values; the transference values determine the rate that the child container converges with the parent container and works the same way for all environment types. </p>
+
+<p>Many devices or Things affect or respond to the environment in some way. A Fire Sprinkler will raise the water level and humidity in a container. An old car will increase various gases and ambient temperature when turned on. A smoke detector can be used to trigger an alarm when the smoke in environment increases to a certain point. A full range of devices and things that respond and affect  the environment is listed below. </p>
+
+<p>&nbsp;</p>
+<p class="MainHeading2">Environment Dialog</p>
+<p>The Environment Dialog allows you to view and edit the environment inside the physical containers.
+</p>
+
+<img alt="Environment Dialog" src="images/environment_dialog.png">
+<p>&nbsp;</p>
+<p>To open the environment dialog, press the Environment button on the Logical or Realtime toolbars. </p>
+
+<p><strong>Location</strong>: The physical location of the container. You can change the location by selecting the drop-down or simply navigate Physical View.</p>
+
+<p><strong> Time</strong>: The current time. The environment time is decoupled from the network simulation time. This is a modelling limitation; typically the environment time moves much faster than the network time. On large networks, a modern computer may struggle to keep up with 2x realtime for the network simulation, while the default environment time is at 30x by default.</p>
+<p><strong>Environment Values Tree</strong>: At a glance view of environments that are set to show. You can filter the values to show only the environments you are interested in.</p>
+<p><strong>Chart</strong>: To view a chart of the environment, click on an environment name from the Environment Values Tree.</p>
+<ul>
+  <li><em>Name</em>: The name of the current environment. Only one chart can be shown at a time. </li>
+
+  <li><em>Data Ranges</em>: There are two ways to change the data range. The first is to use the Zoom levels, which ranges from 1 minute to 1 day. The second is to use the handle bars on the compressed chart view below the main chart. It is also possible to scrub the chart timeline by selecting and dragging the highlighted area on the compressed chart. </li>
+  
+  <li><em>Series</em>: Depending on the level, you may have four or five series: current, keyframe value, transference rate, things rate, and parent. Current refers to the current environment value. Transference rate is the rate of change contribution to the current environment. Keyframe value is the keyframes contribution to the current environment. Things rate is the total rate of change to the current environment from Things that affect the environment in the workspace container. If not in the Intercity, parent is the current value of the parent container. </li>
+  </ul>
+  
+ <img alt="Environment Dialog Graph" src="images/environment_dialog_graph.png">
+ <p>&nbsp;</p>
+ <p><strong>Always on Top</strong>: At the very bottom of the dialog, it is possible to set this dialog to be always on top.</p>
+ 
+<p>&nbsp;</p>
+<p class="MainHeading2">Environment Dialog Edit Mode</p>
+<p>To enter edit mode, click on the Edit button next to the location or environment values header. In Edit mode, you can change the timescale and create keyframes to manipulate how the environment should behave over a 24 hour cycle. </p>
+
+<img alt="Environment Dialog Edit Mode" src="images/environment_dialog_edit_mode.png">
+
+<p>&nbsp;</p>
+<p class="MainHeading2">Environment Dialog Edit Mode: Timescale</p>
+
+<p>The timescale determines how fast the simulation should evaluate time. Selecting 1 second is equal to 30 simulated minutes means that in one second of real time, 30 minutes would have passed in our simulation, two seconds would be an hour, and so on.</p>
+<p>The simulation evaluates the environment based on the timescale settings and interpolates in between. A rule of thumb is to set your timescale to the smallest value between keyframes. For example, if your smallest keyframe spacing is 15 minutes, your timescale should be 1 second in real time is equal to 15 simulated minutes.</p>
+<p>Recall that the environment time is decoupled from the network simulation time. This is a modelling limitation; typically the environment time moves much faster than the network time. On large networks, a modern computer may struggle to keep up with 2x realtime for the network simulation, while the default environment time is at 30x.</p>
+
+
+<p>&nbsp;</p>
+<p class="MainHeading2">Environment Dialog Edit Mode: Keyframe Graph</p>
+
+<p>Keyframes is one way to affect the environment. Transference to the parent and Things on the workspace also affects the current environment value. </p>
+<p>The graph is set to a 24 hour cycle from 00:00:00 to 23:59:59. During simulation, this keyframe graph will continuously loop. </p>
+<p>These are the ways that the environment keyframe graph can be manipulated:</p>
+<ul>
+  <li><em>Show and Hide an Environment</em>: In the legend, click on an environment name. Faded environment names are not shown on the graph, to show them, click on the name. To hide, click on the name again.</li>
+  <li><em>Add an Environment Keyframe</em>: Double-click anywhere on the line series of the Environment you want to change.</li>
+  <li><em>Remove an Environment Keyframe</em>: Double-click on the point you want to remove.</li>
+  <li><em>Edit an Environment Keyframe Value: </em>Mouse-over the point and change the Value in the tooltip. Press the Enter key to set the value.</li>
+  <li><em>Higher or Lower Bounds</em>: Drag a point off the graph either to the top or to the bottom to extend the y-axis of the graph.</li>
+  <li><em>Time Snap</em>: By default, the time axis snaps at every 60 minutes. This can be changed to 15 or 30 minute intervals. Finer controls can be made using the Advanced tab.</li>
+  <li><em>Value Snap</em>: By default, the values axis snaps at every 1 step. The range of values are from 0.001 to 100. Finer controls can be made using the Advanced tab.</li>
+</ul>
+
+<p>&nbsp;</p>
+<p class="MainHeading2">Environment Dialog Edit Mode: Advanced</p>
+<p>It is recommended that you use the keyframe graph to create the keyframes and then use Advanced mode to tweak the values. Keyframes created in the keyframe graph are available in this mode and are synchronized both ways. In this mode, you are able to edit the keyframes in a tree form with more capabilities. </p>
+<p><strong>Time Line</strong>: The time shown here is the keyframe time. If the time is changed to a time that does not contain a keyframe, the keyframe is considered NEW. After changing the environment values, the keyframe must be added for the values to be saved.</p>
+<p><strong>Keyframe Navigation</strong>: Click "Next" to go to the next keyframe, "Previous" to go to the previous keyframe.</p>
+<p><strong>Keyframes Adding and Removal</strong>: Click "Add Keyframe" to add a keyframe and "Remove" to remove a keyframe.</p>
+<p><strong>Defaults</strong>: Different physical container levels may have different default values for each environment. When importing those values, all existing keyframes and values are replaced. It is also possible to export and import your own values to use with other physical containers or other Packet Tracer saved files.</p>
+<p><strong>Notes</strong>: These notes can be used to describe the environment for the user or as notes for the author. To have the notes show up in the view mode, be sure to check the "Show Notes in View Mode" checkbox.</p>
+<p><strong>Environment Tree</strong>: There are a set of environment values for each keyframe. To activate an environment for the current keyframe, select the checkbox to the left of the environment name.</p>
+
+<img alt="Environment Dialog Edit Mode Environment Tree" src="images/environment_dialog_environment_tree.png">
+<ul>
+<li><em>Initial Value</em>: This is the starting value of the keyframe. When nothing else is affecting the environment and interpolate is checked, the previous value will interpolate to the initial value and the next value will interpolate from the initial value.</li>
+</ul>
+
+<p>The following, including the Advanced Settings, are global settings that apply to all keyframes when their values are updated:</p>
+<ul>
+<li><em>Transference</em>: A number from 0 to 100 that determines speed at which the current container converges with the parent container. This factor also takes into account the difference in values between the parent and child, so the higher the difference between the parent container and the current container, the higher the rate of convergence.</li>
+<li><em>Interpolate</em>: If active, the keyframe environment values are interpolated linearly. Otherwise, the keyframe environment values are discrete steps.</li>
+<li><em>Show</em>: If checked, the environment values will be shown in view mode. Note that an environment can contain keyframes (checkbox next to the environment name) and hidden in view mode.</li>
+</ul>
+<p>More Advanced Settings: to enable additional settings for the environment, select the "Advanced Settings" checkbox.</p>
+<img alt="Environment Dialog Edit Mode Advanced Settings" src="images/environment_dialog_advanced_settings.png">
+<ul>
+<li><em>Min Value</em>: The minimum value for the environment. This is the lowest value that the environment can be after all contributions from the keyframes, transference, and Things.</li>
+<li><em>Max Value</em>: The maximum value for the environment. This is the highest value that the environment can be after all contributions from the keyframes, transference, and Things.</li>
+<li><em>Min Rate</em>: The minimum rate of change (value/second) for transference. </li>
+<li><em>Max Rate</em>: The maximum rate of change (value/second) for transference. The rate of change for transference is determined by the difference between the parent and child. If the difference is very large the transference will also be very large and may have an undesired effect. This rate caps the maximum rate of transference.</li>
+<li><em>Manual Adjustment</em>: During testing, you may want to bump the environment value up or down. </li>
+</ul>
+
+
+<p>&nbsp;</p>
+<p class="MainHeading2">Environment Dialog Edit Mode: Custom Environments</p>
+
+<p>Custom environments allows you to create environments that are unique to your Packet Tracer file. When a custom environment is created, they only exist in the container that it was created in. You will have to recreate them for all other containers that you wish to have the custom environment. Custom environments work the same way as the built in environments. However, none of the Things will affect or respond to the custom environment and will have to be created.</p>
+
+<img alt="Environment Dialog Edit Mode Custom Environment" src="images/environment_dialog_custom_environment.png">
+
+<p><strong>Category</strong>: Select from a dozen or so categories that the custom environment should be in.</p>
+<p><strong>Environment ID</strong>: The ID is what Things use to reference this environment in programming.</p>
+<p><strong>Environment Display Name</strong>: The name is what's shown in the Environment Dialog.</p>
+<p><strong>Metric Unit</strong>: The unit in metric.</p>
+<p><strong>Imperial Unit</strong>: The unit in imperial.</p>
+<p><strong>Metric to Imperial Conversion Formula</strong>: The formula must contain x, which is the metric value.</p>
+<p><strong>Imperial to Metric Conversion Formula</strong>: The formula must contain x, which is the imperial value.</p>
+
+<p>&nbsp;</p>
+<p class="MainHeading2">Environment Dialog Edit Mode: Display Tools</p>
+
+<p><strong>Copy Show From Parent</strong>: For all keyframes, copy the show checkbox from the parents. This will merge the current shows with the parent.</p>
+<p><strong>Show Actives</strong>: Only show keyframes that are active for this keyframe.</p>
+<p><strong>Hide All</strong>: Uncheck all the show checkboxes for the keyframes. </p>
+
+<p>&nbsp;</p>
+<p class="MainHeading2">Things That Affect and Respond to the Environment</p>
+<p>Things can also affect or respond to the environment. The size of the physical container matters. If a heater is added at the city level, it will barely affect the city versus putting the container inside a building or a small room. All the rates of change specified below applies to a container that is 100000 cm3 in size.</p>
+<p>Below is a table of things and their behaviors with respect to the Environment:</p>
+<p>Note: Please refer to the Specifications tab of the device inside the Application for a description of its features, usage, controls, and examples.</p>
+
+
+
+<table class="tableModules">
+  <tr>
+    <td width="200" class="TDpadded"><em>Thing</em></td>
+    <td class="TDpadded"><em>Icon</em></td>
+    <td class="TDpadded"><em>Environment Behavior</em></td>
+  </tr>
+  <tr >
+    <td class="TDpaddedStrong">ATM Pressure Sensor</td>
+    <td class="TDpaddedCentered"><img alt="Atmospheric Pressure Sensor Icon" src="images/atm_pressure.png"></td>
+    <td class="TDpaddedTop">Detects the Atmospheric Pressure and displays it.<br>
+      <br>
+    The default detection range is from 0 to 110 kPa.      <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">Carbon Dioxide Detector</td>
+    <td class="TDpaddedCentered"><img alt="Carbon Dioxide Detector Icon" src="images/carbon_dioxide_icon.png"></td>
+    <td class="TDpaddedTop"> Detects Carbon Dioxide.</td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">Carbon Monoxide Detector</td>
+    <td class="TDpaddedCentered"><img alt="Carbon Monoxide Detector Icon" src="images/carbon_monoxide_icon.png"></td>
+    <td class="TDpaddedTop"> Detects Carbon Monoxide.</td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">Door</td>
+    <td class="TDpaddedCentered"><img alt="Door Icon" src="images/door_icon.png"></td>
+    <td class="TDpaddedTop"> Affects Argon, Carbon Monoxide, Carbon Dioxide, Hydrogen, Helium, Methane, Nitrogen, O2, Ozone, Propane, and Smoke. When the door is opened, those gases will decrease to a maximum of 2% in total change. <br>
+      <br>
+    When the door is opened, the rate of transference for Humidity and Temperature is increased by 25%. The rate of transference for gases is increased by 100%.</td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">Fan</td>
+    <td class="TDpaddedCentered"><img alt="Fan Icon" src="images/fan_icon.png"></td>
+    <td class="TDpaddedTop"> Affects Wind Speed, Humidity, and Ambient Temperature. <br>
+      <br>
+      At Low Speed Setting, the Wind Speed is set to 0.4 kph. The rate of cooling the Ambient Temperature is set to -1C/hour. The rate of reducing the Humidity is set to -1% per hour. <br>
+      <br>
+    At High Speed Setting, the Wind Speed is set to 0.8 kph. The rates of change for Ambient Temperature and Humidity is two times of the low setting. </td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">Fire Sprinkler, <br>
+    Ceiling Sprinkler</td>
+    <td class="TDpaddedCentered"><img alt="Fire Sprinkler Icon" src="images/fire_sprinkler_icon.png"><br><img alt="Ceiling Sprinkler Icon" src="images/ceiling_sprinkler_icon.png"></td>
+    <td class="TDpaddedTop">Affects Water Level at a rate of 0.1 cm per second.<br>
+      <br>
+    Affects Humidity at a rate of 5% per hour. </td>
+  </tr>        
+  <tr>
+    <td class="TDpaddedStrong">Garage Door</td>
+    <td class="TDpaddedCentered"><img alt="Garage Door Icon" src="images/garage_door_icon.png"></td>
+    <td class="TDpaddedTop">Affects Argon, Carbon Monoxide, Carbon Dioxide, Hydrogen, Helium, Methane, Nitrogen, O2, Ozone, Propane, and Smoke. When the door is opened, those gases will decrease to a maximum of 4% in total change. <br>
+      <br>
+    When the door is opened, the rate of transference for Humidity and Temperature is increased by 50%. The rate of transference for gases is increased by 100%. </td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">Home Speaker, <br>
+    Speaker</td>
+    <td class="TDpaddedCentered"><img alt="Home Speaker Icon" src="images/home_speaker_icon.png"><br><img alt="Speaker Icon" src="images/speaker_icon.png"></td>
+    <td class="TDpaddedTop">Affects Sound Volume at 65 dB.<br>
+      <br>
+      Affects Sound Pitch at 20 CPS to 60 CPS.<br>
+      <br>
+    Affects White Noise at 20%.</td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">Humidifier</td>
+    <td class="TDpaddedCentered"><img alt="Humidifier Icon" src="images/humidifier_icon.png"></td>
+    <td class="TDpaddedTop">Affects Humidity at a rate of 1% per hour. </td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">Humidity Sensor</td>
+    <td class="TDpaddedCentered"><img alt="Humidity Sensor Icon" src="images/humidity_sensor_icon.png"></td>
+    <td class="TDpaddedTop">Detects Humidity. </td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">Humiture Monitor,<br>
+    Humiture Sensor</td>
+    <td class="TDpaddedCentered"><img alt="Humiture Monitor Icon" src="images/humiture_icon.png"><br><img alt="Humiture Sensor Icon" src="images/humiture_sensor_icon.png"></td>
+    <td class="TDpaddedTop">Detects Ambient Temperature and Humidity and outputs the value as a sum of the Ambient Temperature and Humidity divided by 2. </td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">Lawn Sprinkler,<br>
+    Floor Sprinkler</td>
+    <td class="TDpaddedCentered"><img alt="Lawn Sprinkler Icon" src="images/lawn_sprinkler_icon.png"><br><img alt="Floor Sprinkler Icon" src="images/floor_sprinkler_icon.png"></td>
+    <td class="TDpaddedTop">Affects Water Level at a rate of 0.1 cm per second.<br>
+      <br>
+    Affects Humidity at a rate of 5% per hour. </td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">LED</td>
+    <td class="TDpaddedCentered"><img alt="LED Icon" src="images/led_icon.png"></td>
+    <td class="TDpaddedTop">Affects Visible Light with a maximum output of 1%.</td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">Light</td>
+    <td class="TDpaddedCentered"><img alt="Light Icon" src="images/light_icon.png"></td>
+    <td class="TDpaddedTop">Affects Visible Light with a maximum output of 20%. </td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">Old Car</td>
+    <td class="TDpaddedCentered"><img alt="Old Car Icon" src="images/oldcar_icon.png"></td>
+    <td class="TDpaddedTop">Affects Carbon Monoxide at a rate of 1% per hour.<br>
+      <br>
+      Affects Carbon Dioxide at a rate of 2% per hour.<br>
+      <br>
+      Affects Smoke at a rate of 3% per hour.<br>
+      <br>
+    Affects Ambient Temperature at a rate of 1% per hour. </td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">Photo Sensor</td>
+    <td class="TDpaddedCentered"><img alt="Photo Sensor Icon" src="images/photo_sensor_icon.png"></td>
+    <td class="TDpaddedTop">Detects Visible Light. </td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">Piezo Speaker</td>
+    <td class="TDpaddedCentered"><img alt="Piezo Speaker Icon" src="images/piezo_speaker_icon.png"></td>
+    <td class="TDpaddedTop"> Affects Sound Volume at 10 dB.<br>
+      <br>
+    Affects Sound Pitch 20 CPS. </td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">RGB LED</td>
+    <td class="TDpaddedCentered"><img alt="RGB LED Icon" src="images/rgb_led_icon.png"></td>
+    <td class="TDpaddedTop"> Affects Visible Light with a maximum output of 2%. </td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">Smart LED,<br>
+    Dimmable LED</td>
+    <td class="TDpaddedCentered"><img alt="Smart LED Icon" src="images/smart_led_icon.png"><br><img alt="Dimmable LED Icon" src="images/dimmable_led_icon.png"></td>
+    <td class="TDpaddedTop">Affects Visible Light with a maximum output of 3%. </td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">Smoke Detector,<br>
+Smoke Sensor</td>
+    <td class="TDpaddedCentered"><img alt="Smoke Detector Icon" src="images/smoke_detector_icon.png"><br><img alt="Smoke Sensor Icon" src="images/smoke_sensor_icon.png"></td>
+    <td class="TDpaddedTop">Detects Smoke.</td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">Solar Panel</td>
+    <td class="TDpaddedCentered"><img alt="Solar Panel Icon" src="images/solar_panel_icon.png"></td>
+    <td class="TDpaddedTop"> Detects Sunlight to generate electricity. </td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">Temperature Monitor</td>
+    <td class="TDpaddedCentered"><img alt="Temperature Monitor Icon" src="images/temperature_monitor_icon.png"></td>
+    <td class="TDpaddedTop"> Detects Ambient Temperature. </td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">Temperature Sensor</td>
+    <td class="TDpaddedCentered"><img alt="Temperature Sensor Icon" src="images/temperature_sensor_icon.png"></td>
+    <td class="TDpaddedTop"> Detects Ambient Temperature.</td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">Water Level Monitor,<br>
+    Water Detector </td>
+    <td class="TDpaddedCentered"><img alt="Water Level Monitor Icon" src="images/water_detector_icon.png"><br><img alt="Water Level Sensor Icon" src="images/water_sensor_icon.png"></td>
+    <td class="TDpaddedTop"> Detects Water Level. </td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">Wind Sensor</td>
+    <td class="TDpaddedCentered"><img alt="Wind Sensor Icon" src="images/wind_sensor_icon.png"></td>
+    <td class="TDpaddedTop"> Detects Wind Speed.</td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">Wind Turbine</td>
+    <td class="TDpaddedCentered"><img alt="Wind Turbine Icon" src="images/wind_turbine_icon.png"></td>
+    <td class="TDpaddedTop"> Detects Wind Speed to generate electricity.</td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">Window</td>
+    <td class="TDpaddedCentered"><img alt="Window Icon" src="images/window_icon.png"></td>
+    <td class="TDpaddedTop">Affects Argon, Carbon Monoxide, Carbon Dioxide, Hydrogen, Helium, Methane, Nitrogen, O2, Ozone, Propane, and Smoke. When the door is opened, those gases will decrease to a maximum of 1% in total change. <br>
+      <br>
+    When the door is opened, the rate of transference for Humidity and Temperature is increased by 20%. The rate of transference for gases is increased by 100%.</td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">Drain Actuator</td>
+    <td class="TDpaddedCentered"><img alt="Water Drain Icon" src="images/water_drain_icon.png"></td>
+    <td class="TDpaddedTop"> Affects Water Level at a rate of -0.5 cm per second. </td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">Sound Frequency Detector </td>
+    <td class="TDpaddedCentered"><img alt="Sound Frequency Icon" src="images/sound_frequency_icon.png"></td>
+    <td class="TDpaddedTop"> Detects Sound Pitch and displays it.</td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">Furnace, <br>
+    Heating Element</td>
+    <td class="TDpaddedCentered"><img alt="Furnance Icon" src="images/furnace_icon.png"><br><img alt="Heating Element Icon" src="images/heating_element_icon.png"></td>
+    <td class="TDpaddedTop"> Affects Humidity at a rate of -2% per hour.<br>
+      <br>
+    Affects Ambient Temperature at a rate of 10°C per hour. </td>
+  </tr>
+  <tr>
+    <td class="TDpaddedStrong">AC, <br>
+    Air Cooler</td>
+    <td class="TDpaddedCentered"><img alt="Air Conditioner Icon" src="images/ac_icon.png"><br><img alt="Air Cooler Icon" src="images/air_cooler_icon.png"></td>
+    <td class="TDpaddedTop"> Affects Humidity at a rate of -2% per hour.<br>
+      <br>
+    Affects Ambient Temperature at a rate of -10°C per hour. </td>
+  </tr>                                                
+</table>
+</body>
+</html>

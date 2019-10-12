@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Script Modules</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+
+<p class="MainHeading1">Script Modules - Script Engine</p>
+<hr>
+
+<p>Each Script Module has one instance of a Qt Script Engine.  A Script Module can contain multiple script files written in ECMAScript language (JavaScript).  When the Script Module starts, all script files are executed (evaluated) in the Script Engine in the same order as listed in the Scripting Interface.  As long as the Script Module is running, the Script Engine is running.  Script Module logics should be coded in these files.</p>
+<p>When the Script Module starts, it will call the <strong>main()</strong> function defined in the Script Engine.  Setup code for this Script Module should be placed in this function, such as adding menu items, registering for events, launching extra web views, locking GUI, etc.</p>
+<p>When the Script Module stops, it will call the <strong>cleanUp()</strong> function defined in the Script Engine.  Clean-up code should be placed here, such as removing menu items, unregistering for events, closing any web view created by this Script Module, unlocking GUI locked by this Script Module, etc.</p>
+<p>Changes made to the Script Engine after it has started DO NOT take effect until it has been stopped and started again.  The Run File button in the Scripting Interface can be used to make changes to the Script Engine during run-time as described in a previous section.</p>
+<p>The Script Engine has access to the IPC and to custom interfaces in web views as described in later sections.</p>
+<p>&nbsp;</p>
+
+<p class="MainHeading2">IPC Access</p>
+<p>A main part of the Packet Tracer model is the PT engine and GUI.  They can be accessed via IPC calls the same way ExApps can access them.  Although they are not considered IPC calls since Script Modules are in the same process as PT, we will still use the term IPC to refer to the API that PT exposes.  Each Script Module has a set of security privileges that it requests before it can make any IPC calls to PT.</p>
+<p>The complete IPC API reference is located at the <a href="http://community.netacad.net/web/packet-tracer/files/-/document_library/view/226649">Packet Tracer Community</a>. They are declared in <strong>.pki</strong> files. Each file contains the declaration of an interface, data, or PDU. An interface is a class that associates to a PT core object that the Script Module can manipulate (make calls and receive events).  Data is a data structure that is returned to the Script Module.  Once returned, the data does not associate to any object in PT core.  A PDU is a special type of data that describes a frame, packet, or other PDU types that PT simulates.</p>
+<p>IPC calls can be made from the Script Engine or in web views.  The main IPC object is <strong>ipc</strong>, which is the same as the <strong>IPCFrameWork</strong> in C++ IPC Framework, or the <strong>IPC</strong> interface in <strong>CMainParser.pki</strong>.</p>
+
+<p class="MainHeading3">Direct IPC calls</p>
+<p>Now with better integration, we can do:</p>
+<table class="tableCode">
+  <tr>
+    <td class="TDtableCode">var ip = ipc.network().getDevice(deviceName).getPort(portName).getIpAddress();
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p class="MainHeading3">Object Manipulation</p>
+<p>We can also assign objects to variables, IPC calls return objects, and pass objects as arguments into IPC calls:</p>
+<table class="tableCode">
+  <tr>
+    <td class="TDtableCode"><pre>var device = ipc.network().getDevice(deviceName);
+var port = device.getPort("FastEthernet0/0");
+port.setPower(true);
+port.setIpSubnetMask(ip1, mask1);
+...
+var otherPort = port.getLink().getOtherPortConnectedTo(port);
+otherPort.setPower(true);
+otherPort.setIpSubnetMask(ip2, mask2);</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p class="MainHeading3">Events</p>
+<p>Events use the same process as in ExApps.  If the Script Module wants to be notified when an event in PT core happens, register to it first.  But with Script Module, events are handled easier and more directly:</p>
+<table class="tableCode">
+  <tr>
+    <td class="TDtableCode"><pre>// register an event to callback a method of an object
+port.registerEvent("ipChanged", obj, obj.callbackFunc);
+
+// register an event to callback a global function
+port.registerEvent("powerChanged", null, globalFunc);</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>The callback function should always have the same function prototype:</p>
+<table class="tableCode">
+  <tr>
+    <td class="TDtableCode"><pre>callbackFunc = function(src, args) { ... }</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>The <strong>src</strong> argument is always an object that has three members: <strong>className</strong>, <strong>objectUuid</strong>, and <strong>eventName</strong>.  They describe the source of the event.  The <strong>args</strong> argument is an object, but depending on the event, it would have different members.  The members are the variable names in the pki event definition.</p>
+<p>For example, the IpChanged event for HostPort.pki</p>
+<table class="tableCode">
+  <tr>
+    <td class="TDtableCode"><pre>event: ipChanged(ip newIp, ip newMask, ip oldIp, ip oldMask) - PrivGetNetwork;</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>In the Script Module callback function:</p>
+<table border=1><tbody>
+<tr>
+<th> Argument and members </th>
+<th> Values  </th>
+</tr>
+<tr>
+<td> src.className </td>
+<td>"HostPort"</td>
+</tr>
+<tr>
+<td> src.objectUuid </td>
+<td>port's object UUID</td>
+</tr>
+<tr>
+<td> src.eventName </td>
+<td>"ipChanged"</td>
+</tr>
+<tr>
+<td> args.newIp </td>
+<td>port's new IP</td>
+</tr>
+<tr>
+<td> args.newMask </td>
+<td>port's new subnet mask</td>
+</tr>
+<tr>
+<td> args.oldIp </td>
+<td>port's old IP</td>
+</tr>
+<tr>
+<td> args.oldMask </td>
+<td>port's old subnet mask</td>
+</tr>
+</table>
+<p>&nbsp;</p>
+
+<p class="MainHeading3">Delegates</p>
+<p>A new type of communication is also added to the IPC just for Script Modules -- delegates.  When there is functionality that PT wants Script Modules to implement or supply, it will send that request to its delegates.  Delegates are like events, except they return values back to the one sending it.
+They are added in pki files:</p>
+<table class="tableCode">
+  <tr>
+    <td class="TDtableCode"><pre>delegate#one: bool processData(QString data, ip srcIp, int srcPort) - PrivChangeNetwork;
+
+delegate#all: string getCustomInfo(Device device) - PrivMiscGui;</pre>
+    </td>
+  </tr>
+</table>
+<p></p>
+<p>The <strong>delegate#one</strong> means the delegating source expects only one delegate and it will only execute and take the return value of the first delegate registered to it.  The <strong>delegate#all</strong> means the delegating source will execute and take the return values of all delegates registered to it.  The delegating source will define how the returned value of all delegates will be used in the delegate definition in pki file.</p>
+<p>In Script Modules, registering for them is similar to registering for events.  However, the callback functions need to return the same type as what the delegate definition expects.</p>
+<table class="tableCode">
+  <tr>
+    <td class="TDtableCode"><pre>var process = ....;
+process.registerDelegate("processData", this, this.callbackFunc);
+
+var quickDeviceInfo = ....;
+quickDeviceInfo.registerDelegate("getCustomInfo", null, globalFunc);</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>With delegates, we are able to extend PT functionality in the core, such as adding new protocols, reacting to GUI events, and suppressing default behavior (future feature).</p>
+<p>&nbsp;</p>
+
+<p class="MainHeading3">Event and Delegate Limitations</p>
+<p>There is one limitation to the events and delegates -- the registering and callback functions must be in the script engine, they cannot be in web views.  This is intended as web views are not as persistent as the script engine, and it breaks the MVC design pattern.</p>
+<p>&nbsp;</p>
+
+<p class="MainHeading3">Messages</p>
+<p>Script Modules and ExApps can send messages to other Script Modules and other ExApps.  These IPC calls use the Script Module or ExApp ID as the destination.</p>
+<table class="tableCode">
+  <tr>
+    <td class="TDtableCode"><pre>// send message to Script Module or ExApps with specified ID
+ipc.ipcManager().sendMessageTo("com.yourcompany.stpTree", "message");
+
+// send message to Script Module or ExApp with specified ID and instance ID
+ipc.ipcManager().sendMessageToInstance("{12345678-....}", "message");
+
+// send message to all Script Modules and ExApps
+ipc.ipcManager().sendMessageToAll("message");</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>Script Modules cannot run multiple instances like ExApps do, and so the <strong>sendMessageToInstance()</strong> call is not intended for Script Modules.</p>
+<p>In order to receive messages, the Script Module needs to register to the <strong>messageReceived</strong> event.</p>
+<table class="tableCode">
+  <tr>
+    <td class="TDtableCode"><pre>ipc.ipcManager().thisInstance().registerEvent("messageReceived", null, onMessage);
+
+onMessage = function(src, args)
+{
+    doSomething(args.msg);
+}</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+</body>
+</html>

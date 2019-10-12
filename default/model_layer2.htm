@@ -1,0 +1,880 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Layer 2 Models</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+		<p class="MainHeading1">Layer 2 Models</p>
+		<hr>
+		<p class="MainHeading2">How switches process incoming frames</p>
+		<p class="myList">When a switch receives a frame (<a href="flowcharts/SwitchReceive.jpg" target="_blank">flowchart</a>
+			here):</p>
+		<p class="myList">&nbsp;</p>
+		<ul>
+			<li>
+				It compares the receiving port's type (trunk or access) to the frame's format.
+				<ul>
+					<li>
+						It drops the frame if (any):
+						<ul>
+							<li>
+							The port is an access port while the frame has a Dot1q encapsulation format.
+							<li>
+								The port is a trunk port and the frame is not a Dot1q frame.</li>
+						</ul>
+					<li>
+						Otherwise, continue to process the frame.</li>
+				</ul>
+			<li>
+			It drops the frame if the receiving port is a blocking port and the frame is not an STP
+			frame.
+<li>
+				It determines which VLAN the frame is destined.
+				<ul>
+					<li>
+						If the receiving port is a trunk (and so the frame is a Dot1q frame):
+						<ul>
+							<li>
+							It gets the frame's destination VLAN number from the VLAN tag in the Dot1q
+							header.
+							<li>
+								It checks if the switch itself has that particular VLAN configured.
+								  <ul>
+									<li>
+										If that VLAN is configured, it refers to that VLAN's MAC table:
+										<ul>
+											<li>
+											If the frame's source MAC address is in the MAC table, it resets the entry's
+											timer.
+											<li>
+												If not, it creates a new MAC entry in the table and starts a timer for it. When
+												the timer expires (5 min), it removes the entry.</li>
+										</ul>
+									<li>
+										If that VLAN is not configured, the switch broadcasts the frame to all trunk
+										ports (except the receiving port) that allow that VLAN number.</li>
+								</ul>
+							</li>
+						</ul>
+					<li>
+						If the receiving port is an access VLAN (the frame is destined for that VLAN),
+						it continues to process it. It sends it to a higher process if (any):
+						<ul>
+							<li>
+							The frame is an STP frame.
+						  <li>
+							The frame's destination MAC address is a CDP multicast address.
+							<li>
+							The frame's destination MAC address is a broadcast MAC address.
+							<li>
+								The frame's destination MAC address matches the active VLAN interface's MAC
+								address.</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<p class="myList">&nbsp;</p>
+		<p class="MainHeading2">How switches send frames</p>
+		<p class="myList">When a switch wants to send a frame (<a href="flowcharts/SwitchSend.jpg" target="_blank">flowchart</a>
+			here):</p>
+		<p class="myList">&nbsp;</p>
+		<ul>
+			<li>
+				If the frame came from a higher-level process:
+				<ul>
+					<li>
+						It checks if the outgoing port is up.
+						<ul>
+							<li>
+							If outgoing port is up, send the frame out.
+							<li>
+								If outgoing port is not up:
+								<ul>
+									<li>
+									It tries to find the active VLAN interface that is up, and then sends it out
+									that interface.
+									<li>
+										If it cannot find such an interface, it finds the first VLAN that is allowed in
+										the trunk that is configured on the switch.
+										<ul>
+											<li>
+											If it can find such an interface, it encapsulates the frame with a Dot1q header
+											with that VLAN number tag and sends it out to the trunk.
+											<li>
+												If no such trunk is configured, it drops the frame.</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			<li>
+				If the frame came from a same-level process:
+				<ul>
+					<li>
+						If the outgoing port is not up (not configured), it drops the frame. Otherwise,
+						it continues the process</li>
+				</ul>
+			<li>
+				It checks if the frame's destination MAC address is a unicast. If so:
+				<ul>
+					<li>
+					If the outgoing port is the same as the incoming port, it drops the frame.
+					<li>
+						If the outgoing port is not the incoming port:
+						<ul>
+							<li>
+								If the outgoing port is a trunk port:
+								<ul>
+									<li>
+										If the frame is a Dot1q frame:
+										<ul>
+											<li>
+											If the trunk port allows the tag in the frame, it sends the frame.
+											<li>
+												If the trunk port does not allow the frame's tag, it drops the frame.</li>
+										</ul>
+									<li>
+										If the frame is not a Dot1q frame:
+										<ul>
+											<li>
+												If the trunk port allows the VLAN that the frame is destined for:
+												<ul>
+													<li>
+														The switch encapsulates the Ethernet frame with a Dot1q header and sends it out
+														the trunk port.</li>
+												</ul>
+											<li>
+												If the trunk port does not allow the VLAN that the frame is destined for, it
+												drops the frame.</li>
+										</ul>
+									</li>
+								</ul>
+							<li>
+								If the outgoing port is an access port:
+								<ul>
+									<li>
+										If the frame is a Dot1q frame:
+										<ul>
+											<li>
+											If the frame's tag is the same as the port's VLAN, it de-encapsulates the frame
+											(to an Ethernet frame) and sends it out.
+											<li>
+												If the frame's destination tag is different from the port's VLAN number, it
+												drops the frame.</li>
+										</ul>
+									<li>
+										If the frame is a regular Ethernet frame:
+										<ul>
+											<li>
+												If the receiving port's VLAN is the same as the outgoing port's VLAN, it
+												forwards the frame.</li>
+										</ul>
+									<li>
+										If not, it drops the frame.</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			<li>
+				If the frame's destination MAC address is a multicast address:
+				<ul>
+					<li>
+						For each and every port (trunk and access):
+						<ul>
+							<li>
+							It checks if the destination VLAN is allowed in that port. If so, it sends the
+							frame out that port with the appropriate format (see the unicast frame sending
+							logic).
+							<li>
+								If the destination VLAN is not allowed, or if the port is the same as the
+								receiving port, the switch will not forward the frame out that port.</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<p class="myList">&nbsp;</p>
+		<p class="MainHeading2">How CSMA/CD is modeled</p>
+		<p class="myList">Packet Tracer models only certain aspects of the CSMA/CD
+			process.</p>
+		<p class="myList">&nbsp;</p>
+		<ul>
+			<li>
+			Packet Tracer does not implement the process where each station
+			continuously senses the channel.
+			<li>
+			The program assumes that if a jam signal is not received, the medium is
+			available for transmission.
+			<li>
+			The program does not fragment a CPDU. Therefore, the Ethernet process only has
+			to remember the previous PDU in the case of retransmission due to collision.
+			<li>
+				The program does not implement the propagation time <strong>t</strong> from one
+				end of a medium to the other. This forces all frames to take 2<strong>t</strong>
+			to send.
+			<li>
+				The program implements the binary exponential back-off algorithm (IEEE 802.3):
+				  <ul>
+					<li>
+					In the first collision, each station chooses either the 0 or the 1 slot time.
+					<li>
+					In the event of a second collision, each station picks from four possible slot
+					times: 0, 1, 2, 3.
+					<li>
+					In the event of a third collision, each station randomly chooses a slot time
+					from 0 to (2^3 - 1), or 0 to 7.
+					<li>
+						In the event of further collisions (from the 4th to the 15th collision), each
+						station randomly chooses a slot time from 0 to (2^<strong>i</strong> - 1),
+						where <strong>i</strong>
+					is the number of collisions.
+					<li>
+						The frame is discarded after the 16th retry</li>
+				</ul>
+			</li>
+		</ul>
+		<P class="myList">&nbsp;</P>
+		<p class="MainHeading2">How switches utilize Spanning Tree Protocol (STP)</p>
+		<ul>
+			<li>
+			The STP is a technology that allows switches and bridges to communicate with
+			each other to prevent loops in the network.
+			<li>
+			When a switch/bridge is added to a network, it sends out Bridge Protocol Data
+			Units (BPDU) announcing itself as root.
+			<li>
+			If the switch/bridge has the lowest ID, it becomes the root.
+			<li>
+			The root marks its ports as designated ports.
+			<li>
+			Non-root switches/bridges mark the port closest to the root as root port.
+			Every non-root switch/bridge will select one root port.
+			<li>
+				Each segment of the network will elect one designated port:
+				  <ul>
+					<li>
+					If the port has the lowest root ID, it becomes the designated port.
+					<li>
+					If the port has the lowest path cost to the root, it becomes the designated
+					port.
+				  <li>
+					If the port has the lowest send ID, it becomes the designated port.
+					<li>
+						If the port has the lowest port ID, it becomes the designated port.</li>
+				</ul>
+		  <li>Ports not marked as root or designated are marked as blocked. Additionally, in RSTP mode, if a port on a switch is connected to the switch itself, it is marked as a backup port, otherwise it is marked as an alternate port.</li>
+		    <li>The root bridge in the STP will periodically send BPDUs out while non root bridges will forward these frames when it is received.</li>
+		    <li>In the RSTP, all bridges periodically send BPDUs out with their current information.</li>
+		</ul>
+<p class="myList">When a switch receives a STP frame (<a href="flowcharts/SwitchReceiveSTPFrame.jpg" target="_blank">flowchart</a>
+			here):</p>
+		<p class="myList">&nbsp;</p>
+		<UL>
+			<li>
+			If STP is disabled on that port, it drops the frame.
+			<li>If the switch is running the RSTP, it starts the migration delay timer.
+			  <ul>
+			    <li>If the migration delay has expired, change the port to run in the STP mode.                        </li>
+	        </ul>
+			<LI>
+				STP checks the frame type.
+				  <UL>
+					<li>
+						If the frame type is configuration BPDU:
+						  <ul>
+							<li>
+							If the frame does not contain superior information, the switch drops the frame.
+							The information is superior if it contains lower root ID, lower root path cost,
+							lower bridge ID, or lower port ID.
+							<li>
+							Records the superior information and selects new root bridge and designated
+							port if necessary. If the device was the root, sends a TCN BPDU through the
+							root port.
+							<li>
+								If the BPDU is received on the root port, forward the frame out through
+								designated ports.</li>
+						</ul>
+					<LI>
+						If the frame type is Topology Change Notification (TCN) BPDU:
+						<UL>
+							<li>
+							If the frame is received on a non-designated port, the switch drops the frame.
+							<li>
+							If the device is the root, the switch sets topology change flag to true in the
+							BPDU.
+							<li>
+								If the device is not the root, the switch forward the frame out through root
+								port.</li></UL>
+					</LI>
+				</UL>
+			</LI>
+		</UL>
+	<P>When a switch receives a RSTP frame (<a href="flowcharts/SwitchReceiveRSTPFrame.jpg" target="_blank">flowchart</a>
+	here):</P>
+		<ul>
+		  <li> If the switch is running the STP, it drops the frame.</li>
+          <li>If the frame is an agreement frame, set the port to forwarding state and make it designated.</li>
+	      <li>If the frame contains superior information:
+            <ul>
+              <li> If the port has root guard enabled, block this port and mark it as inconsistent.</li>
+              <li>Otherwise:
+                <ul>
+                  <li>If the frame is from myself, block this port and mark it as a backup port.</li>
+                  <li>Otherwise	make the received port the new root port and block all other non edge ports.
+                    <ul>
+                      <li>Send out a reply with the same information as the received BPDU but with the agreement flag set.</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+	      </li>
+	      <li>If the frame contains inferior information:
+	        <ul>
+	          <li>If the information is from our root port, check for a better root port.</li>
+              <li>Otherwise:
+                <ul>
+                  <li>If my root path cost is lower than the received root path cost, set my port to be designated forwarding.</li>
+                  <li>If my root path costs are the same:
+                    <ul>
+                      <li>If my bridge ID is lower than the received bridge ID, set my port to be designated forwarding.</li>
+                      <li>If my bridge ID is the same as the received bridge ID:
+                        <ul>
+                          <li>If my port ID is lower than the received port ID, set my port to be designated forwarding.</li>
+                          <li>If my port ID is higher than the received port ID, set my port to be backup blocking.</li>
+                        </ul>
+                      </li>
+                      <li>Otherwise set my port to be alternate blocking.</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+	      </li>
+    </ul>
+<p>
+        </p>
+	<P class="MainHeading2">How port security works</P>
+		<P class="myList">When switch receives a frame (<A href="flowcharts/SwitchReceiveFramePortSecurity.jpg" target=_blank>flowchart</A> here):
+		</P>
+<UL>
+			<LI>If port security is on and the receiving port is not in dynamic mode port security
+			processes the frame.</LI>
+				<UL>
+					<LI>It sets the last source MAC address and VLAN on the port from the received frame information.</LI>
+					<LI>If any Mac entry exists with the same source MAC address:</LI>
+						<UL>
+							<LI>If the interface of the MAC entry is the same as the receiving interface and same VLAN as the receiving interface, the frame passes port security.</LI>
+							<LI>
+								Otherwise
+								<UL>
+									<LI>
+										If the MAC entry is a dynamic entry then removes the dynamic entry and:
+										<UL>
+											<LI>
+											If the maximum allowed secure MAC addresses is reached it drops the frame and
+											goes to the violation mode.
+											<LI>
+												If the maximum allowed secure MAC addresses is not reached the frame passes the
+												port security process.</LI>
+										</UL>
+									<LI>
+										If the MAC entry is a static entry  then it applies the violation mode
+										because another port in the same VLAN has the same static MAC address.</LI></UL>
+							</LI>
+						</UL>
+					<LI>If MAC entry with the same source MAC does not exist:</LI>
+						<UL>
+							<LI>If the maximum allowed secure MAC addresses is reached, drops the frame</LI>
+							<LI>Otherwise frame passes the port security process.</LI>
+				  </UL>
+  </UL>
+	</UL>
+		<P class="myList">If the frame passes the security process and the sticky MAC
+			address is on, on the received interface, the MAC entry gets added to the MAC
+			table as a static entry.</P>
+		<P class="myList">&nbsp;</P>
+		<P class="myList">A switch port can be configured with secure MAC addresses even if
+			the port's line protocol is down.
+		</P>
+		<P class="myList">When the port's line protocol changes from down to up, if there is
+			a list of secure MAC addresses for the port waiting to be added to the MAC
+			table, the port security checks the MAC entries with the same VLAN
+			address as the current port.</P>
+		<P class="myList">&nbsp;</P>
+		<UL>
+			<LI>
+				<P class="myList">If there is the same MAC address on the current&nbsp;port which is
+					an sticky MAC, port security deletes the secure MAC from the list and does not
+					add it to the MAC table.
+				</P>
+			<LI>
+				<P class="myList">If the MAC address does not exist in the MAC table, then it adds a
+					MAC entry for that secure MAC to the MAC table.
+				</P>
+			</LI>
+		</UL>
+		<P class="MainHeading2">&nbsp;</P>
+		<P class="MainHeading2">How DTP decides on the mode of the port</P>
+		<P class="myList">DTP has the responsibility of setting switch port's modes.</P>
+		<P class="myList">Each switch port sends a DTP frame out about its administration mode and
+		operation mode on a regular basis</P>
+		<UL>
+			<LI>If the port is configured with dynamic administrative mode and nonegotiate is not on.</LI>
+		</UL>
+		<P class="myList">When the switch port on the other side of the link receives the DTP update it (<A href="flowcharts/SwitchPortReceiveDTPUpdate.jpg" target=_blank>flowchart</A> here):</P>
+		<p class="myList">&nbsp;</p>
+		<UL>
+			<LI>If there is a VTP domain name mismatch it drops the frame</LI>
+			<LI>If the port is configured to be in access or trunk administrative mode it drops the frame.</LI>
+			<LI>If the port is dynamic and is not in the nonegotiate state it processes the frame.</LI>
+				<UL>
+					<LI>If the same MAC entry (with the same source MAC address as the received frame) exists on the receiving port then restart the timer for that entry.</LI>
+						<UL>
+							<LI>DTP process updates the port's operational mode based on the received DTP port status.</LI>
+						</UL>
+					<LI>Otherwise it adds a new MAC entry to the MAC table and sets a timer for it.</LI>
+						<UL>
+							<LI>DTP process updates the port's operational mode based on the received DTP port status.</LI>
+				  </UL>
+		  </UL>
+	</UL>
+		<P class="myList">To update the port operational mode DTP (<A href="flowcharts/UpdatePortOperationalModeDTP.jpg" target=_blank>flowchart</A> here):</P>
+		<p class="myList">&nbsp;</p>
+	<UL>
+			<LI>If the number of neighbors on that port which are sending DTP frames is more than one or is equal to zero</LI>
+				<UL>
+					<LI>Change the operational mode of the receiving port to static access.</LI>
+				</UL>
+			<LI>If the number of neighbors is equal to 1</LI>
+			<UL>
+				<LI>If local port's administrative mode is dynamic auto</LI>
+					<UL>
+						<LI>If remote neighbor's port is in the administrative mode of desirable or trunk set the operation mode of local port to trunk. Otherwise, set operation mode to static access.</LI>
+					</UL>
+				<LI>If local port's administrative mode is dynamic desirable</LI>
+					<UL>
+						<LI>If remote neighbor's port is in administrative mode of desirable or trunk or auto set the operation mode of local port to trunk. Otherwise, set operation mode to static access.</LI>
+					</UL>
+				<LI>If the local port's administrative mode is access then drop the frame and do not process any DTP frames.</LI>
+			</UL>
+		</UL>
+		<P class="MainHeading2">&nbsp;</P>
+		<P class="MainHeading2">How switches processing incoming VTP frames</P>
+		<P class="myList">When a switch receives a VTP frame (<A href="flowcharts/SwitchReceiveVTP.jpg" target="_blank">flowchart</A>
+			here):</P>
+		<P class="myList">&nbsp;</P>
+		<UL>
+			<LI>
+				If the switch is in VTP Transparent mode:
+				<UL>
+					<LI>
+						Forwards VTP frame to all other trunk ports</LI></UL>
+			<LI>
+				If the VTP frame is an Advertisement Request frame:
+				<UL>
+					<LI>
+					If the domain name on the VTP frame does not match the switch's, then drop the
+					frame and stop.
+					<LI>
+					Send out a Summary Advertisement frame.
+					<LI>
+						Send out a Subset Advertisement frame.</LI></UL>
+			<LI>
+				If the VTP frame is a Summary Advertisement frame:
+				<UL>
+					<LI>
+					If the switch's domain name is set and the one in the VTP frame is different,
+					then drop the frame and stop.
+					<LI>
+					If the switch's domain name is not set, then set the domain name to be the one
+					in the VTP frame, and recalculate MD5.
+					<LI>
+					If the MD5 in the VTP frame does not match the on the switch, then drop the
+					frame and stop.
+					<LI>
+					If the version is different, then take the one in the VTP frame.
+					<LI>
+						If the config revision in the VTP frame is smaller than the one on the switch:
+						<UL>
+							<LI>
+								Send out a Summary Advertisement frame</LI></UL>
+					<LI>
+						If the config revision in the VTP frame is larger than the one on the switch:
+						<UL>
+							<LI>
+								If the followers field is 0:
+								<UL>
+									<LI>
+										Send out an Advertisement Request frame</LI></UL>
+							<LI>
+								Wait for the Subset Advertisement frames</LI></UL>
+					<LI>
+						If the config revision in the VTP frame is the same as the one on the switch:
+						<UL>
+							<LI>
+								Drop the frame</LI></UL>
+					</LI>
+				</UL>
+			<LI>
+				If the VTP frame is a Subset Advertisement frame:
+				<UL>
+					<LI>
+					If the domain name on the VTP frame does not match the switch's, then drop the
+					frame and stop.
+					<LI>
+					If not expecting&nbsp;a Subset Advertisement, then drop the frame and stop.
+					<LI>
+					If the config revision in the VTP frame is different than the expecting one,
+					then drop the frame and stop.
+					<LI>
+					If the sequence number in the VTP frame is different than the expecting one,
+					then drop the frame and stop.
+					<LI>
+					Add the subset to the reply
+					<LI>
+						If the VTP frame is the last expecting subset:
+						<UL>
+							<LI>
+							Update the VLAN database with the received subsets
+							<LI>
+							Send out a Summary Advertisement frame
+							<LI>
+								Send out a Subset Advertisement frame</LI></UL>
+					</LI>
+				</UL>
+			</LI>
+		</UL>
+		<P class="MainHeading2">&nbsp;</P>
+		<P class="MainHeading2">When do switches&nbsp;send out&nbsp;VTP frames</P>
+		<P class="myList">When do switches send out Advertisement Requests:</P>
+		<LI>
+		When the switch detects a VTP configuration change and it is in VTP Client mode
+		<LI>
+			When receiving a Summary Advertisement but there is no subset following it
+			<P>&nbsp;</P>
+			<P class="myList">When do switches send out Summary Advertisements:</P>
+		<LI>
+		When a trunk port comes up and the switch is already advertising VTP
+		<LI>
+		Every 5 minutes
+		<LI>
+			When receiving a Summary Advertisement with its config revision smaller than
+			the switch's
+			<P>&nbsp;</P>
+			<P class="myList">When do switches send out Subset Advertisements:</P>
+		<LI>
+		When a trunk port comes up and the switch is not already advertising VTP
+		<LI>
+		When a local VLAN change is detected and the switch is in VTP Server mode
+		<LI>
+		When the switch detects a VTP configuration change and it is in VTP Server mode
+		<LI>
+		After updating VLAN database on the receiving of Subset Advertisements
+		<LI>
+			When receiving a Advertisement Request How HDLC Works
+		<UL>
+			<LI>
+			HDLC is the default data link protocol for serial interfaces.
+			<LI>
+			Sends keepalives periodically to the other end of the link.
+			<LI>
+			When it receives a keepalive, it brings up the line protocol.
+			<LI>
+			If it does not receive a keepalive from the other end for a certain period of
+			time, it brings down the line protocol.
+			<LI>
+				If the interface is configured to not use keepalives, it would bring up the
+				line protocol even if it does not receives keepalives from the other end.</LI></UL>
+		<P>&nbsp;</P>
+		<P class="MainHeading2">How Etherchannel Works</P>
+When a multilayer switch receives a packet  (<A href="flowcharts/SwitchReceiveOnEtherChannel.jpg" target="_blank">flowchart</A> here):
+	    <ul>
+	      <li>Check if the port is active       in etherchannel</li>
+	      <li>If the frame is LACP/PAgP
+	          <ul>
+	            <li>If the partnerDevice        in the etherchannel portData matches the partnerDevice in the received        frame
+	                <ul>
+	                  <li>Negotiation is         successful and the port is changed either to trunk or access mode</li>
+                  </ul>
+                </li>
+            </ul>
+          </li>
+	      <li>If the port is not active in the  etherchannel
+	        <ul>
+	          <li>Send the packer to the next highest layer for further processing</li>
+            </ul>
+	      </li>
+    </ul>
+    When a multilayer switch sends a packet:&nbsp;
+	    <ul>
+	      <li>A load balance method is       selected depending on what user selects.</li>
+	      <li>If no method is selected,       uses source Mac address as the load balance method.</li>
+	      <li>The frame is then sent to the       lower layer for further processing.</li>
+    </ul>
+	    <p>&nbsp;</p>
+	    <p><span class="MainHeading2">How Multilayer Switching Works</span></p>
+	    <ul>
+	      <li>The new 3560 switch in Packet Tracer is a multilayer switch.</li>
+          <li>It has switching as well as routing capabilities.</li>
+	      <li>It supports IPv4 and IPv6 routing protocols such as RIP, EIGRP, and OSPF.</li>
+	      <li>Each physical interface can be independently configured to be switched or routed ports. Switched ports are layer 2 ports that allow only layer 2 configurations and functionalities. Routed ports allow layer 3 functionalities just like a port on a router. They are switched ports by default.</li>
+	    </ul>
+<p>&nbsp;</p>
+          <P class="MainHeading2">How HDLC Works</P>
+	      <UL>
+	        <LI>
+	          HDLC is the default data link protocol for serial interfaces.
+            <LI>
+	          Sends keepalives periodically to the other end of the link.
+            <LI>
+	          When it receives a keepalive, it brings up the line protocol.
+            <LI>
+              If it does not receive a keepalive from the other end for a certain period of time, it brings down the line protocol.
+            <LI>
+              If the interface is configured to not use keepalives, it would bring up the line protocol even if it does not receives keepalives from the other end.
+			</LI>
+          </UL>
+<P>&nbsp;</P>
+          <P class="MainHeading2">How PPP Works</P>
+	      <UL>
+	        <LI>
+	          PPP is a data link protocol for serial interfaces as
+	          well as modem connections.
+            <LI>
+	            PPP requires authentication before a connection is
+	            made.&nbsp; The authentication types available in Packet Tracer are none,
+	            PAP, and CHAP.
+            <LI>
+	              Each side of the connection can use different
+	              authentication methods, but the other end must support them.
+            <LI>
+                  The authentication type set on one side is the
+	                authentication type required on the other side.
+            <LI>
+                  Setting authentication to none means allow the other
+                  side to authenticate without any username or password checking.
+            <LI>
+                  Both PAP and CHAP use a username and password to authenticate the other
+                  side.&nbsp; CHAP provides a stronger encryption and authentication method.</LI>
+          </UL>
+	      <P>&nbsp;</P>
+      
+	 <P class="MainHeading2">How PPPoE Works</P>
+The Point-to-Point Protocol over Ethernet (PPPoE) is a network protocol for 
+encapsulating Point-to-Point Protocol (PPP) frames inside Ethernet frames. 
+By using PPPoE, users can virtually "dial" from one machine to another over an Ethernet network, 
+establish a point to point connection between them and then transport data packets over the connection. (<A href="flowcharts/pppoeNegotiation.jpg" target="_blank">flowchart</A> here):
+<UL> 	    
+<LI>PPPoE is a client-server model. 
+<LI>PPPoE has two distinct stages. 	
+   <UL> 
+   <LI>	Discovery stage:
+     <UL> 
+        <LI> There are four steps to the Discovery stage.  When it completes, both peers know the PPPoE SESSION_ID and the peer's Ethernet address, which together define the PPPoE session uniquely.  
+     </UL> 
+    </UL> 
+    <UL> 
+     <LI>   PPP Session stage
+       <UL> 		
+          <LI>	Server assigns an IP address from the configured pool to the client. 
+          <LI>	Based on the configuration on server side it may need to authenticate the client through:
+           <UL> 
+             <LI>	AAA server authentication
+             <LI>	Locally saved username/password database.
+             <LI>	No authentication needed. 
+           </UL> 
+        </UL> 
+      </UL> 
+
+<LI>	Client uses the assigned IP address
+  <UL> 
+    <LI>	When PPPoE client sending a packet out:
+      <UL> 
+        <LI> Encapsulates all the outgoing packets in the following packets: 
+          <UL> 
+            <LI> PPP frame,  PPPoE frame adding the session id to the id field of PPPoE header, and Ethernet frame (destination MAC address of server)
+          </UL>
+       </UL>  
+     <LI>When Client receives a PPPoE packet:
+       <UL> 
+	  <LI>	If the session ID matches one of the client's that the server has negotiated with, it de-encapsulates the packet and send it to PPP for future processing.
+        </UL> 
+   </UL> 
+<LI>    Server uses the session ID to distinguish between different clients:
+	<UL> 
+	    <LI>When server receives a PPPoE frame, it checks the received PPPoE session ID and if session ID is known:
+		<UL> 
+		    <LI> It removes PPPoE header and sends it to PPP for further processing
+		    <LI> Otherwise it drops the packet
+		</UL> 
+	     <LI>When server sends a packet: 
+		<UL> 
+		   <LI>If packet is destined for a particular client that a session has been negotiated with:
+			<UL>
+                            <LI>It encapsulates the packet in PPP and PPPoE frames with the particular session ID and sends it to the client
+			    <LI>Otherwise, it drops the packet.
+			</UL> 
+		</UL> 
+	</UL>
+
+ </UL>
+<P>&nbsp;</P> 
+
+	      <p class="MainHeading2">How Frame Relay Works</p>
+	      <ul>
+	        <li>
+	          Frame Relay provides connection-oriented data link layer communication. This
+	          means that a defined communication exists between each pair of devices and that
+	          these connections are associated with a connection identifier. This service is
+	          implemented by using a Frame Relay virtual circuit, which is a logical
+	          connection created between two data terminal equipment (DTE) devices across a
+	          Frame Relay packet-switched network. Virtual circuits provide a bidirectional
+	          communication path from one DTE device to another and are uniquely identified
+	          by a data-link connection identifier (DLCI). A number of virtual circuits can
+	          be multiplexed into a single physical circuit for transmission across the
+	          network. This capability often can reduce the equipment and network complexity
+	          required to connect multiple DTE devices.
+            <li>
+	            A Frame Relay PVC is a logical link whose endpoints and class of service are
+	            defined by network management. A PVC consists of the originating Frame Relay
+	            network element address, originating data-link control identifier, terminating
+	            Frame Relay network element address, and termination data-link control
+	            identifier. "Originating" refers to the access interface from which the PVC is
+	            initiated. "Terminating" refers to the access interface at which the PVC stops.
+	            Many data network customers require a PVC between two points. DTE that needs
+	            continuous communication uses PVCs.
+            <li>
+                LMI virtual circuit status messages provide communication and synchronization
+	              between Frame Relay DTE and DCE devices. These messages are used to
+	              periodically report on the status of PVCs, which prevents data from being sent
+	              into black holes (that is, over PVCs that no longer exist).
+            <li>
+                Frame Relay Inverse ARP can be used as a method of building dynamic routes in
+                Frame Relay networks running IP. Inverse ARP allows the communication server to
+                discover the protocol address of a device associated with the virtual circuit.
+                Inverse ARP is used instead of the frame-relay map command which allows you to
+                define the mappings between a specific protocol and address and a specific
+                DLCI. Inverse ARP is not needed for a point-to-point interface because there is
+                only a single destination and discovery is not required.
+            <li>
+                Frame Relay subinterfaces provide a mechanism for supporting partially meshed
+                Frame Relay networks. Most protocols assume transitivity on a logical network;
+                that is, if station A can talk to station B, and station B can talk to station
+                C, then station A should be able to talk to station C directly. Transitivity is
+                true on LANs, but not on Frame Relay networks unless A is directly connected to
+                C.
+            <li>
+                Configuring Frame Relay subinterfaces ensures that a single physical interface
+                is treated as multiple virtual interfaces, which allows you to overcome split
+                horizon rules. Packets received on one virtual interface can be forwarded to
+                another virtual interface, even if they are configured on the same physical
+                interface. Subinterfaces address the limitations of Frame Relay networks by
+                providing a way to subdivide a partially meshed Frame Relay network into a
+                number of smaller, fully meshed (or point-to-point) subnetworks. Each
+                subnetwork is assigned its own network number and appears to the protocols as
+                if it is reachable through a separate interface.
+            <li>
+                  When a Frame Relay Cloud receives a frame, it looks up the connection created
+                  by the user. If a connection is found, the Cloud forwards the frame out the
+                  port specified in the connection. If the connection is not found, the frame is
+                  dropped. When a router receives a frame, it looks up the DLCI specified in the
+                  frame. If the DLCI is mapped to an interface, the frame is passed to that
+                  interface. If the DCLI is mapped to an interface, the frame is dropped by the
+                  router.</li>
+          </ul>
+	      <p class="myList">&nbsp;</p>
+	      <p class="MainHeading2">How Cable/DSL Works</p>
+	      <UL>
+	        <li>
+	          DSL
+	          <ul>
+	            <li>
+	              A digital subscriber line (DSL) connection is a high-speed connection that uses
+	              the same wires as a regular telephone line. DSL services are dedicated
+	              point-to-point network access over twisted-pair copper wire on the local loop
+	              between a network service provider's central office and the customer site.
+                <li>
+	                DSL circuits connect DSL modems to a digital subscriber line access multiplexer
+	                (DSLAM) creating three data channels: a high-speed downstream channel, a
+	                low-speed upstream channel, and a basic telephone service channel. The DSLAM
+	                (the cloud) provides one of the main differences between DSL and cable modems.
+	                Because cable-modem users generally share a network loop that runs through a
+	                neighborhood, adding users means lowering performance in many instances. ADSL
+	                provides a dedicated connection from each user to the DSLAM. Therefore, users
+	                won't see a performance decrease as new users are added.
+                <li>
+	                  A DSL Modem can be used to connect to a modem port defined in the Cloud using
+	                  telephone wire. Another device (such as a PC or a router) is connected to
+	                  Ethernet port on the DSL Modem. The DSL Modem acts like a bridge forwarding
+	                  traffic from one port to the other port.</li>
+              </ul>
+            <li>
+	            Cable
+	            <ul>
+	              <li>
+	                In a cable TV system, signals from the various channels are each given a 6-MHz
+		              slice of the cable's available bandwidth. When a cable company offers internet
+		              access over the cable, data can use the same cables because the cable modem
+		              system puts downstream data into a 6-MHz channel. Thus Internet downstream data
+		              takes up the same amount of cable space as any single channel of programming.
+		              Upstream data uses 2-MHz channel.
+                  <li>
+	                  Just like DSL, high-speed cable requires a modem at the customer end and a
+		                cable modem termination system (CMTS) at the provider end. CMTS (the Cloud)
+		                functions like DSLAM in a DSL environment. The CMTS takes the traffic coming in
+		                from a group of customers on a single channel and routes it to an Internet
+		                service provider for connection to the Internet. A CMTS enables many
+		                connections to the Internet through a single 6-MHz channel. A single channel is
+		                capable of up to 40 Megabits per second of total throughput.
+                  <li>
+	                  Unlike DSL, data channels to CMTS are shared. If these channels are saturated
+	                  with user traffic, the theoretical bandwidth may not be achieved. However, this
+	                  particular performance issue can be resolved by the cable company by adding a
+	                  new channel and splitting the user base. Another difference between DSL and
+	                  cable is that the downstream information flows to all connected users. It is up
+	                  to the individual network connection to decide whether a particular block of
+	                  data is intended for it or not. On the upstream side, information is sent from
+	                  the user to the CMTS directly without other users seeing it.
+                  <li>
+	                    A Cable Modem can be used to connect to a coax port defined in the Cloud using
+	                    coaxial wire. Another device (such as a PC or a router) is connected to an
+	                    Ethernet port on the Cable Modem. The Cable Modem acts like a bridge forwarding
+	                    traffic from one port to the other port.</li>
+	          </ul>
+            <LI>
+	            ISP
+	            <UL>
+	              <li>
+	                The Cloud under WAN Emulation is used to model an ISP.
+                  <li>
+	                  Multiple Ethernet ports can be added to the Cloud emulating ISP networks.
+                  <li>
+	                  Multiple modem ports can be added to the Cloud emulating a DSLAM.
+                  <li>
+                      Multiple coax ports can be added to the Cloud emulating a CMTS.
+                  <li>
+                      Multiple modem ports can be mapped to a single Ethernet port that is defined to
+                      use DSL as the provider network.
+                  <li>
+                      Multiple coax ports can be mapped to a single Ethernet port that is defined to
+                      use Cable as the provider network.
+                  <li>
+                      For DSL connections, traffic received on a modem port will be forwarded to the
+                      corresponding Ethernet port. Traffic received on an Ethernet DSL port will be
+                      forwarded to the correct DSL modem.
+                  <li>
+                        For Cable connections, traffic received on a coax port will be forwarded to the
+                        corresponding Ethernet port. Traffic received on an Ethernet Cable port will be
+                        forwarded to all coax ports connected to that Ethernet port.</li>
+	          </UL>
+            </LI>
+          </UL>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Simulation Mode: Managing Simulation Scenarios</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+<p class="MainHeading1">
+  
+  Simulation Mode: Managing Simulation Scenarios</p>
+<hr>
+<p>In Packet Tracer, you can set up and simulate complex networking situations (scenarios) through the <strong>User Created Packet Window</strong> (UCPW) found on the lower right corner of the application. A scenario is a set of PDUs that you have placed in the network to be sent at specific times. When you first switch to Simulation Mode, the default scenario is "Scenario 0." You can edit the name of the scenario, and you can write a description for the scenario by clicking the <strong>Scenario Description</strong> icon next to its name. You can create and delete scenarios with the <strong>New</strong> and <strong>Delete</strong> buttons, and you can switch between scenarios by choosing from the scenario drop-down menu. Multiple scenarios can be created for one logical topology, corresponding to different test conditions you may want to model. Note the contrast between the UCPW (packets you create) and the event list (all packets occurring anywhere on the network that you chose to display, whether or not they were originated by you or by protocols running on the network devices).</p>
+<p class="myPic">
+<img src="images/mode_simulation_Scenarios_1.jpg">
+</p>
+<p class="myList">The <strong>Protocol Data Units List</strong> is an important part of the UCPW that tracks all of the PDUs you created for the current scenario. You can put the <strong>Protocol Data Units List</strong> in its own window on the workspace by pressing the <strong>Toggle PDU List Window</strong> button. Click the button again to integrate it back into the UCPW.</p>
+<p class="myList">&nbsp;</p>
+<p class="myPic">
+<img src="images/mode_simulation_Scenarios_2.jpg">
+</p>
+<p class="myList">&nbsp;</p>
+<p class="myList">Each PDU in the PDU list has the following fields:</p>
+<p class="myList">&nbsp;</p>
+<ul>
+  <li><strong>Fire:</strong> You can double click on this field to "send" the PDU immediately in real time mode or queue for transmission in simulation mode.</li>
+  <li><strong>Last Status:</strong> This field indicates the last known status of the PDU (Successful, Fail, or In Progress).</li>
+  <li><strong>Source:</strong> This field shows the name of the device from which the PDU originated.</li>
+  <li><strong>Destination:</strong> This field shows the name of the device that the PDU is ultimately trying to reach.</li>
+  <li><strong>Type:</strong> This field specifies the PDU protocol type.</li>
+  <li><strong>Color:</strong> This field shows PDU color as it appears in the animation. (See the tip box below for information about changing the PDU color.)</li>
+  <li><strong>Time:</strong> This field displays the simulation time (or time frame) at which the PDU is scheduled to be sent.</li>
+  <li><strong>Periodic:</strong> This field indicates whether the PDU is to be sent periodically (Y) or not (N).</li>
+  <li><strong>Num:</strong> This field shows a numerical index for the PDU.</li>
+  <li><strong>Edit:</strong> You can double click this button to edit the PDU properties. (See the next page, "Custom PDUs", for more details.)</li>
+  <li><strong>Delete:</strong> You can double click this button to remove the PDU from the list. (It will no longer be part of the scenario.)</li>
+</ul>
+<table class="tableTip">
+  <tr>
+    <td class="TDtableTip">User-created PDUs are initially assigned a random color in the animation. You can double click the colored "tile" of a PDU in the <strong>Protocol Data Units List</strong> to bring up the <strong>Color Selector</strong> of the PDU and then change the color.</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table class="tableTip">
+  <tr>
+    <td class="TDtableTip">You can rearrange the placement of each of the fields in the <strong>Protocol Data Units List</strong> by dragging the title of a field to the desired position.</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>Note that user-created PDUs are not "cleared" from the <strong>Protocol Data Units List</strong> when the simulation restarts (such as by pressing the <strong>Reset Simulation</strong> button). Restarting the scenario simply clears all PDUs currently propagating in the network and resets the simulation time. The PDUs on the Protocol Data Units List will propagate the network at their specified times when you run the scenario again. To remove a PDU you created, select it on the <strong>Protocol Data Units List</strong> and double click its <strong>Delete</strong> button.</p>
+</body>
+</html>

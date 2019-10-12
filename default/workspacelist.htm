@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Workspace List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="styleNormal.css">
+  </head>
+  <body>
+    <p class="MainHeading1"> Workspace List </p>
+    <hr>
+    <p>This view provides a list style representation of the current visible logical workspace. In situations where keyboard 
+    navigation and control are desired, this interface will allow the user to work with the devices and links in the workspace
+    in a keyboard friendly manner. Screen readers will also be able to work with this interface better than the graphical workspace.</p>
+    <p class="myPic"> <img src="images/wksplst1.jpg" alt="Workspace List full window"> </p>
+     <p class="MainHeading2">Devices</p>
+    <p> This section will list all currently visible devices in the logical workspace. It will also list out clusters when they
+    are visible. The table will display the device name, model, power status, and x,y coordinates. The display will not show
+    devices hidden behind a cluster until you enter the cluster. As such, it presents to the user in a table format exactly the
+    same information as displayed in the graphical workspace. </p>
+    <p class="myPic"> <img src="images/wksplst_devices.jpg" alt="Workspace List full window, devices table highlighted"> </p>
+    <p> Mouse over the individual rows and the tooltip for the device will be displayed. </p>
+    <p> Click on the individual rows (besides the x, and y) will open the device dialog for the device. If it is a cluster, it will
+    enter the cluster. Activities that are locking these capabilities are enforced.</p>
+    <p> To go up a level from the current cluster, click the <strong>Show Parent Cluster</strong> button below the table. </p>
+    <p> The device's x and y locations can be directly edited in the cell. </p>
+    <p> Device creation can be done using the <strong>Add Device</strong> button. Select the device category and model and click <strong>Add</strong>.<p>
+    <p class="myPic"> <img src="images/wksplst2.jpg" alt="Add device prompt"> </p>
+    <p> Device removal is done by selecting the desired device row in the table and clicking the <strong>Remove Device button</strong>. </p>
+    <p> Below the device table is another table that will display the current device's physical module layout. Select a device
+    from the list of devices in the table and its' list of slots and their modules will be displayed. Modules may be removed
+    or added from the combobox in each cell. Each cell represents a different slot in the device, and slots within a module if
+    applicable. The slot path is displayed along the combobox.</p>
+    <p class="myPic"> <img src="images/wksplst_device_info.jpg" alt="Workspace List full window, device information table highlighted"> </p>
+    
+    <p class="MainHeading2">Links</p>
+    <p> All visible links in the current view will be displayed in this table. The link type, their source and destinations,
+    and the color of the link light (if applicable) will be displayed. The source and destination ports are in the format
+    of <i>device:portname</i>.</p>
+    <p class="myPic"> <img src="images/wksplst_links.jpg" alt="Workspace List full window, links table highlighted"> </p>
+    <p> To add a link, click the <strong>Add Link</strong> button. Select the cable type, and the devices and ports. Then click the <strong>Connect</strong> button.
+    For Serial cables, the DCE side is always the device on the left side combobox. </p>
+    <p> To remove a link, select the cable and click the <strong>Remove Link</strong> button.</p>
+    <p class="myPic"> <img src="images/wksplst3.jpg" alt="Add link prompt"> </p>
+  </body>
+</html>

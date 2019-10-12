@@ -1,0 +1,313 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Other Models</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+
+  <p class="MainHeading1">Other Models</p>
+
+<hr>
+  <p class="MainHeading2">How routers process incoming packets (NAT process)</p>
+  <p class="myList">When a router receives a packet:</p>
+  <p class="myList">&nbsp;</p>
+  <ul>
+    <li>It checks if the receiving port is a NAT outside port.
+      <ul>
+        <li>If so:
+          <ul>
+            <li>It checks to determine whether the packet is UDP,
+      TCP or ICMP to get the packet's source and destination port.
+            <li>It refers to the NAT table (using the global addresses) for the necessary translation.
+              <ul>
+                <li>If it finds a match for the packet (a translation exists):
+                  <ul>
+                    <li>It replaces the inside address and port with
+          the local version.
+                    <li>It translates the destination IP address and port</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        <li>If the receiving port is not a NAT outside port, or if it is a NAT outside port but the requested IP address is not in the NAT table:
+          <ul>
+            <li>The router checks to see if there is a route to the destination IP.
+              <ul>
+                <li>It drops the packet if (any):
+                  <ul>
+                    <li>There is no route.
+                    <li>It finds a route, but the outgoing port of that route entry is the same as the receiving port.</li>
+                  </ul>
+                <li>If there is a route, it sends a reply with the receiving port's MAC address.</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+<p class="myList">&nbsp;</p>
+<p class="MainHeading2">How routers process outgoing packets (NAT process)</p>
+<p class="myList">When a router wants to send a packet out a port:</p>
+<p class="myList">&nbsp;</p>
+<ul>
+    <li>It checks if the outgoing port is a NAT inside port.
+      <ul>
+        <li>If so:
+          <ul>
+            <li>It looks up its NAT table for the necessary
+      translations.
+            <li>It captures the packet's source and destination ports and sets a timer for the packet (depending on the packet's encapsulation type).
+              <ul>
+                <li>For a TCP packet the timer is 24 hours.</li>
+              </ul>
+            <ul>
+              <li>For a UDP packet the timer is 5 minutes.
+              <li>For an ICMP packet the timer is 1 minute.</li>
+            </ul>
+            </li>
+          </ul>
+        <ul>
+          <li>It looks up the NAT table </li>
+        </ul>
+        <li>If the receiving port is not a NAT outside port, or if it is a NAT outside port but the requested IP address is not in the NAT table:</li>
+      </ul>
+      <ul>
+        <ul>
+          <li>The router checks to see if there is a route to the destination IP.
+            <ul>
+              <li>It drops the packet if (any):
+                <ul>
+                  <li>There is no route.
+                  <li>It finds a route, but the outgoing port of that route entry is the same as the receiving port.</li>
+                </ul>
+              <li>If there is a route, it sends a reply with the receiving port's MAC address.</li>
+            </ul>
+          </li>
+        </ul>
+      </ul>
+    </li>
+    </ul>
+
+<p class="MainHeading2">&nbsp;</p>
+<p class="MainHeading2">How routers process incoming packets in the NATv6  process</p>
+When a router receives a packet (<a href="flowcharts/RouterReceiveNATv6.jpg" target="_blank">flowchart</a> here):
+  <ul>
+    <li>It checks if the packet is       received from v4 lower process or v6 lower process.</li>
+    <li>If so:</li>
+    <li>Check if the prefix address is valid.</li>
+    <li>If the destination is in the valid network:
+        <ul>
+          <li>It  checks to determine whether the packet is UDP, TCP or ICMPv6/ICMPv4 to get the  packet's source and destination port. </li>
+          <li>It  refers to the NAT table (using the inside global addresses) for the necessary  translation.</li>
+          <li>If  it finds a match for the packet (a translation exists):
+              <ul>
+                <li>It replaces the inside global address and port  with the local version.</li>
+                <li>Then it translates the destination IP address  and port.</li>
+                <li>If a valid NAT entry is found in the table, form  a new IP header – IPv6 or IPv4 depending on which higher process the packet has  to be sent.</li>
+              </ul>
+          </li>
+        </ul>
+    </li>
+    <li>If the requested IP address is not  in the NAT table:
+      <ul>
+        <li>The  packet is sent to the corresponding higher process from where it was received.</li>
+        <li>The  router checks to see if there is a route to the destination IP.</li>
+        <li>It  drops the packet if (any):
+          <ul>
+            <li>There is no route.</li>
+            <li>It finds a route, but the outgoing port of that  route entry is the same as the receiving port.</li>
+            <li>If there is a route, it sends a reply with the  receiving port's MAC address. </li>
+          </ul>
+        </li>
+      </ul>
+                                                                                     </li>
+    </ul>
+<p class="MainHeading2">How routers  process outgoing packets in the NATv6 process</p>
+  When a router wants to send a packet out a port (<a href="flowcharts/RouterSendNATv6.jpg" target="_blank">flowchart</a> here):<br>
+<ul>
+  <li>It checks if the packet is send from v4 higher  process or v6 higher process.</li>
+  <li>If packet is from higher process of v4 stack:
+      <ul>
+        <li>Send it to the lower process of v4 stack. </li>
+      </ul>
+  </li>
+  <li>If packet is from higher process of v6 stack:
+    <ul>
+      <li>Send it to the lower process of v6 stack. </li>
+    </ul>
+  </li>
+  </ul>
+<p class="myList">&nbsp;</p>
+<p class="MainHeading2">How devices use ARP to send IP packets</p>
+<p class="myList">When a device sends an IP packet (<a href="flowcharts/DeviceSendIP.jpg" target="_blank">flowchart</a> here):</p>
+<p class="myList">&nbsp;</p>
+<ul>
+  <li>If the destination IP is a broadcast, it sets the
+  packet's destination MAC address to the broadcast MAC address and sends the
+  packet out.
+  <li>If the destination IP is a multicast, it sets the
+  packet's destination MAC address to the multicast MAC address and sends the
+  packet out.
+  <li>If the destination IP is a unicast, it looks up the ARP table to see if the destination IP matches an entry's IP address in the ARP table.
+    <ul>
+      <li>If a match exists, it:
+        <ul>
+          <li>Sets the packet's destination MAC address to the
+      entry's MAC address.
+          <li>Sends out the IP packet.</li>
+        </ul>
+      <li>If a match does not exist, it:
+        <ul>
+          <li>Drops the IP packet.
+          <li>Sends an ARP request out.
+          <li>Adds that request to the list of ARP requests.
+          <li>Sets and starts the timer for it as it waits for an ARP reply.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+  <p class="myList">&nbsp;</p>
+  <p class="MainHeading2">How devices send ARP requests</p>
+  <p class="myList">When a device wants to send an ARP request (<a href="flowcharts/DeviceSendARPrequest.jpg" target="_blank">flowchart</a> here):</p>
+  <p class="myList">&nbsp;</p>
+  <ul>
+    <li>It will NOT send the request if (any):
+      <ul>
+        <li>The sending port is down.
+        <li>The sending port does not have a valid IP address.
+        <li>A request for the same IP address is already sent.</li>
+      </ul>
+    <li>If none of the above is true, it proceeds with the ARP request. It:
+      <ul>
+        <li>Constructs an ARP request for the IP address in
+    question.
+        <li>Sets the destination MAC address to the broadcast
+    address.
+        <li>Adds the request to the list of existing requests.
+        <li>Sets and starts a timer for this request.
+        <li>Sends the request.
+        <li>Waits for an ARP reply.
+        <li>Drops the request from the list if time expires.</li>
+      </ul>
+    </li>
+  </ul>
+
+      <p class="myList">&nbsp;</p>
+      <p class="MainHeading2">How devices process incoming ARP packets</p>
+      <p class="myList">When a device receives an ARP packet (<a href="flowcharts/DeviceReceiveARP.jpg" target="_blank">flowchart</a> here):</p>
+      <p class="myList">&nbsp;</p>
+      <ul>
+        <li>It drops the packet if (any):
+          <ul>
+            <li>The receiving port is not up.
+            <li>The device is a switch and an active VLAN interface
+    is not up.
+            <li>The packet's source IP is not in the same subnet as the receiving
+              port's subnet.</li>
+          </ul>
+        <li>If the above is not true, it proceeds to process the packet:
+          <ul>
+            <li>It checks to see if the packet is an ARP request or
+    an ARP reply.
+            <li>If the packet is an ARP request, it checks to see if the packet's destination IP matches the receiving port's IP address.
+              <ul>
+                <li>If they match, the device sends a reply with the
+      receiving port's MAC address.
+                <li>If they do not match:
+                  <ul>
+                    <li>If the device is not a router, it drops the
+        packet.
+                    <li>If the device is a router, refer to "How routers process ARP requests."</li>
+                  </ul>
+                </li>
+              </ul>
+            <li>If the packet is an ARP reply, the device checks if it submitted a request for the IP address found in the reply.
+              <ul>
+                <li>It drops the packet if there is no such request
+      in the list.
+                <li>If the packet is in the ARP request list:
+                  <ul>
+                    <li>The device now removes the request from the
+        list.
+                    <li>If the ARP table does not contain an entry with
+        the IP and MAC addresses found in the packet, it will make a new entry
+        with those addresses.
+                    <li>If the ARP table already contains an entry with the IP and MAC addresses found in the packet, it just resets that entries' timer. That entry will be removed from the table when its timer expires.</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+        <p class="myList">&nbsp;</p>
+        <p class="MainHeading2">How routers process ARP requests</p>
+        <p class="myList">When a router receives an ARP packet (continuing from "How devices process incoming ARP packets"):</p>
+        <p class="myList">&nbsp;</p>
+<UL>
+  <LI>It checks the NAT status on the receiving port.
+  <UL>
+              <li>If the receiving port is a NAT outside port, the router checks the NAT table for the packet's destination IP.
+                <ul>
+                  <li>If the requested IP address is in the NAT table, the router sends a reply with the receiving port's MAC address.</li>
+                </ul>
+    <LI>If the receiving port is not a NAT outside port, or if it is a NAT
+    outside port but the requested IP address is not in the NAT table:
+    <UL>
+      <LI>The router checks to see if there is a route to the destination IP.
+      <UL>
+                      <li>It drops the packet if (any):
+                        <ul>
+                          <li>There is no route.
+                          <li>It finds a route, but the outgoing port of that route entry is the same as the receiving port.</li>
+                        </ul>
+                      <li>If there is a route, it sends a reply with the receiving port's MAC address.</li></UL></LI></UL></LI></UL></LI></UL>
+<p class="myList">&nbsp;</p>
+<P class=MainHeading2>How an ACL works</P>
+<P class=myList>ACL for IPv4 and IPv6 works the same way except the input of different versions of IP addresses.</P>
+<P class=myList>&nbsp;</P>
+<P class=myList>When a router receives a packet on an interface: </P>
+<P class=myList>&nbsp;</P>
+<UL>
+  <LI>ACL checks for inbound ACL and if inbound ACL is configured on the interface:</LI>
+  <UL>
+    <LI>If the inbound ACL is empty, it permits the packet.</LI>
+    <LI>If the inbound ACL contains statements:</LI>
+    <UL>
+      <LI>If the packet matches the criteria of any of the statements and:</LI>
+      <UL>
+        <LI>If the statement permits the packet, it passes the ACL process.</LI>
+        <LI>If the statement denies the packet it drops the packet.</LI>
+      </UL>
+      <LI>If there is no match in the list ACL drops the packet by default.</LI>
+    </UL>
+  </UL>
+</UL>
+<P class=myList>When a router sends a packet on an interface:</P>
+<P class=myList>&nbsp;</P>
+<UL>
+  <LI>ACL checks for outbound ACL and if outbound ACL is configured on the interface:</LI>
+  <UL>
+    <LI>If the packet is generated locally, it permits the packet.</LI>
+    <LI>If the outbound ACL is empty, it permits the packet.</LI>
+    <LI>If the outbound ACL contains statements:</LI>
+    <UL>
+      <LI>If the packet matches the criteria of any of the statements and: </LI>
+      <UL>
+        <LI>If the statement permits the packet, the packet passes the ACL process.</LI>
+        <LI>If the statement denies the packet, it drops the packet.</LI>
+      </UL>
+      <LI>If there is no match in the list, the ACL drops the packet by default.</LI>
+    </UL>
+  </UL>
+</UL>
+</body>
+</html>

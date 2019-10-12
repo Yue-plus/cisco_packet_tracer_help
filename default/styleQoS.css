@@ -1,0 +1,174 @@
+p {
+text-align: left;
+margin-top:0 ;
+margin-bottom:12 ;
+font-size: 12pt;
+}
+
+body {
+/*background-color: #FAE178;*/
+background-color: #FDF1AF;
+
+font-family: "Times New Roman", Times, serif; 
+font-size: 12pt;
+color: black; /*This is the basic body text color*/
+}
+
+
+
+HR {
+margin-bottom:5pt ;
+}
+
+LI {
+font-size: 12pt;
+}
+
+UL {
+Margin-left: 20pt;
+margin-top:0pt;
+}
+
+table.reference
+{
+border:1px solid #000000;
+border-collapse:collapse;
+}
+
+.IOStable{
+width: 95%;
+border-width: 1pt;
+border-color: black;
+border-style: solid;
+margin-bottom: 20pt;
+background-color: white;
+}
+
+.InvisTable{
+width: 100%;
+border: 0pt;
+border-width: 0pt;
+}
+
+.TableFAQ{
+width: 100%;
+border-width: 1pt;
+border-color: black;
+border-style: solid;
+}
+
+.InvisTableLeft{
+width: 100%;
+border: 0pt;
+border-width: 0pt;
+}
+
+.excelTable{
+width: 100%;
+border: 0pt;
+border-width: 0pt;
+background-color: black;
+}
+
+.thinTableLeft{
+width: 100%;
+border-width: 1pt;
+border-color: black;
+border-style: solid;
+}
+
+.thinTableGrid{
+width: 100%;
+border-width: 1pt;
+border-color: black;
+border-style: solid;
+}
+
+.tableNote{
+width: 60%;
+margin-left: 20%;
+border-width: 1pt;
+border-color: red;
+border-style: solid;
+background-color: #FAE178;
+}
+
+.TDtableNote{
+font-size: 12pt;
+vertical-align: text-top;
+background-color: #FAE178;
+}
+
+.tableTip{
+width: 60%;
+margin-left: 20%;
+border-width: 1pt;
+border-color: green;
+border-style: solid;
+background-color: #e6f2f2;
+}
+
+.TDtableTip{
+font-size: 12pt;
+vertical-align: text-top;
+background-color: #e6f2f2;
+}
+
+.tableActivity{
+}
+
+
+
+
+.myBR1 {
+margin-top:0 ;
+margin-bottom:5pt ;
+}
+
+
+.MainHeading1 { 
+font-family: Arial, Helvetica, sans-serif;
+font-size:16pt; 
+font-weight:bold;
+color:016d6d; 
+font-style: italic;
+margin-bottom:0 ;
+}
+
+.MainHeading2 { 
+font-family: Arial, Helvetica, sans-serif;
+font-size:14pt; 
+font-weight:bold;
+color:016d6d; 
+margin-bottom:4 ;
+}
+
+.myList {
+margin-bottom:0pt;
+font-size: 12pt;
+}
+
+.myPic{
+text-align: center;
+}
+
+A:link { color: #1152B1; text-decoration:none }
+A:active { color: #800000; text-decoration:none }
+A:visited { color: #1152B1; text-decoration:none }
+A:hover { color: #1152B1; text-decoration:underline ; background: #FAE178 }
+
+
+.IOSkeyword {
+font-family: "Times New Roman", Times, serif; 
+font-size: 12pt;
+color: black;
+font-weight:bold;
+}
+
+.IOSargument {
+font-family: "Times New Roman", Times, serif; 
+font-size: 12pt;
+color: black;
+font-style: italic;
+}
+

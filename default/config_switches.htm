@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Configuring Switches</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+
+
+<p class="MainHeading1">Configuring Switches
+<hr>
+
+<p>The <strong>Config</strong> tab for the switch offers three general levels of configuration: global, switching, and interface. The global level offers the same settings as a router. The routing level also offers the same configuration parameters as a router. The switching level, however, is where you can manage the VLAN database of the switch. The interface level configurations also offer access to the VLAN settings of the switch. Note that the <strong>Config</strong> tab provides an alternative to the Cisco IOS CLI only for some simple, common features; to access the full set of switch commands that have been modeled you must use the Cisco IOS CLI.</p>
+<p>Throughout your configurations in the <strong>Config</strong> tab, the lower window will display the equivalent Cisco IOS commands for all your actions. </p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Global Settings</p>
+<p class="myList">In global settings, you can change the switch display name as it appears on the workspace and the hostname as it appears in the Cisco IOS. You can also manipulate the switch configuration files in these various ways:</p>
+<p class="myList">&nbsp;</p>
+<ul>
+  <li>Erase the NVRAM (where the startup configuration is stored).</li>
+  <li>Save the current running configuration to the NVRAM.</li>
+  <li>Export the startup and running configuration to an external text file.</li>
+  <li>Load an existing configuration file (in .txt format) into the startup configuration.</li>
+  <li>Merge the current running configuration with another configuration file.</li>
+</ul>
+<p class="myPic">
+<img src="images/config_switches_1.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Algorithm Settings</p>
+<p>In the <strong>Algorithm Settings</strong>, you can override the global Algorithm Settings by removing the check mark <strong>Global Settings</strong> and then set your own values for the <strong>Maximum Number of Connections</strong>, <strong>Maximum Number of Opened Sessions</strong>, and <strong>Storm Control Multiplier</strong>. For the Cisco Catalyst 3560-24PS, you can also set the <strong>Half-Open Session Multiplier</strong>.</p>
+</p>
+<p class="myPic">
+<img src="images/config_switches_2.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Routing Configuration (Cisco Catalyst 3560-24PS only)</p>
+<p>The Cisco Catalyst 3560-24PS multilayer switch supports IP routing. You can make static routes on the router by choosing the <strong>Static</strong> sub-panel. Each static route you add requires a network address, subnet mask, and next hop address.</p>
+<p class="myPic">
+<img src="images/config_switches_3.jpg">
+</p>
+<p>You can enable RIP version 1 on specified networks by choosing the <strong>RIP</strong> sub-panel. Enter an IP address into the <strong>Network</strong> field and click the <strong>Add</strong> button. The RIP-enabled network is added to the <strong>Network Address</strong> list. You can disable RIP on a network by clicking the <strong>Remove</strong> button to remove it from the list.</p>
+<p class="myPic">
+<img src="images/config_switches_4.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">VLAN Database Configuration</p>
+<p>You can manage the VLANs of the switch from the <strong>VLAN Database</strong> sub-panel. You can add VLANs by entering a name and a VLAN number and pressing the <strong>Add</strong> button. You can see all existing VLAN entries in the list below the button. You can remove a VLAN by selecting it in the list and then pressing the <strong>Remove</strong> button. To associate a particular interface with a VLAN, go to the configuration panel of that interface.</p>
+<p class="myPic">
+<img src="images/config_switches_5.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Interface Configuration</p>
+<p>Switches have only Ethernet-type interfaces. For each interface, you can set the <strong>Port Status</strong> (on or off), <strong>Bandwidth</strong>, <strong>Duplex</strong> setting, <strong>VLAN Switch Mode</strong>, and <strong>Tx Ring Limit</strong>. By default, an interface is a VLAN access port assigned to VLAN 1. You can use the drop-down menu on the right side of the screen to reassign the port to another existing VLAN. You can also change an interface into a VLAN trunk port, and then use the drop-down menu on the right to select the VLANs you want that trunk to handle.</p>
+<p class="myPic">
+<img src="images/config_switches_6.jpg">
+</p>
+<table class="tableTip">
+  <tr>
+    <td class="TDtableTip"><p class="myList">In Packet Tracer, the switch allows all VLANs (1 to 1005) on a trunk port by default, even if the VLAN does not actually exist on the switch. In the drop-down menu, you can see the current VLANs and block (uncheck) them from the trunk. However, you cannot block VLANs that do not exist. This does not affect the functionality of the switch. It is simply a way to display VLANs (or a range of VLANs) that the trunk supports.</p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

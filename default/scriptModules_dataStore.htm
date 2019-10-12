@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Script Modules</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+
+<p class="MainHeading1">Script Modules - Data Store</p>
+<hr>
+
+<p>The data store is the other part of the model in the Script Module.  The data store has a list of data files, in json, xml, csv, or any plain text format.  They can be treated as files or as a hash table.  Data can be added when developing the Script Module.  It can also be added, removed, and edited dynamically during run time by the Script Module.  They are saved in the PT options file for persistence because the user may not have write access to the pts file, and a way is needed to save the dynamic data.  The data is also saved when a Script Module is edited and saved.  Use the <strong>$putData()</strong>, <strong>$getData()</strong>, and <strong>$removeData()</strong> built-in functions.</p>
+<table class="tableCode">
+  <tr>
+    <td class="TDtableCode"><pre>$putData("helloData", "hello world");
+var data = $getData("helloData");
+$removeData("helloData");</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p class="MainHeading2">Save Data in pka/pkt files</p>
+<p>Dynamic data can also be added to pka/pkt files the same way as ExApps do.  Register for the onSave event and in the callback function, put the save data.</p>
+<table class="tableCode">
+  <tr>
+    <td class="TDtableCode"><pre>ipc.ipcManager().registerEvent("onSave", null, onSaveCallback);
+...
+
+onSaveCallback = function(src, args)
+{
+    ipc.ipcManager().putSaveData(args.saveId, data);
+}</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>When the pka/pkt file opens, PT will send the data to the Script Module if it has registered to the onOpen event.</p>
+<table class="tableCode">
+  <tr>
+    <td class="TDtableCode"><pre>ipc.ipcManager().registerEvent("onOpen", null, onOpenCallback);
+...
+
+onOpenCallback= function(src, args)
+{
+    doSomething(args.openData);
+}</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>When the pka/pkt file opens, before sending the data to the Script Module, PT also checks if the Script Module has started. If not, it will start the Script Module if it is not set to disabled. </p>
+<p>&nbsp;</p>
+
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>The Physical Workspace</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+<p class="MainHeading1">The Physical Workspace
+<hr>
+<p>The purpose of the Physical Workspace is to give a physical dimension to your logical network topology. It gives you a sense of scale and placement (how your network might look in a real environment).</p>
+<p>The Physical Workspace is divided into four main containers to reflect the physical scale of four environments: Intercity, City, Building, and Wiring Closet. The Intercity is
+the largest environment. It can contain many cities. Each city can contain many buildings. Finally, each building can contain many wiring closets. The wiring closet provides
+a view that is different from the other three views. This is where you actually see the devices that were created in the Logical Workspace; positioned in networking racks
+and on tables. The three other containers provide thumbnail views of their layouts as the next level icons. This is the default arrangement in the Physical Workspace. The
+devices in the wiring closet can be moved to any of the containers. When the devices are moved to another container, they revert to the icons used in Logical Workspace, although those can be customized (covered under <strong>Customization</strong>) to any graphic you would like to use.</p>
+<p> In addition to the above mentioned main physical containers, users can create Generic Containers. These can contain any other containers provided they fit inside
+one another based on their volume. Other restrictions on why one container may not be possible to move into another is based on container type. For instance, a City can not
+be moved inside a Building regardless of the relative volumes of the two. 
+ </p>
+<p>When you first enter the Physical Workspace, the default is the Intercity view (or "map").</p>
+<p class="myPic">
+<img src="images/workspace_physical_1.jpg" alt="Intercity view">
+</p>
+<p>By default, the Intercity contains one city object called "Home City." You can click and drag the <strong>City</strong> icon to move it around in the intercity map. You can also simply click on the <strong>City</strong> icon to change focus to the map of that city.</p>
+<p class="myPic">
+<img src="images/workspace_physical_2.jpg" alt="City view">
+</p>
+<p>The Home City also contains one default building object called "Corporate Office." This building, like the Home City object in Intercity view, can be moved anywhere around the city. Click on the <strong>Building</strong> icon to change focus to the  interior selected building. All buildings are limited to one floor. From the City view, you can also return to the Intercity environment by clicking on the <strong>Back</strong> button twice in the Physical Workspace Bar.</p>
+<p class="myPic">
+<img src="images/workspace_physical_3.jpg" alt="Building view">
+</p>
+<p>The Corporate Office contains one default wiring closet called "Main Wiring Closet." Click its icon to view its contents. You can also return to any of the previous environments (Intercity or City) by clicking the <strong>Back</strong> button in the Physical Workspace Bar.</p>
+<p class="myPic">
+<img src="images/workspace_physical_4.jpg" alt="Wiring closet view">
+</p>
+<p>The "Main Wiring Closet" initially houses all the devices that were created in the Logical Workspace except for End Devices and Components. It neatly arranges those devices onto racks and tables so you can see where your devices physically are. The wiring closet view also shows the connected  ports and the link light status of the devices in the wiring closet. If the device is clicked, its configuration window pops up just as it does in Logical Workspace. Learn how to move these devices around in the building or even the city in the "Moving Devices" section.</p>
+<table class="tableTip">
+  <tr>
+    <td class="TDtableTip"><p class="myList">Wiring closets, buildings, and cities can all be renamed.</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+
+<p class="MainHeading2">Creating Devices</p>
+<p>As mentioned earlier, Physical Workspace consists of Intercity, City, Buildings and Generic Containers. Adding devices to the Physical Workspace is the same as in Logical View. The Network Component Box is used to select devices to be added. Devices added here will also be created in Logical View. The placement in Logical View is determined by drop/click position of the device added in Physical Workspace.</p>
+<b>To Add Devices to the current Physical Workspace view</b>
+<ul>
+<li>Select a device from the Network Component Box</li>
+<li>Drag (or click) the device to an empty area on the workspace</li>
+<li>The device shows up on the current workspace</li>
+</ul>
+
+<b>To Add Devices Inside Cities, Buildings, Closets or Generic Containers</b>
+<ul>
+<li>Select a device from the Network Component Box</li>
+<li>Drag (or click) the device to a container (City, Building, Wiring Closet, Generic Container).</li>
+<li>The device shows up inside the selected container.</li>
+</ul>
+
+<b>To Add Devices to Empty RackView</b>
+<ul>
+<li>Select a device from the Network Component Box.</li>
+<li>Drag (or click) the device to an empty area on the RackView.</li>
+<li>A Rack/Table is created and the device is placed inside the Rack/Table.</li>
+</ul>
+
+<b>To Add Devices to RackView's with Existing Tables or Racks</b>
+<ul>
+<li>Select a device from the Network Component Box.</li>
+<li>Drag (or click) the device to an empty area.</li>
+<li>Since no Rack/Table was selected, the device will be added to an existing Rack/Table if space allows, otherwise a new Rack/Table is created. If the maximum of three Rack/Tables per RackView are exhausted, a new Rack View is created to store the device.</li>
+</ul>
+
+<b>To Add Devices to a Specific Rack</b>
+<ul>
+<li>Select a device from the Network Component Box.</li>
+<li>Drag (or click) the device to a specific area in the Rack.</li>
+<li>The device shows up in the selected area in the Rack.</li>
+</ul>
+<p>&nbsp;</p>
+
+<p class="MainHeading2">Moving Objects</p>
+<p>To move an object around the Physical Workspace, be sure the <strong>Select Tool</strong> is selected on the <strong>Common Tools Bar</strong>. Once the <strong>Select Tool</strong> is selected, you can left-click and drag items around the Physical Workspace.</p>
+<p class="myPic">
+<img src="images/workspace_logical_select_tool.jpg" alt="Moving Devices">
+</p>
+<table class="tableTip">
+  <tr>
+    <td class="TDtableTip">Physical Workspace objects can also align items when close to other objects. Click and drag on your object and move it close to the object you want to align with. Alignment lines can be enabled in <strong>Preferences</strong>, under the <strong>Interface</strong> tab. </td>
+  </tr>
+</table>
+<p class="myPic">
+<img src="images/workspace_physical_snap_grid.jpg" alt="Moving Devices">
+</p>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<p class="MainHeading2">Creating New Locations</p> 
+<p>The Physical Workspace allows you to create new locations to expand your physical topology. In the Intercity environment, you can create cities with the <strong>New
+City</strong> button. You can place new buildings and closets directly onto the Intercity environment with the <strong>New Building</strong> and <strong>New Closet</strong>
+buttons. Similarly, you can create new buildings in the City environment and new closets in the Building environment. Use <strong>New Container</strong> to create new Generic
+Containers. To keep things simple, you should create locations according to the established hierarchy.</p>
+<p class="myPic">
+<img src="images/workspace_physical_5.jpg" alt="Creating new locations">
+</p>
+<table class="tableTip">
+  <tr>
+    <td class="TDtableTip"><p class="myList">New cities (and buildings and closets) always initially appear on the top left corner of the workspace. To avoid confusion, you should immediately rename and move them.</p>
+    </td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+<p class="MainHeading2">Physical Dimensions</p> 
+<p>Physical containers (generic containers, cities, buildings and closets) inherently have physical dimensions: width, length and height, measured in meters. Container's dimensions have significant effect on whether one container can be placed inside of another container. Naturally, containers of larger dimensions can not be placed inside the containers of smaller dimensions. Physical container size also affects the distance calculations inside a container, which, in turn, affects cable lengths. <a href="workspace_physical_customIconsAndBG.htm" target="content" class="MenuHeading3">Customizing Icons &amp; BG</a> has more details on where and how to change the physical dimensions of containers.</p>
+
+<p>&nbsp;</p>
+<p class="MainHeading2">Making Connections</p>
+<p>Cabling devices in Physical View is similar to that of Logical View. A variety of ways to make connections between devices in Physical workspace are given below. A singular distinctions between connections in Physical and Logical workspaces relates to the fact that in Physical every cable and wireless link are subject to physical spaces they are part of. Just like in the real world, in Physical workspace cables have length and wireless links have distance ranges associated with them. Packet Tracer allows users to take these spatial properties of network links into account when they design and test their networks. In <a href="preferences.htm" target="content" class="MenuHeading2"> Preferences</a> dialog you can turn on and off the effects physical properties of cables and wireless links have on network behavior (see <em>Enable Cable Length Effects</em> and <em>Show Wireless Grid</em> options under <em>Interface</em> and <em> Hide </em> tabs respectively). When you opt to enable these cable effects, beware that moving connected devices between or within physical containers will affect physical properties of their cable and wireless links and that, in turn, can play a role on whether devices can successfully communicate with one another. In this case, any time you notice that two devices in Logical workspace do not communicate with one another, you may want to check whether the cables they are connected with do not exceed maximum cable length for the cable type used. Likewise, it might be worth checking if two wireless devices are not separated by too great a distance between them for the wireless link to be possible. <a href="workspace_physical_distanceMeasurements.htm" target="content" class="MenuHeading3">Distance Measurements</a> section has more information on this subject. <br/><br/>
+The following sections will address various ways one can connect devices in Physical workspace.</p>
+
+<b>Auto Connection</b>
+<ul>
+<li>Select Auto Connect from the Network Component Box</li>
+<li>Click on the first device</li>
+<li>Click on the second device</li>
+<li>A reasonable connection, if possible, is created between the two devices. Note that it is only possible to use Auto Connect on devices.</li>
+</ul>
+
+<b>Specific Connection Between Devices</b>
+<ul>
+<li>Select a Connection Type from the Network Component Box</li>
+<li>Click on the first device</li>
+<li>Select a Port</li>
+<li>Click on the second device</li>
+<li>Select a Port</li>
+<li>A connection is created between the two devices</li>
+</ul>
+
+<b>Specific Connection Between a Device and a GeoView Container</b>
+<ul>
+<li>Select a Connection Type from the Network Component Box</li>
+<li>Click on the first device</li>
+<li>Select a Port</li>
+<li>Click on the location container</li>
+<li>Select sub locations until a Device is found</li>
+<li>Select a Port</li>
+<li>A connection is created between the two devices.</li>
+</ul>
+
+<p>&nbsp;</p>
+<p class="MainHeading2">Modifying Connections</p>
+<b>Plug and Unplug Connections in Physical Workspace</b>
+<ul>
+<li>Similar to Logical View, select one side of the cable by dragging the link light. Then select another device and port. It is also possible to select another location container, then device and port.</li>
+</ul>
+
+<b>Plug and Unplug Connections in RackView</b>
+<ul>
+<li>To plug and unplug connections, select a cable and drag it to another available port. As you mouseover ports, a tooltip will show the port name. Drop the cable into the port to recable. It is possible to attempt to plug cables into the originating device or wrong port to cable types, but appropriate error messages will show.</li>
+<li>There may be dummy graphical ports on devices, these ports do not have an engine counterpart and cannot be plugged in. These ports are identified by the lack of tooltip on mouse over while dragging a loose connection.</li>
+<li>It is not possible to remove a connection by unplugging.</li>
+</ul>
+<p>&nbsp;</p>
+<p class="MainHeading2">Creating Custom Devices</p>
+In addition to using devices and physical containers that come with Packet Tracer, users can create custom devices that are designed to be used specifically in Physical Workspace and tailored to users' needs.  Thus created custom devices can include network devices, physical containers and collections/combinations thereof. In essence, a custom device is a template file that stores a portion of ones existing network in such a way that it can be saved in a separate file and added later to other networks. The process of creating such custom devices/templates is practically identical to that described in the <a href="./workspace_logical.htm#id_creating_custom_devices">relevant section</a> of Logical Workspace help documentation.
+</body>
+</html>

@@ -1,0 +1,5912 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE>JavaScript API</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice 4.1.0  (Win32)">
+	<META NAME="CREATED" CONTENT="0;0">
+	<META NAME="CHANGEDBY" CONTENT="Alex Bilyk">
+	<META NAME="CHANGED" CONTENT="20180711;23120596">
+	<META NAME="CHANGEDBY" CONTENT="Alex Bilyk">
+	<META NAME="CHANGEDBY" CONTENT="Alex Bilyk">
+	<META NAME="CHANGEDBY" CONTENT="Alex Bilyk">
+    <LINK rel="stylesheet" type="text/css" href="styleNormal.css">
+</HEAD>
+<BODY LANG="en-US" TEXT="#000000" LINK="#1152b1" BGCOLOR="#fdf1af" DIR="LTR">
+<P CLASS="mainheading1">JavaScript API</P>
+<HR>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD COLSPAN=4>
+			<H3 CLASS="western"><A NAME="JavaScriptAPI-ProgramStructureandEvents"></A>
+			Program Structure and Events</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setup()</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>If defined, this function is called once when the program
+			starts.</P>
+		</TD>
+		<TD>
+			<PRE CLASS="western">function setup() {
+ pinMode(0, INPUT);
+}</PRE>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>loop()</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>If defined, this function is called continuously when the
+			program is running. The frequency of the calls depends on the
+			complexity of this function, the number of other devices running
+			programs and their complexity, and the machine's processing power.</P>
+		</TD>
+		<TD>
+			<PRE CLASS="western">function loop() {
+ Serial.println(digitalRead(0));
+}</PRE>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>cleanUp()</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>If defined, this function is called once just before the
+			program stops.</P>
+		</TD>
+		<TD>
+			<PRE CLASS="western">function cleanUp() {
+ Serial.println(&quot;program is stopping.&quot;);
+}</PRE>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>mouseEvent(pressed, x, y)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>If defined, this function is called when the user clicks and/or
+			moves the mouse on the workspace icon of this device.</P>
+			<UL>
+				<LI><P STYLE="margin-bottom: 0in">pressed - a boolean indicating
+				whether the left mouse button is pressed down 
+				</P>
+				<LI><P STYLE="margin-bottom: 0in">x - the x coordinate (in
+				pixels) of the mouse relative to the workspace icon's top left
+				corner 
+				</P>
+				<LI><P STYLE="margin-bottom: 0in">y - the y coordinate (in
+				pixels) of the mouse relative to the workspace icon's top left
+				corner 
+				</P>
+				<LI><P>firstPress - a boolean indicating whether the left mouse
+				button is the first time being pressed down after the last call
+				to this function; pressed is true when the mouse button is
+				pressed and moved, but firstPress is true only when the mouse
+				button is first pressed but not when moved. 
+				</P>
+			</UL>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<PRE CLASS="western">function mouseEvent(pressed, x, y, firstPress) {
+ if (firstPress)
+  doSomething();
+}</PRE>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>measurementSystemChangeEvent()</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>If defined, this function is called when the user changes the
+			measurement system between Metric and Imperial in Preferences. Use
+			isUsingMetric() to get the current setting.</P>
+		</TD>
+		<TD>
+			<PRE CLASS="western">function measurementSystemChangeEvent() {
+ METRIC = isUsingMetric();
+ unit = METRIC ? &quot;C&quot; : &quot;F&quot;;
+ refresh();
+}</PRE>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD COLSPAN=4>
+			<H3 CLASS="western"><A NAME="JavaScriptAPI-DigitalI/O"></A>Digital
+			I/O&nbsp;</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>pinMode(slot, mode)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Set a digital&nbsp;slot&nbsp;to INPUT or OUTPUT.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>pinMode(1, OUTPUT);&nbsp;</P>
+			<P>pinMode(2, INPUT);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>digitalRead(slot)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Reads from a digital&nbsp;slot, returns HIGH or LOW.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var val = digitalRead(1);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>digitalWrite(slot, value)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Writes to a digital&nbsp;slot&nbsp;with HIGH or LOW.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>digitalWrite(1, HIGH);&nbsp;</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD COLSPAN=4>
+			<H3 CLASS="western"><A NAME="JavaScriptAPI-AnalogI/O"></A>Analog
+			I/O&nbsp;</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>pinMode(slot, mode)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Set a digital&nbsp;slot&nbsp;to INPUT or OUTPUT.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>pinMode(1, OUTPUT);&nbsp;</P>
+			<P>pinMode(2, INPUT);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>analogRead(slot)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Reads from an analog slot, returns 0 to 1023.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var val = analogRead(A1);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>analogWrite(slot, value)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Writes a PWM wave to a digital slot, from 0 to 255.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>analogWrite(A1, 128);&nbsp;</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD COLSPAN=4>
+			<H3 CLASS="western"><A NAME="JavaScriptAPI-CustomI/O"></A>Custom
+			I/O&nbsp;</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>customRead(slot)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Reads from an custom slot, returns a string</P>
+		</TD>
+		<TD>
+			<P>var val = customRead(1);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>customWrite(slot, value)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Writes a string to a digital slot. You can use customRead
+			directly from the other side</P>
+		</TD>
+		<TD>
+			<P>customWrite(1, &quot;hello&quot;);&nbsp;</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD COLSPAN=4>
+			<H3 CLASS="western"><A NAME="JavaScriptAPI-InputInterrupts"></A>Input&nbsp;Interrupts</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>attachInterrupt(slot, callback)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Registers a function to be called when the input of a slot
+			changes.</P>
+			<P>This works for analog, digital and custom inputs. Whenever the
+			input changes, the callback is called.</P>
+			<P>Only one function is registered per slot. Calling this a second
+			time for the same slot will remove the first callback.</P>
+		</TD>
+		<TD>
+			<PRE CLASS="western">function isr() {
+  input = analogRead(0);
+}
+attachInterrupt(0, isr);</PRE>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>detachInterrupt(slot)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Unregisters the slot for input changes.</P>
+		</TD>
+		<TD>
+			<P>detachInterrupt(0);</P>
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+<P><BR><BR>
+</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD COLSPAN=4>
+			<H3 CLASS="western"><A NAME="JavaScriptAPI-Time"></A>Time</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>delay(ms)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Pauses the program for ms.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>delay(1000);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>uptime()</P>
+		</TD>
+		<TD>
+			<P>Number</P>
+		</TD>
+		<TD>
+			<P>Returns the time since the device was started in seconds.</P>
+		</TD>
+		<TD>
+			<P>Serial.println(uptime()); 
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD COLSPAN=4>
+			<H3 CLASS="western"><A NAME="JavaScriptAPI-DebugOutputs"></A>Debug
+			Outputs&nbsp;</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>Serial.print(msg)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Prints message to debug outputs.</P>
+		</TD>
+		<TD>
+			<P>Serial.print(&quot;hello&quot;);</P>
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>Serial.println(msg)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Prints message with a \n at the end to debug outputs.</P>
+		</TD>
+		<TD>
+			<P>Serial.println(&quot;hello&quot;);</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD COLSPAN=4>
+			<H3 CLASS="western"><A NAME="JavaScriptAPI-BasicNetworking"></A>Basic
+			Networking&nbsp;</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>Network.localIP()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Returns the local IP.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var&nbsp;ip = Network.localIP();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>Network.subnetMask()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Returns the subnet mask.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var&nbsp;mask = Network.subnetMask();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>Network.gatewayIP()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Returns the gateway IP.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var&nbsp;gateway = Network.gatewayIP();&nbsp;</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD COLSPAN=4>
+			<H3 CLASS="western"><A NAME="JavaScriptAPI-HTTPClient"></A>HTTP
+			Client</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>new HTTPClient()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>HTTPClient</P>
+		</TD>
+		<TD>
+			<P>Creates a HTTP Client.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var http = new&nbsp;HTTPClient();</P>
+			<P>&nbsp;&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>open(url)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Gets an URL.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>http.open(&ldquo;<A HREF="http://www.cisco.com/">http://www.cisco.com</A>&rdquo;);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>stop()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Stops the request.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>http.stop();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>onDone&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for when the request is done.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>http.onDone = function(status, data) {&nbsp;</P>
+			<P>};&nbsp;</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD COLSPAN=4>
+			<H3 CLASS="western"><A NAME="JavaScriptAPI-HTTPServer(SBConly)"></A>
+			HTTP Server&nbsp;(SBC only)</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>HTTPServer.route(path, method, callback);&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets up a route for path and calls callback when it is
+			requested.&nbsp;Routes also support wildcards using *.</P>
+		</TD>
+		<TD>
+			<P>HTTPServer.route(&quot;/hello&quot;, function(url, response) {&nbsp;</P>
+			<P>&nbsp; response.send(&quot;world&quot;);&nbsp;</P>
+			<P>});</P>
+			<P><BR><BR>
+			</P>
+			<P>HTTPServer.route(&quot;/*&quot;, function(url, response) {&nbsp;</P>
+			<P>&nbsp; response.send(&quot;hi&quot;);&nbsp;</P>
+			<P>});</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>HTTPServer.start(port)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>boolean</P>
+		</TD>
+		<TD>
+			<P>Starts listening on port.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>HTTPServer.start(80);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>HTTPServer.stop()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Stops listening.</P>
+		</TD>
+		<TD>
+			<P>HTTPServer.stop();&nbsp;</P>
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Response class</STRONG></P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>Passed into the HTTPServer route handler.</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>send(content)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sends content back as response.</P>
+		</TD>
+		<TD>
+			<P>response.send(&quot;hello&quot;);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setContentType(type)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the content type in the response.</P>
+		</TD>
+		<TD>
+			<P>response.setContentType(&quot;text/plain&quot;);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>sendFile(filePath)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sends a file back as response. The file path is in the device's
+			file manager, not relative to the source code of the current
+			project/script.</P>
+		</TD>
+		<TD>
+			<P>response.sendFile(&quot;/test.txt&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>sendNotFound()</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sends a file not found as response.</P>
+		</TD>
+		<TD>
+			<P>response.sendNotFound()</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD COLSPAN=4>
+			<H3 CLASS="western"><A NAME="JavaScriptAPI-Email"></A>Email</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>EmailClient.setup(email,&nbsp;server, username, password)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets up the email client to be used.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>EmailClient.setup(&ldquo;user@cisco.com&rdquo;,&nbsp;&quot;cisco.com&quot;,
+			&quot;username&quot;, &quot;password&quot;);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>EmailClient.send(address, subject, body)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sends an email.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>EmailClient.send(&quot;pt@cisco.com&quot;, &quot;subject&quot;,
+			&quot;body);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>EmailClient.receive()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Receives emails.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>EmailClient.receive();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>EmailClient.onSend&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for when sending an email is done.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>EmailClient.onSend = function(success) {&nbsp;</P>
+			<P>};&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>EmailClient.onReceive&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for when emails are received.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>EmailClient.onReceive = function(sender, subject, body) {&nbsp;</P>
+			<P>};&nbsp;</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD COLSPAN=4>
+			<H3 CLASS="western"><A NAME="JavaScriptAPI-TCP"></A>TCP</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>new TCPClient()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>TCPClient</P>
+		</TD>
+		<TD>
+			<P>Creates a TCP Client.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var&nbsp;client = new&nbsp;TCPClient();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>connect(ip, port)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>boolean</P>
+		</TD>
+		<TD>
+			<P>Connects to ip and port.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.connect(IPAddress(&quot;1.1.1.1&quot;), 2000);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>close()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Disconnects.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.close();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>state()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the state of the connection.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.state();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>remoteIP()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Returns the remote IP.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.remoteIP();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>remotePort()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the remote port.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.remotePort();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>send(data)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sends data to remote.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.send(&quot;hello&quot;);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><FONT COLOR="#000000">sendWithPDUInfo(data, pduInfo)</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Sends data to remote connection with PDU info.</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">var data = &quot;hello&quot;;var pduInfo
+			= new PDUInfo(0xffff00);</FONT> <FONT COLOR="#000000">pduInfo.setOutFormat(&quot;MyProtocol&quot;,
+			&quot;MyPDU&quot;, {&quot;type&quot;: &quot;REPLY&quot;, &quot;data&quot;:
+			data});pduInfo.addOutMessage(&quot;I am sending some data.&quot;);</FONT>
+			<FONT COLOR="#000000">client.sendWithPDUInfo(data, pduInfo);</FONT>
+						</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>onReceive&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for when data is received.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.onReceive&nbsp;=&nbsp;function(data) {&nbsp;</P>
+			<P>};&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><FONT COLOR="#000000">onReceiveWithPDUInfo</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for when data is received and includes the
+			PDU info.</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">client.onReceiveWithPDUInfo =
+			function(data, pduInfo) {</FONT> 
+			</P>
+			<P>pduInfo.addInMessage(&quot;I got some data.&quot;);
+			pduInfo.setAccepted();}<FONT COLOR="#000000"><FONT FACE="Arial, sans-serif">;</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>onConnectionChange&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for when the connection changes.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.onConnectionChange = function(type) {&nbsp;</P>
+			<P>};&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>&nbsp;&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>new TCPServer()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>TCPServer</P>
+		</TD>
+		<TD>
+			<P>Creates a TCP Server.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var server =&nbsp;TCPServer();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>listen(port)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Starts listening on port.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>server.listen(2000);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>stop()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Stops listening.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>server.stop();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>onNewClient&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for when a new client comes in.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>server.onNewClient =&nbsp;function(client) {&nbsp;</P>
+			<P>};&nbsp;</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD COLSPAN=4>
+			<H3 CLASS="western"><A NAME="JavaScriptAPI-UDP"></A>UDP</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>new UDPSocket()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>UDPSocket</P>
+		</TD>
+		<TD>
+			<P>Creates an UDP Socket.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var udp = new&nbsp;UDPSocket();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>begin(port)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>boolean</P>
+		</TD>
+		<TD>
+			<P>Starts listening on port.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>udp.begin(2000);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>stop()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Stops listening.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>udp.stop();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>send(ip, port, data)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>boolean</P>
+		</TD>
+		<TD>
+			<P>Sends data.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>udp.send(IPAddress(&quot;1.1.1.1&quot;), 2000, &quot;hello&quot;);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><FONT COLOR="#000000">sendWithPDUInfo(ip, port, data, pduInfo)</FONT>
+						</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Sends data with PDU info.</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">var data = &quot;hello&quot;;var pduInfo
+			= new PDUInfo(0xffff00);</FONT> <FONT COLOR="#000000">pduInfo.setOutFormat(&quot;MyProtocol&quot;,
+			&quot;MyPDU&quot;, {&quot;type&quot;: &quot;REPLY&quot;, &quot;data&quot;:
+			data});pduInfo.addOutMessage(&quot;I am sending some data.&quot;);</FONT>
+			<FONT COLOR="#000000">udp.sendWithPDUInfo(&quot;1.1.1.1&quot;,
+			2000, data, pduInfo);</FONT> 
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>onReceive&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for when data is received.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>udp.onReceive&nbsp;=&nbsp;function(ip, port, data) {&nbsp;</P>
+			<P>};&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><FONT COLOR="#000000">onReceiveWithPDUInfo</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for when data is received and includes PDU
+			info.</P>
+		</TD>
+		<TD>
+			<P>udp.<FONT COLOR="#000000">onReceiveWithPDUInfo </FONT>=
+			function(ip, port, data) { 
+			</P>
+			<P>pduInfo.addInMessage(&quot;I got some data.&quot;);
+			pduInfo.setAccepted(); };</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD COLSPAN=4>
+			<H3 CLASS="western"><A NAME="JavaScriptAPI-File(SBConly)"></A>File&nbsp;(SBC
+			only)</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>FileSystem.exists(path)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>boolean</P>
+		</TD>
+		<TD>
+			<P>Returns whether a file exists in the file system.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>FileSystem.exists(&quot;/file.txt&quot;)&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>FileSystem.open(path,&nbsp; mode)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>File</P>
+		</TD>
+		<TD>
+			<P>Opens a file for reading or writing.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var file = FileSystem.open(&quot;/file.txt&quot;, File.READ);&nbsp;
+			Modes = File.READ | File.WRITE | File.APPEND</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>FileSystem.remove(path)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>boolean</P>
+		</TD>
+		<TD>
+			<P>Removes a file.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>FileSystem.remove(&quot;/file.txt&quot;);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>FileSystem.mkdir(path)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>boolean</P>
+		</TD>
+		<TD>
+			<P>Creates a directory including all intermediate directories.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>FileSystem.mkdir(&quot;/dir1/dir2&quot;);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>FileSystem.rmdir(path)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>boolean</P>
+		</TD>
+		<TD>
+			<P>Removes a directory.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>FileSystem.rmdir(&quot;/dir1/dir2&quot;);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>FileSystem.dir(path)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>Array of File</P>
+		</TD>
+		<TD>
+			<P>Lists all files in a directory.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var files = FileSystem.dir(&quot;/dir1&quot;);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>&nbsp;&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>name()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Returns name of file.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>file.name();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>dir()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Returns directory path.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>file.dir();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>available()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P># of bytes available for reading in&nbsp;file.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var bytes =&nbsp;file.available();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>close()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Closes the file.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>file.close();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>position()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the current reading position of the file.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var position = file.position();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>seek(position)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>boolean</P>
+		</TD>
+		<TD>
+			<P>Seeks to position in file.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>file.seek(0);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>print(val)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Prints to&nbsp;file, returns the number of bytes written.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>file.print(&quot;Hello&quot;);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>println(val)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Prints to&nbsp;file&nbsp;with a \n at the end, returns the
+			number of bytes written.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>file.println(&quot;Hello&quot;);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>readln()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Reads a line of string or to the end of file.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var val = file.readln();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>readch()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Reads one character and removes it from buffer.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var val = file.readch();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>peekch()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Reads one character&nbsp;without removing from buffer.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var val = file.peekch();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>read()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Reads the first byte and removes from buffer, or -1 if none.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var val =&nbsp;file.read();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>peek()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the next byte without removing it from buffer, or -1 if
+			none.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var val = file.peek();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>write(val)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Writes as binary.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>file.write(val);&nbsp;</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD COLSPAN=4>
+			<H3 CLASS="western"><A NAME="JavaScriptAPI-USB"></A>USB</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>USB0</P>
+		</TD>
+		<TD>
+			<P>USB</P>
+		</TD>
+		<TD>
+			<P>The variable for USB0 port.</P>
+		</TD>
+		<TD>
+			<P>USB0.begin(9600);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>USB1 (SBC only)</P>
+		</TD>
+		<TD>
+			<P>USB</P>
+		</TD>
+		<TD>
+			<P>The variable for USB1 port.</P>
+		</TD>
+		<TD>
+			<P>USB1.begin(9600);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>begin(speed)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Begin communication.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>USB0.begin(9600);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>end()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Ends communication.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>USB0.end();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>print(val)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Prints to USB, returns the number of bytes written.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>USB0.print(&quot;Hello&quot;);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>println(val)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Prints to USB with a \n at the end, returns the number of bytes
+			written.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>USB0.println(&quot;Hello&quot;);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>available()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int&nbsp;</P>
+		</TD>
+		<TD>
+			<P># of bytes available for reading in buffer.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var bytes =&nbsp;USB0.available();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>readln()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Reads a line of string or to the end of stream.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var val =&nbsp;USB0.readln();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>readch()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Reads one character and removes it from buffer.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var val =&nbsp;USB0.readch();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>peekch()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Reads one character without removing from buffer.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var val =&nbsp;USB0.peekch();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>read()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Reads the first byte and removes from buffer, or -1 if none.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var val =&nbsp;USB0.read();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>peek()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the next byte without removing it from buffer, or -1 if
+			none.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var val =&nbsp;USB0.peek();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>write(val)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Writes as binary.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>USB0.write(val);&nbsp;</P>
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>PTmata0</P>
+		</TD>
+		<TD>
+			<P>PTmata</P>
+		</TD>
+		<TD>
+			<P>The variable for PTmata communication over USB0 port.</P>
+		</TD>
+		<TD>
+			<P>PTmata0.begin(9600);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>PTmata1 (SBC only)</P>
+		</TD>
+		<TD>
+			<P>PTmata</P>
+		</TD>
+		<TD>
+			<P>The variable for PTmata communication over USB1 port.</P>
+		</TD>
+		<TD>
+			<P>PTmata1.begin(9600);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>begin(speed)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Begin communication.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>PTmata0.begin(9600);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>end()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Ends communication.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>PTmata0.end();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>pinMode(slot, mode)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Set a digital&nbsp;slot&nbsp;on other side to INPUT or OUTPUT.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>PTmata0.pinMode(1, OUTPUT);&nbsp;</P>
+			<P>PTmata0.pinMode(2, INPUT);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>digitalRead(slot)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Reads from a digital&nbsp;slot on other side, returns HIGH or
+			LOW.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var val =&nbsp;PTmata0.digitalRead(1);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>digitalWrite(slot, value)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Writes to a digital&nbsp;slot&nbsp;on other side&nbsp;with HIGH
+			or LOW.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>PTmata0.digitalWrite(1, HIGH);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>analogRead(slot)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Reads from an analog slot&nbsp;on other side, returns 0 to
+			1023.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var val =&nbsp;PTmata0.analogRead(A1);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>analogWrite(slot, value)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Writes a PWM wave to a digital slot&nbsp;on other side, from 0
+			to 255.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>PTmata0.analogWrite(A1, 128);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>customRead(slot)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Reads from an custom slot&nbsp;on other side, returns a string</P>
+		</TD>
+		<TD>
+			<P>var val =&nbsp;PTmata0.customRead(1);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>customWrite(slot, value)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Writes a string to a digital slot&nbsp;on other side. You can
+			use customRead directly from the other side</P>
+		</TD>
+		<TD>
+			<P>PTmata0.customWrite(1, &quot;hello&quot;);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>available()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int&nbsp;</P>
+		</TD>
+		<TD>
+			<P># of bytes available for reading in buffer.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var bytes = PTmata0.available();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>processInput()</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Reads from buffer and processes inputs for commands and reports
+			of states.</P>
+		</TD>
+		<TD>
+			<PRE CLASS="western">function loop() {
+  while (PTmata0.available())
+    PTmata0.processInput();
+  PTmata0.readAndReportData();
+}</PRE>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>readAndReportData()</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Reads this side's slot values and report to other side if they
+			are changed.</P>
+		</TD>
+		<TD>
+			<P>PTmata0.readAndReportData();</P>
+		</TD>
+	</TR>
+</TABLE>
+<P><BR><BR>
+</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD COLSPAN=4>
+			<H3 CLASS="western"><A NAME="JavaScriptAPI-IoEClient(SBConly)"></A>
+			IoE Client&nbsp;(SBC only)</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>IoEClient.setup(api)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets up the API for remote monitor and control from IoE server.</P>
+			<P>The api is an object with the following properties describing
+			the device:</P>
+			<UL>
+				<LI><P STYLE="margin-bottom: 0in">type - a string for the type of
+				this device 
+				</P>
+				<LI><P STYLE="margin-bottom: 0in">states - an Array of objects
+				with the following properties describing the state: 
+				</P>
+				<UL>
+					<LI><P STYLE="margin-bottom: 0in">name - a string for this state
+										</P>
+					<LI><P STYLE="margin-bottom: 0in">type - a string for the type
+					of this state; can be &quot;bool&quot;, &quot;number&quot;,
+					&quot;options&quot;, &quot;string&quot; 
+					</P>
+					<LI><P STYLE="margin-bottom: 0in">options (required if type is
+					&quot;options&quot;) - an object that maps values to names 
+					</P>
+					<LI><P STYLE="margin-bottom: 0in">unit (optional if type is
+					&quot;number&quot;) - the default or Metric unit label; the
+					value of a number state sent to the IoE Server should be in this
+					unit 
+					</P>
+					<LI><P STYLE="margin-bottom: 0in">imperialUnit (optional if type
+					is &quot;number&quot;) - the Imperial System unit label 
+					</P>
+					<LI><P STYLE="margin-bottom: 0in">toImperialConversion (optional
+					if type is &quot;number&quot;) - a string to be evaluated to
+					convert the default value to Imperial unit where x is the
+					default value 
+					</P>
+					<LI><P STYLE="margin-bottom: 0in">toMetricConversion (optional
+					if type is &quot;number&quot;) - a string to be evaluated to
+					convert the value in Imperial unit to the default or Metric
+					unit, where x is the Imperial value 
+					</P>
+					<LI><P STYLE="margin-bottom: 0in">decimalDigits (optional if
+					type is &quot;number&quot;) - the number of decimal digits to
+					round to on IoE Server pages; default is to not round 
+					</P>
+					<LI><P STYLE="margin-bottom: 0in">controllable - a boolean
+					indicating whether it is remotely controllable 
+					</P>
+					<LI><P STYLE="margin-bottom: 0in">minValue (required if type is
+					&quot;number&quot; and controllable is true) - the minimum value
+					to allow the IoE Server to set in default or Metric unit 
+					</P>
+					<LI><P>maxValue (required if type is &quot;number&quot; and
+					controllable is true) - the maximum value to allow the IoE
+					Server to set in default or Metric unit 
+					</P>
+				</UL>
+			</UL>
+			<P>For measurement systems other than Metric and Imperial, use
+			only the &quot;unit&quot; property. That means if you want a
+			device to show more than Metric and Imperial, you need to create
+			another device for other measurement systems.</P>
+		</TD>
+		<TD>
+			<PRE CLASS="western">IoEClient.setup({
+  type: &quot;Door&quot;,
+  states: [{
+    name: &quot;Open&quot;,
+    type: &quot;bool&quot;
+  }, {
+    name: &quot;Lock&quot;,
+    type: &quot;options&quot;,
+    options: {
+      &quot;0&quot;: &quot;Unlock&quot;,
+      &quot;1&quot;: &quot;Lock&quot;
+    },
+    controllable: true
+  }]
+});
+IoEClient.setup({
+ type: &quot;Thermostat&quot;,
+ states: [{
+  name: &quot;Status&quot;,
+  type: &quot;options&quot;,
+  options: {
+   &quot;0&quot;: &quot;Off&quot;,
+   &quot;1&quot;: &quot;Cooling&quot;,
+   &quot;2&quot;: &quot;Heating&quot;,
+   &quot;3&quot;: &quot;Auto&quot;
+  },
+  controllable: true
+ }, {
+  name: &quot;Temperature&quot;,
+  type: &quot;number&quot;,
+  unit: &quot;&amp;deg;C&quot;,
+  imperialUnit: &quot;&amp;deg;F&quot;,
+  toImperialConversion: &quot;x*1.8+32&quot;,
+  toMetricConversion: &quot;(x-32)/1.8&quot;,
+  decimalDigits: 1
+ }, {
+  name: &quot;Auto Cool Temperature&quot;,
+  type: &quot;number&quot;,
+  unit: &quot;&amp;deg;C&quot;,
+  imperialUnit: &quot;&amp;deg;F&quot;,
+  toImperialConversion: &quot;x*1.8+32&quot;,
+  toMetricConversion: &quot;(x-32)/1.8&quot;,
+  decimalDigits: 1,
+  controllable: true,
+  minValue: 10,
+  maxValue: 100
+ }, {
+  name: &quot;Auto Heat Temperature&quot;,
+  type: &quot;number&quot;,
+  unit: &quot;&amp;deg;C&quot;,
+  imperialUnit: &quot;&amp;deg;F&quot;,
+  toImperialConversion: &quot;x*1.8+32&quot;,
+  toMetricConversion: &quot;(x-32)/1.8&quot;,
+  decimalDigits: 1,
+  controllable: true,
+  minValue: -100,
+  maxValue: 20
+ }]
+});</PRE>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>IoEClient.reportStates(states)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Reports the states of this device to the IoE server.<BR>The
+			argument is a string representing all states of this device. Each
+			state is separated by a comma.<BR>The argument can also be an
+			array representing all states.<BR>The number of states must match
+			the length of the states property in setup().</P>
+		</TD>
+		<TD>
+			<P>IoEClient.reportStates(&quot;0,1&quot;);</P>
+			<P>IoEClient.reportStates([0, 1, &quot;str&quot;]);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>IoEClient.onInputReceive</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for processing inputs received from IoE
+			server.<BR>The argument to the callback is a string containing all
+			states of this device.</P>
+			<P>This is called with all states info. onStateSet is called with
+			only the state that was changed.</P>
+		</TD>
+		<TD>
+			<P>IoEClient.onInputReceive = function(input) {<BR>};</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>IoEClient.onStateSet</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for processing inputs received from IoE
+			server.<BR>The arguments to the callback are state name and state
+			value.</P>
+			<P>This is called with only the state that was changed.
+			onInputReceive is called with all states info.</P>
+		</TD>
+		<TD>
+			<P>IoEClient.onStateSet = function(stateName, value) {<BR>};&nbsp;</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD COLSPAN=4>
+			<H3 CLASS="western"><A NAME="JavaScriptAPI-Physical"></A>Physical</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>move(x,y)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Move thing to position x and y in screen coordinates.</P>
+		</TD>
+		<TD>
+			<P>move(200,200);&nbsp;&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>moveBy(x,y)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Increment position of thing by x and y in screen coordinates.</P>
+		</TD>
+		<TD>
+			<P>moveBy(1,0);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>moveItemInWorkspace(name, x, y);</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Moves the item defined by name to x and y in screen coordinates
+			in the active workspace. The parameters expect x and y to be ints.
+			Casting may be required.</P>
+		</TD>
+		<TD>
+			<P>moveItemInWorkspace(&quot;building&quot;, 300,300);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getX()</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Gets the x position of thing in screen coordinates.</P>
+		</TD>
+		<TD>
+			<P>var x = getX();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getY()</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Gets the y position of thing in screen coordinates.</P>
+		</TD>
+		<TD>
+			<P>var y = getY();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getCenterX()</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Gets the x position of the center of the thing in screen
+			coordinates</P>
+		</TD>
+		<TD>
+			<P>var x = getCenterX();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getCenterY()</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Gets the y position of the center of the thing in screen
+			coordinates</P>
+		</TD>
+		<TD>
+			<P>var y = getCenterY();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>devicesAt(x, y, width, height)</P>
+		</TD>
+		<TD>
+			<P>Array of string</P>
+		</TD>
+		<TD>
+			<P>Gets a list of devices at position x and y with a boundary of
+			width and height.&nbsp;The parameters expect x and y to be ints.
+			Casting may be required. 
+			</P>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>devicesAt(10,10,100,100);</P>
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>devicesIncludingClustersAt(x, y, width, height)</P>
+		</TD>
+		<TD>
+			<P>Array of string</P>
+		</TD>
+		<TD>
+			<P>Gets a list of devices at position x and y with a boundary of
+			width and height including clusters.&nbsp;The parameters expect x
+			and y to be ints. Casting may be required.</P>
+		</TD>
+		<TD>
+			<P>devicesIncludingClustersAt(10, 10, 100, 100);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getName()</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Gets the name of the thing</P>
+		</TD>
+		<TD>
+			<P>var devName = getName()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getDeviceProperty(deviceName, property)</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Gets the property of a device with the specified property</P>
+		</TD>
+		<TD>
+			<P>getDeviceProperty(&quot;Car&quot;, &quot;material&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setDeviceProperty(deviceName, property, value)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Set property for device</P>
+		</TD>
+		<TD>
+			<P>setDeviceProperty(&quot;Car&quot;, &quot;material&quot;,
+			&quot;metal&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setComponentOpacity(componentName, value)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Set the opacity of a component in the thing. The value is from
+			0 to 1, where 1 is opaque.</P>
+		</TD>
+		<TD>
+			<P>setComponentOpacity(&quot;light&quot;, 0.5)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setComponentRotation(componentName, value)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the component rotation in degrees</P>
+		</TD>
+		<TD>
+			<P>setComponentRotation(&quot;hourHand&quot;, 90)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setRotation(value)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the entire thing rotation in degrees</P>
+		</TD>
+		<TD>
+			<P>setRotation(180)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getSerialNumber()</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Gets the serial number of the thing</P>
+		</TD>
+		<TD>
+			<P>var serialNo = getSerialNumber()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setCustomText(x,y,width,height,text)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Write some text on the Thing viewable on the workspace.</P>
+		</TD>
+		<TD>
+			<P>setCustomText(0,0,100,100,&quot;Device is On&quot;);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setLogicalBackgroundPath(text)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>fillColor(componentName, red, green, blue)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Fill the component with the specified RGB values. The component
+			original image will have to be transparent for the color to show
+			up.</P>
+		</TD>
+		<TD>
+			<P>fillColor(&quot;led&quot;, 0,0,255)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>addSound(soundID, soundPath)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Adds a sound to the device so it can be used.&nbsp; Sound is
+			referenced by the ID for later use.&nbsp; PT sound folder is:</P>
+			<P>&quot;/../Sounds/&quot;</P>
+		</TD>
+		<TD>
+			<P>addSound('sound1', '/../Sounds/buzzLow.wav');</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>playSound(soundID, playLength)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Plays a sound that has been added to the device.&nbsp; soundID
+			references the ID the sound was added with, playLength is how many
+			times the sound should run.&nbsp; -1 will make the sound loop
+			forever.</P>
+		</TD>
+		<TD>
+			<P>playSound('sound1', 2);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>stopSound(soundID)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Stops a sound.&nbsp; soundID references the ID the sound
+			played.</P>
+		</TD>
+		<TD>
+			<P>stopSound('sound1');</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>destroySounds()</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Stops any sounds playing in the devices and removes them.&nbsp;
+			They can't be played again unless re-added.</P>
+		</TD>
+		<TD>
+			<P>destroySounds();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setParentGraphicFromComponent(componentName, index)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the parent container of both physical and logical view to
+			a graphic from component.</P>
+		</TD>
+		<TD>
+			<P>setParentGraphicFromComponent(&quot;name&quot;, 0);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setLogicalParentGraphicFromComponent(componentName, index)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the parent container of logical view to a graphic from
+			component.</P>
+		</TD>
+		<TD>
+			<P>setLogicalParentGraphicFromComponent(&quot;name&quot;, 0);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setPhysicalParentGraphicFromComponent(componentName, index)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the parent container of physical view to a graphic from
+			component.</P>
+		</TD>
+		<TD>
+			<P>setPhysicalParentGraphicFromComponent(&quot;name&quot;, 0);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setLogicalBackgroundPath(path)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the logical view background to an image at path.</P>
+		</TD>
+		<TD>
+			<P>setLogicalBackgroundPath(&quot;path&quot;);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getAttributeOfDeviceAtSlot(attribute, slot)</P>
+		</TD>
+		<TD>
+			<P>Number</P>
+		</TD>
+		<TD>
+			<P>Returns the attribute value of the device connected at the
+			specified slot.</P>
+		</TD>
+		<TD>
+			<P>var value = getAttributeOfDeviceAtSlot(&quot;name&quot;, 0);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getAttributeOfDevice(attribute)</P>
+		</TD>
+		<TD>
+			<P>Number</P>
+		</TD>
+		<TD>
+			<P>Returns the attribute value of this device.</P>
+		</TD>
+		<TD>
+			<P>var value = getAttributeOfDevice(&quot;name&quot;);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getSlotsCount()</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the number of slots this device has.</P>
+		</TD>
+		<TD>
+			<P>var slots = getSlotsCount();</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD COLSPAN=4>
+			<H3 CLASS="western"><A NAME="JavaScriptAPI-Environment"></A>Environment</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>Function</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P>Description</P>
+		</TD>
+		<TD>
+			<P>Example</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>get(environmentID)</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Gets the value of the environment by its ID. You can get the ID
+			by placing your mouse over the environment name in the Environment
+			GUI.</P>
+			<P>If the environment does not exist, it will return -1.</P>
+		</TD>
+		<TD>
+			<P>Environment.get(&quot;Ambient Temperature&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setGlobalProperty(propertyName, value)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets a global property with a value. Both are strings.</P>
+		</TD>
+		<TD>
+			<P>Environment.setGlobalProperty(&quot;CLOCK&quot;, &quot;12:00:00
+			pm&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getGlobalProperty(propertyName)</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Returns the global property value.</P>
+		</TD>
+		<TD>
+			<P>Environment.getGlobalProperty(&quot;CLOCK&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>hasGlobalProperty(propertyName)</P>
+		</TD>
+		<TD>
+			<P>boolean</P>
+		</TD>
+		<TD>
+			<P>Returns true if the property name exists, otherwise false.</P>
+		</TD>
+		<TD>
+			<P>Environment.hasGlobalProperty(&quot;CLOCK&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setContribution(environmentID, rate, limit, bCumulative)</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>Set the things contribution to an environment based on it's
+			environment ID. You do not need to worry about how much time has
+			passed and you only need to call this function when you need
+			different parameters.</P>
+			<P>rate: the rate to add or subtract from the total environment
+			value in value/second. Value should be in metric.</P>
+			<P>limit: the maximum or minimum this thing is allowed to
+			contribute. The limit should be in metric.</P>
+			<P>bCumulative: add up contributed values over time. For
+			environments like light sources that disappear when off,
+			bCumulative should be set to false.</P>
+		</TD>
+		<TD>
+			<P>// increase the Ambient Temperature at 0.05C/second until 100C.</P>
+			<P>Environment.setContribution(&quot;Ambient Temperature&quot;,
+			0.05, 100, true)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>removeCumulativeContribution(environmentID)</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>Remove the overall cumulative contribution from the Thing. In
+			most cases, you do not need to do this. Rather, you should set up
+			the container to use transference or other things to remove
+			accumulated contributions.</P>
+		</TD>
+		<TD>
+			<P>Environment.removeCumulativeContribution(&quot;Ambient
+			Temperature&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setTransferenceMultiplier(environmentID, multiplier)</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>Increase or decrease the current transference value by
+			multiplier.</P>
+			<P>For example, if you open the door to the house, you may want to
+			speed up the Ambient Temperature convergence with the outside by
+			increasing the container's transference by the multiplier.</P>
+		</TD>
+		<TD>
+			<P>Environment.setTransferenceMultiplier(&quot;Ambient
+			Temperature&quot;, 2)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getTotalContributions(environmentID)</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Returns the total value of contributions by all things</P>
+		</TD>
+		<TD>
+			<P>Environment.getTotalContributions(&quot;Wind Speed&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getCumulativeContribution(environmentID)</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>Returns the cumulativeContribution for just the thing that is
+			calling the function</P>
+		</TD>
+		<TD>
+			<P>Environment.getCumulativeContribution(&quot;Wind Speed&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getMetricValue(environmentID)</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Returns the metric value of the environmentID regardless of
+			user preference</P>
+		</TD>
+		<TD>
+			<P>Environment.getMetricValue(&quot;Ambient Temperature&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getValueWithUnit(environmentID)</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Returns the value in metric or imperial based on the user
+			preference and also append the unit</P>
+		</TD>
+		<TD>
+			<P>Environment.getValueWithUnit(&quot;Ambient Temperature&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getUnit(environmentID)</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Returns the unit for the environmentID. The unit can be metric
+			or imperial based on the user preferences</P>
+		</TD>
+		<TD>
+			<P>Environment.getUnit(&quot;Ambient Temperature&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getVolume()</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Returns the volume size of the container in meters^3 that
+			caller of the function is in</P>
+		</TD>
+		<TD>
+			<P>Environment.getVolume()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getTimeInSeconds()</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the current time</P>
+		</TD>
+		<TD>
+			<P>Environment.getTimeInSeconds();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getElapsedTime(lastTime)</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the time passed since the lastTime value</P>
+		</TD>
+		<TD>
+			<P>var time = Environment.getTimeInSeconds();</P>
+			<P>delay(1000);</P>
+			<P>Environment.getElapsedTime(time);</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE WIDTH=1137 CELLPADDING=2 CELLSPACING=2>
+	<COL WIDTH=312>
+	<COL WIDTH=141>
+	<COL WIDTH=281>
+	<COL WIDTH=385>
+	<TR>
+		<TD COLSPAN=4 WIDTH=1131>
+			<H3 CLASS="western">Real HTTP Server (External Network Access)</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P><STRONG>Function</STRONG></P>
+		</TD>
+		<TD WIDTH=141>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD WIDTH=281>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD WIDTH=385>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P>new RealHTTPServer()&nbsp;</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>RealHTTPServer</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Creates a Real HTTP Server.&nbsp;</P>
+		</TD>
+		<TD WIDTH=385>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>var http = new
+			RealHTTPServer();</FONT></FONT></P>
+			<P>&nbsp;&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P>start( port )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Start server listening on <I>port</I>.</P>
+		</TD>
+		<TD WIDTH=385>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>http.start(
+			8765 );</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P>stop( )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Stop server listening.</P>
+		</TD>
+		<TD WIDTH=385>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>http.stop();</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P>isListening( )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>boolean</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Returns the listening status of the server.</P>
+		</TD>
+		<TD WIDTH=385>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>http.isListening(
+			);</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P>route( url-pattern, request-types, callback)</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Adds <I>callback</I> to be run for all <I>request-types</I>
+			matching <I>url-pattern</I>.</P>
+			<P>callback: <I>function (request, reply)<BR></I><SPAN STYLE="font-style: normal">requst:</SPAN>
+			<I>RealHttpServerRequest<BR></I><SPAN STYLE="font-style: normal">response:</SPAN>
+			<I>RealHttpServerResponse</I></P>
+			<P>url-pattern: <I>string</I><BR>request-types: <I>array of
+			strings (&ldquo;GET&rdquo;, &ldquo;POST&rdquo;, &ldquo;PUT&rdquo;,
+			&ldquo;UPDATE&rdquo;, &ldquo;DELETE&rdquo;)</I></P>
+		</TD>
+		<TD WIDTH=385>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>function
+			on_get_files( request, reply ){...}<BR>function on_posts( request,
+			reply ){...}<BR>function on_everything( request, reply
+			){...}<BR>http.route( &ldquo;/files/*&rdquo;, [&ldquo;GET&rdquo;],
+			on_get_files);<BR>http.route( &ldquo;*&rdquo;, [&ldquo;POST&rdquo;],
+			on_posts);<BR>http.route( &ldquo;*&rdquo;, <SPAN STYLE="font-style: normal">[]</SPAN>,
+			on_everything);</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P>websocket( url-pattern, callback)</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Adds <I>callback</I> be run for incoming websocket connections matching <I>url-pattern</I>.</P>
+			<P>callback: <I>function (client)</I>
+			<BR><SPAN STYLE="font-style: normal">client:</SPAN>
+			<I>RealWSClient<BR></I></P>
+			<P>url-pattern: <I>string</I><BR></P>
+		</TD>
+		<TD WIDTH=385>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>function
+					callback( client ) {...}
+<BR>http.websocket( "/ws", callback);</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=141>
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=281>
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=385>
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P><B>RealHTTPServerRequest</B></P>
+		</TD>
+		<TD WIDTH=141>
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Request object passed to routing callbacks.</P>
+		</TD>
+		<TD WIDTH=385>
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P>headers( )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>object</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Returns object containing request headers.</P>
+		</TD>
+		<TD WIDTH=385>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>var headers =
+			request.headers( );<BR>... headers[&ldquo;Content-Type&rdquo;] ...</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P>method( )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>string</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Returns request's method (&ldquo;GET&rdquo;, etc.)</P>
+		</TD>
+		<TD WIDTH=385>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>if(
+			request.method() == &ldquo;POST&rdquo; ) {<BR>...<BR>}</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P>body( )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>string</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Returns the body of the request.</P>
+		</TD>
+		<TD WIDTH=385>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>request.body();</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P>url( )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>string</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Returns requested URL.</P>
+		</TD>
+		<TD WIDTH=385>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>request.url();</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P>ip( )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>string</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Returns IP address of the request origin.</P>
+		</TD>
+		<TD WIDTH=385>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>if(
+			request.ip() == &ldquo;1.1.1.1&rdquo; ) ...</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=141>
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=281>
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=385>
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P><B>RealHTTPServerResponse</B></P>
+		</TD>
+		<TD WIDTH=141>
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Response object passed to routing callbacks.</P>
+		</TD>
+		<TD WIDTH=385>
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P>setStatus( code )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Sets response status to <I>code</I><SPAN STYLE="font-style: normal">.<BR><BR>code:
+			number</SPAN></P>
+		</TD>
+		<TD WIDTH=385>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>response.setCode(
+			200 ); // for OK response</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P>setHeaders( headers )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Sets response headers in bulk. Object properties define header
+			names and values.<BR><BR>headers: object</P>
+		</TD>
+		<TD WIDTH=385>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>response.setHeaders({<BR>
+			  &ldquo;Authorization&rdquo;: &ldquo;basic&rdquo;,<BR>  
+			&ldquo;Cookie&rdquo;: &ldquo;Id=1234; Group=users&rdquo;<BR>});</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P>addHeader( name, value )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Sets header <I>name</I> <SPAN STYLE="font-style: normal">to
+			</SPAN><I>value</I><SPAN STYLE="font-style: normal">.<BR><BR>name:
+			string<BR>value: string</SPAN></P>
+		</TD>
+		<TD WIDTH=385>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>response.addHeader(
+			&ldquo;Cookie&rdquo;, &ldquo;Group=inner&rdquo; );</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P>appendContent( content )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Appends <I>content</I> <SPAN STYLE="font-style: normal">to
+			response body.</SPAN></P>
+			<P STYLE="font-style: normal">content: string</P>
+		</TD>
+		<TD WIDTH=385>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>response.appendContent(
+			&ldquo;more stuff&ldquo; );</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P>resetContent( )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Resets the body of the response to empty.</P>
+		</TD>
+		<TD WIDTH=385>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>response.resetContent();</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P>end( )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Initiates network transfer for the response.</P>
+		</TD>
+		<TD WIDTH=385>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>response.setContent(
+			&ldquo;Hello, world!&rdquo; );<BR>response.end();</FONT></FONT></P>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>response.setToPath(
+			&ldquo;my-file.txt&rdquo; );<BR>response.end();</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P>setContent( content )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Sets the body of the response to <I>content</I><SPAN STYLE="font-style: normal">.</SPAN></P>
+			<P STYLE="font-style: normal">content: string</P>
+		</TD>
+		<TD WIDTH=385>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>response.setContent(
+			&ldquo;Hello, world!&rdquo; );</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P>setToFile( path )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Sets content of the response to the contents of the file at
+			<I>path.</I> <SPAN STYLE="font-style: normal">The path must be
+			local to the device running the server.</SPAN></P>
+			<P STYLE="font-style: normal">path: string</P>
+		</TD>
+		<TD WIDTH=385>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>response.setToFile(
+			&ldquo;intro.html&rdquo; );</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P>setToNotFound( ) 
+			</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Canned response for when a requested resource can not be
+			located.</P>
+		</TD>
+		<TD WIDTH=385>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>response.setToNoFound();</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P>send( content ) 
+			</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Sends <I>content</I> <SPAN STYLE="font-style: normal">as plain
+			text.</SPAN></P>
+			<P STYLE="font-style: normal">content: string</P>
+		</TD>
+		<TD WIDTH=385>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>response.send(
+			&ldquo;Hello, world!&rdquo; );</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P>setContentType( type ) 
+			</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Sets <I>Content-Type</I> <SPAN STYLE="font-style: normal">header
+			to </SPAN><I>type</I><SPAN STYLE="font-style: normal">.</SPAN></P>
+			<P STYLE="font-style: normal">type: string</P>
+		</TD>
+		<TD WIDTH=385>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>response.setContentType(
+			&ldquo;text/html&rdquo; );</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P>sendFile( path )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Sends the contents of the file at <I>path</I><SPAN STYLE="font-style: normal">.</SPAN></P>
+			<P STYLE="font-style: normal">path: file path local to the device
+			running the server.</P>
+		</TD>
+		<TD WIDTH=385>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>response.send(
+			&ldquo;my-file.txt&rdquo; );</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=312>
+			<P>sendNotFound( ) 
+			</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Sends canned response for when a requested resource can not be
+			located.</P>
+		</TD>
+		<TD WIDTH=385>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>response.sendNotFound();</FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD COLSPAN=4>
+			<H3 CLASS="western"><A NAME="JavaScriptAPI-RealHTTP(ExternalNetworkAccess)"></A>
+			Real HTTP Client (External Network Access)</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>new RealHTTPClient()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>RealHTTPClient</P>
+		</TD>
+		<TD>
+			<P>Creates a Real HTTP Client.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var http = new RealHTTPClient();</P>
+			<P>&nbsp;&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>get(url)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Gets an URL.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>http.get(&ldquo;<A HREF="http://www.cisco.com/">http://www.cisco.com</A>&rdquo;);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>post(url, data)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Posts data to an URL.</P>
+			<P>data can be a string or a dictionary; if dictionary, it will be
+			URL-encoded into the body.</P>
+		</TD>
+		<TD>
+			<P>http.post(url, {&quot;num&quot;:1, &quot;str&quot;:&quot;hello&quot;});</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>put(url, data)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Puts data to an URL.</P>
+			<P>data can be a string or a dictionary; if dictionary, it will be
+			URL-encoded into the body.</P>
+		</TD>
+		<TD>
+			<P>http.put(url, {&quot;num&quot;:1, &quot;str&quot;:&quot;hello&quot;});</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>deleteResource(url)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sends a delete to an URL.</P>
+		</TD>
+		<TD>
+			<P>http.deleteResource(url);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getWithHeader(url, header)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Gets an URL with custom header fields as a dictionary.</P>
+		</TD>
+		<TD>
+			<P>http.getWithHeader(&quot;<A HREF="https://api.ciscospark.com/v1/people/me">https://api.ciscospark.com/v1/people/me</A>&quot;,{&quot;Authorization&quot;:
+			&quot;Bearer xxyyzz&quot;});</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>postWithHeader(url, data, header)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Posts data to an URL with custom header fields as a dictionary.</P>
+			<P>data can be a string or a dictionary; if dictionary and custom
+			header field has &quot;application/json&quot; as the
+			&quot;content-type&quot;, it will be json-encoded, otherwise it
+			will be URL-encoded into the body.</P>
+		</TD>
+		<TD>
+			<P>http.postWithHeader(&quot;<A HREF="https://api.ciscospark.com/v1/messages">https://api.ciscospark.com/v1/messages</A>&quot;,{&quot;toPersonId&quot;:
+			&quot;722bb271-d7ca-4bce-a9e3-471e4412fa77&quot;, &quot;text&quot;:
+			&quot;Hi Sparky&quot;},{&quot;Authorization&quot;: &quot;Bearer
+			xxyyzz&quot;, &quot;Content-Type&quot;: &quot;application/json&quot;});</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>putWithHeader(url, data, header)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Puts data to an URL with custom header fields as a dictionary.</P>
+			<P>data can be a string or a dictionary; if dictionary and custom
+			header field has &quot;application/json&quot; as the
+			&quot;content-type&quot;, it will be json-encoded, otherwise it
+			will be URL-encoded into the body.</P>
+		</TD>
+		<TD>
+			<P>http.putWithHeader(&quot;<A HREF="https://api.ciscospark.com/v1/rooms/">https://api.ciscospark.com/v1/rooms/</A>xxyyzz&quot;,{&quot;title&quot;:
+			&quot;New room name&quot;},{&quot;Authorization&quot;: &quot;Bearer
+			xxyyzz&quot;});</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>deleteResourceWithHeader(url, header)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sends a delete to an URL with custom header fields as a
+			dictionary.</P>
+		</TD>
+		<TD>
+			<P>http.deleteResourceWithHeader(&quot;<A HREF="https://api.ciscospark.com/v1/messages/">https://api.ciscospark.com/v1/messages/</A>xxyyzz&quot;,{&quot;Authorization&quot;:
+			&quot;Bearer xxyyzz&quot;});</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>onDone 
+			</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for when the request is done. 
+			</P>
+			<P>replyHeader is a dictionary of header fields in the reply. It
+			is added to 7.1 and is optional. 
+			</P>
+		</TD>
+		<TD>
+			<P>http.onDone = function(status, data, replyHeader) { 
+			</P>
+			<P>}; 
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Short-hands without creating a RealHTTPClient</STRONG></P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>RealHTTPClient.get(url, callback)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Gets an URL.</P>
+		</TD>
+		<TD>
+			<P>RealHTTPClient.get(&quot;http://www.cisco.com&quot;,
+			function(status, data) {<BR>Serial.println(status + &quot;, &quot;
+			+ data);<BR>});&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>RealHTTPClient.post(url, data, callback)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Posts data to an URL.</P>
+		</TD>
+		<TD>
+			<P>RealHTTPClient.post(url,&nbsp;{&quot;num&quot;:1,
+			&quot;str&quot;:&quot;hello&quot;},&nbsp;function(status, data)
+			{<BR>});</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>RealHTTPClient.put(url, data, callback)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Puts data to an URL.</P>
+		</TD>
+		<TD>
+			<P>RealHTTPClient.put(url, {&quot;num&quot;:1, &quot;str&quot;:&quot;hello&quot;},
+			function(status, data) {<BR>});</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>RealHTTPClient.deleteResource(url, callback)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sends a delete to an URL.</P>
+		</TD>
+		<TD>
+			<P>RealHTTPClient.deleteResource(url, function(status, data) {<BR>});</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD COLSPAN=4>
+			<H3 CLASS="western"><A NAME="JavaScriptAPI-RealWSClient(ExternalNetworkAccess)"></A>
+			Real WebSocket Client&nbsp;(External Network Access)</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>new RealWSClient()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>RealWSClient</P>
+		</TD>
+		<TD>
+			<P>Creates a Real WebSocket Client.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var&nbsp;client = new&nbsp;RealWSClient();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>connect(url)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>boolean</P>
+		</TD>
+		<TD>
+			<P>Connects to server URL.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.connect(&quot;ws://1.1.1.1:2000&quot;);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>close()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Disconnects.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.close();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>connected()</P>
+		</TD>
+		<TD>
+			<P>boolean</P>
+		</TD>
+		<TD>
+			<P>Returns whether it is in connected state.</P>
+		</TD>
+		<TD>
+			<P>client.connected();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>state()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the state of the connection.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.state();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>remoteIP()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Returns the remote IP.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.remoteIP();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>remoteHost()</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Returns the name of the server.</P>
+		</TD>
+		<TD>
+			<P>client.remoteHost();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>remotePort()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the remote port.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.remotePort();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>localIP()</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Returns the local IP.</P>
+		</TD>
+		<TD>
+			<P>client.localIP();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>localPort()</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the local port.</P>
+		</TD>
+		<TD>
+			<P>client.localPort();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>send(data)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sends data to remote.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.send(&quot;hello&quot;);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>error()</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the last error code.</P>
+		</TD>
+		<TD>
+			<P>client.error();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>errorString()</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Returns the last error in string.</P>
+		</TD>
+		<TD>
+			<P>client.errorString();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>onReceive&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for when data is received.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.onReceive&nbsp;=&nbsp;function(data) {&nbsp;</P>
+			<P>};&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>onConnectionChange&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for when the connection changes.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.onConnectionChange = function(type) {&nbsp;</P>
+			<P>};&nbsp;</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD COLSPAN=4>
+			<H3 CLASS="western"><A NAME="JavaScriptAPI-RealTCP(ExternalNetworkAccess)"></A>
+			Real TCP&nbsp;(External Network Access)</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>new RealTCPClient()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>RealTCPClient</P>
+		</TD>
+		<TD>
+			<P>Creates a Real TCP Client.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var&nbsp;client = new&nbsp;RealTCPClient();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>connect(ip, port)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>boolean</P>
+		</TD>
+		<TD>
+			<P>Connects to ip and port.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.connect(IPAddress(&quot;1.1.1.1&quot;), 2000);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>close()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Disconnects.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.close();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>connected()</P>
+		</TD>
+		<TD>
+			<P>boolean</P>
+		</TD>
+		<TD>
+			<P>Returns whether it is in connected state.</P>
+		</TD>
+		<TD>
+			<P>client.connected();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>state()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the state of the connection.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.state();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>remoteIP()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Returns the remote IP.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.remoteIP();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>remoteHost()</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Returns the name of the server.</P>
+		</TD>
+		<TD>
+			<P>client.remoteHost();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>remotePort()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the remote port.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.remotePort();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>localIP()</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Returns the local IP.</P>
+		</TD>
+		<TD>
+			<P>client.localIP();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>localPort()</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the local port.</P>
+		</TD>
+		<TD>
+			<P>client.localPort();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>send(data)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sends data to remote.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.send(&quot;hello&quot;);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>error()</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the last error code.</P>
+		</TD>
+		<TD>
+			<P>client.error();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>errorString()</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Returns the last error in string.</P>
+		</TD>
+		<TD>
+			<P>client.errorString();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>onReceive&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for when data is received.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.onReceive&nbsp;=&nbsp;function(data) {&nbsp;</P>
+			<P>};&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>onConnectionChange&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for when the connection changes.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.onConnectionChange = function(type) {&nbsp;</P>
+			<P>};&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P></P>
+		</TD>
+		<TD>
+			<P></P>
+		</TD>
+		<TD>
+			<P></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>new RealTCPServer()</P>
+		</TD>
+		<TD>
+			<P>RealTCPServer</P>
+		</TD>
+		<TD>
+			<P>Creates a Real TCP Server.</P>
+		</TD>
+		<TD>
+			<P>var server = new RealTCPServer();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>listen(port)</P>
+		</TD>
+		<TD>
+			<P>boolean</P>
+		</TD>
+		<TD>
+			<P>Listens on port on host device and returns whether it was successful.</P>
+		</TD>
+		<TD>
+			<P>server.listen(1234);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>isListening()</P>
+		</TD>
+		<TD>
+			<P>boolean</P>
+		</TD>
+		<TD>
+			<P>Returns true if listening.</P>
+		</TD>
+		<TD>
+			<P>server.isListening();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>stop() </P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Stops listening. All connections remain open. </P>
+		</TD>
+		<TD>
+			<P>server.stop();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>listeningIP()</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Returns the listening IP.</P>
+		</TD>
+		<TD>
+			<P>server.listeningIP();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>listeningPort()</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the listening port.</P>
+		</TD>
+		<TD>
+			<P>server.listeningPort();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>error()</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the last error code.</P>
+		</TD>
+		<TD>
+			<P>server.error();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>errorString()</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Returns the last error in string.</P>
+		</TD>
+		<TD>
+			<P>server.errorString();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>onNewClient&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for when a new client is connected. </P>
+		</TD>
+		<TD>
+			<P>server.onNewClient(function(client) {&nbsp;</P>
+			<P>});&nbsp;</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD COLSPAN=4>
+			<H3 CLASS="western"><A NAME="JavaScriptAPI-RealUDP(ExternalNetworkAccess)"></A>
+			Real UDP (External Network Access)</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>new RealUDPSocket()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>RealUDPSocket</P>
+		</TD>
+		<TD>
+			<P>Creates an Real UDP Socket.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>var udp = new RealUDPSocket();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>begin(port)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>boolean</P>
+		</TD>
+		<TD>
+			<P>Starts listening on port.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>udp.begin(2000);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>stop()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Stops listening.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>udp.stop();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>joinMulticastGroup(ip)</P>
+		</TD>
+		<TD>
+			<P>boolean</P>
+		</TD>
+		<TD>
+			<P>Joins a multicast group. Must call begin() first.</P>
+		</TD>
+		<TD>
+			<P>udp.joinMulticastGroup(&quot;224.0.0.1&quot;);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>leaveMulticastGroup(ip)</P>
+		</TD>
+		<TD>
+			<P>boolean</P>
+		</TD>
+		<TD>
+			<P>Leaves a multicast group.</P>
+		</TD>
+		<TD>
+			<P>udp.leaveMulticastGroup(&quot;224.0.0.1&quot;);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>localIP()</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Returns the local IP.</P>
+		</TD>
+		<TD>
+			<P>udp.localIP();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>localPort()</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the local port.</P>
+		</TD>
+		<TD>
+			<P>udp.localPort();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>send(ip, port, data)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sends data.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>udp.send(IPAddress(&quot;1.1.1.1&quot;), 2000, &quot;hello&quot;);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>error()</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the last error code.</P>
+		</TD>
+		<TD>
+			<P>udp.error();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>errorString()</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Returns the last error in string.</P>
+		</TD>
+		<TD>
+			<P>udp.errorString();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>onReceive&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for when data is received.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>udp.onReceive&nbsp;=&nbsp;function(ip, port, data) {&nbsp;</P>
+			<P>};&nbsp;</P>
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD COLSPAN=4>
+			<H3 CLASS="western"><A NAME="JavaScriptAPI-JSON"></A>JSON</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>JSON.stringify(obj)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Serialize an object into JSON string.</P>
+		</TD>
+		<TD>
+			<P>var str = JSON.stringify({&quot;num&quot;:1, &quot;s&quot;:&quot;str&quot;});</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>JSON.parse(str)</P>
+		</TD>
+		<TD>
+			<P>object</P>
+		</TD>
+		<TD>
+			<P>Converts a JSON string to an object.</P>
+		</TD>
+		<TD>
+			<P>var obj = JSON.parse(str);</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD COLSPAN=4>
+			<H3 CLASS="western"><A NAME="JavaScriptAPI-GUI(SBC,Thing,someEndDevices)"></A>
+			GUI <FONT COLOR="#ff0000">(SBC, Thing, some End Devices)</FONT></H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>GUI.setup()</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Initializes the GUI and tells the GUI to display the html file
+			configured in the manifest file. If the app is not installed, it
+			throws an error.</P>
+		</TD>
+		<TD>
+			<P>function setup() { GUI.setup();} 
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>GUI.update(type, args)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Asynchronously calls the html file's update() function passing
+			in type and args. Type is a string and args can be any JSON valid
+			object.</P>
+		</TD>
+		<TD>
+			<P>GUI.update(&quot;status&quot;, &quot;playing&quot;);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>guiEvent(type, args)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>If defined, this function is called asynchronously when the
+			html file calls guiEvent(type, args). Type is a string and args
+			can be any JSON valid object.</P>
+		</TD>
+		<TD>
+			<PRE CLASS="western">function guiEvent(type, args) {  Serial.println('guiEvent: ' + type + ',' + JSON.stringify(args));} </PRE>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD COLSPAN=4>
+			<H3 CLASS="western"><A NAME="JavaScriptAPI-CLI(SBC,Thing,someEndDevices)"></A>
+			CLI <FONT COLOR="#ff0000">(SBC, Thing, some End Devices)</FONT></H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>CLI.setup()</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Initializes the CLI and will call the cliEvent() function if
+			the app was started from a command in the Command Prompt.</P>
+		</TD>
+		<TD>
+			<P>function setup() { CLI.setup();} 
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>CLI.exit()</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Exits the CLI mode and returns back to the Command Prompt.</P>
+		</TD>
+		<TD>
+			<P>CLI.exit();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>cliEvent(type, args)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>If defined, this function is called synchronously when
+			different CLI events happen. Type is a string and args can be any
+			JSON valid object.</P>
+			<P>Type can be:</P>
+			<UL>
+				<LI><P STYLE="margin-bottom: 0in">&quot;invoked&quot; - this is
+				called when the command is invoked from the Command Prompt; args
+				is a list of command arguments where the first element is the
+				command name. 
+				</P>
+				<LI><P>&quot;interrupted&quot; - this is called when the user
+				uses break shortcut (Ctrl+C) while this app is running in CLI
+				mode. 
+				</P>
+			</UL>
+		</TD>
+		<TD>
+			<PRE CLASS="western">function cliEvent(type, args) {  Serial.println('cliEvent: ' + type + ',' + JSON.stringify(args));} </PRE>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD COLSPAN=4>
+			<H3 CLASS="western"><A NAME="JavaScriptAPI-Simulation"></A>Simulation</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>Simulation.isInSimulationMode()</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Returns whether PT is currently in Simulation Mode.</P>
+		</TD>
+		<TD>
+			<P>if (Simulation.isInSimulationMode()) Serial.println(&quot;In
+			sim mode&quot;);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>Simulation.addCustomProtocolType(protocol)</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Adds a new protocol type to the current file/network. The
+			protocol will show up in the Event List Filters. Returns true if
+			successful, false otherwise.</P>
+		</TD>
+		<TD>
+			<P>Simulation.addCustomProtocolType(&quot;MyProtocol&quot;);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>Simulation.hasCustomProtocolType(protocol)</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Returns whether the protocol type is already added to the
+			current file/network.</P>
+		</TD>
+		<TD>
+			<P>if (!Simulation.hasCustomProtocolType(&quot;MyProtocol&quot;))
+			Simulation.addCustomProtocolType(&quot;MyProtocol&quot;);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>Simulation.addCustomPDU(protocol, pduType, definition)</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Adds a new protocol type and PDU type to the current
+			file/network. The protocol will show up in the Event List Filters,
+			and the PDU with its definition will show up in PDU details.
+			Returns true if successful, false if the definition is invalid. It
+			will replace existing definitions if using the same protocol and
+			PDU type names.</P>
+			<P>The definition argument is an object with the following
+			properties describing the layout and fields of the PDU:</P>
+			<UL>
+				<LI><P STYLE="margin-bottom: 0in">title - a string that shows up
+				as the title in PDU Details 
+				</P>
+				<LI><P STYLE="margin-bottom: 0in">units - a string 
+				</P>
+				<LI><P STYLE="margin-bottom: 0in">unit_marks - an array of
+				numbers indicating where the marks are to show up 
+				</P>
+				<LI><P STYLE="margin-bottom: 0in">width - an integer indicating
+				the width of PDU 
+				</P>
+				<LI><P STYLE="margin-bottom: 0in">fields - an array of objects
+				representing each field in the PDU; each object must contain the
+				following properties: 
+				</P>
+				<UL>
+					<LI><P>value - a label that can contain a variable inside curly
+					braces; the variable will be replaced with a value in the
+					PDUInfo fields object</P>
+					<LI><P>size - an integer indicating the size of the field 
+					</P>
+				</UL>
+			</UL>
+		</TD>
+		<TD>
+			<PRE CLASS="western">Simulation.addCustomPDU(&quot;MyProtocol&quot;, &quot;MyPDU&quot;, {  &quot;title&quot;: &quot;My PDU&quot;,  &quot;units&quot;: &quot;Bits&quot;,  &quot;unit_marks&quot;: [16],  &quot;width&quot;: 32,  &quot;fields&quot;: [    {      &quot;value&quot;: &quot;TYPE: {type}&quot;,      &quot;size&quot;: 32    },    {      &quot;value&quot;: &quot;DATA: {data}&quot;,      &quot;size&quot;: 32    }  ]});</PRE>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>Simulation.hasCustomPDU(protocol, pduType)</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Returns whether the protocol and PDU type is already added to
+			the current file/network.</P>
+		</TD>
+		<TD>
+			<P>if (!Simulation.hasCustomPDU(&quot;MyProtocol&quot;, &quot;MyPDU&quot;))
+			// add it</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD></TD>
+		<TD></TD>
+		<TD></TD>
+		<TD></TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>PDUInfo(color)</P>
+		</TD>
+		<TD>
+			<P>PDUInfo</P>
+		</TD>
+		<TD>
+			<P>Creates a PDU Info object with the pdu color. A PDUInfo is
+			required to show PDU with more details in Simulation Mode.</P>
+		</TD>
+		<TD>
+			<P>var pduInfo = new PDUInfo(0xffff00);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setOutFormat(protocol, pduType, fields)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the outgoing PDU to be displayed in a custom PDU
+			definition. The fields argument is an object with the variables
+			defined in the PDU definition fields property.</P>
+		</TD>
+		<TD>
+			<P>pduInfo.setOutFormat(&quot;MyProtocol&quot;, &quot;MyPDU&quot;,
+			{&quot;type&quot;: &quot;REPLY&quot;, &quot;data&quot;: data})</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>addOutMessage(message)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Adds a message to the outgoing OSI layer 7.</P>
+		</TD>
+		<TD>
+			<P>pduInfo.addOutMessage(&quot;I am sending some data.&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>addInMessage(message)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Adds a message to the incoming OSI layer 7.</P>
+		</TD>
+		<TD>
+			<P>pduInfo.addInMessage(&quot;I received some data.&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setAccepted()</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the PDU as accepted.</P>
+		</TD>
+		<TD>
+			<P>pduInfo.setAccepted()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setDropped()</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the PDU as dropped.</P>
+		</TD>
+		<TD>
+			<P>pduInfo.setDropped()</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD COLSPAN=4>
+			<H3 CLASS="western"><A NAME="JavaScriptAPI-Workspace"></A>Workspace</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getPhysicalObject()</P>
+		</TD>
+		<TD>
+			<P>PhysicalObject</P>
+		</TD>
+		<TD>
+			<P>Returns the current device's physical object. 
+			</P>
+		</TD>
+		<TD>
+			<P>po = getPhysicalObject();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getName()</P>
+		</TD>
+		<TD>
+			<P>str</P>
+		</TD>
+		<TD>
+			<P>Returns the name of this physical object.</P>
+		</TD>
+		<TD>
+			<P>Serial.println(po.getName());</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getType()</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the type of this physical object. Valid values are:</P>
+			<P>INTER_CITY = 0CITY = 1BUILDING = 2WIRING_CLOSET = 3RACK =
+			4TABLE = 5DEVICE = 6MULTIUSER = 7GENERIC_CONTAINER = 8</P>
+		</TD>
+		<TD>
+			<P>Serial.println(po.getType());</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getX() 
+			</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Returns the x coordinate relative to its parent in meters.</P>
+		</TD>
+		<TD>
+			<P>Serial.println(po.getX());</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getY() 
+			</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Returns the y coordinate relative to its parent in meters.</P>
+		</TD>
+		<TD>
+			<P>Serial.println(po.getY());</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getCenterX() 
+			</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Returns the center x coordinate relative to its parent in
+			meters.</P>
+		</TD>
+		<TD>
+			<P>Serial.println(po.getCenterX());</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getCenterY() 
+			</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Returns the center y coordinate relative to its parent in
+			meters.</P>
+		</TD>
+		<TD>
+			<P>Serial.println(po.getCenterY());</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getGlobalX() 
+			</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Returns the global x coordinate of this physical object in
+			meters.</P>
+		</TD>
+		<TD>
+			<P>Serial.println(po.getGlobalX());</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getGlobalY() 
+			</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">Returns the global y coordinate of this
+			physical object in meters.</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P>Serial.println(po.getGlobalX());</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getWidth() 
+			</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Returns the width of this physical object in meters.</P>
+		</TD>
+		<TD>
+			<P>Serial.println(po.getWidth());</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getHeight() 
+			</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Returns the height of this physical object in meters.</P>
+		</TD>
+		<TD>
+			<P>Serial.println(po.getHeight());</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>moveTo(x, y)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Moves this physical object's top left corner to the specified
+			coordinates in meters relative to its parent.</P>
+		</TD>
+		<TD>
+			<P>po.moveTo(10, 20);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>moveCenterTo(x, y)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Moves this physical object's center to the specified
+			coordinates in meters relative to its parent.</P>
+		</TD>
+		<TD>
+			<P>po.moveCenterTo(10, 20);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>moveBy(x, y)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Moves this physical object by the specified coordinates in
+			meters.</P>
+		</TD>
+		<TD>
+			<P>po.moveBy(10, 20);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setVelocity(x, y)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets this physical object's velocity in meters. This physical
+			object then moves automatically.</P>
+		</TD>
+		<TD>
+			<P>po.setVelocity(1, 2);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getXVelocity() 
+			</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Returns the x velocity of this physical object in meters.</P>
+		</TD>
+		<TD>
+			<P>Serial.println(po.getXVelocity());</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getYVelocity() 
+			</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">Returns the y velocity of this physical
+			object in meters.</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P>Serial.println(po.getYVelocity());</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getParent()</P>
+		</TD>
+		<TD>
+			<P>PhysicalObject</P>
+		</TD>
+		<TD>
+			<P>Returns this physical object's parent.</P>
+		</TD>
+		<TD>
+			<P>parentPO = po.getParent();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>moveOutOfParent()</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Moves this physical object out of its parent to the same level
+			as the parent, and returns whether it was successful.</P>
+		</TD>
+		<TD>
+			<P>po.moveOutOfParent();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>moveInto(name)</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Moves this physical object into a container with the specified
+			name that is in the same level as this physical object, and
+			returns whether it was successful.</P>
+		</TD>
+		<TD>
+			<P>po.moveInto(&quot;Corporate Office&quot;);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getChildCount()</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the number of children this physical object has.</P>
+		</TD>
+		<TD>
+			<P>Serial.println(po.getChildCount());</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getChildAt(index)</P>
+		</TD>
+		<TD>
+			<P>PhysicalObject</P>
+		</TD>
+		<TD>
+			<P>Returns the child physical object at the specified index.</P>
+		</TD>
+		<TD>
+			<P>childPO = po.getChildAt(0);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getChild(name)</P>
+		</TD>
+		<TD>
+			<P>PhysicalObject</P>
+		</TD>
+		<TD>
+			<P>Returns the child physical object with the specified name.</P>
+		</TD>
+		<TD>
+			<P>childPO = po.getChild(&quot;Wiring Closet&quot;);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD></TD>
+		<TD></TD>
+		<TD></TD>
+		<TD></TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getLogicalObject()</P>
+		</TD>
+		<TD>
+			<P>LogicalObject</P>
+		</TD>
+		<TD>
+			<P>Returns the current device's logical object. 
+			</P>
+		</TD>
+		<TD>
+			<P>lo = getLogicalObject();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getName()</P>
+		</TD>
+		<TD>
+			<P>str</P>
+		</TD>
+		<TD>
+			<P>Returns the name of this logical object.</P>
+		</TD>
+		<TD>
+			<P>Serial.println(lo.getName());</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getType()</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the type of this logical object. Valid values are:</P>
+			<P>ROOT = 1099DEVICE = 1100CLUSTER = 1104MULTIUSERITEM = 1108</P>
+		</TD>
+		<TD>
+			<P>Serial.println(lo.getType());</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getX() 
+			</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the x coordinate relative to its parent in pixels.</P>
+		</TD>
+		<TD>
+			<P>Serial.println(lo.getX());</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getY() 
+			</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">int</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">Returns the y coordinate relative to its
+			parent in pixels.</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P>Serial.println(lo.getY());</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getCenterX() 
+			</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">int</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">Returns the center x coordinate relative
+			to its parent in pixels.</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P>Serial.println(lo.getCenterX());</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getCenterY() 
+			</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">int</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">Returns the center y coordinate relative
+			to its parent in pixels.</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P>Serial.println(lo.getCenterY());</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getWidth() 
+			</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">int</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">Returns the width of this logical object
+			in pixels.</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P>Serial.println(lo.getWidth());</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getHeight() 
+			</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">int</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">Returns the height of this logical object
+			in pixels.</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P>Serial.println(lo.getHeight());</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>moveTo(x, y)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Moves this logical object's top left corner to the specified
+			coordinates in <FONT COLOR="#000000">pixels</FONT> relative to its
+			parent.</P>
+		</TD>
+		<TD>
+			<P>lo.moveTo(10, 20);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>moveCenterTo(x, y)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Moves this logical object's center to the specified coordinates
+			in <FONT COLOR="#000000">pixels</FONT> relative to its parent.</P>
+		</TD>
+		<TD>
+			<P>lo.moveCenterTo(10, 20);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>moveBy(x, y)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Moves this logical object by the specified coordinates in
+			<FONT COLOR="#000000">pixels</FONT>.</P>
+		</TD>
+		<TD>
+			<P>lo.moveBy(10, 20);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setVelocity(x, y)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets this logical object's velocity in <FONT COLOR="#000000">pixels</FONT>.
+			This logical object then moves automatically.</P>
+		</TD>
+		<TD>
+			<P>lo.setVelocity(1, 2);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getXVelocity() 
+			</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">Returns the x velocity of this logical
+			object in pixels.</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P>Serial.println(lo.getXVelocity());</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getYVelocity() 
+			</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">Returns the y velocity of this logical
+			object in pixels.</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P>Serial.println(lo.getYVelocity());</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getParent()</P>
+		</TD>
+		<TD>
+			<P>LogicalObject</P>
+		</TD>
+		<TD>
+			<P>Returns this logical object's parent.</P>
+		</TD>
+		<TD>
+			<P>parentLO = lo.getParent();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>moveOutOfParent()</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Moves this logical object out of its parent to the same level
+			as the parent, and returns whether it was successful.</P>
+		</TD>
+		<TD>
+			<P>lo.moveOutOfParent();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>moveInto(name)</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Moves this logical object into a container with the specified
+			name that is in the same level as this logical object, and returns
+			whether it was successful.</P>
+		</TD>
+		<TD>
+			<P>lo.moveInto(&quot;Cluster0&quot;);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getChildCount()</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the number of children this logical object has.</P>
+		</TD>
+		<TD>
+			<P>Serial.println(lo.getChildCount());</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getChildAt(index)</P>
+		</TD>
+		<TD>
+			<P>LogicalObject</P>
+		</TD>
+		<TD>
+			<P>Returns the child logical object at the specified index.</P>
+		</TD>
+		<TD>
+			<P>childlo = lo.getChildAt(0);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getChild(name)</P>
+		</TD>
+		<TD>
+			<P>LogicalObject</P>
+		</TD>
+		<TD>
+			<P>Returns the child logical object with the specified name.</P>
+		</TD>
+		<TD>
+			<P>childlo = lo.getChild(&quot;Cluster0&quot;);</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+  <TR>
+    <TD COLSPAN=4><H3 CLASS="western"><A NAME="JavaScriptAPI-BluetoothManager"></A> Bluetooth Manager</H3></TD>
+  </TR>
+  <TR>
+    <TD><P><STRONG>Function</STRONG></P></TD>
+    <TD><P><STRONG>Return Type</STRONG></P></TD>
+    <TD><P><STRONG>Description</STRONG>&nbsp;</P></TD>
+    <TD><P><STRONG>Example</STRONG>&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD>init()</TD>
+    <TD>N/A</TD>
+    <TD>Initialize Bluetooth functionality for the device.</TD>
+    <TD><pre>
+function setup(){<br>     Bluetooth.init();<br>}</pre></TD>
+  </TR>
+  <TR>
+    <TD><P>onDeviceDiscovered(macAddress, deviceName)</P></TD>
+    <TD><P>N/A</P></TD>
+    <TD>This event handler is called when a device is discovered.</TD>
+    <TD><P>Bluetooth.onDeviceDiscovered = function()(macAddress, deviceName) {<br>
+      ...
+          <br>
+        }</P>
+      <P>Bluetooth.discover()</P>
+    <P>&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD>onDevicePaired(macAddress)</TD>
+    <TD>N/A</TD>
+    <TD>This event handler is called when a device is paired.</TD>
+    <TD>Bluetooth.onDevicePaired = function(macAddress){...}</TD>
+  </TR>
+  <TR>
+    <TD>onDeviceUnPaired(macAddress)</TD>
+    <TD>N/A</TD>
+    <TD>This event handler is called when a device is unpaired.</TD>
+    <TD>Bluetooth.onDeviceUnpaired = function(macAddress){...}</TD>
+  </TR>
+  <TR>
+    <TD>onDeviceConnected(macAddress)</TD>
+    <TD>N/A</TD>
+    <TD>This event handler is called when a device is connected.</TD>
+    <TD>Bluetooth.onDeviceConnected = function(macAddress){...}</TD>
+  </TR>
+  <TR>
+    <TD>onDeviceDisconnected(macAddress)</TD>
+    <TD>N/A</TD>
+    <TD>This event handler is called when a device is disconnected.</TD>
+    <TD>Bluetooth.onDeviceDisconnected = function(macAddress){...}</TD>
+  </TR>
+  <TR>
+    <TD>setDiscoverable(discoverable)</TD>
+    <TD>N/A</TD>
+    <TD>Sets the bluetooth device to discoverable or not.</TD>
+    <TD>Bluetooth.setDiscoverable(true)</TD>
+  </TR>
+  <TR>
+    <TD>isDiscoverable()</TD>
+    <TD>bool</TD>
+    <TD>Returns true if discoverable otherwise false.</TD>
+    <TD>Bluetooth.isDiscoverable()</TD>
+  </TR>
+  <TR>
+    <TD>discover()</TD>
+    <TD>N/A</TD>
+    <TD>Starts the discovering process. If devices are discovered, the onDeviceDiscovered() event will trigger.</TD>
+    <TD>Bluetooth.discover()</TD>
+  </TR>
+  <TR>
+    <TD>pair(mac)</TD>
+    <TD>N/A</TD>
+    <TD>Starts pairing with mac address.</TD>
+    <TD>Bluetooth.pair(macAddress)</TD>
+  </TR>
+  <TR>
+    <TD>unpair(mac)</TD>
+    <TD>N/A</TD>
+    <TD>Starts unpairing with mac address.</TD>
+    <TD>Bluetooth.unpair(macAddress)</TD>
+  </TR>
+  <TR>
+    <TD>onPairRequest(macAddress, deviceName)</TD>
+    <TD>N/A</TD>
+    <TD>This event handler is called if there's a pair request and the bluetooth manager is set to accept pair requests.</TD>
+    <TD><p>Bluetooth.setAcceptingPairRequest(true)</p>
+    <br>
+    Bluetooth.onPairRequest = function(macAddress, deviceName){...}</TD>
+  </TR>
+  <TR>
+    <TD>setAcceptingPairRequest(accepting)</TD>
+    <TD>N/A</TD>
+    <TD>Sets the bluetooth manager to accept pair requests</TD>
+    <TD>Bluetooth.setAcceptingPairRequest(true)</TD>
+  </TR>
+  <TR>
+    <TD>acceptPairRequest(macAddress, deviceName)</TD>
+    <TD>N/A</TD>
+    <TD>Accepts the pair request with macAddress and deviceName</TD>
+    <TD>Bluetooth.acceptPairRequest(macAddress, deviceName)</TD>
+  </TR>
+  <TR>
+    <TD>getPairedDevices()</TD>
+    <TD>Array</TD>
+    <TD>Returns an array of paired bluetooth devices.</TD>
+    <TD>var devices = Bluetooth.getPairedDevices()</TD>
+  </TR>
+  <TR>
+    <TD>getConnectedDevices()</TD>
+    <TD>Array</TD>
+    <TD>Returns an array of connected devices.</TD>
+    <TD>var devices = Bluetooth.getConnectedDevices()</TD>
+  </TR>
+  <TR>
+    <TD>enableBroadcast()</TD>
+    <TD>N/A</TD>
+    <TD>Enables bluetooth broadcast.</TD>
+    <TD>Bluetooth.enableBroadcast()</TD>
+  </TR>
+  <TR>
+    <TD>isBroadcastEnabled()</TD>
+    <TD>bool</TD>
+    <TD>Returns true if broadcast is enabled.</TD>
+    <TD>Bluetooth.isBroadcastEnabled()</TD>
+  </TR>
+  <TR>
+    <TD>broadcastBeacon(beaconUuid, data)</TD>
+    <TD>bool</TD>
+    <TD>Broadcast beacon with beaconUuid and data.</TD>
+    <TD>Bluetooth.broadcastBeacon(uuid, data)</TD>
+  </TR>
+</TABLE>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+  <TR>
+    <TD COLSPAN=4><H3 CLASS="western"><A NAME="JavaScriptAPI-BluetoothService"></A> Bluetooth Service</H3></TD>
+  </TR>
+  <TR>
+    <TD><P><STRONG>Function</STRONG></P></TD>
+    <TD><P><STRONG>Return Type</STRONG></P></TD>
+    <TD><P><STRONG>Description</STRONG>&nbsp;</P></TD>
+    <TD><P><STRONG>Example</STRONG>&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P>start(uuid)</P></TD>
+    <TD><P>N/A</P></TD>
+    <TD>Starts the bluetooth service.</TD>
+    <TD><P> var bts = new BluetoothService();</P>
+      <P>var dstService = &quot;{00000000-0000-0000-0000-000000000001}&quot;</P>
+      <P>bts.start(dstService)</P>
+    <P>&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD>connect(dstMac, dstServiceUuid)</TD>
+    <TD>bool</TD>
+    <TD>Returns true if connected to dstMac and dstServiceUuid; false otherwise.</TD>
+    <TD>bts.connect(dstMac, dstServiceUuid)</TD>
+  </TR>
+  <TR>
+    <TD>stop()</TD>
+    <TD>N/A</TD>
+    <TD>Stops the bluetooth service.</TD>
+    <TD>bts.stop()</TD>
+  </TR>
+  <TR>
+    <TD>send(dstMac, dstServiceUuid, data)</TD>
+    <TD>N/A</TD>
+    <TD>Sends data to dstMac and dstServiceUuid with data.</TD>
+    <TD>bts.send(dstMac, dstServiceUuid, &quot;hello&quot;)</TD>
+  </TR>
+  <TR>
+    <TD>sendToConnected(data)</TD>
+    <TD>N/A</TD>
+    <TD>Sends data to connected device.</TD>
+    <TD>bts.sendToConnected(&quot;hello&quot;)</TD>
+  </TR>
+  <TR>
+    <TD>onReceive(srcMac, srcService, dstMac, dstService, data)</TD>
+    <TD>N/A</TD>
+    <TD>This event handler receives data from srcMac, srcService, dstMac and dstService with data.</TD>
+    <TD>bts.onReceive = function(srcmac, srcData, dstMac, dstService, data){...}</TD>
+  </TR>
+</TABLE>
+<P>&nbsp;</P>
+<P></P>
+<P>&nbsp;</P>
+<P></P>
+<P>&nbsp;</P>
+</BODY>
+</HTML>

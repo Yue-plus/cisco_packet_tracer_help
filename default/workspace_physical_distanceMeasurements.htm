@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>The Physical Workspace: Distance Measurements</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+
+	</head>
+	<body>
+<p class="MainHeading1">The Physical Workspace: Distance Measurements
+<hr>
+<p>The Physical Workspace provides the dimension of distance to Ethernet and wireless devices. This distance parameter is one of the factors that determine if a device is able to connect or not connect to another device.</p>
+<p>Access points can establish connections with wireless end devices that are within a certain distance range. This range is indicated by a gray mesh area surrounding the access point. Note that this mesh area appears as a circle or an oval depending on the dimensions of the background image used. If the background source image is square, the mesh is circular. If the background image is a rectangle, the mesh is oval, scaled by the width and height of the source image.</p>
+<p>In this example, three wireless-enabled PCs and two access points are created. They have all been moved from the default wiring closet and placed directly onto the "streets" of the city (for demonstration purposes). Note the following:</p>
+<ul>
+  <li>PC0 is within the wireless range of Access Point0, so it associates with Access Point0.</li>
+  <li>PC1 is within the wireless range of both Access Point0 and AccessPoint1. However, because it is closer to Access Point1, it associates with Access Point1.</li>
+  <li>PC2 is not in range of any access point, so it has no connectivity.</li>
+</ul>
+<p class="myPic">
+<img src="images/workspace_physical_distanceMeasurements_1.jpg" alt="Wireless range in Physical Workspace">
+</p>
+<p>Ethernet connectivity is determined by a cable length of 100 meters. There is no partial connectivity for Ethernet, it is either within (has connectivity) the length of 100 meters or outside (no connectivity) of it. By pointing at a cable in physical mode, a pop-up box will appear showing the device interfaces connected to this cable and the segment and total length.</p>
+<p class="myPic">
+<img src="images/workspace_physical_distanceMeasurements_2.jpg" alt="Cable length information in Physical Workspace">
+</p>
+
+In <a href="preferences.htm" target="content" class="MenuHeading2"> Preferences</a> dialog you can turn on and off the effects physical properties of cables and wireless links have on network behavior (see <em>Enable Cable Length Effects</em> and <em>Show Wireless Grid</em> options under <em>Interface</em> and <em> Hide </em> tabs respectively). When you opt to enable these cable effects, beware that moving connected devices between or within physical containers will affect physical properties of their cable and wireless links and that, in turn, can play a role on whether devices can successfully communicate with one another. In this case, any time you notice that two devices in Logical workspace do not communicate with one another, you may want to check whether the cables they are connected with do not exceed maximum cable length for the cable type used. Likewise, it might be worth checking if two wireless devices are not separated by too great a distance between them for the wireless link to be possible. <a href="workspace_physical_distanceMeasurements.htm" target="content" class="MenuHeading3">Distance Measurements</a> section has more information on this subject. <br/><br/>
+
+<p>Packet Tracer now also has the ability to bend, group and color code cables. This feature is covered in the Cable Manipulation section. </p>
+</body>
+</html>

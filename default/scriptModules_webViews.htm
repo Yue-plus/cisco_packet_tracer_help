@@ -1,0 +1,229 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Script Modules</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+
+<p class="MainHeading1">Script Modules - Web Views</p>
+<hr>
+
+<p class="MainHeading2">Web Views</p>
+<p>Web views are using the QtWebKit functionality to render HTML5.  Script Modules use web views to create custom interfaces in PT.  It can include html, css, images, and js files.  See Custom Interface tab in Scripting Interface in a previous section.</p>
+<p>Each Script Module has a Web View Manager, which allows multiple web views.  Each web view is owned by only one Script Module; no two Script Modules can own a web view at the same time.  Web views can access IPC calls the same way as in the Script Engine, with the exception that events and delegates are not supported in web views.</p>
+<p>&nbsp;</p>
+
+<p class="MainHeading3">Script Engine and Web View Communication</p>
+<p>The Script Engine has access to the Script Module's <strong>webViewManager</strong> and can use it to create new web views that open up as separate windows or use the built-in web views in PT.</p>
+<table class="tableCode">
+  <tr><th>In Script Engine</th></tr>
+  <tr>
+    <td class="TDtableCode"><pre>// create a new web view with width and height and assign it to a variable
+var newWebView = webViewManager.createWebView("window title", "http://www.cisco.com", 600, 400);
+newWebView.show();
+...
+// change url
+newWebView.setUrl("http://cisco.netacad.net");</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>Other calls to manipulate the web view are also available, such as change title, size, window flags and modality.</p>
+<p>The Script Engine can also ask a web view to evaluate a JavaScript statement.</p>
+<table class="tableCode">
+  <tr><th>In Script Engine</th></tr>
+  <tr>
+    <td class="TDtableCode"><pre>newWebView.evaluateJavaScript("alert('hello')");</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>This method is the main way for the Script Engine to talk to web views -- ask the web view to evaluate JavaScript statements to show some interface changes.  An <strong>evaluateJavaScriptAsync()</strong> function should be used for calls that initiate from a different thread than the main GUI's and the evaluate statements may change the GUI.  For example, when a process receives a packet, and it needs to change a web view, it should use the <strong>evaluateJavaScriptAsync()</strong> function.</p>
+<p>Web views can also communicate with the Script Engine, using the <strong>$se()</strong> built-in function.</p>
+<table class="tableCode">
+  <tr><th>In Script Engine</th></tr>
+  <tr>
+    <td class="TDtableCode"><pre>function doSomething(argInt, argStr, argBool)
+{ ... }</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table class="tableCode">
+  <tr><th>In Custom Interface</th></tr>
+  <tr>
+    <td class="TDtableCode"><pre>&lt;html&gt;
+...
+&lt;script&gt;
+function onClick()
+{
+    // call doSomething function in Script Engine with 3 arguments
+    $se("doSomething", 1, "some string", true);
+}
+&lt;/script&gt;
+...
+&lt;/html&gt;</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>Each web view has a <strong>webView</strong> variable that is the IPC object of itself.  It can use it to change its own properties. </p>
+<table class="tableCode">
+  <tr><th>In Custom Interface</th></tr>
+  <tr>
+    <td class="TDtableCode"><pre>&lt;html&gt;
+...
+&lt;script&gt;
+function onClick()
+{
+    webView.setUrl("http://www.cisco.com");
+}
+&lt;/script&gt;
+...
+&lt;/html&gt;</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>There might be cases when the custom interface asks the Script Engine to do a task, and upon completing the task or on event, the Script Engine calls back a function in the custom interface.  Because there can be multiple web views owned by the Script Module, we need a way to identify the different web views.  Each web view has a web view ID that it can pass to the Script Engine along with the name of a function call.  The Script Engine can use this ID to look up and call the function in that web view.</p>
+<table class="tableCode">
+  <tr><th>In Custom Interface</th></tr>
+  <tr>
+    <td class="TDtableCode"><pre>&lt;html&gt;
+...
+&lt;script&gt;
+$se("doSomething", webView.getWebViewId(), "callbackFunc");
+...
+function callbackFunc(argInt, argStr)
+{ ... }
+&lt;/script&gt;
+...
+&lt;/html&gt;</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table class="tableCode">
+  <tr><th>In Script Engine</th></tr>
+  <tr>
+    <td class="TDtableCode"><pre>function doSomething(webViewId, callbackFunc)
+{
+    ...
+    var webView = webViewManager.getWebView(webViewId);
+    $wvca(webView, callbackFunc, 123, "hello");
+}</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>There are function shortcuts for web view's <strong>evaluateJavaScript()</strong> and <strong>evaluateJavaScriptAsync()</strong>.  They are <strong>$wvc()</strong> and <strong>$wvca()</strong> respectively.  Their first argument is the web view object.</p>
+<p></p>
+
+<p class="MainHeading3">Custom Interface URL Scheme</p>
+<p>To point a web view to a custom interface in Script Modules, use this scheme: <i>scriptModuleID</i>:<i>customInterfaceID</i>.  There are two predefined Script Module IDs:</p>
+<ul>
+    <li><strong>this-sm</strong> - points to a custom interface in this Script Module; this-sm:Interface0.htm</li>
+    <li><strong>file-sm</strong> - points to a custom interface in the File Script Module; file-sm:Interface0.htm</li>
+</ul>
+<p>It can also point to a custom interface in a different Script Module by using the other Script Module's ID: net.netacad.cisco.PcChat:chat.htm.</p>
+<table class="tableCode">
+  <tr><th>In Script Engine</th></tr>
+  <tr>
+    <td class="TDtableCode"><pre>webView.setUrl("this-sm:Interface0.htm");
+...
+webView.setUrl("net.netacad.cisco.PcChat:chat.htm");</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>This also works from links inside the web views.</p>
+<table class="tableCode">
+  <tr><th>In Custom Interface</th></tr>
+  <tr>
+    <td class="TDtableCode"><pre>&lt;a href="this-sm:Interface0.htm"&gt;htm in this Script Module&lt;/a&gt;
+&lt;a href="file-sm:Interface0.htm"&gt;htm in the File Script Module&lt;/a&gt;
+&lt;a href="net.netacad.cisco.PcChat:chat.htm"&gt;htm in another Script Module&lt;/a&gt;</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>If the target link is in the same Script Module, the ID can be omitted.</p>
+<table class="tableCode">
+  <tr><th>In Custom Interface</th></tr>
+  <tr>
+    <td class="TDtableCode"><pre>&lt;a href="Interface0.htm"&gt;htm in this Script Module&lt;/a&gt;</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>After pointing a web view to load a custom interface in another Script Module, this Script Module no longer owns the web view, and will not have access to the web view any more.  This is to enforce the sandbox for each Script Module and to prevent hijacking of web views after the page goes to a different Script Module. </p>
+<p>&nbsp;</p>
+
+<p>Images, css, and js files should be imported to the Script Module's Custom Interface using the Import button. Once resources are imported, the custom interface can load them using standard HTML tags. External resources may not be resolved if an absolute path is not supplied.</p>
+<table class="tableCode">
+  <tr><th>In Custom Interface</th></tr>
+  <tr>
+    <td class="TDtableCode"><pre>&lt;html&gt;
+...
+&lt;link type="text/css" href="jquery-ui-1.8.7.custom.css" rel="stylesheet" /&gt;
+&lt;script type="text/javascript" src="jquery-1.4.4.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="jquery-ui-1.8.7.custom.min.js"&gt;&lt;/script&gt;
+...
+&lt;/html&gt;</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p class="MainHeading3">PT Built-In Web Views</p>
+<p>There are two built-in web views in PT at the current time, the activity file instructions window and the device dialog.</p>
+<p>&nbsp;</p>
+
+<p class="MainHeading4">Activity File Instructions Window</p>
+<p>The activity file instructions window always renders the instructions set for the activity file.  So the user can use the same instructions tab in Activity Wizard to edit this.  The File Script Module is the owner of this web view.</p>
+<p>&nbsp;</p>
+
+<p class="MainHeading4">Device Dialog</p>
+<p>Each device dialog has a new tab with a web view that has direct access to the device.  It has a <strong>device</strong> variable built-in that is the device's IPC object.  So, within this web view, the custom interface can do the following.</p>
+<table class="tableCode">
+  <tr><th>In Custom Interface</th></tr>
+  <tr>
+    <td class="TDtableCode"><pre>&lt;html&gt;
+...
+&lt;script&gt;
+device.getPort("FastEthernet").setIpSubnetMask("1.1.1.1", "255.0.0.0");
+&lt;/script&gt;
+...
+&lt;/html&gt;</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>The default custom interface to render in each device's dialog can only be selected using the PT GUI. However, once a Script Module has ownership of the device dialog's web view, it can use <strong>setUrl()</strong> in the Script Module code to change the custom interface.  The PT GUI allows changing the device dialog custom interface for this file only or for the PT globally.  Go to Extensions->Scripting->Config File Custom Interface for this file, and Extensions->Scripting->Config Global Custom Interface or go to Custom Interfaces tab in Options->Preferences for the PT globally. </p>
+<p class="myPic">
+<img src="images/scriptModules_configFileCustomInterfaces.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="myPic">
+<img src="images/scriptModules_configGlobalCustomInterfaces.jpg">
+</p>
+<p>&nbsp;</p>
+<p>PT is packaged with a PcSoftware Script Module for the PC device dialog's Software/Services tab similar to the one in Cisco Aspire Game.  It also comes with a separate Script Module for a new feature, PcChat, to be added to the main page of the PcSoftware Script Module.  Because Script Modules work in a sandbox and cannot see or change anything about another Script Module, we send messages from PcChat to PcSoftware to register itself when it starts.</p>
+<table class="tableCode">
+  <tr><th>In PcChat Script Module</th></tr>
+  <tr>
+    <td class="TDtableCode"><pre>function main()
+{
+    ipc.ipcManager().sendMessageTo("net.netacad.cisco.PcSoftware", "ADD_SOFTWARE,Chat,net.netacad.cisco.PcChat:chat.htm");
+}</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>Software in Script Modules developed by others can do the same and add themselves to the PC's Software/Services automatically.</p>
+<p></p>
+
+</body>
+</html>

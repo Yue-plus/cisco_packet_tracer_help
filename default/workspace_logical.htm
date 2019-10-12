@@ -1,0 +1,222 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>The Logical Workspace</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+
+<p class="MainHeading1">The Logical Workspace</p>
+<hr>
+<p>The Logical Workspace is where you will spend the majority of your time building and configuring your network. In conjunction with Realtime Mode, you can use this workspace to complete many of the labs you encounter in your CCNA coursework.</p>
+<p class="myList">First, you will want to create devices. This is done by choosing devices from the <strong>Network Component</strong> box. Then, you can do any of the following:</p>
+<p class="myList">
+
+</p>
+<ul>
+  <li>Add modules to your devices to install additional interfaces. Note that you must turn off a device (by clicking its power button) before you can add a module.</li>
+  <li>Connect your devices by choosing the appropriate cables (also found in the <strong>Network Component</strong> box).</li>
+  <li>Configure device parameters (such as the device name and IP address) through graphical dialogue boxes or the Cisco IOS (in the case of routers and switches).</li>
+  <li>Make advanced configurations and view network information from the CLI interface on a router or switch.</li>
+</ul>
+<p>&nbsp;</p>
+
+<p class="MainHeading2">Creating Devices</p>
+<p>To place a device onto the workspace, first choose a device type from the <strong>Device-Type Selection</strong> box. Then, click on the desired device model from the <strong>Device-Specific Selection</strong> box. Finally, click on a location in the workspace to put your device in that location. If you want to cancel your selection, click the <strong>Cancel</strong> icon for that device. Alternatively, you can click and drag a device from the <strong>Device-Specific Selection</strong> box onto the workspace. You can also click and drag a device directly from the <strong>Device-Type Selection</strong> box and a default device model will be chosen for you.</p>
+<p class="myPic">
+<img src="images/workspace_logical_1.jpg" alt="Creating devices">
+</p>
+<table class="tableTip">
+  <tr>
+    <td class="TDtableTip">To quickly create many instances of the same device, press and hold the <strong>Ctrl</strong> button, click on the device in the <strong>Device-Specific Selection</strong> box, and then release the <strong>Ctrl</strong> button. The device is now locked and you can click on the workspace multiple times to add multiple copies of the device. Cancel this operation by pressing the <strong>Cancel</strong> icon for that device. To duplicate devices, you can press and hold the <strong>Ctrl</strong> button and then drag a device on the workspace or select the devices and then use the <strong>Copy</strong> and <strong>Paste</strong> buttons.</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p class="MainHeading2">Moving Objects</p>
+<p>To move an object around the Logical Workspace, be sure the <strong>Select Tool</strong> is selected on the <strong>Common Tools Bar</strong>. Once the <strong>Select Tool</strong> is selected, you can left-click and drag items around the Logical Workspace.</p>
+<p class="myPic">
+<img src="images/workspace_logical_select_tool.jpg" alt="Moving Devices">
+</p>
+<table class="tableTip">
+  <tr>
+    <td class="TDtableTip">Logical Workspace objects can also align items when close to other objects. Click and drag on your object and move it close to the object you want to align with. Alignment lines can be enabled in <strong>Preferences</strong>, under the <strong>Interface</strong> tab. </td>
+  </tr>
+</table>
+<p class="myPic">
+<img src="images/workspace_logical_snap_grid.jpg" alt="Moving Devices">
+</p>
+<p>&nbsp;</p>
+
+<p class="MainHeading2">Adding Modules</p>
+<p>Most Packet Tracer devices have modular bays or slots into which you can insert modules. In the workspace, click on a device to bring up its configuration window. By default, you will be in the  <strong>Physical Device View</strong> sub-panel of the device. An interactive picture of the device is on the right of the panel, and a list of compatible modules is on the left. You can resize the picture with the <strong>Zoom In</strong>, <strong>Original Size</strong>, and <strong>Zoom Out</strong> buttons. You can also resize the entire configuration window by dragging its borders with the mouse. Alternatively, you can undock the window so that you can move it around and freely resize it. You can browse (by clicking) through the list of modules and read their description in the information box at the bottom. When you have found the module you want to add, simply drag it from the list into a compatible bay on the device picture. You can remove a module by dragging it from the device back into the list.</p>
+<p class="myPic">
+<img src="images/workspace_logical_2.jpg" alt="Adding modules">
+</p>
+<table class="tableTip">
+  <tr>
+    <td class="TDtableTip">You must turn <strong>off</strong> a device (by clicking its power button) before you can add or remove non-hot swappable modules, and you should turn the device back <strong>on</strong> after you are done.</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="MainHeading2">Making Connections</p>
+<p>To make a connection between two devices, first click the <strong>Connections</strong> icon from the <strong>Device-Type Selection</strong> box to bring up the list of available connections. Then click the appropriate cable type. The mouse pointer will change into a "connection" cursor. Click on the first device and choose an appropriate interface to which to connect. Then click on the second device and do the same. A connection cable will appear between the two devices, along with link lights showing the link status on each end (for interfaces that have link lights). If you made a mistake by connecting to an incorrect interface or you want to change the connection to a different interface, click on the link light near the device to unplug the connection from the device. Click on the device again and select the desired interface to reconnect the device. For a full list of connections supported in Packet Tracer, please read the <A href="connectionsLinks.htm" target="content" class="MenuHeading1">Connections / Links</A> help page.</p>
+<p class="myPic">
+<img src="images/workspace_logical_4.jpg" alt="Connecting devices">
+</p>
+<table class="tableTip">
+  <tr>
+    <td class="TDtableTip">To quickly make many connections of the same type, press and hold the <strong>Ctrl</strong> button, click on a cable type in the <strong>Device-Specific Selection</strong> box, and release the <strong>Ctrl</strong> button. The connection cursor is now locked and you can repeatedly make the same connection type between devices. Cancel this operation by pressing the <strong>Cancel</strong> icon for the cable type.</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="MainHeading2">Logical Topology Editing Tools</p>
+<p>You can use the tools in the <strong>Main Tool Bar</strong>, <strong>Logical/Physical Workspace Bar</strong>, and <strong>Common Tools Bar</strong> to edit and annotate your topology.</p>
+
+<table class="tableModules">
+  <tr>
+    <td width="170 pix" class="TDpadded"><div align="center"><em>Tool</em></div></td>
+    <td class="TDpadded"><div align="center"><em>Use</em></div></td>
+  </tr>
+  <tr>
+    <td class="TDpadded"><strong>Copy</strong></td>
+    <td class="TDpadded">Copy the selected items.</td>
+  </tr>
+  <tr>
+    <td class="TDpadded"><strong>Paste</strong></td>
+    <td class="TDpadded">Paste the selected items.</td>
+  </tr>
+  <tr>
+    <td class="TDpadded"><strong>Undo</strong></td>
+    <td class="TDpadded">Undo the previous action. </td>
+  </tr>
+  <tr>
+    <td class="TDpadded"><strong>Redo</strong></td>
+    <td class="TDpadded">Redo the previous action. </td>
+  </tr>
+  <tr>
+    <td class="TDpadded"><strong>Zoom In</strong></td>
+    <td class="TDpadded">Zoom in the workspace.</td>
+  </tr>
+  <tr>
+    <td height="29" class="TDpadded"><strong>Zoom Reset</strong></td>
+    <td class="TDpadded">Reset the zoom back to default.</td>
+  </tr>
+  <tr>
+    <td height="29" class="TDpadded"><strong>Zoom Out</strong></td>
+    <td class="TDpadded">Zoom in the workspace.</td>
+  </tr>
+  <tr>
+    <td class="TDpadded"><strong>Drawing Palette</strong></td>
+    <td class="TDpadded">Create lines, rectangles, and ellipses.</td>
+  </tr>
+  <tr>
+    <td class="TDpadded"><strong>Custom Devices Dialog </strong></td>
+    <td class="TDpadded">Refer to the <a href="#CreateCustomDevices">Creating Custom Devices</a> section above for information. </td>
+  </tr>
+  <tr>
+    <td class="TDpadded">&nbsp;</td>
+    <td class="TDpadded">&nbsp;</td>
+  </tr>
+  <tr>
+      <td class="TDpadded"><strong>Root</strong></td>
+      <td class="TDpadded">Refer to the <a href="#ClusteringDevices">Clustering Devices</a> section below for information.</td>
+  </tr>
+  <tr>
+    <td class="TDpadded"><strong>Back</strong></td>
+    <td class="TDpadded">Refer to the <a href="#ClusteringDevices">Clustering Devices</a> section below for information.</td>
+  </tr>
+  <tr>
+    <td class="TDpadded"><strong>New Cluster</strong></td>
+    <td class="TDpadded">Refer to the <a href="#ClusteringDevices">Clustering Devices</a> section below for information.</td>
+  </tr>
+  <tr>
+    <td class="TDpadded"><strong>Move Object</strong></td>
+    <td class="TDpadded">Refer to the <a href="#ClusteringDevices">Clustering Devices</a> section below for information.</td>
+  </tr>
+  <tr>
+    <td class="TDpadded"><strong>Set Tiled Background</strong></td>
+    <td class="TDpadded">Refer to the <A href="workspace_logical_customIconsAndBG.htm" target="content" class="MenuHeading3">Customizing Icons & BG</A> section  for information.</td>
+  </tr>
+  <tr>
+    <td class="TDpadded"><strong>Viewport</strong></td>
+    <td class="TDpadded">View a scaled version of the workspace.</td>
+  </tr>
+  <tr>
+    <td class="TDpadded"><strong>Environment</strong></td>
+    <td class="TDpadded">Open a dialog that allow you to edit Simulated Physical Environment factors.</td>
+  </tr>
+  <tr>
+    <td class="TDpadded">&nbsp;</td>
+    <td class="TDpadded">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="TDpadded"><strong>Select</strong></td>
+    <td class="TDpadded">Click objects and drag them around. This is the default tool. You can also select multiple objects by holding down the mouse button and then dragging your cursor over them. This action draws a rectangle around the objects so you can drag all of them simultaneously. Press the <strong>Esc</strong> key on the keyboard for quick access to this tool.</td>
+  </tr>
+  <tr>
+    <td class="TDpadded"><strong>Move Layout</strong></td>
+    <td class="TDpadded">Move your entire workspace around with the click-and-drag mouse action.</td>
+  </tr>
+  <tr>
+    <td class="TDpadded"><strong>Place Note</strong></td>
+    <td class="TDpadded">Write and place sticky notes anywhere on the workspace.</td>
+  </tr>
+  <tr>
+    <td class="TDpadded"><strong>Delete</strong></td>
+    <td class="TDpadded">Delete objects from the workspace. When you select the <strong>Delete</strong> tool, the mouse cursor will change into an "X." You can then click on any object (a device, connection, or note) that you wish to delete.</td>
+  </tr>
+  <tr>
+    <td class="TDpadded"><strong>Inspect</strong></td>
+    <td class="TDpadded">Look at  tables of a device (such as ARP and MAC tables) that have been modeled in this version of Packet Tracer.</td>
+  </tr>
+  <tr>
+    <td class="TDpadded"><strong>Resize Shape</strong></td>
+    <td class="TDpadded">Resize shapes that are drawn with the Drawing Palette. When you select the <strong>Resize Shape</strong> tool, a red square will appear on shapes on the workspace. Drag the red square to either increase or decrease the shape.</td>
+  </tr>
+  <tr>
+    <td class="TDpadded"><strong>Add Simple PDU</strong></td>
+    <td class="TDpadded">Refer to the <A href="mode_simulation.htm" target="content" class="MenuHeading2">Simulation Mode</A> help section for information.</td>
+  </tr>
+  <tr>
+    <td class="TDpadded"><strong>Add Complex PDU</strong></td>
+    <td class="TDpadded">Refer to the <A href="mode_simulation.htm" target="content" class="MenuHeading2">Simulation Mode</A> help section for information.</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="myPic">
+<img src="images/workspace_logical_5.jpg" alt="Routing table window">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Configuring Devices</p>
+<p>To make most of the devices useful, you need to configure some basic settings (for example, an interface IP address and subnet mask). You can set basic parameters through the  GUI configuration screen of the device (click the <strong>Config</strong> tab from the  configuration window). Different devices have different settings available. Refer to each  help page of the device for detailed information.</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Cisco IOS: Routers and Switches</p>
+<p>
+
+  For routers and switches, you will have access to a model of the Cisco IOS with a limited set of commands. You can use the software to make advanced configurations and view various network information in real time (if you are in Realtime Mode). Here are a few examples of the commands available to you: <strong>ping</strong>, <strong>traceroute</strong>, <strong>show interfaces</strong>, <strong>ip access-list</strong>, and <strong>switchport access vlan</strong>. Refer to the <A href="configuringDevices.htm" target="content" class="MenuHeading1">Configuring Devices</A> section of the help files for all supported Cisco IOS commands.</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Clustering Devices<a name="ClusteringDevices"></a></p>
+<p>Clustering devices allows you to simplify the appearance of the Logical Workspace by visually reducing a group of devices and connections into a single image. By default, all devices are created on the Logical Workspace are located in the <strong>Root</strong> level, which is indicated on the <strong>Logical/Physical Workspace Bar</strong>. You may reduce the amount of clutter on the workspace by clustering multiple devices together with the <strong>New Cluster</strong> feature. To cluster a group of devices, select the devices on the workspace and then click on the <strong>New Cluster</strong> button. You can then click on the newly created cluster to go inside its lower level (i.e., Cluster0 by default) and create sub-clusters within the main cluster as well. You may also rename the cluster by clicking on its label to enable the label textbox. You can navigate between levels by clicking on the appropriate level on the <strong>Navigation Bar</strong>. To uncluster a group of devices, highlight the cluster and then delete it with the <strong>Delete</strong> tool.</p>
+<p>Once you create a cluster, you  can make connections to devices in a cluster. To make a connection to devices in a cluster, you first select the connection type and then the cluster. A menu showing the devices in the cluster appears, allowing you to select a  device. When you select the device, a  menu showing the available  interfaces appears. Select the interface and a connection is made if  the selected connection type and interface are compatible.</p>
+<p>Also, when you can create a cluster, you can move objects and devices within the cluster hierarchy with the <strong>Move Object </strong>button. To do so, click on the <strong>Move Object</strong> button and  then select an object or device. This opens a menu showing the cluster  hierarchy. You can then select the location to which the object should be  moved.</p>
+<p class="myPic">
+<img src="images/workspace_logical_6.jpg" alt="Creating clusters">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Managing Workspace Clutter (Docking/Undocking Sub-windows)</p>
+<p> There may be times when you need multiple windows open on your screen (especially when you start running simulations and have to keep track of many things at once). To minimize the visual clutter, you can arrange popup and sub-windows in various ways. Many windows can be docked to or undocked (floated) from the workspace. You can drag floating windows (via their title bar) and dock them to the left, right, or bottom edge of the workspace. Simply drag a window by its title bar until your cursor is near an edge and then release the mouse button. The window will dock to that edge. To undock a window, drag the window by its docked title bar and move it out of the workspace edge to anywhere on your screen.</p>
+<table class="tableTip">
+  <tr>
+    <td class="TDtableTip"><p>Some more hints regarding docking and undocking windows:</p>
+      <ul>
+        <li>In a docked position, the title bar of a window is unnamed; the window may be at the top or left border. Use the  <strong>Close</strong> button (x) on the window as a hint to where the title bar is.</li>
+        <li>You can double click the title bar of a window to quickly toggle between the docked or undocked state.</li>
+        <li>If there is already another window at an edge, you can dock a second window next to that first window.</li>
+        <li>If you do not want a window to dock anywhere as you drag it around, press and hold the <strong>Ctrl</strong> key as you drag it.</li>
+      </ul></td>
+  </tr>
+</table>
+</body>
+</html>

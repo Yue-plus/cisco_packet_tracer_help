@@ -1,0 +1,2229 @@
+<html>
+<head>
+	<title>Frequently Asked Questions (FAQ)/Troubleshoot Guide</title>
+	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+	<link href="styleNormal.css" type=text/css rel=stylesheet>
+</head>
+<body>
+<p class=MainHeading1>Frequently Asked Questions (FAQ)/Troubleshooting Guide
+<HR>
+<p class=MainHeading2>Topics</P>
+<ul>
+  <li><a href="#top_gen">General</a></li>
+  <li><a href="#top_specific">Specific</a></li>
+  <li><a href="#top_protocol">Protocol Modeling</a></li>
+  <li><a href="#top_IoT">Internet of Things</a></li>
+
+</ul>
+
+<p class=MainHeading2><a name=top_gen>General Issues</a></P>
+<a href="#gen_1">1. My computer frequently crashes when I use Packet Tracer.</a><br>
+<a href="#gen_2">2. The program screen is cluttered with too many windows! I can't see the workspace.</a><br>
+<a href="#gen_3">3. What Cisco IOS version do the routers and switches support?</a><br>
+<a href="#gen_4">4. Can I learn the necessary information for CCNA certification just by using Packet Tracer?</a><br>
+<a href="#gen_5">5. Does Packet Tracer support all of the features found in Cisco devices?</a><br>
+<a href="#gen_6">6. When I make an entry into a text field (such as an IP address), how do I know it goes into effect? Is there an &quot;Apply&quot; button?</a><br>
+<a href="#gen_7">7. Can I create unlimited devices?</a><br>
+<a href="#gen_8">8. I cannot access the tutorial files.</a><br>
+<a href="#gen_9">9. May I distribute Packet Tracer to my students?</a><br>
+<a href="#gen_10">10. Why is Packet Tracer running so slowly?</a><br>
+<a href="#gen_11">11. Some text in the program is cut off or is not correctly displayed.</a><br>
+<a href="#gen_12">12. I have a saved topology from older version of Packet Tracer. Can I open it with this version of Packet Tracer?</a><br>
+<a href="#gen_13">13. What is the password to edit the included activities with Activity Wizard?</a><br>
+<a href="#gen_14">14. When I try to launch Packet Tracer in Ubuntu 6.10, the terminal gives a Fatal Arithmetic error.</a><br>
+<a href="#gen_15">15. I have a saved topology from this version of Packet Tracer. Can I open it with an older version of Packet Tracer?</a><br>
+<a href="#gen_16">16. How do I convert PKA files to a PKT file?</a><br>
+<a href="#gen_17">17. If I save my file in the default Packet Tracer saves directory in Windows Vista, the save file is found in another directory. However, if I choose another directory, this issue does not occur.</a><br>
+<a href="#gen_18">18. When I try to launch Packet Tracer in Wine, Packet Tracer crashes.</a><br>
+<a href="#gen_19">19. On Ubuntu, if I try to create a custom device template, an error message pops up stating &quot;Unable to write to file.&quot;</a><br>
+<a href="#gen_20">20. How can I save the PKA that I have opened in Activity Wizard to a different file (i.e. Save As)?</a><br>
+<a href="#gen_21">21. Is it possible to drag and drop a save file from my operating system inside Packet Tracer to load up the save file?</a><br>
+<a href="#gen_22">22. How come the Recent Files list is empty?</a><br>
+<a href="#gen_23">23. How do you create an activity PKZ file?</a><br>
+<a href="#gen_24">24. How do you modify a PKZ activity file?</a><br>
+<a href="#gen_25">25. When creating PKZ files, do I need to ensure all of the background images are in the same folder as the PKA/PKT file?</a><br>
+<a href="#gen_26">26. My display resolution is 1024 x 768 or lower. When I go to Simulation Mode and click on the Auto Capture / Play button, events are not displayed in the Event List.</a><br>
+<a href="#gen_27">27. Why doesn't Packet Tracer display fonts properly in Linux?</a><br>
+<a href="#gen_28">28. Why does Packet Tracer stop abruptly when right clicking on the Windows taskbar and then selecting &quot;Close Group&quot;?</a><br>
+<a href="#gen_29">29. I can't seem to write options to the Packet Tracer installed folder using the function in Preferences.</a><br>
+<a href="#gen_30">30. How do I save images added to the cloud for the TV correctly?</a><br>
+<a href="#gen_31">31. What's the transparent bar at the bottom edge of the workspace and is there a way to get rid of it?</a><br>
+<a href="#gen_32">32. Packet Tracer looks bad in Ubuntu (fonts, layouts, buttons, etc.).</a><br>
+<a href="#gen_33">33. Ctrl+Break doesn't work on Linux.</a><br>
+<a href="#gen_34">34. All router config windows are closed without warning when closing the Preferences window.</a><br>
+<a href="#gen_35">35. Why can't I connect to another Packet Tracer instance using multiuser?</a><br>
+<a href="#gen_36">36. Why do upnp.exe and PTUpdater.exe not quit after I submit my online PT exam?</a><br>
+<a href="#gen_37">37. When I use the Save Offline Copy feature for Multiuser, sometimes the remote networks in the offline copy will not go up (i.e. link lights stays red).</a><br>
+<a href="#gen_38">38. I do not see the arp, bandwidth, delay, and other commands for the 2960 Switch, as well as some other switches. Why are they missing?</a><br>
+<a href="#gen_39">39. I do not see the Hop Limit field in the PDU information window.</a><br>
+<a href="#gen_40">40. Why are the IPv6 Src/Dest address fields not taking up four rows each?</a><br>
+<a href="#gen_41">41. Why can you only use Courier and Courier New for the CLI text?</a><br>
+<a href="#gen_42">42. Why can't I close the LAN Multiuser Agent and WAN Multiuser Agent windows?</a><br>
+<a href="#gen_43">43. Why do parts of some PKA instructions get replaced by strange characters after it has been saved and reopened?</a><br>
+<a href="#gen_44">44. Searching for devices sometimes doesn't yield expected results. For example, searching for "m" doesn't return some of the IoE monitors. Why are some devices missing from the list? </a><br>
+<a href="#gen_45">45. Why my login screen is blank?</a><br>
+<a href="#gen_46">46. ALT+Mouse doesn't work for IoT devices in Ubuntu.</a><br>
+<a href="#gen_47">47. What is the difference between realtime and environment time?</a><br>
+
+
+<p>&nbsp;</P>
+
+<p class=MainHeading2><a name=top_specific>Specific Issues</a></P>
+<a href="#spec_1">1. In the Physical Workspace, the wiring closet does not display all of the devices I have created in the Logical Workspace.</a><br>
+<a href="#spec_2">2. If I turn off the <b>ARP</b> filter in the <b>Event List Filters</b>, does that mean devices won't build ARP tables?</a><br>
+<a href="#spec_3">3. Does Packet Tracer use the Spanning Tree Protocol?</a><br>
+<a href="#spec_4">4. How does loop-breaking process work in Packet Tracer? Why don't I have the option of viewing packets associated with the loop-breaking process?</a><br>
+<a href="#spec_5">5. When I reset the network in Simulation Mode, why do some switch ports show amber link lights and stay that color?</a><br>
+<a href="#spec_6">6. Why does the command <b>clockrate</b> not work?</a><br>
+<a href="#spec_7">7. I created a ping packet in Simulation Mode and ran it. Why do I still see packets/frames (like CDP) running on the network after the ping process is completed?</a><br>
+<a href="#spec_8">8. When I issue an extended ping, the parameters I am asked to fill in do not match an extended ping on a real device.</a><br>
+<a href="#spec_9">9. Why can't I access sub-interfaces on serial ports?</a><br>
+<a href="#spec_10">10. Why can't I test port connectivity with a command such as <b>ping 192.168.1.5:80</b>?</a><br>
+<a href="#spec_11">11. Does Packet Tracer support VTP?</a><br>
+<a href="#spec_12">12. I can't seem to add a secondary address to a port.</a><br>
+<a href="#spec_13">13. How does the Auto settings for bandwidth and duplex work on a port?</a><br>
+<a href="#spec_14">14. At the end of a simulation (after the last event), I viewed a device table (such as ARP or MAC) and saw that it was blank. Why is this?</a><br>
+<a href="#spec_15">15. Sometimes the CLI screen seems to display text incorrectly. For example, when activating an interface, the router prompt appears at the end of the syslog message instead of a new line.</a><br>
+<a href="#spec_16">16. When I make the interface a trunk port in a interface sub-panel for the switch (under Config), the VLAN range is set to 1 to 1005 even though the switch does not have that many VLANs set up?</a><br>
+<a href="#spec_17">17. When I turn off a router that has its link lights up and then turn it back on, why do the links remain down?</a><br>
+<a href="#spec_18">18. When I choose a tool from the <b>Common Tools Bar</b> (such as the <b>Inspect</b> tool), how can I cancel that tool or deselect it?</a><br>
+<a href="#spec_19">19. What's the difference between the <b>Reset Simulation</b> button and the <b>Power Cycle Devices</b> button?</a><br>
+<a href="#spec_20">20. When I use the <b>Add Simple PDU</b> tool to ping a router, the destination IP address is the Ethernet interface rather than the serial interface. What determines the default destination interface for a ping?</a><br>
+<a href="#spec_21">21. When I have a static route and RIP configured on a router, why is it that the static route with an administrative distance of 1 is preferred over RIP routes with an administrative distance of 120? </a><br>
+<a href="#spec_22">22. When I configure static NAT on a router and perform a ping, why does the router eventually lose the NAT translations after several successful pings?</a><br>
+<a href="#spec_23">23. When I enter an EIGRP network command, such as <b>network 192.168.1.0 255.255.255.0</b>, the result should be <b>network 0.0.0.0 255.255.255.0</b> instead. However, on a real router, the result is actually <b>network 192.168.1.0</b>.</a><br>
+<a href="#spec_24">24. When I try to do an extended ping in the CLI with a source IP address that doesn't belong to the device, it gives me an invalid source error message.</a><br>
+<a href="#spec_25">25. In Simulation Mode, when I only have a single <b>Event List Filter</b> enabled, such as UDP, and then click on <b>Capture / Forward</b>, I get the message, &quot;The maximum number of events has been reached...&quot; This is counter-intuitive since no events are shown in the Event List at all.</a><br>
+<a href="#spec_26">26. When a router doesn't have a next hop MAC address, it sends an ARP request and will drop the ICMP packet as well. Is this normal behavior?</a><br>
+<a href="#spec_27">27. When I save a configuration to the router NVRAM (<b>wr mem</b> or <b>copy run start</b>), the router does not save the configuration when Packet Tracer is shut down. This only occurs if you save the topology.</a><br>
+<a href="#spec_28">28. When you use the same network/subnet on two different devices, the Cisco IOS CLI reports an error saying that the IP address conflicts with another interface.</a><br>
+<a href="#spec_29">29. Which cable do I use to connect an Access Point to other networking devices?</a><br>
+<a href="#spec_30">30. What is the difference between the <b>activity file (.pka)</b> that I author and the activity file that I give to others?</a><br>
+<a href="#spec_31">31. Is it possible to import or open Packet Tracer activity files from a previous version?</a><br>
+<a href="#spec_32">32. What is the correct version for EIGRP? I have seen only two versions, v0 and v1. However, in the PDU Information Window, the version reported is version 2.</a><br>
+<a href="#spec_33">33. In Simulation Mode, why do some devices/ports sometimes buffer frames and say the ports are sending other frames when there are no frames shown in the Event List?</a><br>
+<a href="#spec_34">34. When creating multiple connections between the same two devices (e.g. trunking), the cables connected earlier may be hidden by the new ones. How do I know how many cables are connected?</a><br>
+<a href="#spec_35">35. Using the Activity Wizard, how do I lock out the GUI configuration for routers and switches to force the users to use only the CLI?</a><br>
+<a href="#spec_36">36. What happens to the IP address of a device when I duplicate the device?</a><br>
+<a href="#spec_37">37. What is the limit for the number of wireless hosts and access points in the same coverage area?</a><br>
+<a href="#spec_38">38. When I create a template of a device with additional IOS images besides the default IOS image, only the default IOS image of the device appears in the custom device.</a><br>
+<a href="#spec_39">39. Is Realtime mode exactly in sync with real world time?</a><br>
+<a href="#spec_40">40. Why, when I enable logging and configure devices in the CLI and then save the file, does the save file not save the log?</a><br>
+<a href="#spec_41">41. When I send a PDU over devices with multiple links between them, with one of the links shutdown, why does the PDU traverse the shutdown link instead of the active link in Simulation Mode?</a><br>
+<a href="#spec_42">42. Why do I get two different average round trip times for the exact same pings in Realtime Mode and Simulation Mode?</a><br>
+<a href="#spec_43">43. When I issue the &quot;clear ip route *&quot; command in CLI, it doesn't clear the routing tables.</a><br>
+<a href="#spec_44">44. Why can't enable secret passwords be assessed reliably in activities?</a><br>
+<a href="#spec_45">45. I can add a WEP key that is out of the hex range for the WRT300N when I shouldn't be able to.</a><br>
+<a href="#spec_46">46. In the Event List filter window, why does unchecking HTTP filter have no effect when TCP is checked?</a><br>
+<a href="#spec_47">47. Why does the Inspect tool have no effect on the WRT300N?</a><br>
+<a href="#spec_48">48. When I telnet into another device, the config tab does not work.</a><br>
+<a href="#spec_49">49. Why do static routes with admin distances of 255 show up on the routing table?</a><br>
+<a href="#spec_50">50. Packet Tracer crashes when I have many instances of Packet Tracer opened.</a><br>
+<a href="#spec_51">51. How can configurations from Packet Tracer and real devices be used in activities to check enable secret and other passwords with service password-encryption on?</a><br>
+<a href="#spec_52">52. Why are values in Config tab not changed when I have already changed them in console?</a><br>
+<a href="#spec_53">53. Why do HTTP packets still show up when I have the HTTP filter unchecked?</a><br>
+<a href="#spec_54">54. Why does Packet Tracer generate the same encryption string when the same password is entered more than once?</a><br>
+<a href="#spec_55">55. How do I add a graphic image of a topology in the activity instructions?</a><br>
+<a href="#spec_56">56. Why am I able to add and remove content from the activity instructions window when it should be read-only?</a><br>
+<a href="#spec_57">57. When I enter &quot;show interface s0/0/0&quot; in the CLI, the IOS output says &quot;show interface s0/0/0&quot; is an ambiguous command.</a><br>
+<a href="#spec_58">58. How come I cannot use Variable Manager for scoring with VLAN interface IDs (SVIs)?</a><br>
+<a href="#spec_59">59. Is there a way to speed up convergence of the network when I open a file? Sometimes my activity is graded incorrectly since the answer network hasn't converged.</a><br>
+<a href="#spec_60">60. I cannot make a Multiuser connection between Windows and Linux machines.</a><br>
+<a href="#spec_61">61. I can still access the Config tab of a router or switch even if there is an enable secret password in the running configuration.</a><br>
+<a href="#spec_62">62. Is there a way to distinguish between outgoing and incoming Multiuser remote network clouds? Also, when I have an incoming Multiuser connection, Packet Tracer creates a Multiuser remote network cloud if the name is incorrect.</a><br>
+<a href="#spec_63">63. When I try to set a variable value to Elemental Position in Variable Manager, the value sets itself to zero and cannot be changed to any other position.</a><br>
+<a href="#spec_64">64. When I try to copy text from the CLI tab using &quot;<b>Ctrl + C</b>&quot;, the output has unorganized text that can be dragged around.</a><br>
+<a href="#spec_65">65. How come I am able to enter negative point values for Assessment Items in activities?</a><br>
+<a href="#spec_66">66. Can a wireless PC associate to an access point that is from a Multiuser remote network?</a><br>
+<a href="#spec_67">67. When I try to create a loop on a switch by connecting a straight-through or cross-over cable to different ports on the same switch, I get a connection error stating that &quot;The cable cannot be connected to that port?&quot;</a><br>
+<a href="#spec_68">68. How come when I have multiple wireless profiles in a wireless PC and then delete the wireless router that the wireless PC is currently associated to, the wireless PC does not automatically associate to the other wireless routers that has a profile?</a><br>
+<a href="#spec_69">69. In Physical Workspace, sometimes the geoicons do not work correctly. For example, I am able to move the geoicons beyond the &quot;border.&quot; Also, the geoicon labels are sometimes detached from the geoicon itself after navigating between locations.</a><br>
+<a href="#spec_70">70. How come the output for various commands in Packet Tracer, such as &quot;show ipv6 nat translations,&quot; is different from a real router?</a><br>
+<a href="#spec_71">71. When I click on Save Settings in the Applications & Gaming section in the WRT300N GUI, the last item in focus does not save.</a><br>
+<a href="#spec_72">72. How come when I create a complex PDU, the Outgoing Port drop-down list does not contain any ports?</a><br>
+<a href="#spec_73">73. The Variable Manager Interface in the Activity Wizard Answer Network panel is too narrow.</a><br>
+<a href="#spec_74">74. When I have a router with 2 LANs (e.g. 192.168.1.1 and 192.168.2.1), a PC with an IP address in the 192.168.1.0 network can be pinged by a PC in the 192.168.2.0 network even if the PC in the 192.168.1.0 network has the incorrect default gateway (e.g. 192.168.2.1).</a><br>
+<a href="#spec_75">75. When I copy and paste the entire &quot;show running-config&quot; output in Global Config Mode, some commands return &quot;% Invalid input detected at '^' marker.&quot;</a><br>
+<a href="#spec_76">76. When I undo a deleted device/link that was connected to a Multiuser remote network, Packet Tracer crashes.</a><br>
+<a href="#spec_77">77. When I delete a link to a Multiuser remote network, the link isn't removed from the Multiuser remote network.</a><br>
+<a href="#spec_78">78. Packet Tracer appears to be able to ping a default gateway that does not exist.</a><br>
+<a href="#spec_79">79. When I am configuring Frame-Relay, the &quot;show running-config&quot; shows that the encapsulation is IETF, but the &quot;show frame-relay lmi&quot; command shows that it is Cisco.</a><br>
+<a href="#spec_80">80. The WRT300N icon looks too similar to the Cisco 1841 ISR icon.</a><br>
+<a href="#spec_81">81. When I create a new file, a registered IPC device creation event such as deviceAdded in the previous topology disappears.</a><br>
+<a href="#spec_82">82. Does Packet Tracer support SHA1 encryption?</a><br>
+<a href="#spec_83">83. The source IP address field does not appear in the Add Complex PDU dialog.</a><br>
+<a href="#spec_84">84. Where does the server device look for images to load pages with image tags from?</a><br>
+<a href="#spec_85">85. When routers exchange routes to the same route, their routes become possibly down after a while.</a><br>
+<a href="#spec_86">86. Where are the RADIUS and TACACS server configurations for the server device?</a><br>
+<a href="#spec_87">87. Why am I not able to move or control cables connected to Multiuser remote network clouds in Physical Workspace?</a><br>
+<a href="#spec_88">88. How do I navigate to a previous cluster level or Physical Workspace level?</a><br>
+<a href="#spec_89">89. When I close a device dialog while in Simulation Mode, the simulation resets.</a><br>
+<a href="#spec_90">90. Where is the Viewport feature located in Physical Workspace?</a><br>
+<a href="#spec_91">91. When I issue the command &quot;show crypto map&quot;, the output differs from what I see on a real router.</a><br>
+<a href="#spec_92">92. When I do &quot;show cdp neighbors&quot; after loading a save file, not all neighbors are in the output, but the neighbors show up after a while.</a><br>
+<a href="#spec_93">93. If I move a device with a BendPoint or GroupPoint in Physical Workspace, the BendPoint or GroupPoint disappears.</a><br>
+<a href="#spec_94">94. Packet Tracer generated a configuration file on my computer's local user directory.</a><br>
+<a href="#spec_95">95. The Ethernet interface configuration dialogs in the GUI looks different from other types of interfaces.</a><br>
+<a href="#spec_96">96. When I try to issue <b>CTRL + Shift + 6 + X</b> on the keyboard to terminate a telnet session on a PC device, nothing happens.</a><br>
+<a href="#spec_97">97. The number of packets encapsulated and deencapsulated shown in the &quot;show crypto ipsec sa&quot; are not equal.</a><br>
+<a href="#spec_98">98. Sometimes when I view PDU details of STP packets, the PDU details would say SSTP Multicast Address instead of STP Multicast Address.</a><br>
+<a href="#spec_99">99. The MIB Browser does not have a horizontal scrollbar for the MIB tree so it is hard to navigate and view the tree.</a><br>
+<a href="#spec_100">100. Why do wireless end devices sometimes form random associations?</a><br>
+<a href="#spec_101">101. When I add a DNS resource record with the name in upper-case letters, Packet Tracer adds the name in lower-case instead.</a><br>
+<a href="#spec_102">102. Cables in Physical Workspace aren't redrawn correctly while resizing objects.</a><br>
+<a href="#spec_103">103. When I close the Preferences dialog, any other dialog that I have opened closes also.</a><br>
+<a href="#spec_104">104. When I click on the link lights on a cable, the connection detaches from the nearest connected device and I am able to make a connection with the same cable again.</a><br>
+<a href="#spec_105">105. Switches are not able to detect a new route when an old route is down.</a><br>
+<a href="#spec_106">106. I was trying to create a device after clicking on the Place Note tool. The mouse cursor stayed as the Place Note cursor icon, instead of the Select tool cursor icon. Why is it like that?</a><br>
+<a href="#spec_107">107. Frame-relay map statement is not accepted under interface mode. When I run the command to add a map it says &quot;%Address already in map&quot;. I get this message even after I delete the entry and try to add it again.</a><br>
+<a href="#spec_108">108. In the Activity Wizard, when I click on the close button on the Instructions window, the window gets minimized.</a><br>
+<a href="#spec_109">109. In a router or switch's CLI, sometimes when I type a password, &quot;circles&quot; or &quot;asterisks&quot; fail to appear while entering characters for the password.</a><br>
+<a href="#spec_110">110. Why are end devices with the WMP300N module able to connect to a WRT300N that operates in BG-Mixed mode?</a><br>
+<a href="#spec_111">111. Which types of wireless networks do the Tablet PC and PDA support?</a><br>
+<a href="#spec_112">112. I changed the time and date on an NTP server on a server end device. After closing the server device dialog, and reopening it, the time and date reverted back to the previous settings.</a><br>
+<a href="#spec_113">113. When I try to ping a host that is connected to a WRT300N's LAN port, the ping fails.</a><br>
+<a href="#spec_114">114. Pressing <b>Ctrl+A</b> on the keyboard does not select all text in certain areas of the GUI.</a><br>
+<a href="#spec_115">115. Even though there is no power cord attached to an IP Phone, it still appears to be on.</a><br>
+<a href="#spec_116">116. When I hover over an end device that is supposed to be configured with a line number, the line number only shows when I open the Cisco IP Communicator.</a><br>
+<a href="#spec_117">117. When I enter the command &quot;mac-address H:H:H&quot; in ephone configuration mode, I receive an invalid input error message in the CLI.</a><br>
+<a href="#spec_118">118. When I press the &quot;Do&quot; &quot;Re&quot; or &quot;Mi&quot; notes in the GUI of the phones, I don't hear anything.</a><br>
+<a href="#spec_119">119. I connected a cloud's Ethernet6 port to a router. When the cloud receives a DHCP packet, it does not send out to the Ethernet6 port. Why?</a><br>
+<a href="#spec_120">120. Why does Packet Tracer always do PAT when there is no overload command?</a><br>
+<a href="#spec_121">121. When I use the <b>Copy from Answer Network</b> function in the Initial Network panel of Activity Wizard, the variables from the Answer Network do not get copied over.</a><br>
+<a href="#spec_122">122. When I try to copy and paste a Multiuser cloud, nothing happens.</a><br>
+<a href="#spec_123">123. When I try to create a multiuser connection while in Activity Wizard, an error message appears stating that &quot;Cannot make multiuser connection to this instance of Packet Tracer.&quot;</a><br>
+<a href="#spec_124">124. After I invoked the command &quot;ssid test&quot; from interface Dot11Radio0/3/0 on a router, there still seems to be some kind of wireless signal detected on a wireless PC. Is this correct behavior?</a><br>
+<a href="#spec_125">125. When I switch from Realtime Mode to Simulation Mode, the time seems to shift forward.</a><br>
+<a href="#spec_126">126. When I press <b>CTRL+C</b> or <b>CTRL+Shift+6</b> to terminate a traceroute, it doesn't work.</a><br>
+<a href="#spec_127">127. When I try to telnet to a switch from itself, the connection attempt times out.</a><br>
+<a href="#spec_128">128. Packet Tracer's CPU and memory usage increases when I have a network with many switches connected in loops.</a><br>
+<a href="#spec_129">129. When I leave the WEP key field blank on a wireless device and click on a button in the Config tab, the button remains depressed after I get the WEP key cannot be empty error popup.</a><br>
+<a href="#spec_130">130. Why do the routing tables display the CIDR subnet mask such as /30 on routers connected by serial connections?</a><br>
+<a href="#spec_131">131. Why is the CPU usage from Packet Tracer so high sometimes?</a><br>
+<a href="#spec_132">132. Why do 1841 Routers not support voice commands anymore?</a><br>
+<a href="#spec_133">133. Why in Simulation Mode, CDP packets are shown even though they are not selected in the <b>Event List Filters</b>?</a><br>
+<a href="#spec_134">134. Why are the routing tables different when I reopen a file that involves route redistribution?</a><br>
+<a href="#spec_135">135. Why does the PC Web Browser not detect IPv6 addresses like aaaa:2::2 as a valid address?</a><br>
+<a href="#spec_136">136. When I tried to move a device inside a cluster in maximum zoom out mode, the move object popup is not aligned with the device.</a><br>
+<a href="#spec_137">137. When I changed the MAC address of the Fast Ethernet port on a PC, the IPv6 link local address doesn't change accordingly.</a><br>
+<a href="#spec_138">138. Why does PT print out &quot;UUUUU&quot; instead of &quot;NNNNN&quot; if a ping's source IP is beyond scope (source IP is a link local address and the destination IP is beyond its LAN)?</a><br>
+<a href="#spec_139">139. When I copy a device inside a cluster, I cannot paste the device into a different cluster?</a><br>
+<a href="#spec_140">140. When I issue the command &quot;show interface&quot; on a router, the output shows that the line protocol is up even though it is the DTE interface and the DCE interface has not been issued the clock rate command.</a><br>
+<a href="#spec_141">141. There is CLI for the frame relay cloud. The only option is to configure using the GUI.</a><br>
+<a href="#spec_142">142. When I author a PKA with variables in assessment items and then try to test my activity, certain assessment items such as the default gateway or DNS server IP addresses are marked incorrect, even if the values are equal to the answer network.</a><br>
+<a href="#spec_143">143. After creating a complex network, clicking &quot;reset simulation&quot; does not clear ARP tables or DNS caches. Is this a bug?</a><br>
+<a href="#spec_144">144. In the activity wizard circling tool, how come some shapes do not grade correctly? </a><br>
+<a href="#spec_145">145. Can I add two wireless modules to an end device?</a><br>
+<a href="#spec_146">146. When I pasted in my commands to a router, the case is not preserved. For example, I pasted in &quot;hostname R1&quot; and PT changed it to &quot;hostname r1&quot;.</a><br>
+<a href="#spec_147">147. If I setup a network with two LANs, can one PC from one network ping another PC from the other network?</a><br>
+<a href="#spec_148">148. I cannot find &quot;show device dialogue taskbar&quot; in preferences anymore. Has it been removed?</a><br>
+<a href="#spec_149">149. Why can't I find any routing configuration on the 3560-24PS switch when I open my file in PacketTracer6.0?</a><br>
+<a href="#spec_150">150. When I setup a server with two NICs, and I setup a PPPoE dialer, the connection fails. Why is that?</a><br>
+<a href="#spec_151">151. When I mouse over Octal cables, it doesn't show much information. Why is that?</a><br>
+<a href="#spec_152">152. Why does PT crash when I test activity or load an activity with 0 sets of object locations?</a><br>
+<a href="#spec_153">153. Why are IPv6 Neighbor Discovery Protocol (NDP) packets are labeled as NDP instead of ICMPv6?</a><br>
+<a href="#spec_154">154. For IPv6 addressing, why don't we get a partial credit if we enter the prefix length correctly but with a wrong IPv6 address?</a><br>
+<a href="#spec_155">155. What should I expect to see on Netflow Collector GUI when it receives a flow that matches one of the flows that it has in the cache?</a><br>
+<a href="#spec_156">156. Why does the alert saying &quot;Cannot write to file&quot; sometimes appears when I save my scripts?</a><br>
+<a href="#spec_157">157. Why does the device show a default hostname in Packet Tracer 6.1 and not in previous versions?</a><br>
+<a href="#spec_158">158. Why does &quot;standby version 2&quot; always show up in the running configuration when HSRP is configured even though the command was not entered?</a><br>
+<a href="#spec_159">159. Why does Packet Tracer fail to elect the correct root for (R)STP causing loops in the topology when a hub is in between two switches?</a><br>
+<a href="#spec_160">160. Why does the selector rectangle sometimes stay on screen when using the palette dialog?</a><br>
+<a href="#spec_161">161. Why don't I see CDP traffic generated from the 3560-24PS like in the previous versions?</a><br>
+<a href="#spec_162">162. When an end device has more than one NICs, which interface is it sending traffic through?</a><br>
+<a href="#spec_163">163. Why can't I use certain device names in an activity?</a><br>
+<p>&nbsp;</P>
+
+<p class=MainHeading2><a name=top_protocol>Protocol Modeling Issues</a></P>
+<a href="#mod_1">1. For EIGRP, why are new adjacencies being formed after the &quot;no auto&quot; command--this does not happen on real routers?</a><br>
+<a href="#mod_2">2. Why does the &quot;no keepalive&quot; command give me an error in some situations?</a><br>
+<a href="#mod_3">3. On real devices, the link lights would still come up if there is a duplex mismatch between both sides of the Ethernet connection. Why does Packet Tracer not model this behavior?</a><br>
+<a href="#mod_4">4. On real switches, if there is a native VLAN mismatch on both sides of the same trunk, CDP and STP would print out error messages. Why does Packet Tracer not model that?</a><br>
+<a href="#mod_5">5. I cannot disable STP on switching devices.</a><br>
+<a href="#mod_6">6. On a real device, I can ping the loopback address 127.0.0.1, what about in Packet Tracer?</a><br>
+<a href="#mod_7">7. On a real router, I can configure an interface with a valid IP address and subnet mask even though it is a supernet (e.g., 172.24.11.1 255.254.0.0), but in Packet Tracer it says that the subnet mask is a &quot;Bad mask.&quot;</a><br>
+<a href="#mod_8">8. I cannot configure an IP address on a modem interface module on the router, but there is a configuration interface in the Config tab.</a><br>
+<a href="#mod_9">9. If there is a DHCP request with two or more DHCP servers, and then a DHCP request fails due to a possible collision when the DHCP servers try to respond simultaneously, there should be lots of traffic but there are no further events after the collision.</a><br>
+<a href="#mod_10">10. Why doesn't STP block the ports if the native VLAN mismatches?</a><br>
+<a href="#mod_11">11. On a real router, the timer is reset for OSPF and EIGRP routes after a &quot;clear ip route *&quot; command, but not in Packet Tracer.</a><br>
+<a href="#mod_12">12. Why does the WRT300N remote management override HTTP port forwarding?</a><br>
+<a href="#mod_13">13. The show ip ospf neighbor command shows a priority of 1. Actual 1841 shows priority of 0.</a><br>
+<a href="#mod_14">14. Static routes with 255 admin distance should not be added to routing table.</a><br>
+<a href="#mod_15">15. Why do wireless ports always buffer the frames before sending?</a><br>
+<a href="#mod_16">16. Why are LMI statistics not updated when the link state changes?</a><br>
+<a href="#mod_17">17. Why can I only ping one VLAN interface on the switch when there are more than one with the status and line protocol up?</a><br>
+<a href="#mod_18">18. Why does OSPF not work over physical serial interface using frame relay?</a><br>
+<a href="#mod_19">19. In Simulation Mode, routing tables are updated before the packet arrives in the simulation.</a><br>
+<a href="#mod_20">20. On a router with multiple switching modules, there should be individual MAC tables for each switching module. However, &quot;show mac-address table&quot; shows only one MAC table.</a><br>
+<a href="#mod_21">21. Why is the command &quot;ip ospf network&quot; not available in the loopback interface mode?</a><br>
+<a href="#mod_22">22. The round trip times for pings in Multiuser networks are very long. </a><br>
+<a href="#mod_23">23. When I issue the command &quot;debug ppp negotiate&quot; before enabling PPP encapsulation, debug messages do not show.</a><br>
+<a href="#mod_24">24. On a real switch, when I create a VLAN and then assign a name to the VLAN, VTP revision number increases by 1. In Packet Tracer, the VTP revision number increases by 2.</a><br>
+<a href="#mod_25">25. The EtherChannel group does not come back up after an error disable.</a><br>
+<a href="#mod_26">26. Configuring shape in a nested policy map gives an error message.</a><br>
+<a href="#mod_27">27. When I enter &quot;switchport mode trunk&quot; on a switch without changing the encapsulation to dot1q first, the command is not rejected like on a real switch with a message saying &quot;An interface whose trunk encapsulation is 'Auto' can not be configured to 'trunk' mode.&quot;</a><br>
+<a href="#mod_28">28. &quot;show ipv6 eigrp interfaces&quot; seems to have incorrect or static output.</a><br>
+<a href="#mod_29">29. Class-maps with inspect type appear to have a different subset of match sub-commands compared to real routers.</a><br>
+<a href="#mod_30">30. When I configure manual EIGRP summarization, sometimes the classful mask is shown in the routing table for a route.</a><br>
+<a href="#mod_31">31. No warning is shown when exiting the interface range mode without typing exit.</a><br>
+<a href="#mod_32">32. Is the command &quot;tunnel source [ip address]&quot; supported?</a><br>
+<a href="#mod_33">33. Does the command &quot;ip mtu [value]&quot; have a dynamic range?</a><br>
+<a href="#mod_34">34. When I do &quot;show vtp counter&quot;, the values for VTP pruning statistics seems to be incorrect?</a><br>
+<a href="#mod_35">35. Why can I not modify the serverPool DHCP pool on the server device?</a><br>
+<a href="#mod_36">36. When I copy a &quot;show running-config&quot; output from Packet Tracer and paste the output into CLI, not all commands are accepted.</a><br>
+<a href="#mod_37">37. When I issue the command, &quot;more flash:c2960-lanbase-mz.122-25.FX.bin&quot;, the output is different each time.</a><br>
+<a href="#mod_38">38. When I delete the IOS image from a router or switch and then save and reopen the file, the device boots up when it should not.</a><br>
+<a href="#mod_39">39. If I issue &quot;debug ip packets&quot; then &quot;logging trap debug&quot; on a router, it seems that one or the other is not issued at all.</a><br>
+<a href="#mod_40">40. The output in &quot;show policy-map type inspect zone-pair sessions&quot; seems to differ compared to real routers in regards to the type of protocol detected in the established sessions.</a><br>
+<a href="#mod_41">41. The &quot;show clock&quot; output is always Mon Mar 1 1993 by default.</a><br>
+<a href="#mod_42">42. When I enter the command &quot;no ip ips signature-category&quot;, it brings the router prompt to the IPS category configuration mode.</a><br>
+<a href="#mod_43">43. Access-lists do not have ESP, AH, or ISAKMP port options available. As a result, site-to-site VPNs can be created, but are not functional if CBAC or ACLs applied.</a><br>
+<a href="#mod_44">44. Static routes should be able to specify an outbound interface and next hop address.</a><br>
+<a href="#mod_45">45. A carriage return is missing after removing a subinterface from a router.</a><br>
+<a href="#mod_46">46. There is no error message when two connected switches have different EtherChannel modes.</a><br>
+<a href="#mod_47">47. When I try to issue an SNMP request using a port other than 161, SNMP request times out.</a><br>
+<a href="#mod_48">48. AAA authorization commands are supported, but the functionality does not work.</a><br>
+<a href="#mod_49">49. When I enter &quot;config t&quot; in global configuration mode, Packet Tracer returns &quot;%Invalid hex value.&quot;</a><br>
+<a href="#mod_50">50. When I try to enter interface configuration mode for a non-existent interface, Packet Tracer returns a different error from a real router.</a><br>
+<a href="#mod_51">51. The number of matched packets under the protocol match statement is greater than the number of matched packets for the class-map in the &quot;show policy-map&quot; command.</a><br>
+<a href="#mod_52">52. The QoS bandwidth setting does not appear to have an effect on drop rates.</a><br>
+<a href="#mod_53">53. The labs in the curriculum expects more options for the &quot;debug ip rip&quot; command, but Packet Tracer only supports the events option.</a><br>
+<a href="#mod_54">54. When I have a PC on a VPN connection, it seems that DNS packets are sending to the VPN server first and the DNS packets are not encapsulated in Simulation Mode.</a><br>
+<a href="#mod_55">55. An RS232 port is displayed in the physical device view of the IP Phone, but the RS232 port is not one of the available ports in the Logical Workspace.</a><br>
+<a href="#mod_56">56. Why doesn't Packet Tracer show all of the packets involved in a typical SMTP/POP transaction?</a><br>
+<a href="#mod_57">57. On a 3560 multilayer switch's interface, when its trunk encapsulation is set to &quot;auto&quot;, it cannot be configured to &quot;trunk&quot; mode. The command &quot;switchport mode trunk&quot; is rejected. Why?</a><br>
+<a href="#mod_58">58. When I create a Telnet packet while another TCP connection exists, the Telnet packet that I created gets dropped.</a><br>
+<a href="#mod_59">59. When I view a TCP packet's PDU details in Simulation Mode after initiating an HTTP request, the HTTP client sets the connection state to SYN_SENT.</a><br>
+<a href="#mod_60">60. How come phones don't register with auto-reg-ephone enabled and auto assign configured in CME?</a><br>
+<a href="#mod_61">61. When I open a PC's device dialog with DHCP enabled, it keeps sending a DHCP packet.</a><br>
+<a href="#mod_62">62. Why does VoIP still work even though switchport voice vlan 1 is not configured?</a><br>
+<a href="#mod_63">63. When a call is made to a Cisco IP Communicator that is closed, is the Cisco IP Communicator supposed to open in ringing mode or connected mode?</a><br>
+<a href="#mod_64">64. How come PPPoE clients do not get connected in multi-server environments?</a><br>
+<a href="#mod_65">65. How come the routers in Packet Tracer do not show ppp negotiation debug messages after I turn on debug?</a><br>
+<a href="#mod_66">66. I have &quot;debug ppp authentication&quot; enabled on a PPPoE server. When a PPPoE client is getting connected to the PPPoE server, it does not show any debug messages on the server.</a><br>
+<a href="#mod_67">67. Why are log messages for IP phone registrations different than real devices?</a><br>
+<a href="#mod_68">68. I created an access-list that denies FTP data transfers on port 20, but data transfers are still successful.</a><br>
+<a href="#mod_69">69. When I delete a wireless client from the workspace, the WRT300N's DHCP client table doesn't refresh when I click on the refresh button.</a><br>
+<a href="#mod_70">70. The MAC address column in the WRT300N's DHCP Client Table is labeled as 00:00:00:00:00:00.</a><br>
+<a href="#mod_71">71. The Expires Times field in the DHCP Client Table is always empty.</a><br>
+<a href="#mod_72">72. What's the purpose of the TFTP Server field in the DHCP service on the server device?</a><br>
+<a href="#mod_73">73. Why do PCs sometimes get default gateway from DHCP, but sometimes not?</a><br>
+<a href="#mod_74">74. When I use the &quot;no redistribute connected metric 1000000&quot; command, it removes the entire &quot;redistribute&quot; command.</a><br>
+<a href="#mod_75">75. Shaping stats are not shown all for nested policy maps.</a><br>
+<a href="#mod_76">76. When I configure a destination-pattern of &quot;10..&quot; with two dots for one dial-peer and a destination-pattern &quot;10.&quot; with only a single dot for a second dial-peer, only numbers such as &quot;1022&quot; can be dialed.</a><br>
+<a href="#mod_77">77. Why does Packet Tracer slow down for long periods when running BGP?</a><br>
+<a href="#mod_78">78. Why does the command show ip bgp give a different output than what I see on a real router?</a><br>
+<a href="#mod_79">79. RIPv2 poison and poison-reverse do not work.</a><br>
+<a href="#mod_80">80. Why do some wireless devices not get connected to the access point?</a><br>
+<a href="#mod_81">81. Duplicate IPv6 addresses are not detected.</a><br>
+<a href="#mod_82">82. Why does an IPv6 device not be able to ping another anycast address when the old anycast address device is disconnected?</a><br>
+<a href="#mod_83">83. The network mask of the route does not get updated after applying &quot;ipv6 ospf network broadcast&quot; or &quot;ipv6 ospf network point-to-point&quot; in the interface.</a><br>
+<a href="#mod_84">84. The command &quot;show ipv6 ospf neighbor detail&quot; shows some missing output such as the Option detail and link local address.</a><br>
+<a href="#mod_85">85. It appears that loading IOS IPS signature package is not required when configuring IPS.</a><br>
+<a href="#mod_86">86. When I enter the command &quot;show ipv6 dhcp pool&quot; on a DHCP server, the value for active clients value is 0.</a><br>
+<a href="#mod_87">87. There was no application layer information in the PDU details when simulating SSH traffic. Layers 1, 2, 3 and 4 are reflected in the PDU details, but the application layer traffic isn't reflected.</a><br>
+<a href="#mod_88">88. When I enter the command &quot;show ipv6 dhcp interface&quot;, the value for when the renewal will be sent is always 0d0h.</a><br>
+<a href="#mod_89">89. There is no support for the command &quot;ip default-router&quot; on the Cisco Catalyst 3560-24PS multilayer switch.</a><br>
+<a href="#mod_90">90. When I shutdown an interface on a router configured on a RIP network, the routing table shows that the network is possibly down and the RIP timers are started. However, on real routers, the network is immediately withdrawn from the routing table and the RIP timers are not started.</a><br>
+<a href="#mod_91">91. Can't I enter the command &quot;no router ospf <id>&quot; within the command mode for &quot;router ospf <id>&quot;?</a><br>
+<a href="#mod_92">92. When entering acl statements without specifying the sequence number, why does the &quot;show access-list&quot; command show the acl statements in a different order from the order shown on Cisco router?</a><br>
+<a href="#mod_93">93. Why can't key chains be entered consecutively without exiting to normal config mode first?</a><br>
+<a href="#mod_94">94. Why doesn't the show running-config output show async interfaces when HWIC-8A modules are used?</a><br>
+<a href="#mod_95">95. In Simulation mode, why are there scenarios where a packet is still able to cross a link that is connected to a port that has been recently shutdown?</a><br>
+
+<p>&nbsp;</P>
+
+<p class=MainHeading2><a name=top_IoT>Internet of Things</a></P>
+<a href="#iot_1">1. Why can't some devices detect Alt + Mouse Move events when using Packet Tracer on a MAC VM?</a><br>
+<a href="#iot_2">2. Why do some IoE devices stop working after using the Power Cycle button?</a><br>
+
+<p>&nbsp;</P>
+
+<p class=MainHeading2>General Issues</P>
+<table class=TableModules>
+  <tr>
+    <td width="4%">&nbsp;</td>
+    <td width="34%"><strong><em>Question/Problem</EM></STRONG></td>
+    <td width="62%"><strong><em>Answer/Solution</EM></STRONG></td></tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=gen_1>1</a></td>
+    <td class=TDpadded>My computer frequently crashes when I use Packet Tracer.</td>
+    <td class=TDpadded><p>You need to update your video card drivers, especially if your computer has an ATI video card. If you are using an IBM laptop issued by Cisco, you can use Windows Update or this <a href=http://www-307.ibm.com/pc/support/site.wss/document.do?lndocid=SOFT-UPDATE target=_blank>link to lenovo support</a>. If you are using a computer built by another company please check their web site for updates or if you know you have an ATI video card, go to <a href=http://ati.amd.com/products/index.html target=_blank>http://ati.amd.com/products/index.html</a> to find an updated driver.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=gen_2>2</a></td>
+    <td>The program screen is cluttered with too many windows! I can't see the workspace.</td>
+    <td>You can undock sub-windows by double-clicking on the title bar and move them away from the workspace area. You can also prevent sub-windows from docking by holding down <b>Ctrl</b> while moving them.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=gen_3>3</a></td>
+    <td class=TDpadded>What Cisco IOS version do the routers and switches support?</td>
+    <td class=TDpadded><p>Packet Tracer uses simplified models Cisco IOS, using real Cisco IOS images as references. The Cisco 1841 router supports Cisco IOS version 12.3(14)T7, 12.4(12), and 12.4(15)T1. The Cisco 1941 router supports Cisco IOS version 15.1(4)M4. The Cisco 2600 series routers support Cisco IOS version 12.2(28), 12.4(8), and 12.4(15)T1. The Cisco 2811 router supports Cisco IOS version 12.3(14)T7, 12.4(8), and 12.4(15)T1. The Router-PT router supports Cisco IOS version 12.2(28). The Cisco 2901 router supports Cisco IOS version 15.1(4)M5. The Cisco 2911 router supports Cisco IOS version 15.1(4)M5.</p><p>The Cisco Catalyst 2950 series switches supports Cisco IOS version 12.1(22)EA4 and 12.1(22)EA8. The Cisco Catalyst 2960-24TT switch supports Cisco IOS version 12.2(25)FX and 12.2(25)SEE1. The Switch-PT switch supports Cisco IOS Version 12.1(22)EA4. The Cisco Catalyst 3560-24PS switch supports Cisco IOS version 12.2(37)SE1.</p></td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=gen_4>4</a></td>
+    <td>Can I learn the necessary information for CCNA certification just by using Packet Tracer?</td>
+    <td>No. Packet Tracer is a tool to supplement the CCNA curriculum. Students can learn basic to intermediate router and switch configuration and see how packets are processed by networking devices as they traverse the network.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=gen_5>5</a></td>
+    <td class=TDpadded>Does Packet Tracer support all of the features found in Cisco devices?</td>
+    <td class=TDpadded>No. The program supports a small subset of the features from Cisco devices. Please see the &quot;Router IOS&quot; or &quot;Switch IOS&quot; help pages. Packet Tracer uses simplified models of networking protocols and Cisco IOS; you should always compare your results to those obtained from real equipment.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=gen_6>6</a></td>
+    <td>When I make an entry into a text field (such as an IP address), how do I know it goes into effect? Is there an &quot;Apply&quot; button?</td>
+    <td>Text field inputs are updated and applied as soon as they lose focus (e.g., when you click somewhere else on the screen). There are no &quot;Apply&quot; buttons.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=gen_7>7</a></td>
+    <td class=TDpadded>Can I create unlimited devices?</td>
+    <td class=TDpadded>No. The number of devices is limited by the amount of free memory on your computer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=gen_8>8</a></td>
+    <td>I cannot access the tutorial files.</td>
+    <td>Pop-up blockers can stop the tutorial files from running. Make sure you have these disabled when trying to view the tutorials.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=gen_9>9</a></td>
+    <td class=TDpadded>May I distribute Packet Tracer to my students?</td>
+    <td class=TDpadded>Yes. Please distribute Packet Tracer to currently enrolled Cisco Networking Academy Program students. If the distribution method is through a website, ensure that the website is password protected. Refer to the &quot;Copyrights&quot; page for more information.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=gen_10>10</a></td>
+    <td>Why is Packet Tracer running so slowly?</td>
+    <td>Does your system meet the minimum requirements? The minimum requirements, listed in the <b>help documentation</b>, allow for the basic use of Packet Tracer in creating small- to medium-size networks. It is recommended that you use a faster machine with more memory to create large networks. You can turn off the <b>Sound</b> and <b>Animation</b> options to increase performance.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=gen_11>11</a></td>
+    <td class=TDpadded>Some text in the program is cut off or is not correctly displayed.</td>
+    <td class=TDpadded>Packet Tracer by default requires that your system supports the Verdana font to display text correctly. Alternatively, you may change the fonts for dialogs, workspace/Activity Wizard, and the general interface in <b>Preferences</b> under the <b>Font</b> tab.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=gen_12>12</a></td>
+    <td>I have a saved topology from older version of Packet Tracer. Can I open it with this version of Packet Tracer?</td>
+    <td>Most simple topologies will load from previous versions of Packet Tracer, however, Packet Tracer only offers limited backward-compatibility and not all files are guaranteed to open.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=gen_13>13</a></td>
+    <td class=TDpadded>What is the password to edit the included activities with Activity Wizard?</td>
+    <td class=TDpadded>Instructors may obtain the password from the Packet Tracer forums on the Academy Connection website.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=gen_14>14</a></td>
+    <td>When I try to launch Packet Tracer in Ubuntu 6.10, the terminal gives a Fatal Arithmetic error.</td>
+    <td>Ubuntu 6.10 is not supported.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=gen_15>15</a></td>
+    <td class=TDpadded>I have a saved topology from this version of Packet Tracer. Can I open it with an older version of Packet Tracer?</td>
+    <td class=TDpadded>No. Forward compatibility of save files is not fully supported. An &quot;Invalid File&quot; message may appear if you have a save file from this version Packet Tracer and then try to open it in an older version Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=gen_16>16</a></td>
+    <td>How do I convert PKA files to a PKT file?</td>
+    <td><p>There are actually multiple &quot;PKT&quot; files inside an activity file.</p><p>To &quot;convert&quot; from a PKA to a PKT file:<br>1. Open the PKA<br>2. Go to Activity Wizard.</p><p>If you are interested in the Answer Network, go to the Answer Network section and click on &quot;Export Answer Network to File&quot; and save it as a PKT.</p><p>If you are interested in the Initial Network, go to the Initial Network section and click on &quot;Export Initial Network to File&quot; and save it as a PKT.</p></td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=gen_17>17</a></td>
+    <td class=TDpadded>If I save my file in the default Packet Tracer saves directory in Windows Vista, the save file is found in another directory. However, if I choose another directory, this issue does not occur.</td>
+    <td class=TDpadded>This appears to be how Windows Vista handles saving items in the Program Files directory. You can change the User Folder in Preferences to a folder that you have write permission to.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=gen_18>18</a></td>
+    <td>When I try to launch Packet Tracer in Wine, Packet Tracer crashes.</td>
+    <td>Wine is not supported. Please use the Linux version of Packet Tracer instead.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=gen_19>19</a></td>
+    <td class=TDpadded>On Ubuntu, if I try to create a custom device template, an error message pops up stating &quot;Unable to write to file.&quot;</td>
+    <td class=TDpadded>If Packet Tracer is installed as root, then you need to run as root in order to write to templates folder in the Packet Tracer directory. You can change the User Folder in Preferences to a folder that you have write permission to.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=gen_20>20</a></td>
+    <td>How can I save the PKA that I have opened in Activity Wizard to a different file (i.e. Save As)?</td>
+    <td>While in Activity Wizard, go to File -> Save As in the main Packet Tracer window and then save the PKA to a different file.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=gen_21>21</a></td>
+    <td class=TDpadded>Is it possible to drag and drop a save file from my operating system inside Packet Tracer to load up the save file?</td>
+    <td class=TDpadded>Currently, drag and dropping files into Packet Tracer is not supported.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=gen_22>22</a></td>
+    <td>How come the Recent Files list is empty?</td>
+    <td>Make sure that your User Folder in Preferences is set to the user folder on your computer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=gen_23>23</a></td>
+    <td class=TDpadded>How do you create an activity PKZ file?</td>
+    <td class=TDpadded>First create your PKA file as a normal PKA. Make sure all of your images and other files that go along with the PKA is set in the initial network as necessary (and answer network for completeness). Then, in the Activity Wizard, go to Test Activity and do a File -> Save as PKZ. Include any extra files as necessary. This will save your PKA as a PKZ file with an activity.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=gen_24>24</a></td>
+    <td>How do you modify a PKZ activity file?</td>
+    <td>Open the PKZ file and go to Activity Wizard. Modify the activity as desired. Then go to Test Activity and do File -> Save as PKZ.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=gen_25>25</a></td>
+    <td class=TDpadded>When creating PKZ files, do I need to ensure all of the background images are in the same folder as the PKA/PKT file?</td>
+    <td class=TDpadded>Yes. While creating the PKZ, add the PKT or PKA and any images from the same directory as the images' path added in the PKT or PKA relative to the PKT or PKA file path.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=gen_26>26</a></td>
+    <td>My display resolution is 1024 x 768 or lower. When I go to Simulation Mode and click on the Auto Capture / Play button, events are not displayed in the Event List.</td>
+    <td>Increasing the display resolution to 1280 x 1024 or higher will make the GUI appear properly.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=gen_27>27</a></td>
+    <td class=TDpadded>Why doesn't Packet Tracer display fonts properly in Linux?</td>
+    <td class=TDpadded>Packet Tracer uses fonts such as Verdana, Times New Roman, etc. which may not be installed on Linux distributions by default. All Linux distributions that do not have these fonts installed need to install them first.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=gen_28>28</a></td>
+    <td>Why does Packet Tracer stop abruptly when right clicking on the Windows taskbar and then selecting &quot;Close Group&quot;?</td>
+    <td>This is a Qt framework issue. When closing the group, all opened windows get a simultaneous kill signal, and the current version of Qt (v4.4.3) does not call the destructors/closeEvent() of the open windows. Therefore, widgets that depend on other widgets to close first do not wait and Packet Tracer stops abruptly. A better solution is expected in future Qt versions.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=gen_29>29</a></td>
+    <td class=TDpadded>I can't seem to write options to the Packet Tracer installed folder using the function in Preferences.</td>
+    <td class=TDpadded>Launch Packet Tracer as an administrator in order to write to a system folder where Packet Tracer is installed.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=gen_30>30</a></td>
+    <td>How do I save images added to the cloud for the TV correctly?</td>
+    <td>The save file must be saved as a PKZ. While creating the PKZ, add the PKT and TV images from the same directory as the TV images' path added in the PKT relative to the PKT file path.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=gen_31>31</a></td>
+    <td class=TDpadded>What's the transparent bar at the bottom edge of the workspace and is there a way to get rid of it?</td>
+    <td class=TDpadded>The bar is the Device Dialog Taskbar which makes device dialogs that are currently opened more accessible. To remove the Device Dialog Taskbar, go to Preferences and uncheck &quot;Show Device Dialog Taskbar&quot; under the Miscellaneous tab.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=gen_32>32</a></td>
+    <td>Packet Tracer looks bad in Ubuntu (fonts, layouts, buttons, etc.).</td>
+    <td>Packet Tracer for Linux is built against the Qt 4.4.3 Commercial edition. As a result, for systems without these libraries custom built on their system, we have included the libraries as part of Packet Tracer to ensure Packet Tracer runs on their system. However, since the libraries are not built against your particular system, the layouts, fonts, and general interface may not match your system and therefore look bad. You can install your own Qt libraries and link against them for Packet Tracer, however it is unsupported as the versions may not match exactly and therefore bugs may be introduced.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=gen_33>33</a></td>
+    <td class=TDpadded>Ctrl+Break doesn't work on Linux.</td>
+    <td class=TDpadded>Qt issue on Linux -- it doesn't capture the Ctrl+Break keys. A workaround is to use Ctrl+C on Linux.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=gen_34>34</a></td>
+    <td>All router config windows are closed without warning when closing the Preferences window.</td>
+    <td>This is the intended behavior.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=gen_35>35</a></td>
+    <td class=TDpadded>Why can't I connect to another Packet Tracer instance using multiuser?</td>
+    <td class=TDpadded>Please check the other Packet Tracer instance's IP address, port, and password. Packet Tracer does not currently show an error message or indicator for incorrect password. Please retype the password to make sure. This will be fixed in the next version.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=gen_36>36</a></td>
+    <td>Why do upnp.exe and PTUpdater.exe not quit after I submit my online PT exam?</td>
+    <td>This is an interaction issue between the PT exam, PT, and some Windows platforms. We have only experienced it on some Windows Vista machines. You can manually end these two processes in Task Manager.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=gen_37>37</a></td>
+    <td class=TDpadded>When I use the Save Offline Copy feature for Multiuser, sometimes the remote networks in the offline copy will not go up (i.e. link lights stays red).</td>
+    <td class=TDpadded>When you save an offline copy, your local network and each remote network has its own Home City in Physical Workspace. If you have the option Enable Cable Length Effects enabled in preferences, the connections may stay down if the connected cities in Physical Workspace are far apart. A workaround to this issue is to go into Physical Workspace and move the connected cities closer together or disable the option Enable Cable Length Effects in preferences.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=gen_38>38</a></td>
+    <td>I do not see the arp, bandwidth, delay, and other commands for the 2960 Switch, as well as some other switches. Why are they missing?</td>
+    <td>The ports on the model themselves have these limitations.</td>
+  </tr>
+
+    <tr>
+      <td class=TDcenterWhite><a name=gen_39>39</a></td>
+      <td class=TDpadded>I do not see the Hop Limit field in the PDU information window.</td>
+      <td class=TDpadded>The Hop Limit field has been renamed HL in Packet Tracer so that the value can be displayed without scrolling.</td>
+  </tr>
+
+  <tr>
+       <td class=TDcenter><a name=gen_40>40</a></td>
+       <td>Why are the IPv6 Src/Dest address fields not taking up four rows each?</td>
+       <td>Src/Dest IPv6 address fields are 128 bits but in PDU Packet Tracer shows them occupying only one row because it is enough to hold the IPv6 address in text format.</td>
+  </tr>
+
+    <tr>
+      <td class=TDcenterWhite><a name=gen_41>41</a></td>
+      <td class=TDpadded>Why can you only use Courier and Courier New for the CLI text?</td>
+      <td class=TDpadded>Only fixed size fonts are supported for CLI text now.</td>
+  </tr>
+
+  <tr>
+       <td class=TDcenter><a name=gen_42>42</a></td>
+       <td>Why can't I close the LAN Multiuser Agent and WAN Multiuser Agent windows?</td>
+       <td>This is intentional. The LAN Multiuser Agent and WAN Multiuser Agent script modules require frequent updates (keepalives) between the Multiuser server and clients in order to operate. To close the windows, you will need to stop the script module(s). To do so, go to Extensions menu > Scripting > Configure PT Script Modules then select LAN Multiuser Agent or WAN Multiuser Agent and click on the Stop button.</td>
+  </tr>
+
+    <tr>
+      <td class=TDcenterWhite><a name=gen_43>43</a></td>
+      <td class=TDpadded>Why do parts of some PKA instructions get replaced by strange characters after it has been saved and reopened?</td>
+      <td class=TDpadded>For instructions that use HTML, entity codes must be used for some characters.</td>
+  </tr>
+
+  <tr>
+       <td class=TDcenter><a name=gen_44>44</a></td>
+       <td>Searching for devices sometimes doesn't yield expected results. For example, searching for "m" doesn't return some of the IoE monitors. Why are some devices missing from the list? </td>
+       <td>Results are capped at 16 devices. Type more characters to narrow down the search.</td>
+  </tr>
+
+  <tr>
+       <td class=TDcenterWhite><a name=gen_45>45</a></td>
+       <td class=TDpadded>Why my login screen is blank? </td>
+       <td class=TDpadded>Most likely caused by proxy. Login as Guest first. Go to Options menu, Preferences, Miscellaneous tab, and enter proxy information. Restart Packet Tracer and you should see the login information.</td>
+  </tr>
+
+  <tr>
+       <td class=TDcenter><a name=gen_46>46</a></td>
+       <td>ALT+Mouse doesn't work for IoT devices in Ubuntu.</td>
+       <td>ALT+Mouse is used by Ubuntu. Please use SHIFT+ALT+Mouse.</td>
+  </tr>
+
+  <tr>
+       <td class=TDcenter><a name=gen_47>47</a></td>
+       <td>What is the difference between realtime and environment time?</td>
+       <td>The network device time (bottom left) and the environment time (top right) run on two distinct and seperate time scales. The network device time is used for protocol timings and simulation mode and is typically in the millisecond range. The smallest unit for environment time is seconds but it's typically set to simulated half hour per real second and does not affect the protocol timings. The environment time is used for calculating environment changes and some Internet of Thing devices can use the environment time API to trigger events with the registration server at certain times of the day. The home router's parental controls also use environment time. In short, when looking at protocols or millisecond timings, we use the device time while the environment time is used for triggers and larger time scales. </td>
+  </tr>
+  
+  
+</table>
+<p>&nbsp;</P>
+
+<p class=MainHeading2>Specific Issues</P>
+<table class=TableModules>
+  <tr>
+    <td width="4%">&nbsp;</td>
+    <td width="34%"><strong><em>Question/Problem</EM></STRONG></td>
+    <td width="62%"><strong><em>Answer/Solution</EM></STRONG></td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_1>1</a></td>
+    <td class=TDpadded>In the Physical Workspace, the wiring closet does not display all of the devices I have created in the Logical Workspace.</td>
+    <td class=TDpadded>A wiring closet can have a maximum of three tables or racks. When closets become full, additional ones will be created automatically to accommodate more devices. When multiple closets are created they are one on top of the other, so you must move the first one to see the second and the third, etc.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_2>2</a></td>
+    <td>If I turn off the <b>ARP</b> filter in the <b>Event List Filters</b>, does that mean devices won't build ARP tables?</td>
+    <td>No. The filters are for display purposes only and do not affect the actual function of the network. The packets are in the network but are not visible. Note that while users new to networking may not want to display ARP packets, many behaviors involving Ethernet (such as the first ping across a router being dropped while ARP is occurring) are not fully explainable without reference to ARP.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_3>3</a></td>
+    <td class=TDpadded>Does Packet Tracer use the Spanning Tree Protocol?</td>
+    <td class=TDpadded>Yes. Packet Tracer models Per Vlan Spanning Tree Protocol to break possible switching loops. When first loading files with switches, or routers with switchports, the Spanning Tree Protocol will go through the different states on the ports before putting them in forwarding state, indicated by an amber light. If this causes an annoying delaying, toggling between Realtime and Simulation mode 3 or 4 times will decrease the delay caused by the transition of states.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_4>4</a></td>
+    <td>How does loop-breaking process work in Packet Tracer? Why don't I have the option of viewing packets associated with the loop-breaking process?</td>
+    <td>Layer 2 loop-breaking is done in STP. You can view these packets in Simulation Mode. Layer 1 loop-breaking is still done in a Packet Tracer proprietary protocol and converges immediately.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_5>5</a></td>
+    <td class=TDpadded>When I reset the network in Simulation Mode, why do some switch ports show amber link lights and stay that color?</td>
+    <td class=TDpadded>The amber link light indicates that the switch port is not in STP forwarding state. STP takes over 30 seconds to put a port into forwarding state if there are no loops. A port may be put in blocking mode and stay in amber color if the port is in a loop.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_6>6</a></td>
+    <td>Why does the command <b>clockrate</b> not work?</td>
+    <td>The term &quot;clockrate&quot; is not a documented Cisco IOS command. Use <b>clock rate</b> instead.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_7>7</a></td>
+    <td class=TDpadded>I created a ping packet in Simulation Mode and ran it. Why do I still see packets/frames (like CDP) running on the network after the ping process is completed?</td>
+    <td class=TDpadded>Routers and switches send out CDP frames every 60 seconds regardless of what packets you created yourself. If you do not want to see the CDP events, uncheck the <b>CDP</b> filter in the <b>Event List Filters</b>. You can also disable CDP on the Cisco devices by using the Cisco IOS CLI. There are other protocols that periodically send out packets/frames without any configurations, including STP and DTP.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_8>8</a></td>
+    <td>When I issue an extended ping, the parameters I am asked to fill in do not match an extended ping on a real device.</td>
+    <td><p>Some parameters, such as the following, are not supported:</p><p><b>Sweep range of sizes [n]:</b></p></td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_9>9</a></td>
+    <td class=TDpadded>Why can't I access sub-interfaces on serial ports?</td>
+    <td class=TDpadded>Packet Tracer supports serial sub-interfaces for frame relay encapsulation only. HDLC and PPP serial sub-interfaces are not supported in this version. In order to create a serial sub-interface, the physical interface must be configure to use frame relay encapsulation first. Then, in creating a serial sub-interface, the type (point-to-point or multipoint) must be defined.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_10>10</a></td>
+    <td>Why can't I test port connectivity with a command such as <b>ping 192.168.1.5:80</b>?</td>
+    <td>Packet Tracer does not support this specific ping feature.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_11>11</a></td>
+    <td class=TDpadded>Does Packet Tracer support VTP?</td>
+    <td class=TDpadded>Packet Tracer supports several commands relating to VTP domain, mode, password, and version.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_12>12</a></td>
+    <td>I can't seem to add a secondary address to a port.</td>
+    <td>Packet Tracer does not support the <b>ip address secondary</b> command.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_13>13</a></td>
+    <td class=TDpadded>How does the Auto settings for bandwidth and duplex work on a port?</td>
+    <td class=TDpadded>The <b>Auto</b> setting enables auto-negotiation on the port of the device. When two ports are connected and both have auto-negotiation on, the best connection settings will be determined automatically and the link will be functional. The link will also be functional if one port has auto-negotiation on and the other is set at Half Duplex. However, if the other port is set at Full Duplex, the link will not be functional.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_14>14</a></td>
+    <td>At the end of a simulation (after the last event), I viewed a device table (such as ARP or MAC) and saw that it was blank. Why is this?</td>
+    <td>Did you press the <b>Capture / Forward</b> button after the last event occurred? The ARP table clears after the end of the animation because after the last packet, the only timers left are ARP entry timeout timers. Because the Capture / Forward button advances in time to the next event (but there are no more future packets), the ARP entry timeout timer will expire. Thus, the ARP table becomes empty. This is similarly true for MAC tables.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_15>15</a></td>
+    <td class=TDpadded>Sometimes the CLI screen seems to display text incorrectly. For example, when activating an interface, the router prompt appears at the end of the syslog message instead of a new line.</td>
+    <td class=TDpadded>There is a no line break after the interface status messages because that is how it is displayed on real devices. However, note that the Packet Tracer status messages are displayed immediately after the event occurs. Real devices may have a delay of about 1 second.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_16>16</a></td>
+    <td>When I make the interface a trunk port in a interface sub-panel for the switch (under Config), the VLAN range is set to 1 to 1005 even though the switch does not have that many VLANs set up?</td>
+    <td>In Packet Tracer as well as on real equipment, the switch allows all VLANs (1 to 1005) on a trunk port by default, even if the VLAN does not actually exist on the switch. From the drop-down menu, you can view the VLANs that do exist and block (uncheck) them from the trunk. However, you cannot block VLANs that do not exist. This action does not affect the switch functionality. It is simply a way to display VLANs (or a range of VLANs) that the trunk supports.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_17>17</a></td>
+    <td class=TDpadded>When I turn off a router that has its link lights up and then turn it back on, why do the links remain down?</td>
+    <td class=TDpadded>By default, router ports are in a &quot;shutdown&quot; state unless the <b>no shutdown</b> command has been issued. When a router is turned off and then on, it reads the startup-config file for configuration information. If the router contains no saved startup configuration that included the <b>no shutdown</b> command on a port, that port will not come up automatically.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_18>18</a></td>
+    <td>When I choose a tool from the <b>Common Tools Bar</b> (such as the <b>Inspect</b> tool), how can I cancel that tool or deselect it?</td>
+    <td>Press the <b>Esc</b> key or click on another tool in the <b>Common Tools Bar.</b></td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_19>19</a></td>
+    <td class=TDpadded>What's the difference between the <b>Reset Simulation</b> button and the <b>Power Cycle Devices</b> button?</td>
+    <td class=TDpadded>The <b>Power Cycle Devices</b> button does everything the <b>Reset Simulation button</b> does in addition to power-cycling devices that are powered on. <b>Reset Simulation</b> impacts the display and animation of already captured packets but not change the actual state of the networking devices. </td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_20>20</a></td>
+    <td>When I use the <b>Add Simple PDU</b> tool to ping a router, the destination IP address is the Ethernet interface rather than the serial interface. What determines the default destination interface for a ping?</td>
+    <td><p>The <b>Add Simple PDU</b> tool is a quick way to create PDUs. The source device does not specify a source interface. It uses the outgoing interface as the source interface. The destination IP address is chosen to be the first interface with a set IP address on the destination device. The order of the interfaces is the same order as displayed in the show running-config and show interfaces commands.</p><p>To specify the destination address manually, use either the CLI or the <b>Add Complex PDU</b> tool. Both of these allow for configuration of the outgoing interface and destination IP address of the source device.</p></td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_21>21</a></td>
+    <td class=TDpadded>When I have a static route and RIP configured on a router, why is it that the static route with an administrative distance of 1 is preferred over RIP routes with an administrative distance of 120? </td>
+    <td class=TDpadded>Packet Tracer is modeled from real routers, in which a static route with a smaller administrative distance is preferred over RIP routes. Instead of using the default administrative distance of 1 for the static routes, you can try using an administrative distance larger than 120 so that RIP routes would be installed in the routing table when they are available and static routes would be installed if RIP routes are not there.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_22>22</a></td>
+    <td>When I configure static NAT on a router and perform a ping, why does the router eventually lose the NAT translations after several successful pings?</td>
+    <td>The ICMP NAT entries timeout in 1 minute. So, if 1 minute has passed either in Realtime or Simulation Mode, the NAT entries generated by ICMP packets would be removed from the NAT table.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_23>23</a></td>
+    <td class=TDpadded>When I enter an EIGRP network command, such as <b>network 192.168.1.0 255.255.255.0</b>, the result should be <b>network 0.0.0.0 255.255.255.0</b> instead. However, on a real router, the result is actually <b>network 192.168.1.0</b>.</td>
+    <td class=TDpadded>The network command for EIGRP should accept a wildcard mask for the second argument, as stated in the help command <b>network 192.168.1.0 ?</b>. So, the command <b>network 192.168.1.0 0.0.0.255</b> means the <b>network 192.168.1.0/8</b>. However, this command is inconsistent with the help command in which <b>network 192.168.1.0 255.255.255.0</b> also means the network 192.168.1.0/8. Packet Tracer implements the command like a real router.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_24>24</a></td>
+    <td>When I try to do an extended ping in the CLI with a source IP address that doesn't belong to the device, it gives me an invalid source error message.</td>
+    <td>This is how extended ping works. You can only specify an IP address on the device as the source address. Otherwise, it gives an error.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_25>25</a></td>
+    <td class=TDpadded>In Simulation Mode, when I only have a single <b>Event List Filter</b> enabled, such as UDP, and then click on <b>Capture / Forward</b>, I get the message, &quot;The maximum number of events has been reached...&quot; This is counter-intuitive since no events are shown in the Event List at all.</td>
+    <td class=TDpadded>The Event List Filters are not connected to how events are captured. Even if nothing is checked to display, Packet Tracer still captures everything. So, after capturing 500 events, Packet Tracer will show that message. However, the last part of the message says that the user can adjust the Event List Filters to see previous events.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_26>26</a></td>
+    <td>When a router doesn't have a next hop MAC address, it sends an ARP request and will drop the ICMP packet as well. Is this normal behavior?</td>
+    <td>Yes. When a router does not have the next hop MAC address, it will send an ARP request, but will also drop the packet. It does not buffer the packet and wait for the ARP reply to come back because that could cause considerable performance decreases if there are a lot of pending ARP entries.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_27>27</a></td>
+    <td class=TDpadded>When I save a configuration to the router NVRAM (<b>wr mem</b> or <b>copy run start</b>), the router does not save the configuration when Packet Tracer is shut down. This only occurs if you save the topology.</td>
+    <td class=TDpadded>Yes. Saving the configuration to NVRAM only saves to the current file. You have to save the topology as a .pkt file to preserve your work between different Packet Tracer sessions. </td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_28>28</a></td>
+    <td>When you use the same network/subnet on two different devices, the Cisco IOS CLI reports an error saying that the IP address conflicts with another interface.</td>
+    <td><p>This is no longer an issue in Packet Tracer. You will see the following similar error messages if those two devices were connected already, and if you were trying to assign the same IP address:</p><p>%DUAL-5-NBRCHANGE: IP-EIGRP 1: Neighbor 10.1.0.1 (FastEthernet0/0) is down: interface down
+%IP-4-DUPADDR: Duplicate address 10.1.0.1 on FastEthernet0/0, sourced by 0090.0CEC.5C01
+%IP-4-DUPADDR: Duplicate address 10.1.0.1 on FastEthernet0/0, sourced by 0090.0CEC.5C01</p></td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_29>29</a></td>
+    <td class=TDpadded>Which cable do I use to connect an Access Point to other networking devices?</td>
+    <td class=TDpadded>Access points connect to hubs and switches with a straight-through cable. Meanwhile, a crossover cable is needed to connect an access point to routers and end devices.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_30>30</a></td>
+    <td>What is the difference between the <b>activity file (.pka)</b> that I author and the activity file that I give to others?</td>
+    <td><p>The activity file created with <b>Activity Wizard</b> contains both the authoring information and the activity itself. If you do not want others to view or change the contents of your activity, you may password protect the activity in Activity Wizard.</p><p>Just like a regular Packet Tracer network file (.pkt), the progress of activity files can be saved at any time. To have a fresh activity for redistribution, be sure to reset the activity in the instructions box, then save the activity.</p></td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_31>31</a></td>
+    <td class=TDpadded>Is it possible to import or open Packet Tracer activity files from a previous version?</td>
+    <td class=TDpadded>The short answer is &quot;No.&quot; However, Packet Tracer can import old Packet Tracer network files (.pkt), with some limitations. You may export the answer and initial networks from an older version of Packet Tracer, then import then into Packet Tracer using Activity Wizard. It is best to re-author activities in the latest version of Packet Tracer, though existing work from previous versions can be imported and adjusted.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_32>32</a></td>
+    <td>What is the correct version for EIGRP? I have seen only two versions, v0 and v1. However, in the PDU Information Window, the version reported is version 2.</td>
+    <td>The version field in the EIGRP packet indicates the EIGRP version of the sender. There is only one version of EIGRP. However, from the packet captures from routers, the version number is always 2. This is a constant. Packet Tracer is modeling as it would be captured from a real network.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_33>33</a></td>
+    <td class=TDpadded>In Simulation Mode, why do some devices/ports sometimes buffer frames and say the ports are sending other frames when there are no frames shown in the Event List?</td>
+    <td class=TDpadded>There are some types of frames that Packet Tracer does not display to the user, such as keepalives on the serial links. When these frames are being sent, the device will buffer the other frames that are waiting.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_34>34</a></td>
+    <td>When creating multiple connections between the same two devices (e.g. trunking), the cables connected earlier may be hidden by the new ones. How do I know how many cables are connected?</td>
+    <td>Packet Tracer will display several distinct cables in parallel. However, there is a limit. A workaround is to use another device, such as a repeater for Ethernet connections, to emphasize the visual distinction of a particular link.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_35>35</a></td>
+    <td class=TDpadded>Using the Activity Wizard, how do I lock out the GUI configuration for routers and switches to force the users to use only the CLI?</td>
+    <td class=TDpadded>Attach a console cable from the PC to the switch or router. In the Initial Network section of the Activity Wizard, lock &quot;Configuration&quot; for the switch or the router. Now, users must console into the switch or router from the terminal of the PC to configure them.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_36>36</a></td>
+    <td>What happens to the IP address of a device when I duplicate the device?</td>
+    <td>When you duplicate a device with an IP address assigned to any of its interfaces, the IP addressing will be cleared on the duplicate device.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_37>37</a></td>
+    <td class=TDpadded>What is the limit for the number of wireless hosts and access points in the same coverage area?</td>
+    <td class=TDpadded>The limit is 10 wireless hosts with 3 access points in the same coverage area. Beyond that limit, wireless connections become unpredictable. This is similar to real equipment except Packet Tracer has a lower limit.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_38>38</a></td>
+    <td>When I create a template of a device with additional IOS images besides the default IOS image, only the default IOS image of the device appears in the custom device.</td>
+    <td>The template devices store the hardware information only, including the device model and what modules are installed on them. The workaround to this issue is to copy and paste the device. The duplicated device will have the same IOS images as the original device.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_39>39</a></td>
+    <td class=TDpadded>Is Realtime mode exactly in sync with real world time?</td>
+    <td class=TDpadded>No. Realtime mode in Packet Tracer runs at a different rate than real world time. It may run slower as more devices and protocols are added to the network. The speed of the computer running Packet Tracer also affects the Realtime mode.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_40>40</a></td>
+    <td>Why, when I enable logging and configure devices in the CLI and then save the file, does the save file not save the log?</td>
+    <td>The command log is not saved with the save file and is session based. Alternatively, you may export the log under the Interface tab in Preferences.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_41>41</a></td>
+    <td class=TDpadded>When I send a PDU over devices with multiple links between them, with one of the links shutdown, why does the PDU traverse the shutdown link instead of the active link in Simulation Mode?</td>
+    <td class=TDpadded>This is a result of an animation error. The PDU takes the center path between the two devices instead of the center path between the two endpoints of the links. A possible workaround is to use hubs or repeaters to connect some of the links.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_42>42</a></td>
+    <td>Why do I get two different average round trip times for the exact same pings in Realtime Mode and Simulation Mode?</td>
+    <td>In Realtime Mode, time is always running regardless of the events occurring in the network. In Simulation Mode, time is event driven, under your control. The time in Realtime Mode may be affect by the speed of the computer Packet Tracer is running on and the number of devices and protocols running in Packet Tracer. For more information, please view the &quot;Time Management Between Realtime and Simulation Mode&quot; section in the Simulation Mode: Special Notes page.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_43>43</a></td>
+    <td class=TDpadded>When I issue the &quot;clear ip route *&quot; command in CLI, it doesn't clear the routing tables.</td>
+    <td class=TDpadded>The &quot;clear ip route *&quot; command just clears the routing table. For some protocols like EIGRP and OSPF, the routes are added back to the routing table immediately if there are no changes. For RIP, the routes are added back when receiving the next updates from its neighbors. However, in Realtime mode, it may happen before &quot;show ip route&quot; is issued again. You can see its effects easier in Simulation Mode.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_44>44</a></td>
+    <td>Why can't enable secret passwords be assessed reliably in activities?</td>
+    <td>This is no longer an issue in Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_45>45</a></td>
+    <td class=TDpadded>I can add a WEP key that is out of the hex range for the WRT300N when I shouldn't be able to.</td>
+    <td class=TDpadded>This is no longer an issue in Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_46>46</a></td>
+    <td>In the Event List filter window, why does unchecking HTTP filter have no effect when TCP is checked?</td>
+    <td>HTTP packets are also TCP packets, so they are not filtered out.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_47>47</a></td>
+    <td class=TDpadded>Why does the Inspect tool have no effect on the WRT300N?</td>
+    <td class=TDpadded>This is no longer an issue in Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_48>48</a></td>
+    <td>When I telnet into another device, the config tab does not work.</td>
+    <td>This is no longer an issue in Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_49>49</a></td>
+    <td class=TDpadded>Why do static routes with admin distances of 255 show up on the routing table?</td>
+    <td class=TDpadded>This is no longer an issue in Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_50>50</a></td>
+    <td>Packet Tracer crashes when I have many instances of Packet Tracer opened.</td>
+    <td>We recommend using one instance of Packet Tracer at a time. Although Packet Tracer does not impose a limitation on how many instances may be running at the same time, system resources (RAM, disk swap, or GDI objects) may affect the actual number of simultaneous instances.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_51>51</a></td>
+    <td class=TDpadded>How can configurations from Packet Tracer and real devices be used in activities to check enable secret and other passwords with service password-encryption on?</td>
+    <td class=TDpadded>Packet Tracer generates password encryptions only once, with only one seed. If the same password is entered more than once, Packet Tracer only generates one encryption string. In order for passwords generated from outside of Packet Tracer to work in activity checking, you must re-enter the passwords again after importing.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_52>52</a></td>
+    <td>Why are values in Config tab not changed when I have already changed them in console?</td>
+    <td>Packet Tracer does not keep opened dialogs in sync when changes are made from a different dialog. To see the updated values, please close the opened dialog and open it again.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_53>53</a></td>
+    <td class=TDpadded>Why do HTTP packets still show up when I have the HTTP filter unchecked?</td>
+    <td class=TDpadded>If the HTTP filter is unchecked, but the TCP filter is checked, HTTP packets would still show up, because HTTP packets are TCP packets. This is the same behavior for other packets that are encapsulated within TCP or UDP. If you want control over the types of packets you want to see, use ACL Filters.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_54>54</a></td>
+    <td>Why does Packet Tracer generate the same encryption string when the same password is entered more than once?</td>
+    <td>On real devices, each time a password is entered, the seed changes, and it would generate a different encryption string. Even if the same password is entered twice, the encryption string would be different. In order for activity checking to work, we must always generate the same encryption string so that the user's password and the Answer Network password generate the same encryption string.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_55>55</a></td>
+    <td class=TDpadded>How do I add a graphic image of a topology in the activity instructions?</td>
+    <td class=TDpadded>Use <img> tags to add images in the activity instructions.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_56>56</a></td>
+    <td>Why am I able to add and remove content from the activity instructions window when it should be read-only?</td>
+    <td>You have to lock Edit Instructions in the Locking Items tree to make the instructions content read-only.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_57>57</a></td>
+    <td class=TDpadded>When I enter &quot;show interface s0/0/0&quot; in the CLI, the IOS output says &quot;show interface s0/0/0&quot; is an ambiguous command.</td>
+    <td class=TDpadded>This is no longer an issue in Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_58>58</a></td>
+    <td>How come I cannot use Variable Manager for scoring with VLAN interface IDs (SVIs)?</td>
+    <td>Variables cannot be used to check for nodes that depend on names, such as device names, port names, dhcp pool names, etc.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_59>59</a></td>
+    <td class=TDpadded>Is there a way to speed up convergence of the network when I open a file? Sometimes my activity is graded incorrectly since the answer network hasn't converged.</td>
+    <td class=TDpadded>You can speed up convergence of the network by switching to Simulation Mode and then switching back to Realtime mode. Do this as many times as required (depends on the network). If you are creating an activity, you can forward the Answer Network Convergence in the Activity Wizard as well.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_60>60</a></td>
+    <td>I cannot make a Multiuser connection between Windows and Linux machines.</td>
+    <td>Make sure to disable all firewalls on both the Windows and Linux machines (procedure will vary depending on the firewall). If the machines are behind NAT (e.g. a SOHO router), be sure to forward the appropriate ports (i.e. 38000 by default) as well.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_61>61</a></td>
+    <td class=TDpadded>I can still access the Config tab of a router or switch even if there is an enable secret password in the running configuration.</td>
+    <td class=TDpadded>You can use Activity Wizard to lock Use Config Tab or you can hide the Config tab in Preferences if needed.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_62>62</a></td>
+    <td>Is there a way to distinguish between outgoing and incoming Multiuser remote network clouds? Also, when I have an incoming Multiuser connection, Packet Tracer creates a Multiuser remote network cloud if the name is incorrect.</td>
+    <td>You can mouse over a Multiuser remote network cloud to show who the other side is connected to. Also, changing the Multiuser remote network cloud's name does not reflect on the other side.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_63>63</a></td>
+    <td class=TDpadded>When I try to set a variable value to Elemental Position in Variable Manager, the value sets itself to zero and cannot be changed to any other position.</td>
+    <td class=TDpadded>When you set a value for a variable, you must press Enter on the keyboard to change the value.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_64>64</a></td>
+    <td>When I try to copy text from the CLI tab using &quot;<b>Ctrl + C</b>&quot;, the output has unorganized text that can be dragged around.</td>
+    <td>There is no way to prevent this in the interface as of now. A workaround is to use the <b>Copy</b> button in the CLI tab.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_65>65</a></td>
+    <td class=TDpadded>How come I am able to enter negative point values for Assessment Items in activities?</td>
+    <td class=TDpadded>Negative point values in Assessment Items has several useful benefits. For example, if you ask a student to configure a network using RIP and they use static routes to trick the connectivity tests, you can give them negative points for configuring static routes instead of RIP. Also, negative point values varies the point system which allows different types of game related activities.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_66>66</a></td>
+    <td>Can a wireless PC associate to an access point that is from a Multiuser remote network?</td>
+    <td>No. Wireless requires the devices to be within physical range of each other. Multiuser remote networks are in different physical spaces.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_67>67</a></td>
+    <td class=TDpadded>When I try to create a loop on a switch by connecting a straight-through or cross-over cable to different ports on the same switch, I get a connection error stating that &quot;The cable cannot be connected to that port?&quot;</td>
+    <td class=TDpadded>A workaround is to use a hub or repeater to create a loop between the two ports on the same switch.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_68>68</a></td>
+    <td>How come when I have multiple wireless profiles in a wireless PC and then delete the wireless router that the wireless PC is currently associated to, the wireless PC does not automatically associate to the other wireless routers that has a profile?</td>
+    <td>In Packet Tracer, there is no way to choose multiple wireless profiles in the Config tab.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_69>69</a></td>
+    <td class=TDpadded>In Physical Workspace, sometimes the geoicons do not work correctly. For example, I am able to move the geoicons beyond the &quot;border.&quot; Also, the geoicon labels are sometimes detached from the geoicon itself after navigating between locations.</td>
+    <td class=TDpadded>This is no longer an issue in Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_70>70</a></td>
+    <td>How come the output for various commands in Packet Tracer, such as &quot;show ipv6 nat translations,&quot; is different from a real router?</td>
+    <td>This is due to differing versions of IOS images. Please see <a href=#gen_3>General Issue #3</a> for a list of IOS images that Packet Tracer supports.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_71>71</a></td>
+    <td class=TDpadded>When I click on Save Settings in the Applications & Gaming section in the WRT300N GUI, the last item in focus does not save.</td>
+    <td class=TDpadded>The workaround is to click on another item to change the focus before clicking on Save Settings.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_72>72</a></td>
+    <td>How come when I create a complex PDU, the Outgoing Port drop-down list does not contain any ports?</td>
+    <td>To select an Outgoing Port, the source device interface needs to be configured properly with an IP address.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_73>73</a></td>
+    <td class=TDpadded>The Variable Manager Interface in the Activity Wizard Answer Network panel is too narrow.</td>
+    <td class=TDpadded>This is no longer an issue in Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_74>74</a></td>
+    <td>When I have a router with 2 LANs (e.g. 192.168.1.1 and 192.168.2.1), a PC with an IP address in the 192.168.1.0 network can be pinged by a PC in the 192.168.2.0 network even if the PC in the 192.168.1.0 network has the incorrect default gateway (e.g. 192.168.2.1).</td>
+    <td>This is how it works on a real router.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_75>75</a></td>
+    <td class=TDpadded>When I copy and paste the entire &quot;show running-config&quot; output in Global Config Mode, some commands return &quot;% Invalid input detected at '^' marker.&quot;</td>
+    <td class=TDpadded>Some commands are not supported, but shows in the &quot;show running-config&quot; output.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_76>76</a></td>
+    <td>When I undo a deleted device/link that was connected to a Multiuser remote network, Packet Tracer crashes.</td>
+    <td>This is no longer an issue in Packet Tracer. However, undo still does not undo deletion of Multiuser remote network clouds. So, if deleting Multiuser remote network clouds with other devices, undo will only bring back other devices.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_77>77</a></td>
+    <td class=TDpadded>When I delete a link to a Multiuser remote network, the link isn't removed from the Multiuser remote network.</td>
+    <td class=TDpadded>This is no longer an issue in Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_78>78</a></td>
+    <td>Packet Tracer appears to be able to ping a default gateway that does not exist.</td>
+    <td>This is correct behavior. PCs will send packets to a gateway that is not in the same network as itself. And Cisco routers reply to ARP requests if the requested IP has a route in its routing table.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_79>79</a></td>
+    <td class=TDpadded>When I am configuring Frame-Relay, the &quot;show running-config&quot; shows that the encapsulation is IETF, but the &quot;show frame-relay lmi&quot; command shows that it is Cisco.</td>
+    <td class=TDpadded>The output in the &quot;show running-config&quot; is encapsulation type, which is IETF and the output in the &quot;show frame-relay lmi&quot; is the LMI type. Since the LMI type is Cisco, it is not displayed in the &quot;show running-config&quot;.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_80>80</a></td>
+    <td>The WRT300N icon looks too similar to the Cisco 1841 ISR icon.</td>
+    <td>You can change the icon to any other icon you wish by using the <b>Customize Image in Logical/Physical View</b> feature in the device dialog.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_81>81</a></td>
+    <td class=TDpadded>When I create a new file, a registered IPC device creation event such as deviceAdded in the previous topology disappears.</td>
+    <td class=TDpadded>The deviceAdded event is registered to the workspace object. Packet Tracer creates a new workspace for each new/opened file. So, the ExApp needs to re-register the events previously registered to the old workspace in the old file.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_82>82</a></td>
+    <td>Does Packet Tracer support SHA1 encryption?</td>
+    <td>Yes. If you issue &quot;crypto ipsec transform-set mycrypto ?&quot;, you will see that all of the sub-commands that contains*-sha-* in them supports SHA1.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_83>83</a></td>
+    <td class=TDpadded>The source IP address field does not appear in the Add Complex PDU dialog.</td>
+    <td class=TDpadded>This feature is used to manually change the source ip address of packets sent and is mainly used for games and activities to fake source ip. We removed it from routers and switches because Cisco devices (should) check for that when sending packets out.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_84>84</a></td>
+    <td>Where does the server device look for images to load pages with image tags from?</td>
+    <td>The server looks for images with the same name in the same folder as the pkt/pka file, or if the file is not saved/opened, it looks inside the Packet Tracer /bin folder.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_85>85</a></td>
+    <td class=TDpadded>When routers exchange routes to the same route, their routes become possibly down after a while.</td>
+    <td class=TDpadded>This is correct behavior and real routers do the same thing. For example, if a 10.0.0.0/8 route is from Router1 and it sends it to Router2 and Router2 has the same route. Then Router2 advertises it to Router1 before Router1 sends the same route to Router2. Also, say for instance Router1 has 10.10.10.0/24 also. It will accept the 10.0.0.0/8 route and put it into routing table. But, once Router2 receives the same route from Router1, it will stop sending the route to Router1. And the route in Router1 will eventually timeout.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_86>86</a></td>
+    <td>Where are the RADIUS and TACACS server configurations for the server device?</td>
+    <td>The configurations are located in the AAA panel in the Config tab.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_87>87</a></td>
+    <td class=TDpadded>Why am I not able to move or control cables connected to Multiuser remote network clouds in Physical Workspace?</td>
+    <td class=TDpadded>Since the remote networks are not in our physical world, Multiuser remote network clouds are located at some outside point. Also, cable length does not have an effect on these connections.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_88>88</a></td>
+    <td>How do I navigate to a previous cluster level or Physical Workspace level?</td>
+    <td>To navigate to a previous level, click on the <b>Back</b> button on the Logical/Physical Workspace Bar until you get to the desired level.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_89>89</a></td>
+    <td class=TDpadded>When I close a device dialog while in Simulation Mode, the simulation resets.</td>
+    <td class=TDpadded>This is normal behavior. Actions that may cause the simulation to reset are deleting devices, deleting connections, closing dialogs, and toggling power on ports.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_90>90</a></td>
+    <td>Where is the Viewport feature located in Physical Workspace?</td>
+    <td>To open the Viewport in Physical Workspace, go to <b>View</b> > <b>Show Viewport</b> on the Menu Bar.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_91>91</a></td>
+    <td class=TDpadded>When I issue the command &quot;show crypto map&quot;, the output differs from what I see on a real router.</td>
+    <td class=TDpadded>There is a possibility that the IOS version you are using on the real router is different from the IOS version currently used in Packet Tracer, which could be the cause of the discrepancies.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_92>92</a></td>
+    <td>When I do &quot;show cdp neighbors&quot; after loading a save file, not all neighbors are in the output, but the neighbors show up after a while.</td>
+    <td>CDP sends every 60 seconds and so after 60 seconds it shows up. The first CDP packet probably got dropped or was sent before the link went up so the first one did not get sent. It is also possible that the first CDP packet is sent, but the network may not have converged.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_93>93</a></td>
+    <td class=TDpadded>If I move a device with a BendPoint or GroupPoint in Physical Workspace, the BendPoint or GroupPoint disappears.</td>
+    <td class=TDpadded>BendPoints and GroupPoints are not kept when moving a device. This is intentional behavior to have consistency.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_94>94</a></td>
+    <td>Packet Tracer generated a configuration file on my computer's local user directory.</td>
+    <td>This is by design and is intentional. The only to have Packet Tracer writable cross-platform and work the same way, the user folder needs to be utilized as Windows Vista and Linux has stricter write permissions on installation directories.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_95>95</a></td>
+    <td class=TDpadded>The Ethernet interface configuration dialogs in the GUI looks different from other types of interfaces.</td>
+    <td class=TDpadded>This is a Packet Tracer implementation issue and no workaround exists at the moment.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_96>96</a></td>
+    <td>When I try to issue <b>CTRL + Shift + 6 + X</b> on the keyboard to terminate a telnet session on a PC device, nothing happens.</td>
+    <td>This is intentional as the PC's telnet cannot suspend.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_97>97</a></td>
+    <td class=TDpadded>The number of packets encapsulated and deencapsulated shown in the &quot;show crypto ipsec sa&quot; are not equal.</td>
+    <td class=TDpadded>The number of packets that a router encapsulates and encrypts does not necessarily have to be equal to the number of packets that it deencapsulates and decrypts. Depends on the protocols in has configured, packets get lost on their way to destination those numbers are different too.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_98>98</a></td>
+    <td>Sometimes when I view PDU details of STP packets, the PDU details would say SSTP Multicast Address instead of STP Multicast Address.</td>
+    <td>PVST+ uses two STP packets, one is addressed to the IEEE STP multicast MAC address and the other is to the SSTP (Shared Spanning Tree Protocol) multicast MAC address. The two are different addresses, both are for STP. The SSTP is for PVST+ Cisco devices and the regular STP is for connecting Cisco devices to non-PVST+ switches. Both are needed in Packet Tracer to have native VLANs working properly.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_99>99</a></td>
+    <td class=TDpadded>The MIB Browser does not have a horizontal scrollbar for the MIB tree so it is hard to navigate and view the tree.</td>
+    <td class=TDpadded>This is a known limitation in the current version of the UI framework that Packet Tracer utilizes. This will be fixed in a subsequent version of Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_100>100</a></td>
+    <td>Why do wireless end devices sometimes form random associations?</td>
+    <td>This can be due to the effect of interference of access points within range. As a result, the access points that wireless end devices connect to are not deterministic. That is, it is somewhat random.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_101>101</a></td>
+    <td class=TDpadded>When I add a DNS resource record with the name in upper-case letters, Packet Tracer adds the name in lower-case instead.</td>
+    <td class=TDpadded>All functionality works the same since DNS is case insensitive.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_102>102</a></td>
+    <td>Cables in Physical Workspace aren't redrawn correctly while resizing objects.</td>
+    <td>This is no longer an issue in Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_103>103</a></td>
+    <td class=TDpadded>When I close the Preferences dialog, any other dialog that I have opened closes also.</td>
+    <td class=TDpadded>This is the intended behavior. The user may be changing fonts or hiding tabs. The dialogs need to close to take effect on these changes in Preferences.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_104>104</a></td>
+    <td>When I click on the link lights on a cable, the connection detaches from the nearest connected device and I am able to make a connection with the same cable again.</td>
+    <td>This is the intended behavior. The purpose is to allow users to unplug cables and replug them.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_105>105</a></td>
+    <td class=TDpadded>Switches are not able to detect a new route when an old route is down.</td>
+    <td class=TDpadded>MAC entries time out after 5 minutes of no activity. Fast forward the time to 5 minutes and send again. It should be successful.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_106>106</a></td>
+    <td>I was trying to create a device after clicking on the Place Note tool. The mouse cursor stayed as the Place Note cursor icon, instead of the Select tool cursor icon. Why is it like that?</td>
+    <td>This is an expected behavior. The mouse cursor icon will not change by clicking on any component in the network component box.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_107>107</a></td>
+    <td class=TDpadded>Frame-relay map statement is not accepted under interface mode. When I run the command to add a map it says &quot;%Address already in map&quot;. I get this message even after I delete the entry and try to add it again.</td>
+    <td class=TDpadded><p>Frame-relay maps are dynamically populated by Inverse ARP. Inverse ARP sends mappings every 30 seconds or so. You can do &quot;show frame-relay map&quot; and if a mapping says &quot;dynamic&quot;, then it is from Inverse ARP.</p><p>Cisco routers have Inverse Address Resolution Protocol (IARP) turned on by default. This means that the router will go out and create the mapping for you. If the remote router does not support IARP, or you want to control broadcast traffic over the PVC, you must statically set the DLCI/IP mappings and turn off IARP. IARP will be supported later.</p></td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_108>108</a></td>
+    <td>In the Activity Wizard, when I click on the close button on the Instructions window, the window gets minimized.</td>
+    <td>The close button cannot close the Instructions window because this is a limitation reported by Qt.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_109>109</a></td>
+    <td class=TDpadded>In a router or switch's CLI, sometimes when I type a password, &quot;circles&quot; or &quot;asterisks&quot; fail to appear while entering characters for the password.</td>
+    <td class=TDpadded>This is an expected behavior and is a security feature. The &quot;circles&quot; or &quot;asterisks&quot; will NOT be echoed for password field. The reason for this is that it limits a perpetrator from knowing the length of the password.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_110>110</a></td>
+    <td>Why are end devices with the WMP300N module able to connect to a WRT300N that operates in BG-Mixed mode?</td>
+    <td>End devices with the WPC300N module supports B, G, and N wireless networks. If the access point or router is configured for BG or B only or G only, then the WPC300N will reduce its speed to B or G. However if you have a B or G module on the end device, and the access point or router is set to N only, then it would not connect.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_111>111</a></td>
+    <td class=TDpadded>Which types of wireless networks do the Tablet PC and PDA support?</td>
+    <td class=TDpadded>The Tablet PC and PDA only support B and G wireless networks.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_112>112</a></td>
+    <td>I changed the time and date on an NTP server on a server end device. After closing the server device dialog, and reopening it, the time and date reverted back to the previous settings.</td>
+    <td>After changing the year or month, you have to click on a date to set the date.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_113>113</a></td>
+    <td class=TDpadded>When I try to ping a host that is connected to a WRT300N's LAN port, the ping fails.</td>
+    <td class=TDpadded>This is the correct behavior on real WRT300N, but Packet Tracer modeled it incorrectly in previous versions. A WRT300N will drop all pings into it from the Internet port.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_114>114</a></td>
+    <td>Pressing <b>Ctrl+A</b> on the keyboard does not select all text in certain areas of the GUI.</td>
+    <td>This is a Qt framework related issue.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_115>115</a></td>
+    <td class=TDpadded>Even though there is no power cord attached to an IP Phone, it still appears to be on.</td>
+    <td class=TDpadded>By default, 3560 multilayer switches have power over Ethernet. If an IP Phone is connected to a 3560 multilayer switch, then it would be powered on.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_116>116</a></td>
+    <td>When I hover over an end device that is supposed to be configured with a line number, the line number only shows when I open the Cisco IP Communicator.</td>
+    <td>This is the correct behavior. In the real Cisco IP Communicator application, the line number is only set when the Cisco IP Communicator application is opened.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_117>117</a></td>
+    <td class=TDpadded>When I enter the command &quot;mac-address H:H:H&quot; in ephone configuration mode, I receive an invalid input error message in the CLI.</td>
+    <td class=TDpadded>The correct MAC address format is H.H.H, not H:H:H. Thus, the correct command input would be &quot;mac-address H.H.H&quot;.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_118>118</a></td>
+    <td>When I press the &quot;Do&quot; &quot;Re&quot; or &quot;Mi&quot; notes in the GUI of the phones, I don't hear anything.</td>
+    <td>Be sure that Sound is enabled in Preferences.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_119>119</a></td>
+    <td class=TDpadded>I connected a cloud's Ethernet6 port to a router. When the cloud receives a DHCP packet, it does not send out to the Ethernet6 port. Why?</td>
+    <td class=TDpadded>You need to add a DSL connection between the modem port and Ethernet port on the cloud.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_120>120</a></td>
+    <td>Why does Packet Tracer always do PAT when there is no overload command?</td>
+    <td>The &quot;ip nat inside source&quot; command automatically puts &quot;overload&quot; if an interface is specified. This is correct behavior.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_121>121</a></td>
+    <td class=TDpadded>When I use the <b>Copy from Answer Network</b> function in the Initial Network panel of Activity Wizard, the variables from the Answer Network do not get copied over.</td>
+    <td class=TDpadded>The answer network and initial network trees are different. As a result, they cannot be copied from one to another.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_122>122</a></td>
+    <td>When I try to copy and paste a Multiuser cloud, nothing happens.</td>
+    <td>Copy and paste of remote networks is not supported.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_123>123</a></td>
+    <td class=TDpadded>When I try to create a multiuser connection while in Activity Wizard, an error message appears stating that &quot;Cannot make multiuser connection to this instance of Packet Tracer.&quot;</td>
+    <td class=TDpadded>Creating Multiuser connections while in Activity Wizard is not supported.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_124>124</a></td>
+    <td>After I invoked the command &quot;ssid test&quot; from interface Dot11Radio0/3/0 on a router, there still seems to be some kind of wireless signal detected on a wireless PC. Is this correct behavior?</td>
+    <td>Only when you invoke &quot;not dott11 ssid test&quot; in the Global Configuration Mode, then it will remove the SSID configuration and bring the interface that has the same SSID down. If you only remove &quot;no ssid test&quot; in Interface Configuration Mode, it would reset the SSID at the interface to empty string &quot;&quot;. So the wireless client detects a network with &quot;&quot; as the SSID.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_125>125</a></td>
+    <td class=TDpadded>When I switch from Realtime Mode to Simulation Mode, the time seems to shift forward.</td>
+    <td class=TDpadded>When switching from Realtime to Simulation mode or when Reset Simulation, time forwards about 10 seconds or if there are many events, it will forward less time.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_126>126</a></td>
+    <td>When I press <b>CTRL+C</b> or <b>CTRL+Shift+6</b> to terminate a traceroute, it doesn't work.</td>
+    <td>This is expected behavior. The telnet client intercepts the <b>Ctrl+C</b> or <b>CTRL+Shift+6</b> and does not send it over to the telnet server.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_127>127</a></td>
+    <td class=TDpadded>When I try to telnet to a switch from itself, the connection attempt times out.</td>
+    <td class=TDpadded>A newly created switch in Packet Tracer or a real switch without any interfaces connected will exhibit this behavior. The reason being that VLAN1 is the default management VLAN interface for a switch. Since a switch is a Layer 2 device, it does not have an IP interface. Thus, the necessity for a Layer 3 interface in the form of VLAN1 interface was introduced. VLAN1 interface's protocol will go up if at least one FastEthernet interface is also up. Then, will only telnet and other services of VLAN1 will become active.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_128>128</a></td>
+    <td>Packet Tracer's CPU and memory usage increases when I have a network with many switches connected in loops.</td>
+    <td>Packet Tracer allows STP to have loops and Packet Tracer simulates the behavior of &quot;infinitely&quot; forwarding frames inside a loop. The same frame does stop forwarding after a while, but if there are branches in the loops, the frames will exponentially duplicate and will increase CPU and memory usage. Because of this, misconfigurations in networks can cause Packet Tracer to slow down.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_129>129</a></td>
+    <td class=TDpadded>When I leave the WEP key field blank on a wireless device and click on a button in the Config tab, the button remains depressed after I get the WEP key cannot be empty error popup.</td>
+    <td class=TDpadded>This is a graphical glitch when wireless input fields are involved and it cannot be fixed.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_130>130</a></td>
+    <td>Why do the routing tables display the CIDR subnet mask such as /30 on routers connected by serial connections?</td>
+    <td>The routers learn the /32 routes from serial PPP links.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_131>131</a></td>
+    <td class=TDpadded>Why is the CPU usage from Packet Tracer so high sometimes?</td>
+    <td class=TDpadded>If there are many workspace notes, including device labels, and port labels, the CPU usage can be high due to the nature of the Qt library.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_132>132</a></td>
+    <td>Why do 1841 Routers not support voice commands anymore?</td>
+    <td>It was a bug that we added voice commands in 5.3.0 on 1841s. We removed them in 5.3.1.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_133>133</a></td>
+    <td class=TDpadded>Why in Simulation Mode, CDP packets are shown even though they are not selected in the <b>Event List Filters</b>?</td>
+    <td class=TDpadded>In Simulation Mode, if frames are collided, PT will show the frames even though the frame protocol is not selected in the event list filters.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_134>134</a></td>
+    <td>Why are the routing tables different when I reopen a file that involves route redistribution?</td>
+    <td>This is a bug. It will be fixed in the next version of Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_135>135</a></td>
+    <td class=TDpadded>Why does the PC Web Browser not detect IPv6 addresses like aaaa:2::2 as a valid address?</td>
+    <td class=TDpadded>This is correct behavior. The correct way to enter an IPv6 address in the browser is to enclose the address in square brackets. The right format is http://[aaaa:2::2] or http://[aaaa:2::2]:80.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_136>136</a></td>
+    <td>When I tried to move a device inside a cluster in maximum zoom out mode, the move object popup is not aligned with the device.</td>
+    <td>This is a bug. It will be fixed in the next version.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_137>137</a></td>
+    <td class=TDpadded>When I changed the MAC address of the Fast Ethernet port on a PC, the IPv6 link local address doesn't change accordingly.</td>
+    <td class=TDpadded>To see the new link local address, click on the FastEthernet button after making the change in MAC address.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_138>138</a></td>
+    <td>Why does PT print out &quot;UUUUU&quot; instead of &quot;NNNNN&quot; if a ping's source IP is beyond scope (source IP is a link local address and the destination IP is beyond its LAN)?</td>
+    <td>This is a bug. We will fix it in the next version.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_139>139</a></td>
+    <td class=TDpadded>When I copy a device inside a cluster, I cannot paste the device into a different cluster?</td>
+    <td class=TDpadded>This is a bug. The workaround is manually move the copy from inside the cluster to outside the cluster.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_140>140</a></td>
+    <td>When I issue the command &quot;show interface&quot; on a router, the output shows that the line protocol is up even though it is the DTE interface and the DCE interface has not been issued the clock rate command.</td>
+    <td>This is the correct behavior. The DCE interface auto includes the clock rate command, defaulting to 2000000. Also, if you attempt to issue the clock rate command on the DTE interface, the output will show &quot;This command applies only to DCE interfaces&quot;.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=spec_141>141</a></td>
+    <td class=TDpadded>There is CLI for the frame relay cloud. The only option is to configure using the GUI.</td>
+    <td class=TDpadded>This is the intended behavior.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_142>142</a></td>
+    <td>When I author a PKA with variables in assessment items and then try to test my activity, certain assessment items such as the default gateway or DNS server IP addresses are marked incorrect, even if the values are equal to the answer network.</td>
+    <td>For runtime states, like DHCP assigned addresses and configurations, use variables to grade the assessment items. For the default gateway or IP address, use regular expression or static values.</td>
+  </tr>
+<tr>
+    <td class=TDcenterWhite><a name=spec_143>143</a></td>
+    <td class=TDpadded>After creating a complex network, clicking &quot;reset simulation&quot; does not clear ARP tables or DNS caches. Is this a bug?</td>
+    <td class=TDpadded>No, &quot;reset simulation&quot; does not clear tables. &quot;Reset Simulation&quot; clears out any packet on the event list. Resetting visible tables does not reset router tables. &quot;Power Cycle Devices&quot; would reset all tables.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_144>144</a></td>
+    <td>In the activity wizard circling tool, how come some shapes do not grade correctly?</td>
+    <td>This is usually a configuration error on the shape. A common issue happens when a user creates two shape tests intended to be different, but one shape test is wholly a subset of another shape test. e.g., shape test 0 only includes router1, and shape test 1 includes router1, router2, and router3. In this situation, the evaluation can fail to accurately grade the intended circle. When a user circles router1 with shape A, and router1 2 and 3 with shape B, the system may end up choosing shape B for shape test 0 (with only router1), and once a shape has been used, it is not used again for another shape. That leaves shape B for the answer to shape test 1 (router 1 2 and 3). So in this scenario, shape test 1 will only receive 1 of 3 correct, and shape test 0 receives 1 of 1 correct. To mitigate such a scenario, be sure that two different shape tests can be differentiated from one another either with inclusion or exclusion points that are in one shape test but not the other. In short, make sure one shape test is not wholly a subset of another shape test.</td>
+  </tr>
+
+<tr>
+    <td class=TDcenterWhite><a name=spec_145>145</a></td>
+    <td class=TDpadded>Can I add two wireless modules to an end device?</td>
+    <td class=TDpadded>No, Packet Tracer currently does not support two wireless interfaces per end devices at the moment. </td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_146>146</a></td>
+    <td>When I pasted in my commands to a router, the case is not preserved. For example, I pasted in &quot;hostname R1&quot; and PT changed it to &quot;hostname r1&quot;.</td>
+    <td>Do not copy commands from a word document or PDF directly into the router. Instead, copy the commands into a notepad file first. This will remove all hidden formatting. Then copy the commands in the notepad file and paste into the router.</td>
+  </tr>
+
+<tr>
+    <td class=TDcenterWhite><a name=spec_147>147</a></td>
+    <td class=TDpadded>If I setup a network with two LANs, can one PC from one network ping another PC from the other network?</td>
+    <td class=TDpadded>When you have a router with two LANs, a PC with an IP address in the first network can be pinged by a PC in the second network, despite the PC in the first network having an incorrect default gateway.).</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_148>148</a></td>
+    <td>I cannot find &quot;show device dialogue taskbar&quot; in preferences anymore. Has it been removed?</td>
+    <td>The option &quot;show device dialogue taskbar&quot; has been moved to the miscellaneous tab.</td>
+  </tr>
+
+<tr>
+    <td class=TDcenterWhite><a name=spec_149>149</a></td>
+    <td class=TDpadded>Why can't I find any routing configuration on the 3560-24PS switch when I open my file in PacketTracer6.0?</td>
+    <td class=TDpadded>There was a bug in PacketTracer releases before 6.0 which allows the configuration of routing protocols (Rip, eigrp, ospf...) on the switch even though &quot;ip routing&quot; is not configured. With this fix, files created before 6.0 that contain switches will lose the entire routing protocol configuration on the switches if &quot;ip routing&quot; wasn't there.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=spec_150>150</a></td>
+    <td>When I setup a server with two NICs, and I setup a PPPoE dialer, the connection fails. Why is that?</td>
+    <td>For Packet Tracer purposes, servers with two NICs are designed for dual-homed configurations. PPPoE would be out of scope.</td>
+  </tr>
+
+<tr>
+    <td class=TDcenterWhite><a name=spec_151>151</a></td>
+    <td class=TDpadded>When I mouse over Octal cables, it doesn't show much information. Why is that?</td>
+    <td class=TDpadded>Octal cables are for terminal server behavior, so it is not necessary to have interface async for octal cables. Instead, mouse over octal cables shows the line number instead. </td>
+  </tr>
+
+  <tr>
+      <td class=TDcenter><a name=spec_152>152</a></td>
+      <td>Why does PT crash when I test activity or load an activity with 0 sets of object locations.</td>
+      <td>This can be worked around by making sure there is at least one object location set. If you created an object location set and deleted it afterwards, you should add at least one set in the list. If no object location sets were ever created, you do not need to add a set.</td>
+  </tr>
+
+<tr>
+    <td class=TDcenterWhite><a name=spec_153>153</a></td>
+    <td class=TDpadded>Why are IPv6 Neighbor Discovery Protocol (NDP) packets are labeled as NDP instead of ICMPv6?</td>
+    <td class=TDpadded>Neighbor Discovery Protocol (NDP) defines five ICMPv6 packet types, however in Packet Tracer, we differentiate the ICMPv6 messages for NDP in Simulation Mode for event filtering convenience. When you view the PDU details of a packet that is labeled as NDP in Simulation Mode, the PDU details will still identify the packets as an ICMPv6 neighbor message.</td>
+</tr>
+
+  <tr>
+      <td class=TDcenter><a name=spec_154>154</a></td>
+      <td>For IPv6 addressing, why don't we get a partial credit if we enter the prefix length correctly but with a wrong IPv6 address?</td>
+      <td>The current development, if IPv6 address is wrong, but the prefix-length is right, you get no credit. If IPv6 address is right, but the prefix-length is wrong, you get a partial credit.</td>
+  </tr>
+
+<tr>
+    <td class=TDcenterWhite><a name=spec_155>155</a></td>
+    <td class=TDpadded>What should I expect to see on Netflow Collector GUI when it receives a flow that matches one of the flows that it has in the cache?</td>
+    <td class=TDpadded>Netflow Collector displays the top 10 flows with the most count on the pie chart. Additional information about each flow is displayed on the window next to it. When Netflow Collect receives a flow that matches 1 of the flows in the cache, it'll increment the count of that flow without updating the existing flow with the new flow. Therefore, users will see the pie chart get updated but the flow information will remain the same.</td>
+</tr>
+
+  <tr>
+      <td class=TDcenter><a name=spec_156>156</a></td>
+      <td>Why does the alert saying &quot;Cannot write to file&quot; sometimes appears when I save my scripts?</td>
+      <td>The alert message comes up when there are permission problems. Try saving to a different file/location.</td>
+  </tr>
+
+<tr>
+    <td class=TDcenterWhite><a name=spec_157>157</a></td>
+    <td class=TDpadded>Why does the device show a default hostname in Packet Tracer 6.1 and not in previous versions?</td>
+    <td class=TDpadded>Cisco devices does not allow hostnames with spaces. If an old Packet Tracer file contains spaces in the hostnames, Packet Tracer 6.1 will display the default hostname. </td>
+</tr>
+
+  <tr>
+      <td class=TDcenter><a name=spec_158>158</a></td>
+      <td>Why does &quot;standby version 2&quot; always show up in the running configuration when HSRP is configured even though the command was not entered?</td>
+      <td>Version 2 supports IPv6. Since we want Packet Tracer to support IPv6, version 2 is automatically added to the configuration.</td>
+  </tr>
+
+<tr>
+    <td class=TDcenterWhite><a name=spec_159>159</a></td>
+    <td class=TDpadded>Why does Packet Tracer fail to elect the correct root for (R)STP causing loops in the topology when a hub is in between two switches?</td>
+    <td class=TDpadded>In topologies containing hubs, the hubs are causing collisions preventing RSTP frames reaching devices which prevents the ability to detect the loop.</td>
+</tr>
+  <tr>
+      <td class=TDcenter><a name=spec_160>160</a></td>
+      <td>Why does the selector rectangle sometimes stay on screen when using the palette dialog?</td>
+      <td>Hitting ESC while dragging the mouse to draw shapes will cause the selector to stay on screen. Hit ESC again after releasing the mouse to make it disappear.</td>
+  </tr>
+
+<tr>
+  <td class=TDcenterWhite><a name=spec_161>161</a></td>
+  <td class=TDpadded>Why don't I see CDP traffic generated from the 3560-24PS like in the previous versions?</td>
+  <td class=TDpadded>The newly created 3560-24PS needs to be initialized before CDP starts running. Initialization could include finishing the setup wizard, or going into privileged exec mode.</td>
+</tr>
+
+  <tr>
+      <td class=TDcenter><a name=spec_162>162</a></td>
+      <td>When an end device has more than one NICs, which interface is it sending traffic through?</td>
+      <td>The end device will pick the interface to send traffic out based on the following criteria in order of precedence: same subnet, right configuration, and bandwidth. </td>
+  </tr>
+
+  
+<tr>
+  <td class=TDcenterWhite><a name=spec_163>163</a></td>
+  <td class=TDpadded>Why can't I use certain device names in an activity?</td>
+  <td class=TDpadded>There are three special characters that cannot be used in device names, they are: double quotes ("), colon (":"), and brackets "[]". They may work for simple activities but will fail when accessed via API.</td>
+</tr>
+
+  
+</table>
+<p>&nbsp;</P>
+
+<p class=MainHeading2>Protocol Modeling Issues</P>
+<table class=TableModules>
+  <tr>
+    <td width="4%">&nbsp;</td>
+    <td width="34%"><strong><em>Question/Problem</EM></STRONG></td>
+    <td width="62%"><strong><em>Answer/Solution</EM></STRONG></td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_1>1</a></td>
+    <td class=TDpadded>For EIGRP, why are new adjacencies being formed after the &quot;no auto&quot; command--this does not happen on real routers?</td>
+    <td class=TDpadded>To accurately implement the &quot;no auto&quot; command, when it is issued, the router needs to calculate which directly connected and learned routes are advertised to which neighbors as summary routes. The router needs to tell those neighbors those routes are down now and advertise the new non-summarized routes. The Packet Tracer model simply resets the neighbor adjacencies and consequently removes all previous routes and has to relearn them. This process does not simulate the real process of convergence but shares the same results after the convergence. </td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_2>2</a></td>
+    <td>Why does the &quot;no keepalive&quot; command give me an error in some situations?</td>
+    <td>Packet Tracer only supports &quot;no keepalive&quot; on serial links.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_3>3</a></td>
+    <td class=TDpadded>On real devices, the link lights would still come up if there is a duplex mismatch between both sides of the Ethernet connection. Why does Packet Tracer not model this behavior?</td>
+    <td class=TDpadded>On real devices, the link lights would come up in the case of duplex mismatch, but the error rate on the ports would go up because of mismatch. However, Packet Tracer does not model the statistics on the ports, and there is no other way to show that having mismatch duplex is a problem. So, Packet Tracer makes the link not come up to indicate the problem.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_4>4</a></td>
+    <td>On real switches, if there is a native VLAN mismatch on both sides of the same trunk, CDP and STP would print out error messages. Why does Packet Tracer not model that?</td>
+    <td>In Packet Tracer, CDP prints out an error message, but STP does not.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_5>5</a></td>
+    <td class=TDpadded>I cannot disable STP on switching devices.</td>
+    <td class=TDpadded>This is a modeling decision in Packet Tracer since disabling STP may cause loops that can generate broadcast storms in the network. This can severely impact the performance of Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_6>6</a></td>
+    <td>On a real device, I can ping the loopback address 127.0.0.1, what about in Packet Tracer?</td>
+    <td>Packet Tracer now supports pinging loopback addresses on PCs, but not on routers and switches.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_7>7</a></td>
+    <td class=TDpadded>On a real router, I can configure an interface with a valid IP address and subnet mask even though it is a supernet (e.g., 172.24.11.1 255.254.0.0), but in Packet Tracer it says that the subnet mask is a &quot;Bad mask.&quot;</td>
+    <td class=TDpadded>This is no longer an issue in Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_8>8</a></td>
+    <td>I cannot configure an IP address on a modem interface module on the router, but there is a configuration interface in the Config tab.</td>
+    <td>Packet Tracer has a simplified model of modem interfaces and does not model all modem operations accurately.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_9>9</a></td>
+    <td class=TDpadded>If there is a DHCP request with two or more DHCP servers, and then a DHCP request fails due to a possible collision when the DHCP servers try to respond simultaneously, there should be lots of traffic but there are no further events after the collision.</td>
+    <td class=TDpadded>Packet Tracer has a simplified model of layer 1 collisions. Once a frame is sent out on an interface, and if a collision happens before the frame reaches the destination, the source device would not retransmit.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_10>10</a></td>
+    <td>Why doesn't STP block the ports if the native VLAN mismatches?</td>
+    <td>STP in this version of Packet Tracer does not implement this feature. However, CDP detects the error and prints out an error message. This modeling limitation is fixed in Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_11>11</a></td>
+    <td class=TDpadded>On a real router, the timer is reset for OSPF and EIGRP routes after a &quot;clear ip route *&quot; command, but not in Packet Tracer.</td>
+    <td class=TDpadded>This is a modeling limitation of Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_12>12</a></td>
+    <td>Why does the WRT300N remote management override HTTP port forwarding?</td>
+    <td><p>The problem is that the WRT300N uses port 80 for remote management. On a real WRT300N, it uses port 80 on the LAN side and port 8080 on the Internet port. The current implementation of Packet Tracer determines whether or not to allow remote management by using an ACL on the Internet port that blocks all traffic to port 80.</p><p>The workaround is to enable remote management on the WRT300N. This allows traffic to port 80 into the device. NAT then translates to the IP address on the destination device and then sends it out to the destination device.</p></td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_13>13</a></td>
+    <td class=TDpadded>The show ip ospf neighbor command shows a priority of 1. Actual 1841 shows priority of 0.</td>
+    <td class=TDpadded>The OSPF priority depends on the IOS version. On version 12.2, it shows 1. On version 12.3 and later, it shows 0 even if the priority is manually changed to 100. This may be a bug in the IOS and would not be modeled in this version of Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_14>14</a></td>
+    <td>Static routes with 255 admin distance should not be added to routing table.</td>
+    <td>This is no longer an issue in Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_15>15</a></td>
+    <td class=TDpadded>Why do wireless ports always buffer the frames before sending?</td>
+    <td class=TDpadded>This is because the wireless port is doing CSMA/CA and sends a Request To Send (RTS) before sending any data frame. It then has to receive a Clear To Send (CTS) from the destination device before sending the data frame. Packet Tracer is not showing the wireless management frames, so it would show the data frames being buffered without seeing any other frames.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_16>16</a></td>
+    <td>Why are LMI statistics not updated when the link state changes?</td>
+    <td>This is no longer an issue in Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_17>17</a></td>
+    <td class=TDpadded>Why can I only ping one VLAN interface on the switch when there are more than one with the status and line protocol up?</td>
+    <td class=TDpadded>This is no longer an issue in Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_18>18</a></td>
+    <td>Why does OSPF not work over physical serial interface using frame relay?</td>
+    <td>OSPF over NBMA networks is not currently supported in this version. This includes physical serial interfaces and multipoint sub-interfaces. However, it works on point-to-point sub-interfaces.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_19>19</a></td>
+    <td class=TDpadded>In Simulation Mode, routing tables are updated before the packet arrives in the simulation.</td>
+    <td class=TDpadded>This is a modeling limitation of Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_20>20</a></td>
+    <td>On a router with multiple switching modules, there should be individual MAC tables for each switching module. However, &quot;show mac-address table&quot; shows only one MAC table.</td>
+    <td>This is a modeling limitation of Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_21>21</a></td>
+    <td class=TDpadded>Why is the command &quot;ip ospf network&quot; not available in the loopback interface mode?</td>
+    <td class=TDpadded>This command is only available on Serial interfaces to allow OSPF to work over Frame Relay.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_22>22</a></td>
+    <td>The round trip times for pings in Multiuser networks are very long. </td>
+    <td>This is a modeling limitation of Packet Tracer. The delay can also be caused by the propagation of real TCP packets.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_23>23</a></td>
+    <td class=TDpadded>When I issue the command &quot;debug ppp negotiate&quot; before enabling PPP encapsulation, debug messages do not show.</td>
+    <td class=TDpadded>This is no longer an issue in Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_24>24</a></td>
+    <td>On a real switch, when I create a VLAN and then assign a name to the VLAN, VTP revision number increases by 1. In Packet Tracer, the VTP revision number increases by 2.</td>
+    <td>This is a modeling limitation of Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_25>25</a></td>
+    <td class=TDpadded>The EtherChannel group does not come back up after an error disable.</td>
+    <td class=TDpadded>This is a bug in Packet Tracer and was discovered late in the testing process. It will be fixed in a future version of Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_26>26</a></td>
+    <td>Configuring shape in a nested policy map gives an error message.</td>
+    <td>This is no longer an issue in Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_27>27</a></td>
+    <td class=TDpadded>When I enter &quot;switchport mode trunk&quot; on a switch without changing the encapsulation to dot1q first, the command is not rejected like on a real switch with a message saying &quot;An interface whose trunk encapsulation is 'Auto' can not be configured to 'trunk' mode.&quot;</td>
+    <td class=TDpadded>Packet Tracer only supports dot1q trunking encapsulation. &quot;auto&quot; automatically detects ISL and dot1q.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_28>28</a></td>
+    <td>&quot;show ipv6 eigrp interfaces&quot; seems to have incorrect or static output.</td>
+    <td>This is a modeling limitation of Packet Tracer. The values in the &quot;show ipv6 eigrp interfaces&quot; output are hard coded.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_29>29</a></td>
+    <td class=TDpadded>Class-maps with inspect type appear to have a different subset of match sub-commands compared to real routers.</td>
+    <td class=TDpadded>This is a modeling limitation of Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_30>30</a></td>
+    <td>When I configure manual EIGRP summarization, sometimes the classful mask is shown in the routing table for a route.</td>
+    <td>This is a modeling limitation of Packet Tracer. It is recommended to just ignore the output.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_31>31</a></td>
+    <td class=TDpadded>No warning is shown when exiting the interface range mode without typing exit.</td>
+    <td class=TDpadded>This is a modeling limitation of Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_32>32</a></td>
+    <td>Is the command &quot;tunnel source [ip address]&quot; supported?</td>
+    <td>No. This is a modeling limitation of Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_33>33</a></td>
+    <td class=TDpadded>Does the command &quot;ip mtu [value]&quot; have a dynamic range?</td>
+    <td class=TDpadded>No. This is a modeling limitation of Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_34>34</a></td>
+    <td>When I do &quot;show vtp counter&quot;, the values for VTP pruning statistics seems to be incorrect?</td>
+    <td>VTP pruning is not supported in Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_35>35</a></td>
+    <td class=TDpadded>Why can I not modify the serverPool DHCP pool on the server device?</td>
+    <td class=TDpadded>In older versions of Packet Tracer, the server pool is automatically created. The server device only required enabling DHCP. It is still there for backwards compatibility. This is not a bug, but rather the implementation of the server which contains the server pool.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_36>36</a></td>
+    <td>When I copy a &quot;show running-config&quot; output from Packet Tracer and paste the output into CLI, not all commands are accepted.</td>
+    <td>This is expected behavior as not all commands are supported in Packet Tracer in the &quot;show running-config&quot; output.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_37>37</a></td>
+    <td class=TDpadded>When I issue the command, &quot;more flash:c2960-lanbase-mz.122-25.FX.bin&quot;, the output is different each time.</td>
+    <td class=TDpadded>This is a modeling limitation of Packet Tracer. Packet Tracer does not store the IOS images as actual files. In the current implementation of Packet Tracer, the command outputs random data.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_38>38</a></td>
+    <td>When I delete the IOS image from a router or switch and then save and reopen the file, the device boots up when it should not.</td>
+    <td>This is no longer an issue in Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_39>39</a></td>
+    <td class=TDpadded>If I issue &quot;debug ip packets&quot; then &quot;logging trap debug&quot; on a router, it seems that one or the other is not issued at all.</td>
+    <td class=TDpadded>If these two commands are applied to a router, Packet Tracer would send packets continuously and will crash eventually. Real routers behave similarly and will lock the user from entering anything as the console will be overloaded with debug messages. As a result, in Packet Tracer, only one or the other can be applied to the router to prevent such issues from arising.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_40>40</a></td>
+    <td>The output in &quot;show policy-map type inspect zone-pair sessions&quot; seems to differ compared to real routers in regards to the type of protocol detected in the established sessions.</td>
+    <td>On a real router, the IOS image used in Packet Tracer does not display the protocol. However, the protocol was added for CCNA requirements.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_41>41</a></td>
+    <td class=TDpadded>The &quot;show clock&quot; output is always Mon Mar 1 1993 by default.</td>
+    <td class=TDpadded>In the past, Cisco shipped devices with Mon Mar 1 1993 by default. However, in recent times, newer devices are shipping with the current time. Packet Tracer's implementation uses the old method of displaying the &quot;show clock&quot; command by default.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_42>42</a></td>
+    <td>When I enter the command &quot;no ip ips signature-category&quot;, it brings the router prompt to the IPS category configuration mode.</td>
+    <td>This is no longer an issue in Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_43>43</a></td>
+    <td class=TDpadded>Access-lists do not have ESP, AH, or ISAKMP port options available. As a result, site-to-site VPNs can be created, but are not functional if CBAC or ACLs applied.</td>
+    <td class=TDpadded>This is a modeling limitation of Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_44>44</a></td>
+    <td>Static routes should be able to specify an outbound interface and next hop address.</td>
+    <td>This is a modeling limitation of Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_45>45</a></td>
+    <td class=TDpadded>A carriage return is missing after removing a subinterface from a router.</td>
+    <td class=TDpadded>This is a modeling limitation of Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_46>46</a></td>
+    <td>There is no error message when two connected switches have different EtherChannel modes.</td>
+    <td>This is a modeling limitation of Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_47>47</a></td>
+    <td class=TDpadded>When I try to issue an SNMP request using a port other than 161, SNMP request times out.</td>
+    <td class=TDpadded>The routers and switches also need to change to that port. However, Packet Tracer does not have the command to change the SNMP port on routers and switches. This is a modeling limitation of Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_48>48</a></td>
+    <td>AAA authorization commands are supported, but the functionality does not work.</td>
+    <td>AAA authorization commands are available on routers as commands only but without any functionality. This is a modeling limitation of Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_49>49</a></td>
+    <td class=TDpadded>When I enter &quot;config t&quot; in global configuration mode, Packet Tracer returns &quot;%Invalid hex value.&quot;</td>
+    <td class=TDpadded>Packet Tracer is trying to issue the &quot;config-register&quot; command in global configuration mode. However, Packet Tracer's command parser implementation of the hex part is using WORD. This is a modeling limitation of Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_50>50</a></td>
+    <td>When I try to enter interface configuration mode for a non-existent interface, Packet Tracer returns a different error from a real router.</td>
+    <td>This is a modeling limitation of Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_51>51</a></td>
+    <td class=TDpadded>The number of matched packets under the protocol match statement is greater than the number of matched packets for the class-map in the &quot;show policy-map&quot; command.</td>
+    <td class=TDpadded>This is no longer an issue in Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_52>52</a></td>
+    <td>The QoS bandwidth setting does not appear to have an effect on drop rates.</td>
+    <td>The drop rates are not accurate numbers.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_53>53</a></td>
+    <td class=TDpadded>The labs in the curriculum expects more options for the &quot;debug ip rip&quot; command, but Packet Tracer only supports the events option.</td>
+    <td class=TDpadded>This is a modeling limitation of Packet Tracer. We may support more options for the debug ip rip commands in a future version of Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_54>54</a></td>
+    <td>When I have a PC on a VPN connection, it seems that DNS packets are sending to the VPN server first and the DNS packets are not encapsulated in Simulation Mode.</td>
+    <td>This is no longer an issue in Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_55>55</a></td>
+    <td class=TDpadded>An RS232 port is displayed in the physical device view of the IP Phone, but the RS232 port is not one of the available ports in the Logical Workspace.</td>
+    <td class=TDpadded>The RS232 port displayed in the physical device view is for aesthetic purposes only.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_56>56</a></td>
+    <td>Why doesn't Packet Tracer show all of the packets involved in a typical SMTP/POP transaction?</td>
+    <td>Packet Tracer is not simulating SMTP and POP to standards. It just sends a generic request one way and a reply back.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_57>57</a></td>
+    <td class=TDpadded>On a 3560 multilayer switch's interface, when its trunk encapsulation is set to &quot;auto&quot;, it cannot be configured to &quot;trunk&quot; mode. The command &quot;switchport mode trunk&quot; is rejected. Why?</td>
+    <td class=TDpadded><p>This is new corrected behavior. 3560 multilayer switches require &quot;switchport trunk encapsulation dot1q&quot; first before setting the interfaces to trunk mode. This new behavior may affect existing files.</p><p>Switch(config-if)#switchport trunk encapsulation dot1q<br>
+Switch(config-if)#switchport mode trunk</p></td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_58>58</a></td>
+    <td>When I create a Telnet packet while another TCP connection exists, the Telnet packet that I created gets dropped.</td>
+    <td>This is the new correct TCP behavior. If the source port is already used for another connection, it will not start the TCP connection and the packet will drop.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_59>59</a></td>
+    <td class=TDpadded>When I view a TCP packet's PDU details in Simulation Mode after initiating an HTTP request, the HTTP client sets the connection state to SYN_SENT.</td>
+    <td class=TDpadded>This is the new correct behavior. The HTTP client is making a connection and sets the new TCP connection to SYN_SENT.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_60>60</a></td>
+    <td>How come phones don't register with auto-reg-ephone enabled and auto assign configured in CME?</td>
+    <td>This is a modeling limitation in Packet Tracer. Phones will register only if there is a line number available. The line number is configured using the ephone-dn command. This is unlike in real devices where phones will register without having a line number for it.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_61>61</a></td>
+    <td class=TDpadded>When I open a PC's device dialog with DHCP enabled, it keeps sending a DHCP packet.</td>
+    <td class=TDpadded>The PC automatically sends a DHCP discover packet when opening the PC device dialog if it does not have an IP address yet.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_62>62</a></td>
+    <td>Why does VoIP still work even though switchport voice vlan 1 is not configured?</td>
+    <td>On real devices, the phones go down after invoking the &quot;no switchport voice vlan&quot; commands, but will come up after 20 seconds, and gets registered again and will be able to make calls again. The down and then up behavior in Packet Tracer is a modeling limitation. But, after 20 seconds or so, the phones can make calls again.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_63>63</a></td>
+    <td class=TDpadded>When a call is made to a Cisco IP Communicator that is closed, is the Cisco IP Communicator supposed to open in ringing mode or connected mode?</td>
+    <td class=TDpadded>When you close the Cisco IP Communicator, it actually minimizes and does not close completely. On real a Cisco IP Communicator, if it is ringing while minimized, opening Cisco IP Communicator will answer automatically. This is correct behavior.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_64>64</a></td>
+    <td>How come PPPoE clients do not get connected in multi-server environments?</td>
+    <td>This is a modeling limitation. The workaround is to either configure all of the servers with the correct configuration so that the clients get connected to the first one it hears from or remove all but one server that has proper configuration.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_65>65</a></td>
+    <td class=TDpadded>How come the routers in Packet Tracer do not show ppp negotiation debug messages after I turn on debug?</td>
+    <td class=TDpadded><p>Packet Tracer does not support printing debug messages of all PPP negotiation packets.</p><p>The &quot;debug ppp *&quot; command is only supported on serial interfaces.</p></td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_66>66</a></td>
+    <td>I have &quot;debug ppp authentication&quot; enabled on a PPPoE server. When a PPPoE client is getting connected to the PPPoE server, it does not show any debug messages on the server.</td>
+    <td>This is a modeling limitation. The &quot;debug ppp authentication&quot; command is only supported on serial interfaces.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_67>67</a></td>
+    <td class=TDpadded>Why are log messages for IP phone registrations different than real devices?</td>
+    <td class=TDpadded>This is a modeling limitation. Packet Tracer does not simulate all the SCCP messages for registrations like in real devices.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_68>68</a></td>
+    <td>I created an access-list that denies FTP data transfers on port 20, but data transfers are still successful.</td>
+    <td>This is a modeling limitation. The FTP operation currently supported in Packet Tracer is passive mode. In passive mode of operation, the FTP server opens a random data port and sends it to the client in order for it to connect to it and start the data transfer. The data ports the FTP server listens are greater than port 1023 and not port 20. Port 20 will be relevant when active mode of FTP operation is supported in Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_69>69</a></td>
+    <td class=TDpadded>When I delete a wireless client from the workspace, the WRT300N's DHCP client table doesn't refresh when I click on the refresh button.</td>
+    <td class=TDpadded>This is correct behavior because the WRT300N did not receive a DHCP release from the client to release the lease.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_70>70</a></td>
+    <td>The MAC address column in the WRT300N's DHCP Client Table is labeled as 00:00:00:00:00:00.</td>
+    <td>This is a modeling limitation.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_71>71</a></td>
+    <td class=TDpadded>The Expires Times field in the DHCP Client Table is always empty.</td>
+    <td class=TDpadded>This is a modeling limitation. This version of Packet Tracer does not support client expire time.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_72>72</a></td>
+    <td>What's the purpose of the TFTP Server field in the DHCP service on the server device?</td>
+    <td>The TFTP server field in the DHCP server is there for assigning IP addresses with the TFTP option, so that the DHCP server and the CME router can be two different devices.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_73>73</a></td>
+    <td class=TDpadded>Why do PCs sometimes get default gateway from DHCP, but sometimes not?</td>
+    <td class=TDpadded>DHCP is on by default on server devices (for backwards compatibility). That means if there is another device (router or another server) in the same LAN serving DHCP, sometimes the router replies faster and sometimes the server replies faster. Since the server device does not have the default gateway configured in the DHCP pool by default, so sometimes PCs do not get gateway.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_74>74</a></td>
+    <td>When I use the &quot;no redistribute connected metric 1000000&quot; command, it removes the entire &quot;redistribute&quot; command.</td>
+    <td>This is a modeling limitation. In Packet Tracer, &quot;no redistribute&quot; with any arguments will remove the whole command. If you want the command &quot;redistribute&quot; command back, you need to enter the command again.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_75>75</a></td>
+    <td class=TDpadded>Shaping stats are not shown all for nested policy maps.</td>
+    <td class=TDpadded>Nested policy maps show shaping stats (packet/byte counts) and shaping flag (yes/no) for outer policy map, but not for inner policy map.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_76>76</a></td>
+    <td>When I configure a destination-pattern of &quot;10..&quot; with two dots for one dial-peer and a destination-pattern &quot;10.&quot; with only a single dot for a second dial-peer, only numbers such as &quot;1022&quot; can be dialed.</td>
+    <td>This is a modeling limitation. In Packet Tracer, the only destination-pattern &quot;..&quot; is supported.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_77>77</a></td>
+    <td class=TDpadded>Why does Packet Tracer slow down for long periods when running BGP?</td>
+    <td class=TDpadded>BGP is a complex protocol, and when there are many BGP routes, the CPU can be overloaded due to network traffic calculations. Reduce the amount of BGP routes or routers to lower the CPU usage. In a Multiuser environment with many BGP routes, use a single Packet Tracer instance with a single BGP router per instance.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_78>78</a></td>
+    <td>Why does the command show ip bgp give a different output than what I see on a real router?</td>
+    <td>The BGP table is populated based upon received data and in the order received. Each time BGP is started, the time to establish an adjacency differs slightly and therefore adjacencies can happen in a different order. As a result, the table is populated in a different order and the information contained will be different because the known topology of the network at the time of information exchange is different.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_79>79</a></td>
+    <td class=TDpadded>RIPv2 poison and poison-reverse do not work.</td>
+    <td class=TDpadded>This is a modeling limitation. This version of Packet Tracer does not support RIPv2 poison and poison-reverse.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_80>80</a></td>
+    <td>Why do some wireless devices not get connected to the access point?</td>
+    <td>If the network or the same physical location has more than 25 wireless devices, it is hitting our simulation modeling limitation and PT is not able to connect any more wireless devices simultaneously. The workaround is to either move some devices to other locations or manually make the association in the device dialog.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_81>81</a></td>
+    <td class=TDpadded>Duplicate IPv6 addresses are not detected.</td>
+    <td class=TDpadded>This is a modeling limitation. Packet Tracer does not currently support Duplicate Address Detection (DAD) for IPv6.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_82>82</a></td>
+    <td>Why does an IPv6 device not be able to ping another anycast address when the old anycast address device is disconnected?</td>
+    <td>Packet Tracer does not currently implement staling of neighbor devices. Use &quot;clear ipv6 neighbors&quot; to remove the old neighbor and ping again.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_83>83</a></td>
+    <td class=TDpadded>The network mask of the route does not get updated after applying &quot;ipv6 ospf network broadcast&quot; or &quot;ipv6 ospf network point-to-point&quot; in the interface.</td>
+    <td class=TDpadded>This is a modeling limitation. The workaround is to save the file and reopen it.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_84>84</a></td>
+    <td>The command &quot;show ipv6 ospf neighbor detail&quot; shows some missing output such as the Option detail and link local address.</td>
+    <td>This is a modeling limitation.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_85>85</a></td>
+    <td class=TDpadded>It appears that loading IOS IPS signature package is not required when configuring IPS.</td>
+    <td class=TDpadded>This is a modeling limitation.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_86>86</a></td>
+    <td>When I enter the command &quot;show ipv6 dhcp pool&quot; on a DHCP server, the value for active clients value is 0.</td>
+    <td>This is a modeling limitation.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_87>87</a></td>
+    <td class=TDpadded>There was no application layer information in the PDU details when simulating SSH traffic. Layers 1, 2, 3 and 4 are reflected in the PDU details, but the application layer traffic isn't reflected.</td>
+    <td class=TDpadded>This is a modeling limitation.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_88>88</a></td>
+    <td>When I enter the command &quot;show ipv6 dhcp interface&quot;, the value for when the renewal will be sent is always 0d0h.</td>
+    <td>This is a modeling limitation.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_89>89</a></td>
+    <td class=TDpadded>There is no support for the command &quot;ip default-router&quot; on the Cisco Catalyst 3560-24PS multilayer switch.</td>
+    <td class=TDpadded>This is a modeling limitation. The workaround is to change the multilayer switch to a layer 3 switch by entering &quot;ip routing&quot; and configuring a static default route.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_90>90</a></td>
+    <td>When I shutdown an interface on a router configured on a RIP network, the routing table shows that the network is possibly down and the RIP timers are started. However, on real routers, the network is immediately withdrawn from the routing table and the RIP timers are not started.</td>
+    <td>This is a bug that will be fixed in a future version of Packet Tracer.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_91>91</a></td>
+    <td class=TDpadded>Can't I enter the command &quot;no router ospf <id>&quot; within the command mode for &quot;router ospf <id>&quot;?</td>
+    <td class=TDpadded>No, due to model limitation, that command is not available.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_92>92</a></td>
+    <td>When entering acl statements without specifying the sequence number, why does the &quot;show access-list&quot; command show the acl statements in a different order from the order shown on Cisco router?</td>
+    <td>This is a modeling limitation.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_93>93</a></td>
+    <td class=TDpadded>Why can't key chains be entered consecutively without exiting to normal config mode first?</td>
+    <td class=TDpadded>This is a modeling limitation.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=mod_94>94</a></td>
+    <td>Why doesn't the show running-config output show async interfaces when HWIC-8A modules are used?</td>
+    <td>This is a modeling limitation. HWIC-8A was added for console servers which do not require async interface support.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=mod_95>95</a></td>
+    <td class=TDpadded>In Simulation mode, why are there scenarios where a packet is still able to cross a link that is connected to a port that has been recently shutdown?</td>
+    <td class=TDpadded>This is a modeling limitation. The code can't be set to clear out the event list after a port has been shutdown because it might cause the network to miss routing packets that were already sent out. So, depending on when the port was shutdown, packets may still be able to cross the link because there are instances that the event for that certain PDU has already been added to the eventlist before the port was shutdown.</td>
+  </tr>
+
+</table>
+
+<p class=MainHeading2>Internet of Things</P>
+<table class=TableModules>
+  <tr>
+    <td width="4%">&nbsp;</td>
+    <td width="34%"><strong><em>Question/Problem</EM></STRONG></td>
+    <td width="62%"><strong><em>Answer/Solution</EM></STRONG></td>
+  </tr>
+
+  <tr>
+    <td class=TDcenterWhite><a name=iot_1>1</a></td>
+    <td class=TDpadded>Why can't some devices detect Alt + Mouse Move events when using Packet Tracer on a MAC VM?</td>
+    <td class=TDpadded>This is due to MAC VM bindings problem. If you disable all VM key bindings, Alt + Mouse Move events would work as expected.</td>
+  </tr>
+
+  <tr>
+    <td class=TDcenter><a name=iot_2>2</a></td>
+    <td>Why do some IoE devices stop working after using the Power Cycle button?</td>
+    <td>Using the Power Cycle button causes the IoE devices to stop running scripts. All scripts will need to be restarted manually.</td>
+  </tr>
+ </table>
+
+</body>
+</html>

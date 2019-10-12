@@ -1,0 +1,647 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Layer 3 IP Models</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+
+<p class="MainHeading1">Layer 3 IP Models</p>
+<hr>
+<p class="MainHeading2">How IP and IPv6 are modeled</p>
+<P class=myList>Packet Tracer models only certain aspects of IP.</P>
+<P class=myList>&nbsp;</P>
+<UL>
+  <LI>IP version 4 is modeled.
+  <LI>IP addresses are 32 bits long, and displayed using the dot-decimal
+  notation, where each octet or byte of the IP address is displayed in decimal
+  number and separated by a dot.
+  <LI>All class A, B, and C addresses (1.0.0.0 to 224.255.255.255) except
+  loopback addresses (127.0.0.0 to 127.255.255.255) can be assigned to ports.
+  <LI>All IP packet fields are displayed in the PDU details.&nbsp; However, only
+  the following four fields are used: Destination IP Address, Source IP
+  Address, TTL, and Protocol.&nbsp;
+  <LI>The Protocol field in the IP packet identifies the layer 4 PDU.&nbsp;When
+  a device sends an IP packet, it places the value corresponding to the layer 4
+  process or service in the Protocol field.&nbsp;When a device receives an IP
+  packet, it dispatches the layer 4 PDU to a process or service corresponding to
+  the value of the Protocol field.</LI></UL>
+<P class=myList>&nbsp;</P>
+<P class=myList>Packet Tracer also models  IPv6.</P>
+<P class=myList>&nbsp;</P>
+<UL>
+  <LI>IP addresses are 128 bits long, and displayed as eight groups of four hexadecimal digits separated by colons.
+  <LI>There are no classes of addresses in IPv6.   Each address assignment has an address and a prefix in the format with / followed by the prefix length of the network.
+  <LI>All IPv6 packet fields are displayed in the PDU details.&nbsp; However, only
+    the following four fields are in used: Destination IPv6 Address, Source IPv6
+    Address, Hop Limit, and Next Header.&nbsp;
+  <LI>The Next Header field in the IPv6 packet identifies the layer 4 PDU or the next option in the IPv6 header.&nbsp;When
+    a device sends an IPv6 packet, it places the value corresponding to the layer 4
+    process or service in the Next Header field.&nbsp;When a device receives an IPv6
+    packet, it dispatches the layer 4 PDU or the IPv6 header to a process or service corresponding to
+    the value of the Next Header field.</LI>
+</UL>
+<P>&nbsp;</P>
+<P class=MainHeading2>How devices process incoming ICMP packets</P>
+<p class="myList">When a device receives an ICMP packet:</p>
+<p class="myList">&nbsp;</p>
+<ul>
+    <li>It checks the ICMP message contained in the packet.
+      <ul>
+        <li>If the packet contains the message "TTL Exceeded" or "Echo Reply:"
+          <ul>
+            <li>It checks to see if it has recently sent an ICMP message with the same identification as the received ICMP message.
+              <ul>
+                <li>If so, it sends out the ICMP.</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+  </li>
+    </ul>
+<p>&nbsp;</p>
+<p><span class="MainHeading2">How devices process incoming ICMPv6 packets</span></p>
+<p>ICMPv6 works similar to ICMP for Echo, Echo Reply, Hop Limit Expire (TTL Expire), Unreachable messages. For Neighbor Discovery (ND) messages, ICMPv6 process sends them to the ND process. Refer to ND process for more details.</p>
+<p>&nbsp;</p>
+<p class=MainHeading2>How ND for  IPv6 processes incoming packets</p>
+<p>When an ND process for  IPv6 receives a packet (<A href="flowcharts/DeviceReceiveND.jpg" target="_blank">flowchart</A> here):</p>
+<ul>
+  <li>If the packet is a Neighbor Solicitation, the       process executes the following actions:
+      <ul>
+        <li>It will drop the packet if it doesn’t contain a        Link Layer option.</li>
+        <li>If the destination IPv6 address doesn’t match        with the receiving interface’s IPv6 address:
+            <ul>
+              <li>If there is an entry already exists in the ARP         table, the entry will be updated with the information in the packet.</li>
+            </ul>
+        </li>
+        <li>If matched,
+            <ul>
+              <li>If the host device is not a switch, the process         will update the ARP table with information from the packet (source IPv6         address, source MAC address).</li>
+              <li>Then ND process creates an ARP Reply packet         that contains its MAC address and sends to the source device.</li>
+            </ul>
+        </li>
+      </ul>
+  </li>
+  <li>If the packet is a Neighbor Advertisement, the       process executes the following actions:
+      <ul>
+        <li>It will drop the packet if it meets any of the        following conditions:
+            <ul>
+              <li>It does not contain a Link Layer option.</li>
+              <li>It has not sent an ARP request but received an         ARP reply</li>
+            </ul>
+        </li>
+        <li>Otherwise, it will do the following actions:
+            <ul>
+              <li>The device’s ARP process will updates the ARP         table with the received information.</li>
+              <li>If         there are buffers contained in the received packet, the ARP process         takes out these buffers and resends them.</li>
+            </ul>
+        </li>
+      </ul>
+  </li>
+  <li>It the       packet is a Router Solicitation, the process executes the following actions:
+      <ul>
+        <li>It        will drop the packet if the message is a not valid Router        Solicitation.  A valid Router        Solicitation message must meet the following conditions:
+            <ul>
+              <li>The         IP Hop Limit field has a value of 255.</li>
+              <li>ICMP         code is 0.</li>
+              <li>ICMP         length is 8 or more octets.</li>
+              <li>All         included options have a length that is greater than zero.</li>
+              <li>If         the IP source address is the unspecified address, there is no source         link-layer address option in the message.</li>
+            </ul>
+        </li>
+        <li>If        the packet is a valid Router Solicitation, it will create a Router        Advertisement and multicast it to the all-nodes group.</li>
+      </ul>
+  </li>
+  <li>If the       packet is a Router Advertisement, the process executes the following actions:
+      <ul>
+        <li>It        cancels any existing router solicitation timer scheduled on the receiving        interface.</li>
+        <li>It        retrieves information from the Router Advertisement such as source IPv6        address, prefix and prefix length, and with the receiving interface’s        local link address, it creates an IPv6 address.
+            <ul>
+              <li>If         the Router Advertisement’s prefix option is on-link, the ND process sets         the newly created IPv6 address to the receiving interface.</li>
+              <li>If         the Router Advertisement’s prefix option is off-link, the ND process         removes the IPv6 address from the receiving interface.</li>
+            </ul>
+        </li>
+      </ul>
+  </li>
+  </ul>
+
+<!-- IP fragmenting -->
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How IP Does Fragmenting</P>
+<P class="myList">Before sending out a packet, IP follows the process below (<A href="flowcharts/IP_fragmenting.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>It checks if the total length (TTL) of the packet is greater than the MTU of the out-going interface.  Note that setting of the <code>mtu</code> command will override the <code>ip mtu</code> command.</LI>
+	<UL>
+		<LI>If yes, it checks if the packet has the DF flag on.</LI>
+		<UL>
+			<LI>If yes, it drops the packet.</LI>
+		</UL>
+	</UL>
+	<LI>It checks if TTL is less than or equal to the value configured via the command <code>ip mtu</code>.</LI>
+	<UL>
+		<LI>If yes, it sends the packet.</LI>
+		<LI>It no,
+		<UL>
+			<LI>It obtains the payload of the packet.</LI>
+			<LI>It does fragmenting on the payload.</LI>
+			<LI>It sends out fragments.</LI>
+		</UL>
+	</UL>
+</UL>
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How IP Processes Reassembling</P>
+<P class="myList">When IP receives an incoming packet (<A href="flowcharts/IP_reassembling.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>It checks if this packet is intended for this device.
+	<UL>
+		<LI>If yes, the packet is sent to the reassembling function.</LI>
+		<LI>If no, it forwards to the routing or host process for more processing.</LI>
+	</UL>
+	<LI>Reassembling functionality:
+	<UL>
+		<LI>It checks if the DF flag is on, and the fragment offset (FO) is 0.</LI>
+		<UL>
+			<LI>If yes, it forwards to the routing or host process for more processing.</LI>
+		</UL>
+		<LI>It checks if the buffer ID exists.  The buffer ID is a combination of the source and destination address, and the protocol and identification fields of the IP header.</LI>
+		<UL>
+			<LI>If yes, it loads the reassembling resource for this buffer ID.</LI>
+			<LI>If no, it creates a new reassembling resource for this buffer ID.</LI>
+		</UL>
+		<LI>It updates necessary information for the reassembling resource with this fragment.</LI>
+		<LI>It checks if it is the last fragment:</LI>
+		<UL>
+			<LI>If yes, it starts reassembling all received fragments.</LI>
+			<UL>
+				<LI>If successful, it sends the IP packet to the routing or host process for more processing.</LI>
+				<LI>If not successful due to missing fragments, it drops all fragments and releases the reassembling resource.</LI>
+			</UL>
+			<LI>If no, it starts or restarts the reassembling timeout timer for this buffer ID.</LI>
+		</UL>
+	</UL>
+</UL>
+
+<!-- IPv6 fragmenting -->
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How IPv6 Does Source Fragmenting</P>
+<P class="myList">Before sending out a packet at the source, IPv6 follows the process below (<A href="flowcharts/IPv6_source_fragmenting.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>It checks if the total length (TTL) of the packet is greater than the MTU of the out-going interface.  Note that setting of the <code>mtu</code> command will override the <code>ipv6 mtu</code> command.</LI>
+	<UL>
+		<LI>If no, it sends out the packet.</LI>
+		<LI>If yes, it checks if TTL is less than or equal to the value configured via the command <code>ipv6 mtu</code>.</LI>
+		<UL>
+			<LI>If yes, it sends the packet.</LI>
+			<LI>If no,</LI>
+			<UL>
+				<LI>It obtains the payload of the packet.</LI>
+				<LI>It does fragmenting on the payload.</LI>
+				<LI>It sends out fragments; each has the IPv6 Fragment Extension Header.</LI>
+			</UL>
+		</UL>
+	</UL>
+</UL>
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How IPv6 Does Path MTU Discovery at Middle Routers</P>
+<P class="myList">Before sending out a packet at the middle router, IPv6 follows the process below (<A href="flowcharts/IPv6_PMTU.jpg" target="_blank">flowchart</A>
+	here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>It checks if the total length (TTL) of the packet is greater than the MTU of the out-going interface.</LI>
+	<UL>
+		<LI>If yes, it triggers the Path MTU (PMTU) process to send out an ICMPv6 Packet-Too-Big message to the source.</LI>
+	</UL>
+</UL>
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How IPv6 Processes Reassembling</P>
+<P class="myList">When IPv6 receives an incoming packet (<A href="flowcharts/IPv6_reassembling.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>It checks if this packet is intended for this device.
+	<UL>
+		<LI>If yes, the packet is sent to the reassembling function.</LI>
+		<LI>If no, it forwards to the routing or host process for more processing.</LI>
+	</UL>
+	<LI>Reassembling functionality:
+	<UL>
+		<LI>It checks the IPv6 fragment extension header if the M flag is off, and the fragment offset (FO) is 0.</LI>
+		<UL>
+			<LI>If yes, it forwards to the routingv6 or hostv6 process for more processing.</LI>
+		</UL>
+		<LI>It checks if the buffer ID exists.  The buffer ID is a combination of the source and destination address, and the protocol and identification fields of the IP header.</LI>
+		<UL>
+			<LI>If yes, it loads the reassembling resource for this buffer ID.</LI>
+			<LI>If no, it creates a new reassembling resource for this buffer ID.</LI>
+		</UL>
+		<LI>It updates necessary information for the reassembling resource with this fragment.</LI>
+		<LI>It checks if it is the last fragment:</LI>
+		<UL>
+			<LI>If yes, it starts reassembling all received fragments.</LI>
+			<UL>
+				<LI>If successful, it sends the IP packet to the routing or host process for more processing.</LI>
+				<LI>If not successful due to missing fragments, it drops all fragments and releases the reassembling resource.</LI>
+			</UL>
+			<LI>If no, it starts or restarts the reassembling timeout timer for this buffer ID.</LI>
+		</UL>
+	</UL>
+</UL>
+
+<!-- CBAC -->
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How CBAC works</P>
+<P class="myList">When a packet is send out of a router port (<A href="flowcharts/CBAC_send.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>If the received port has an ACL configured and its an extended ACL:
+	<UL>
+		<LI>It checks if the packet is part of an existing session:
+		<UL>
+			<LI>If the lookup finds a matching entry in the session table :
+			<UL>
+				<LI>It updates the session state table.
+				<LI>It sends to the lower process.
+			</UL>
+			<LI>Or else if the packet is just a pass through packet after been checked by the received port:
+			<UL>
+				<LI>It sends to the lower process.
+			</UL>
+			<LI>Else
+			<UL>
+				<LI>It looks for a matching acl statement:
+				<UL>
+					<LI>If the packet is DENIED by the ACL, it DROPs the packet.
+					<LI>Else
+					<UL>
+						<LI>It does the inspection and checks if an inspection rule is present or not:
+						<UL>
+							<LI>If inspection rule is NOT present, it sends the packet to the lower process without inspection.
+							<LI>Else:
+							<UL>
+								<LI>It creates a session entry and update the state table.
+								<LI>It sends out of the interface to the lower process.
+							</UL>
+						</UL>
+					</UL>
+				</UL>
+			</UL>
+		</UL>
+	</UL>
+	<LI>If acl is NOT present:
+	<UL>
+		<LI>It does the inspection and checks if an inspection rule is present or not:
+		<UL>
+			<LI>If inspection rule is NOT present, it sends the packet to the lower process without inspection.
+			<LI>Else
+			<UL>
+				<LI>It creates a session entry and update the state table.
+				<LI>It sends out of the interface to the lower process.
+			</UL>
+		</UL>
+	</UL>
+</UL>
+
+<P class="myList">When a router receives a packet (<A href="flowcharts/CBAC_recv.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>If the received port has an ACL configured and it is an extended ACL:
+	<UL>
+		<LI>It checks if the packet is part of an existing session:
+		<UL>
+			<LI>If the lookup finds a matching entry in the session table:
+			<UL>
+				<LI>It updates the session state table.
+				<LI>It sends to the higher process.
+			</UL>
+			<LI>If no matching session found:
+			<UL>
+				<LI>It looks for an ACL matching statement:
+				<UL>
+					<LI>if a matching statement found, it permits the packet and sends to the higher process.
+					<LI>if the packet is denied, it drops the packet.
+				</UL>
+			</UL>
+		</UL>
+	</UL>
+	<LI>If no acl present, it sends the packet to the higher process.
+</UL>
+
+<!-- Zone based firewall -->
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How Zone based Firewall (ZFW) works</P>
+<P class="myList">When a packet goes out of a zone based firewall router port (<A href="flowcharts/ZFW_send.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>If ACL NOT present or ACL permits packet:</LI>
+	<UL>
+		<LI>ZFW checks if the received port and port to send are both zone members.</LI>
+		<UL>
+			<LI>If both the ports are members of any zone, ZFW finds a match for the current zone-pair (recv port - send port zone pair).</LI>
+			<UL>
+				<LI>If a match FOUND, it gets the policy map for this zone-pair and go through the classmap list.</LI>
+				<UL>
+					<LI>If a matching class map statement FOUND:</LI>
+					<UL>
+						<LI>If the policy-classmap action is to "drop" or no action set (default action is to drop), it creates a session and updates the state table and drops the packet.</LI>
+				    	<LI>Else it creates a session and updates the state table.  Then it passes the packet to the lower layer.</LI>
+				    </UL>
+				</UL>
+				<LI>If matching zone-pair NOT found, it drops the packet.</LI>
+			</UL>
+			<LI>Else if either one of the ports is not part of any zone member, it drops the packet.</LI>
+			<LI>Or else if both the ports are not part of any zone member ( ie., router is not configured fully for Zone based firewall), it passes the packet to the lower layer.</LI>
+		</UL>
+	</UL>
+	<LI>Else if ACL drops the packet, ZFW drops the packet.</LI>
+</UL>
+
+<P class="myList">When a packet is received on a zone based firewall router port  (<A href="flowcharts/ZFW_recv.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>The packet is checked for a matching entry in the session table to see if it is part of an existing session:</LI>
+	<UL>
+		<LI>If a matching entry FOUND, it updates the state table entries and passes it to the higher layer/process.</LI>
+		<LI>If NO matching entry found in the session table, it checks if the packet is intended for THIS router:</LI>
+		<UL>
+			<LI> If so, it looks for a matching self-zone/zone-self pair.</LI>
+			<UL>
+				<LI>If a matching zone-pair FOUND:</LI>
+				<UL>
+					<LI>It creates a session entry and update the state table.</LI>
+					<LI>It passes the packet to the higher layer.</LI>
+				</UL>
+				<LI>If a matching zone-pair is NOT found, it passes the packet to the higher layer.</LI>
+			</UL>
+		</UL>
+	</UL>
+</UL>
+
+<!-- IPS signature scan  -->
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How IPS Signature Scan Works</P>
+<P class="myList">ICMP (2004:0) signature is the only ips signature that is currently supported in PT. The signature is made a built-in signature. The ips config location and category needs to be configured and the ips rule needs to be applied to the interface in order to enable IPS on a router (<A href="flowcharts/IPS.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>If IPS enabled, the device checks if ACL is present.</LI>
+	<UL>
+		<LI>If ACL NOT present or acl PERMITS  the packet, The device scans through the signature list to see if the signature is unretired and enabled.</LI>
+		<UL>
+			<LI>If UNRETIRED and ENABLED:</LI>
+			<UL>
+				<LI>If the signature matches, it does all the actions defined for this signature:</LI>
+				<UL>
+					<LI>If action has to deny the packet along with others, it denies the packet.</LI>
+					<LI>Else it passes the packet to higher/lower layer.</LI>
+				</UL>
+			</UL>
+		</UL>
+		<LI>If ACL DENIES the packet, the device denies the packet and returns from IPS.</LI>
+	</UL>
+	<LI>If IPS is not enabled, the device returns from IPS, does ACL match, and proceeds.</LI>
+</UL>
+
+<!-- Outside NAT -->
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How Outside NAT Works</P>
+<P class="myList">When a packet is sent out of the router port (<A href="flowcharts/outside_nat_send.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>If the received port was NOT inside nat port, or the sending port is NOT an outside nat port, or the packet header is invalid:</LI>
+	<UL>
+		<LI>It passes the packet to the lower layer - NO translation done.</LI>
+	</UL>
+	<LI>Else
+	<UL>
+		<LI>It lookups the NAT table for a matching dynamic entry for the local addresses.</LI>
+		<UL>
+			<LI>If match FOUND,</LI>
+			<UL>
+				<LI>It starts the timer.</LI>
+				<LI>It does the packet translation.</LI>
+				<LI>It passes the packet to the lower layer.</LI>
+			</UL>
+			<LI>If match NOT found
+			<UL>
+				<LI>It looks up the table for static matching entry for both source and destination.</LI>
+				<UL>
+					<LI>If match FOUND for SOURCE and DESTINATION, or if match FOUND for SOURCE only, or match FOUND for destination only</LI>
+					<UL>
+						<LI>It creates a dynamic entry in the nat table.</LI>
+						<LI>It does the packet translation.</LI>
+						<LI>It passes the packet to the lower layer.</LI>
+					</UL>
+					<LI>Else if NO match found,</LI>
+					<UL>
+						<LI>It passes the packet to the lower layer - NO translation done.</LI>
+					</UL>
+				</UL>
+			</UL>
+		</UL>
+	</UL>
+</UL>
+
+<P class="myList">When a packet is received by a router port (<A href="flowcharts/outside_nat_recv.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>If NAT is NOT configured on the received port or the received packet header is invalid</LI>
+	<UL>
+		<LI>It passes the packet to the higher layer - no translation done.</LI>
+	</UL>
+	<LI>If received port is a nat inside port</LI>
+	<UL>
+		<LI>It passes the packet to the higher layer.</LI>
+	</UL>
+	<LI>If NOT inside port, check is received port is an outside NAT port.</LI>
+	<UL>
+		<LI>If NOT outside port, it passes packet to the higher layer.</LI>
+		<LI>Else if the received port is an OUTSIDE nat port:</LI>
+		<UL>
+			<LI>It looks up the nat table for a matching dynamic entry for the global addresses:</LI>
+			<UL>
+				<LI>If match FOUND:</LI>
+				<UL>
+					<LI>It starts timer.</LI>
+					<LI>Packet is translated from global to local - Nat translation done.</LI>
+					<LI>It passes the packet to the higher layer.</LI>
+				</UL>
+				<LI>If NOT found:</LI>
+				<UL>
+					<LI>Looks up  the static matching entry for both source and destination addresses:</LI>
+					<UL>
+						<LI>If match FOUND for SOURCE and DESTINATION:</LI>
+						<UL>
+							<LI>It creates a new dynamic entry and add to the nat table.</LI>
+							<LI>It does the packet translation.</LI>
+							<LI>It passes the translated packet to the higher layer.</LI>
+						</UL>
+						<LI>Else if match FOUND only for SOURCE</LI>
+						<UL>
+							<LI>It checks whether the next hoping router port is an inside NAT port.</LI>
+							<UL>
+								<LI>If NOT:</LI>
+								<UL>
+									<LI>It passes the packet to the higher layer - No translation done.</LI>
+								</UL>
+								<LI>If the next hop port is INSIDE nat port:</LI>
+								<UL>
+									<LI>It creates a new dynamic entry and add the nat table.</LI>
+									<LI>It does the packet translation.</LI>
+									<LI>It passes the packet to the higher layer.</LI>
+								</UL>
+								<LI>Else if match FOUND only for DESTINATION:</LI>
+								<UL>
+									<LI>It creates a new dynamic entry and add to the nat table.</LI>
+									<LI>It does the packet translation.</LI>
+									<LI>It passes the translated packet to the higher layer.</LI>
+								</UL>
+							</UL>
+						</UL>
+					</UL>
+				</UL>
+			</UL>
+		</UL>
+	</UL>
+</UL>
+
+<!-- QoS -->
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How QoS Works</P>
+<P class="myList">When a packet is going out of a router interface (<A href="flowcharts/qos.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>It classifies the packet based on shaping configured.</LI>
+	<LI>If shaping configured:</LI>
+	<UL>
+		<LI>It checks if shaping is full:</LI>
+		<UL>
+			<LI>If yes, it drops the packet.</LI>
+			<LI>If no, it puts the packet in shape queue. Then it starts the timer and checks if software queue is full.</LI>
+			<UL>
+				<LI>If yes, it drops the packet.</LI>
+				<LI>If no, it puts in software queue.</LI>
+			</UL>
+		</UL>
+	</UL>
+	<LI>Else if not configured:</LI>
+	<UL>
+		<LI>It checks if the software queue is empty or not.</LI>
+		<UL>
+			<LI>If NOT EMPTY, it calculates using the Weighted Random Early Detection (WRED) whether the packet can be dropped or not. A packet is dropped if the average queue size is greater that maximum threshold or average queue size is between minimum and maximum threshold and the packet count meets the threshold mark.
+			If WRED calculates to DROP the packet:</LI>
+			<UL>
+				<LI>If yes, it drops the packet.</LI>
+				<LI>Else, it checks if the software queue is full or not:</LI>
+				<UL>
+					<LI>If FULL, it drops the packet.</LI>
+					<LI>Else, it puts the packet in the software queue.</LI>
+				</UL>
+			</UL>
+			<LI>If EMPTY:
+			<UL>
+				<LI>It checks if hardware queue is full or not:</LI>
+				<UL>
+					<LI>If FULL, it puts in software queue.</LI>
+					<LI>If NOT,</LI>
+					<UL>
+						<LI>It puts the packet the in hardware queue.</LI>
+						<LI>If the hardware queue has packet,</LI>
+						<UL>
+							<LI>It sends the packet out of the interface</LI>
+							<LI>Retrieves packets from the software queue</LI>
+							<LI>places it in the hardware queue.</LI>
+						</UL>
+					</UL>
+				</UL>
+			</UL>
+		</UL>
+	</UL>
+</UL>
+
+
+<!-- GRE -->
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How Devices Handle GRE Packets</P>
+<P class="myList">When a device sending a GRE packet (<A href="flowcharts/GRE_send.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>If a packet getting out of the device is having the same source IP address as one of the tunnel interfaces that is configured on the device:</LI>
+	<UL>
+		<LI>It encapsulates it in GRE header.</LI>
+		<LI>IP layer encapsulates the GRE header in another IP header with source and destination address of associated tunnel interface.</LI>
+	</UL>
+</UL>
+
+<P class="myList">When a device receiving a GRE packet (<A href="flowcharts/GRE_receive.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>After Ethernet and IP header are removed from the received data:</LI>
+	<UL>
+		<LI>If the receiving packet has GRE header:</LI>
+		<UL>
+			<LI>GRE header is removed and hand it in to the associated tunnel interface.</LI>
+			<LI>Tunnel interfaces pass it up to the IP layer for the further processing.</LI>
+		</UL>
+	</UL>
+</UL>
+
+<!-- ESP/AH -->
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How Routers Handle ESP/AH Segments</P>
+<P class="myList">When a router sending an ESP/AH segment (<A href="flowcharts/ESP_AH_send.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>If the packet is getting out of the device is not encrypted, and it is interested traffic, and if the outgoing port is configured with the crypto map:</LI>
+	<UL>
+		<LI>ISAKMP negotiation for security SAs:</LI>
+		<UL>
+			<LI>If Successful:</LI>
+			<UL>
+				<LI>It gets the SA for the interested flow and encapsulates the packet in the ESP packet:</LI>
+				<UL>
+					<LI>If SAs has been negotiated for AH, the router encapsulates ESP in AH segment and sends it to the lower layers to process.</LI>
+					<LI>Otherwise, it sends the ESP segment to the lower layers to process.</LI>
+				</UL>
+			</UL>
+			<LI>Otherwise, it drops the packet.</LI>
+		</UL>
+	</UL>
+</UL>
+
+<P class="myList">When a router receiving an ESP/AH segment (<A href="flowcharts/ESP_AH_recv.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>If the packet receiving on the port is ESP/AH packet.</LI>
+	<UL>
+		<LI>If the port is not configured with a crypto map command, it drops the packet.</LI>
+		<LI>Otherwise</LI>
+		<UL>
+			<LI>If the ESP/AH packet has matching ESP/AH SA numbers:</LI>
+			<UL>
+				<LI>If packet is encapsulated in AH, AH authenticates the packet and removes the AH header and pass the packet to ESP.</LI>
+				<LI>ESP decrypts the packet and removes the ESP header. Also it passes the decrypted packet to the next layer of data for further processing.</LI>
+			</UL>
+			<LI>Otherwise, it increments the error counter for the specific flow that matches the packet and drops the packet</LI>
+		</UL>
+	</UL>
+</UL>
+
+
+
+</body>
+</html>

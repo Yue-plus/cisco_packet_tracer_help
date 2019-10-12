@@ -1,0 +1,1220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Simulation Mode</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleQoS.css">
+	</head>
+	<body>
+
+
+<p class="MainHeading1">Simulation Mode</p>
+<hr>
+<p>In Simulation Mode, you can watch your network run at a slower pace, observing the paths that packets take and inspecting them in detail.</p>
+<p>When you switch to <strong>Simulation Mode</strong>, the Simulation Panel will appear. You can graphically create PDUs to send between devices using the <strong>Add Simple PDU</strong> button and then pressing the <strong>Auto Capture / Play</strong> button to start the simulation scenario. The <strong>Event List</strong> window records (or "captures") what happens as your PDU propagates through the network. You can control the speed of the simulation by using the <strong>Play Speed Slider</strong>. Pressing the <strong>Auto Capture / Play</strong> toggle button again will pause the simulation. If you need greater control of the simulation, use <strong>Capture / Forward</strong> button to manually run the simulation forward one step in time. You can use the <strong>Back</strong> button to revisit a previous timeframe and view the events that occurred then.</p>
+<table class="tableTip">
+  <tr>
+    <td class="TDtableTip">When your instance of Packet Tracer is connected to a Multiuser remote peer, you will not be able to switch to Simulation Mode. When you attempt to switch to Simulation Mode, you will be prompted to save an offline copy that is to be opened in a new instance of Packet Tracer. Clicking Yes will cause Packet Tracer to use the current offline saving settings to create an offline save and open it in a new Packet Tracer instance immediately. From there, you will be able to use Simulation Mode to examine packets in detail.</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>You can clear and restart the scenario with the <strong>Reset Simulation</strong> button, which clears all entries in the Event List.</p>
+<p>Note that while a simulation is playing, you may see packets that you did not create yourself. That is because some devices can generate their own packets (such as EIGRP packets) as the network runs. You may also see a <strong>QoS Stamp</strong> on packets as well, which is described in detail in the &quot;QoS Stamp&quot; section below. You can see what types of packets are being propagated in the network by looking at the <strong>Type</strong> field in the Event List. You can choose to hide these packets from view by clicking on the <strong>Edit Filters</strong> button and unchecking the appropriate filter from the menu that appears. To show all types of packets, simply click on the <strong>Show All</strong> button to re-enable them all. You can also create your own <strong>ACL Filter</strong> by clicking on the <strong>Edit ACL Filters</strong> button in the Edit Filters menu. In the <strong>ACL Filters</strong> dialog, you can create a <strong>New</strong> ACL Filter, <strong>Delete</strong> an ACL Filter, and <strong>Submit</strong> extended ACL statements to an ACL Filter.</p>
+<p class="myPic">
+<img src="images/mode_simulation_1.jpg">
+</p>
+<p>You can also hide the <strong>Event List</strong> (and the entire Simulation Panel) with the <strong>Event List</strong> button in the Simulation Bar. You will still have access to the <strong>Play Controls</strong> on the bar.</p>
+<p class="myPic">
+<img src="images/mode_simulation_2.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">The Event List and Time Flow of Events</p>
+<p class="myList">Packet Tracer simulations do not run on a linear time scale. Time is determined by the events that occur. An event can be defined as any instance of a PDU that is generated in the network. The Event List keeps track of all such PDU instances and lists their information in various fields:</p>
+<p class="myList">&nbsp;</p>
+<ul>
+  <li><strong>Visible:</strong> An "eye" icon in the field means that an event is happening at the current simulation time. Whatever packets that are currently visible in the scenario animation will have this icon in the field.</li>
+  <li><strong>Time:</strong> This field indicates the time (in seconds) at which the event occurred, relative to the last time the simulation scenario restarted. This field is also the simulation time index.</li>
+  <li><strong>Last Device:</strong> This field indicates the previous location of the packet.</li>
+  <li><strong>At Device:</strong> This field indicates the current location of the packet.</li>
+  <li><strong>Type:</strong> This field indicates the packet type (ACL Filter, ARP, BGP, CDP, DHCP, DNS, DTP, EIGRP, FTP, H.323, HTTP, HTTPS, ICMP, ICMPv6, IPSec, ISAKMP, LACP, NTP, OSPF, PAgP, POP3, RADIUS, RIP, RTP, SCCP, SMTP, SNMP, SSH, STP, SYSLOG, TACACS, TCP, TFTP, Telnet, UDP, and VTP).</li>
+  <li><strong>Info:</strong> This field shows detailed information about the packet instance, broken up into each layer of the OSI model. Learn more about this field in the "PDU info" page.</li>
+</ul>
+<table class="tableTip">
+  <tr>
+    <td class="TDtableTip">You can rearrange each of these fields in the Event List by dragging the title of a field to the desired position.</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>Some events occur very frequently, happening every few milliseconds. Some events occur very infrequently, happening every minute or so. On the workspace, network events appear to happen one after another at the same speed (set by the slider), when actually they may be separated by milliseconds or by minutes. You can keep track of event timing by looking at the <strong>Time</strong> field in the Event List. Time only advances when there are events to be captured. If the network has no further events, time will essentially halt (until the next event occurs). The <strong>Auto Capture Indicator</strong> will tell you where the Event List stopped recording. You can enforce a constant delay of 1 ms between events by using the <strong>Constant Delay</strong> option. If this option is off, various factors will contribute to the overall delay of the event: transmission delay, propagation delay, and a randomly injected process delay.</p>
+<table class="tableTip">
+  <tr>
+    <td class="TDtableTip">If you filter out some type of PDUs on the Event List Filters, they will not show up on the Event List. They are still in the network; you just do not see them. The simulation runs more quickly because you will not see the filtered events, but all filtered PDUs still affect the network.</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="MainHeading2">Restarting a Scenario</p>
+<p class="myList">Whenever a simulation restarts, the simulation time resets to 0.000 and the Event List is cleared. You will restart the simulation if you do any of the following:</p>
+<p class="myList">&nbsp;</p>
+<ul>
+  <li>Click the <strong>Reset Simulation</strong> button.</li>
+  <li>Click the <strong>Power Cycle Devices</strong> button.</li>
+  <li>Switching to <strong>Realtime Mode</strong> (and switching back).</li>
+  <li>Modify the network in some way, such as deleting a device, adding a device, and changing the configuration on a device.</li>
+  <li>Enter any command in the global configuration mode of a device (in the CLI).</li>
+  <li>Switch to another scenario (see the "Managing Simulation Scenarios" section below).</li>
+  <li>Remove a PDU from the <strong>Protocol Data Units List</strong> (see the "Managing Simulation Scenarios" page).</li>
+</ul>
+<table class="tableTip">
+  <tr>
+    <td class="TDtableTip">Restarting a simulation does not erase current or scheduled PDU processes; it simply pauses the simulation and removes the visual clutter of events currently displayed on the Event List. The only way to remove PDU processes is from the <strong>User Created Packet Window</strong> (discussed on the "Managing Simulation Scenarios" page).</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="MainHeading2">Sending Simple PDUs (Ping)</p>
+<p>In Packet Tracer, the <strong>Add Simple PDU</strong> button is essentially a quick, graphical way to send one-shot pings. You can send pings between devices that have at least one interface with an IP address. To send a ping, click the <strong>Add Simple PDU</strong> button (the cursor changes to a "packet" icon), click on the source device, and then click on the destination device. Note that pings will only work if the devices have configured ports. After you make the request, the source device will queue an ICMP or ARP packet (or both), which will be on standby until you click the <strong>Auto Capture / Play</strong> or <strong>Capture / Forward</strong> button. When you click one of these buttons, the packets will start moving and you can observe the ping process. You may want to hide certain types of packets in the <strong>Event List Filters</strong> to avoid being confused by other packets in the network that you do not wish to observe.</p>
+<p>You can keep track of all of the PDUs you created with the <strong>Add Simple PDU</strong> button in the <strong>User Created Packet Window</strong>. See the "Scenarios" page for more information.</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">QoS Stamps</p>
+<p><strong>QoS Stamps</strong> are visual indicators that the ToS/DiffServ (ToS = Type of Service, DiffServ = Differentiated Services) field has been set in the IP header. Usually this field is 0, but a value other than  0 will cause a color to appear. It does not indicate that it will be processed in any special way or that anything in particular will happen to it. It is just a marker that says "this field is different."</p>
+<p>Qos Stamps are useful in that it is one way a QoS algorithm will tag packets as they pass through the interface for processing into queues on the other end. Setting the ToS/DiffServ field on the packet means that the router can check that value later when looking to put packets into certain priority queues. Marking the packets at the edge means that the core routers can treat them however they need to without guessing at the intended priority level. The reason it is referred to as a ToS/DiffServ field is that the field was originally called the TOS field which contained IP precedence bits. That was obsolete by the DiffServ field, which uses a DSCP (Differentiated Services Code Point). This is the 6 most significant bits in that field. The other two bits serve other purposes for congestion notifications. So, the proper name for those 6 bits is the "Differentiated Services Code Point," but they can also be modified by precedence or things that set the Type of Service. So, all still apply.</p>
+<p>Packet Tracer will only display QoS Stamps in Simulation Mode and when the ToS/Diffserv field has been set. This field can be set by using the <strong>Traffic Generator</strong> utility on an end device, the <strong>ping</strong> command on an end device, <strong>extended ping</strong> on a router, or the <strong>set</strong> commands for class-maps inside a policy-map. When using the ping command  or Traffic Generator, this value sets the entire ToS field in the header. The  <strong>ToS/DiffServ Color Table</strong>, which is shown below, only goes up to 64 values because the two least  significant bits are reserved and not used to show the colors. Because of this,  it is necessary to bit-shift your value two places to the left. The easiest way  to do this is to multiply your given ToS value twice. So, if you have the value  1, 1 * 2 = 2, 2 * 2 = 4. Or, for the value 5, 5 * 2 = 10, 10 * 2 = 20.</p>
+<p> To read the ToS/DiffServ Color Table, look at the column labeled <strong>S0-D2</strong>. The values range from 0-63. When the number is 0, the color is empty (no QoS Stamp). The other colors presented there are what will show up when the ToS field takes on that  value. Remember, if you use ping or the Traffic Generator utility, you have to multiply  that number by two (e.g., to see the first ping color you need to multiply 8 * 2  = 16, 16 * 2 = 32. So, set the value 32 into the ToS field).</p>
+<table class="reference" border="1">
+  <col width="33" span="8">
+  <col width="54">
+  <col width="213">
+  <col width="44">
+  <col width="46">
+  <col width="44">
+  <col width="96">
+  <col width="75">
+  <tr height="20">
+    <td colspan="8" height="20" width="264"><center>TOS/DiffServ Bits</center></td>
+    <td width="54">&nbsp;</td>
+    <td width="213">&nbsp;</td>
+    <td width="44">&nbsp;</td>
+    <td width="46">&nbsp;</td>
+    <td width="44">&nbsp;</td>
+    <td width="96">&nbsp;</td>
+    <td width="75">&nbsp;</td>
+  </tr>
+  <tr height="20">
+    <td height="20">S0</td>
+    <td>S1</td>
+    <td>S2</td>
+    <td>D0</td>
+    <td>D1</td>
+    <td>D2</td>
+    <td>ECT</td>
+    <td>CE</td>
+    <td>S0-D2</td>
+    <td>Meaning</td>
+    <td>Red</td>
+    <td>Green</td>
+    <td>Blue</td>
+    <td>Color</td>
+    <td>Hex</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td>Default Precedence</td>
+    <td align="right">255</td>
+    <td align="right">255</td>
+    <td align="right">255</td>
+    <td bgcolor="#FFFFFF">&nbsp;</td>
+    <td>0xFFFFFF</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td>Local Use</td>
+    <td align="right">40</td>
+    <td align="right">40</td>
+    <td align="right">40</td>
+    <td bgcolor="#282828">&nbsp;</td>
+    <td>0x282828</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">2</td>
+    <td>Local Use</td>
+    <td align="right">45</td>
+    <td align="right">45</td>
+    <td align="right">45</td>
+    <td bgcolor="#2D2D2D">&nbsp;</td>
+    <td>0x2D2D2D</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">3</td>
+    <td>Local Use</td>
+    <td align="right">50</td>
+    <td align="right">50</td>
+    <td align="right">50</td>
+    <td bgcolor="#323232">&nbsp;</td>
+    <td>0x323232</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">4</td>
+    <td>Local Use</td>
+    <td align="right">55</td>
+    <td align="right">55</td>
+    <td align="right">55</td>
+    <td bgcolor="#373737">&nbsp;</td>
+    <td>0x373737</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">5</td>
+    <td>Local Use</td>
+    <td align="right">60</td>
+    <td align="right">60</td>
+    <td align="right">60</td>
+    <td bgcolor="#3C3C3C">&nbsp;</td>
+    <td>0x3C3C3C</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">6</td>
+    <td>Local Use</td>
+    <td align="right">65</td>
+    <td align="right">65</td>
+    <td align="right">65</td>
+    <td bgcolor="#414141">&nbsp;</td>
+    <td>0x414141</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">7</td>
+    <td>Local Use</td>
+    <td align="right">70</td>
+    <td align="right">70</td>
+    <td align="right">70</td>
+    <td bgcolor="#464646">&nbsp;</td>
+    <td>0x464646</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">8</td>
+    <td>Priority Precedence</td>
+    <td align="right">255</td>
+    <td align="right">0</td>
+    <td align="right">255</td>
+    <td bgcolor="#FF00FF">&nbsp;</td>
+    <td>0xFF00FF</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">9</td>
+    <td>Local Use</td>
+    <td align="right">75</td>
+    <td align="right">75</td>
+    <td align="right">75</td>
+    <td bgcolor="#4B4B4B">&nbsp;</td>
+    <td>0x4B4B4B</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">10</td>
+    <td>AF11 (Class 1 - Low    Drop)</td>
+    <td align="right">255</td>
+    <td align="right">200</td>
+    <td align="right">200</td>
+    <td bgcolor="#FFC8C8">&nbsp;</td>
+    <td>0xFFC8C8</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">11</td>
+    <td>Local Use</td>
+    <td align="right">80</td>
+    <td align="right">80</td>
+    <td align="right">80</td>
+    <td bgcolor="#505050">&nbsp;</td>
+    <td>0x505050</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">12</td>
+    <td>AF12 (Class 1 - Med    Drop)</td>
+    <td align="right">255</td>
+    <td align="right">110</td>
+    <td align="right">110</td>
+    <td bgcolor="#FF6E6E">&nbsp;</td>
+    <td>0xFF6E6E</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">13</td>
+    <td>Local Use</td>
+
+    <td align="right">85</td>
+    <td align="right">85</td>
+    <td align="right">85</td>
+    <td bgcolor="#555555">&nbsp;</td>
+    <td>0x555555</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">14</td>
+    <td>AF13 (Class 1 - High    Drop)</td>
+    <td align="right">255</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td bgcolor="#FF0000">&nbsp;</td>
+    <td>0xFF0000</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">15</td>
+    <td>Local Use</td>
+    <td align="right">90</td>
+    <td align="right">90</td>
+    <td align="right">90</td>
+    <td bgcolor="#5A5A5A">&nbsp;</td>
+    <td>0x5A5A5A</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">16</td>
+    <td>Immediate Precedence</td>
+    <td align="right">128</td>
+    <td align="right">255</td>
+    <td align="right">255</td>
+    <td bgcolor="#80FFFF">&nbsp;</td>
+    <td>0x80FFFF</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">17</td>
+    <td>Local Use</td>
+    <td align="right">95</td>
+    <td align="right">95</td>
+    <td align="right">95</td>
+    <td bgcolor="#5F5F5F">&nbsp;</td>
+    <td>0x5F5F5F</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">18</td>
+    <td>AF21 (Class 2 - Low    Drop)</td>
+    <td align="right">200</td>
+    <td align="right">255</td>
+    <td align="right">200</td>
+    <td bgcolor="#C8FFC8">&nbsp;</td>
+    <td>0xC8FFC8</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">19</td>
+    <td>Local Use</td>
+    <td align="right">100</td>
+    <td align="right">100</td>
+    <td align="right">100</td>
+    <td bgcolor="#646464">&nbsp;</td>
+    <td>0x646464</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">20</td>
+    <td>AF22 (Class 2 - Med    Drop)</td>
+    <td align="right">150</td>
+    <td align="right">255</td>
+    <td align="right">150</td>
+    <td bgcolor="#96FF96">&nbsp;</td>
+    <td>0x96FF96</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">21</td>
+    <td>Local Use</td>
+    <td align="right">105</td>
+    <td align="right">105</td>
+    <td align="right">105</td>
+    <td bgcolor="#696969">&nbsp;</td>
+    <td>0x696969</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">22</td>
+    <td>AF23 (Class 2 - High    Drop)</td>
+    <td align="right">0</td>
+    <td align="right">255</td>
+    <td align="right">0</td>
+    <td bgcolor="#00FF00">&nbsp;</td>
+    <td>0x00FF00</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">23</td>
+    <td>Local Use</td>
+    <td align="right">110</td>
+    <td align="right">110</td>
+    <td align="right">110</td>
+    <td bgcolor="#6E6E6E">&nbsp;</td>
+    <td>0x6E6E6E</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">24</td>
+    <td>Flash Precedence</td>
+    <td align="right">128</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td bgcolor="#800000">&nbsp;</td>
+    <td>0x800000</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">25</td>
+    <td>Local Use</td>
+    <td align="right">115</td>
+    <td align="right">115</td>
+    <td align="right">115</td>
+    <td bgcolor="#737373">&nbsp;</td>
+    <td>0x737373</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">26</td>
+    <td>AF31 (Class 3 - Low    Drop)</td>
+    <td align="right">190</td>
+    <td align="right">190</td>
+    <td align="right">255</td>
+    <td bgcolor="#BEBEFF">&nbsp;</td>
+    <td>0xBEBEFF</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">27</td>
+    <td>Local Use</td>
+    <td align="right">120</td>
+    <td align="right">120</td>
+    <td align="right">120</td>
+    <td bgcolor="#787878">&nbsp;</td>
+    <td>0x787878</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">28</td>
+    <td>AF32 (Class 3 - Med    Drop)</td>
+    <td align="right">110</td>
+    <td align="right">110</td>
+    <td align="right">255</td>
+    <td bgcolor="#6E6EFF">&nbsp;</td>
+    <td>0x6E6EFF</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">29</td>
+    <td>Local Use</td>
+    <td align="right">125</td>
+    <td align="right">125</td>
+    <td align="right">125</td>
+    <td bgcolor="#7D7D7D">&nbsp;</td>
+    <td>0x7D7D7D</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">30</td>
+    <td>AF33 (Class 3 - High    Drop)</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">255</td>
+    <td bgcolor="#0000FF">&nbsp;</td>
+    <td>0x0000FF</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">31</td>
+    <td>Local Use</td>
+    <td align="right">130</td>
+    <td align="right">130</td>
+    <td align="right">130</td>
+    <td bgcolor="#828282">&nbsp;</td>
+    <td>0x828282</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">32</td>
+    <td>Flash Override    Precedence</td>
+    <td align="right">0</td>
+    <td align="right">128</td>
+    <td align="right">0</td>
+    <td bgcolor="#008000">&nbsp;</td>
+    <td>0x008000</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">33</td>
+    <td>Local Use</td>
+    <td align="right">135</td>
+    <td align="right">135</td>
+    <td align="right">135</td>
+    <td bgcolor="#878787">&nbsp;</td>
+    <td>0x878787</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">34</td>
+    <td>AF41 (Class 4 - Low    Drop)</td>
+    <td align="right">255</td>
+    <td align="right">255</td>
+    <td align="right">200</td>
+    <td bgcolor="#FFFFC8">&nbsp;</td>
+    <td>0xFFFFC8</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">35</td>
+    <td>Local Use</td>
+    <td align="right">140</td>
+    <td align="right">140</td>
+    <td align="right">140</td>
+    <td bgcolor="#8C8C8C">&nbsp;</td>
+    <td>0x8C8C8C</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">36</td>
+    <td>AF42 (Class 4 - Med    Drop)</td>
+    <td align="right">255</td>
+    <td align="right">255</td>
+    <td align="right">150</td>
+    <td bgcolor="#FFFF96">&nbsp;</td>
+    <td>0xFFFF96</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">37</td>
+    <td>Local Use</td>
+    <td align="right">145</td>
+    <td align="right">145</td>
+    <td align="right">145</td>
+    <td bgcolor="#919191">&nbsp;</td>
+    <td>0x919191</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">38</td>
+    <td>AF43 (Class 4 - High    Drop)</td>
+    <td align="right">255</td>
+    <td align="right">255</td>
+    <td align="right">0</td>
+    <td bgcolor="#FFFF00">&nbsp;</td>
+    <td>0xFFFF00</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">39</td>
+    <td>Local Use</td>
+    <td align="right">150</td>
+    <td align="right">150</td>
+    <td align="right">150</td>
+    <td bgcolor="#969696">&nbsp;</td>
+    <td>0x969696</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">40</td>
+    <td>CRITIC/ECP Precedence</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">128</td>
+    <td bgcolor="#000080">&nbsp;</td>
+    <td>0x000080</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">41</td>
+    <td>Local Use</td>
+    <td align="right">155</td>
+    <td align="right">155</td>
+    <td align="right">155</td>
+    <td bgcolor="#9B9B9B">&nbsp;</td>
+    <td>0x9B9B9B</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">42</td>
+    <td>Local Use</td>
+    <td align="right">160</td>
+    <td align="right">160</td>
+    <td align="right">160</td>
+    <td bgcolor="#A0A0A0">&nbsp;</td>
+    <td>0xA0A0A0</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">43</td>
+    <td>Local Use</td>
+    <td align="right">165</td>
+    <td align="right">165</td>
+    <td align="right">165</td>
+    <td bgcolor="#A5A5A5">&nbsp;</td>
+    <td>0xA5A5A5</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">44</td>
+    <td>Local Use</td>
+    <td align="right">170</td>
+    <td align="right">170</td>
+    <td align="right">170</td>
+    <td bgcolor="#AAAAAA">&nbsp;</td>
+    <td>0xAAAAAA</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">45</td>
+    <td>Local Use</td>
+    <td align="right">175</td>
+    <td align="right">175</td>
+    <td align="right">175</td>
+    <td bgcolor="#AFAFAF">&nbsp;</td>
+    <td>0xAFAFAF</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">46</td>
+    <td>Expedited Forwarding</td>
+    <td align="right">128</td>
+    <td align="right">0</td>
+    <td align="right">128</td>
+    <td bgcolor="#800080">&nbsp;</td>
+    <td>0x800080</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">47</td>
+    <td>Local Use</td>
+    <td align="right">180</td>
+    <td align="right">180</td>
+    <td align="right">180</td>
+    <td bgcolor="#B4B4B4">&nbsp;</td>
+    <td>0xB4B4B4</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">48</td>
+    <td>Internetwork Control    Precedence</td>
+    <td align="right">128</td>
+    <td align="right">128</td>
+    <td align="right">0</td>
+    <td bgcolor="#808000">&nbsp;</td>
+    <td>0x808000</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">49</td>
+    <td>Local Use</td>
+    <td align="right">185</td>
+    <td align="right">185</td>
+    <td align="right">185</td>
+    <td bgcolor="#B9B9B9">&nbsp;</td>
+    <td>0xB9B9B9</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">50</td>
+    <td>Local Use</td>
+    <td align="right">185</td>
+    <td align="right">185</td>
+    <td align="right">185</td>
+    <td bgcolor="#B9B9B9">&nbsp;</td>
+    <td>0xB9B9B9</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">51</td>
+    <td>Local Use</td>
+    <td align="right">190</td>
+    <td align="right">190</td>
+    <td align="right">190</td>
+    <td bgcolor="#BEBEBE">&nbsp;</td>
+    <td>0xBEBEBE</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">52</td>
+    <td>Local Use</td>
+    <td align="right">195</td>
+    <td align="right">195</td>
+    <td align="right">195</td>
+    <td bgcolor="#C3C3C3">&nbsp;</td>
+    <td>0xC3C3C3</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">53</td>
+    <td>Local Use</td>
+    <td align="right">200</td>
+    <td align="right">200</td>
+    <td align="right">200</td>
+    <td bgcolor="#C8C8C8">&nbsp;</td>
+    <td>0xC8C8C8</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">54</td>
+    <td>Local Use</td>
+    <td align="right">205</td>
+    <td align="right">205</td>
+    <td align="right">205</td>
+    <td bgcolor="#CDCDCD">&nbsp;</td>
+    <td>0xCDCDCD</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">55</td>
+    <td>Local Use</td>
+    <td align="right">210</td>
+    <td align="right">210</td>
+    <td align="right">210</td>
+    <td bgcolor="#D2D2D2">&nbsp;</td>
+    <td>0xD2D2D2</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">56</td>
+    <td>Network Control    Precedence</td>
+    <td align="right">0</td>
+    <td align="right">128</td>
+    <td align="right">128</td>
+    <td bgcolor="#008080">&nbsp;</td>
+    <td>0x008080</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">57</td>
+    <td>Local Use</td>
+    <td align="right">215</td>
+    <td align="right">215</td>
+    <td align="right">215</td>
+    <td bgcolor="#D7D7D7">&nbsp;</td>
+    <td>0xD7D7D7</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">58</td>
+    <td>Local Use</td>
+    <td align="right">220</td>
+    <td align="right">220</td>
+    <td align="right">220</td>
+    <td bgcolor="#DCDCDC">&nbsp;</td>
+    <td>0xDCDCDC</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">59</td>
+    <td>Local Use</td>
+    <td align="right">225</td>
+    <td align="right">225</td>
+    <td align="right">225</td>
+    <td bgcolor="#E1E1E1">&nbsp;</td>
+    <td>0xE1E1E1</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">60</td>
+    <td>Local Use</td>
+    <td align="right">230</td>
+    <td align="right">230</td>
+    <td align="right">230</td>
+    <td bgcolor="#E6E6E6">&nbsp;</td>
+    <td>0xE6E6E6</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">61</td>
+    <td>Local Use</td>
+    <td align="right">235</td>
+    <td align="right">235</td>
+    <td align="right">235</td>
+    <td bgcolor="#EBEBEB">&nbsp;</td>
+    <td>0xEBEBEB</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">62</td>
+    <td>Local Use</td>
+    <td align="right">240</td>
+    <td align="right">240</td>
+    <td align="right">240</td>
+    <td bgcolor="#F0F0F0">&nbsp;</td>
+    <td>0xF0F0F0</td>
+  </tr>
+  <tr height="20">
+    <td height="20" align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">63</td>
+    <td>Local Use</td>
+    <td align="right">245</td>
+    <td align="right">245</td>
+    <td align="right">245</td>
+    <td bgcolor="#F5F5F5">&nbsp;</td>
+    <td>0xF5F5F5</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>To find out what type of QoS Stamp is shown in Simulation Mode, look at the second screenshot above as an example. You can see that there is a QoS Stamp on the EIGRP packet that is at QoS_Router. Click on the EIGRP packet where the QoS Stamp appears  to open the EIGRP packet's PDU information. Next, click on the Outbound PDU Details tab to reveal the headers in the EIGRP packet (refer to the "PDU Information" page for more details). The field that determines the QoS Stamp's type is the <strong>DSCP</strong> field. In this EIGRP packet, the DSCP value is 0xe0, which is a hexadecimal value. This hexadecimal value needs to be converted into decimal, which is 224. However, 224 is not in S0-D2 column in the ToS/DiffServ color table. This is because the value has been bit-shifted  two places to the left. As a result, it is necessary to unshift  the value in order to use the ToS/DiffServ Color Table. To do this,  take the DSCP value and divide it twice. In this example,  since the value is 224, 224 / 2 = 112, 112 / 2 = 56. For the value of 56, the S0-D2 column in the ToS/DiffServ Color Table indicates that this QoS Stamp is a Network Control Precedence type.</p>
+<p class="myPic">
+<img src="images/mode_simulation_3.jpg">
+</p>
+<p>&nbsp;</p>
+<table class="tableTip">
+  <tr>
+    <td class="TDtableTip">By default, Packet Tracer shows QoS Stamps in Simulation Mode. To prevent QoS Stamps from appearing, go to <strong>Preferences</strong> and uncheck <strong>Show QoS Stamps on Packets</strong>.</td>
+  </tr>
+</table>
+</body>
+</html>

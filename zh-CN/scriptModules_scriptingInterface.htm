@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Script Modules</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+
+<p class="MainHeading1">Script Modules - Scripting Interface</p>
+<hr>
+
+<p>The Scripting Interface is the Script Module development environment inside PT.  This is extended from the Scripting page in the Activity Wizard.  If editing a File Script Module, open the pka/pkt file in PT, and go to Extensions->Scripting->Edit File Script Module to bring it up.  If editing a PT Script Module, go to Extensions->Scripting->Configure PT Script Module, add it to PT, and click the Edit button.  If creating a new Script Module, go to Extensions->Scripting->New PT Script Module.</p>
+<p>The Scripting Interface is divided into 6 parts, and the Script Module developer would generally use them in the following order.</p>
+<p>&nbsp;</p>
+
+<p class="MainHeading2">Info Tab</p>
+<p>The first screen after entering the Scripting Interface gives some basic information about Script Modules and the general steps to create a Script Module.  It also provides actions associated with each step.  The first step is to select a Script Module template.  The templates will include Script Modules that PT ships with, such as the PC software/services interface, chat, and visualization modules, as well as others.  This can help developers get a jump-start on a new Script Module, or it can be used to undo their changes if they make too many mistakes.  This replaces the Defaults button in the Activity Wizard Scripting page. </p>
+<p class="myPic">
+<img src="images/scriptModules_info.jpg">
+</p>
+<p>&nbsp;</p>
+
+<p class="MainHeading2">General Tab</p>
+<p>The General tab is used to fill out information about the Script Module.  The Info fields at the top of the page are for identifying and describing the Script Module.  The ID should be unique, and is used for saving, messaging, as well as many other important functions in PT.  Because Cisco or PT cannot guarantee the uniqueness of IDs, we recommend using the hierarchical naming pattern, for example: com.yourcompany.scriptModule1.  The password fields are used to lock the Script Module so other people cannot see or edit the Script Module.  If the file saved is an activity file, the activity password is used instead.</p>
+<p class="myPic">
+<img src="images/scriptModules_general.jpg">
+</p>
+<p>&nbsp;</p>
+
+<p class="MainHeading3">Publisher Signing</p>
+<p>In cryptography, PKCS #12 defines an archive file format for storing many cryptography objects as a single file. It is commonly used to bundle a private key with its X.509 certificate or to bundle all the members of a chain of trust.</p>
+<p>These files can be created, parsed and read out such programs such as the OpenSSL pkcs12.</p>
+
+<p class="MainHeading3">Startup</p>
+<p>The Startup configuration section defines how the Script Module will start up.</p>
+<p>If this is a PT Script Module:</p>
+<p><strong>On Startup</strong>: when PT starts, the Script Module will start.</p>
+<p><strong>On Demand</strong>: starts in the following cases:</p>
+<ul>
+    <li>a file opens and it has save data for this Script Module</li>
+    <li>a web view is loading one of the custom interfaces in this Script Module</li>
+    <li>a message from another Script Module or ExApp is destined to this Script Module</li>
+</ul>
+<p><strong>Disabled</strong>: the Script Module will not be started under any cases.</p>
+<p>A File Script Module will always start when the file opens.</p>
+<p>&nbsp;</p>
+
+<p class="MainHeading3">Security Privileges</p>
+<p>The security privileges indicate which IPC calls this Script Module can make.  Calls to unselected privileges will be denied.  A developer should select only the privileges required for this Script Module to run.  Selecting more than the required privileges may lead users to think this Script Module is doing more than described and it could be seen as a malicious Script Module.</p>
+<p>After adding a Script Module, the user can look at the security privileges required, and may remove the Script Module if s/he feels unsafe about the requested privileges.</p>
+<p>When a pka/pkt file containing a File Script Module is loaded, the user will be prompted to allow it to run. If the user does not allow the script to run, one of the following actions will take place as defined by the developer:</p>
+<ul>
+    <li>Continue loading the file - this may lead to a nonfunctional file because none of the IPC calls are allowed now; this may be desirable if the developer still wants the file contents like the network to be accessed by the user.</li>
+    <li>Stop loading the file - this will make sure the file loaded will have access to the requested privileges; this is useful for example, a time expiration for a pka/pkt file.</li>
+</ul>
+<p>&nbsp;</p>
+
+<p class="MainHeading2">Script Engine Tab</p>
+<p>This tab is used to add, remove, edit, rename, import, and export script engine files.  Script engine files are scripts written in ECMAScript (Javascript) language.  The text editor allows editing the selected file in the Scripting Interface.  Or if the developer chooses, s/he can edit the files in an external editor using the #include preprocessor directive.  The #include directive loads external files inline into the script engine files.  Each script file can include multiple external files.  However, the included external files cannot include a reference to another external file. The Script Module only resolves the first level of included external files to prevent file inclusion loops.  When saving or exporting a Script Module with the #include directive, it will prompt the developer to resolve and expand them inline.  This should be done before distributing the pts file so only the pts file needs to be distributed.  But for the developing version, it should not resolve them so the developer can continue to use external editors to edit external files.</p>
+<table class="tableCode">
+  <tr>
+    <td class="TDtableCode">#include "chat.js"
+    </td>
+  </tr>
+</table>
+<p></p>
+<p class="myPic">
+<img src="images/scriptModules_scriptEngine.jpg">
+</p>
+<p>The Script Engine tab also has some feature buttons to make debugging a Script Module easier.  These feature buttons are:</p>
+<ul>
+    <li><strong>Run File</strong> - runs (evaluates) the currently editing file in the script engine; this makes it easier to load new values and behavior into the script engine without having to stop and start the Script Module; but be careful with this action because the script engine can now be in an unstable state.</li>
+    <li><strong>Start/Stop</strong> - starts and stops the Script Module</li>
+    <li><strong>Debug</strong> - brings up the Debug Dialog for this Script Module</li>
+</ul>
+<p>&nbsp;</p>
+
+<p class="MainHeading2">Custom Interfaces Tab</p>
+<p>This tab is used to add, remove, edit, rename, import, and export custom interface files.  Custom interfaces are coded in html, css, images, and js.  The js files are included in html files, and they are different from the js files in the script engine.  Imported images can be displayed in the text editor.  If the developer chooses, s/he can edit the files in an external editor using the #include preprocessor directive.  See previous section.</p>
+<p class="myPic">
+<img src="images/scriptModules_customInterfaces.jpg">
+</p>
+<p>&nbsp;</p>
+
+<p class="MainHeading2">Data Store Tab</p>
+<p>This tab is used to add, remove, edit, rename, import, and export data store files.  The data store has a list of data files represented in json, xml, csv, or any plain text format.  They can be treated as files or as a hash table.  Data can be added when developing the Script Module and it can also be added, removed, and edited dynamically during run time by the Script Module. See Data Store section later on this page.</p>
+<p class="myPic">
+<img src="images/scriptModules_dataStore.jpg">
+</p>
+<p>&nbsp;</p>
+
+<p class="MainHeading2">Debug Dialog</p>
+<p>Script Modules can be debugged (primitively) in PT.  Debugging is launched using the Debug button in the Info, Script Engine, Custom Interface, or Data Store tab.  Each Script Module has its own debug dialog that accesses only the Script Module.  Statements can be entered into the input field, and they will be evaluated in the script engine.  The <strong>dprint()</strong> function is available in the Script Engine, as well as in web views to print out a debug message in the Debug Dialog.</p>
+<p>&nbsp;</p>
+
+
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Layer 5 Models</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+		<p class="MainHeading1">Layer 5 Models</p>
+		<hr>
+
+<!-- ISAKMP -->
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How Routers Handle ISAKMP Segments</P>
+<P class="myList">When a router sends an ISAKMP segment (<A href="flowcharts/ISAKMP_send.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>If a packet is getting out of the device is not encrypted, and it is an interesting traffic, and also if the outgoing port is configured with a crypto map command:</LI>
+	<LI>ISAKMP initiates the negotiation for the first peer. It starts from the lowest crypto map sequence number and tries to negotiate with all peers in the list until the first success.</LI>
+	<UL>
+		<LI>If an IKE peer with the same IP is not configured, the initiator starts phase I negotiation.</LI>
+		<UL>
+			<LI>The initiator device sends out the first packet of negotiation by encapsulating all the ISAKMP policies that have been configured with.</LI>
+			<LI>The responder device sends out the second message of negotiation by</LI>
+			<UL>
+				<LI>If match found, it encapsulates the matched policy.</LI>
+				<LI>Otherwise, sends a packet to tell the peer to discontinue the negotiation.</LI>
+			</UL>
+			<LI>The initiator device sends out the third message:</LI>
+			<UL>
+				<LI>If no match, it deletes the IKE peer.</LI>
+				<LI>Otherwise, it sends the third message which includes the nonce numbers and the key for the peer to calculate DH values.</LI>
+			</UL>
+			<LI>The responder device sends out the fourth message:</LI>
+			<UL>
+				<LI>Sends out its nonce numbers and the key to the peer</LI>
+			</UL>
+			<LI>The initiator device sends the fifth message:</LI>
+			<UL>
+				<LI>Encrypts the identity of the receiver with the DH key and sends it to the peer.</LI>
+			</UL>
+			<LI>The responder sends the sixth message:</LI>
+			<UL>
+				<LI>Encrypts the identity of the sender with DH key and sends it to the peer.</LI>
+			</UL>
+		</UL>
+	</UL>
+	<LI>Otherwise phase II:</LI>
+	<UL>
+		<LI>The initiator device encrypts the SA payload with the DH key calculated in the phase I, encapsulates it in an ISAKMP and sends it to the peer.</LI>
+		<LI>The responder device sends the second message of phase II:</LI>
+		<UL>
+			<LI>If the match policy with sender found, it sends the encrypted matching policy to the peer.</LI>
+			<LI>Otherwise, it sends a notification to the peer, drops the packet, and deletes the IKE peer.</LI>
+		</UL>
+		<LI>The initiator device:</LI>
+		<UL>
+			<LI>If the receiving device has sent back a matching policy, the initiator sends an ACK to the receiving device and successfully finishes phase II.</LI>
+			<LI>Otherwise, it deletes the IKE peer.</LI>
+		</UL>
+	</UL>
+</UL>
+
+<P class="myList">When a router receives an ISAKMP segment:</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>If the port, that is receiving the ISAKMP packet, is not configured with crypto map:</LI>
+	<UL>
+		<LI>It drop the packets and stops.</LI>
+	</UL>
+	<LI>If the port, that has received the ISAKMP packet, is configured with crypto map:</LI>
+	<LI>It checks if an IKE peer exists with the source IP of the receiving packet.</LI>
+	<UL>
+		<LI>IKE phase I negotiation is already done, and it starts negotiating for IKE phase II.</LI>
+	</UL>
+	<LI>If an IKE peer does not exist with the same source IP of the receiving packet:</LI>
+	<UL>
+		<LI>The Initiator adds the peer to the IKE peer list and starts negotiating IKE phase I with the new peer.</LI>
+		<LI>If the packet is the first IKE packet, the responder device processes the security associates payload to find a matching policy.</LI>
+		<UL>
+			<LI>If a key exists, that has been associated with the peer IP, and a matching policy found.</LI>
+			<UL>
+				<LI>It will continue with the negotiation by sending the accepting policy to the peer.</LI>
+			</UL>
+			<LI>Otherwise, it sends a packet and rejects the policy. It also deletes the associated IKE peer.</LI>
+		</UL>
+		<LI>If the packet is the second packet of ISAKMP main mode, the initiator processes the payload:</LI>
+		<UL>
+			<LI>If the payload is a notification, it processes the payload and deletes the IKE peer because there was not an existing policy or key.</LI>
+			<LI>If the payload is a security associate payload which means that the peer has found a match with that policy the device:</LI>
+			<UL>
+				<LI>Encapsulates a nonce (g,p) payload and its key payload in an ISAKMP packet and sends it back to the peer.</LI>
+				<LI>Calculates the public key (TA = <i><u>g power a</u> mod p</i>). "a" is the private key for this peer.</LI>
+			</UL>
+			<LI>If the receiving packet is the third packet of the main mode negotiation, the responder processes the nonce and key payload.</LI>
+			<UL>
+				<LI>Get the nonce (g,p)</LI>
+				<LI>Calculate its public key (TB = <i><u>g power b</u> mod p</i>). "b" is the private key for this peer.</LI>
+				<LI>The receiving device also encapsulates a nonce (g,p) payload and its key in an ISAKMP packet and sends it back to the peer.</LI>
+				<LI>Calculates the DH shared secret K = <i><u>TA power b</u> mod p</i>.</LI>
+			</UL>
+			<LI>If the packet is the fourth packet of the main mode negotiation that is receiving initiator processes the private key and nonce payload:</LI>
+			<UL>
+				<LI>Calculates the DH shared secret key K = TB power a mod p.</LI>
+				<LI>Encrypts the peer IP with K and sends it to the peer</LI>
+			</UL>
+			<LI>If the packet is the fifth packet of the main mode negotiation responder:</LI>
+			<UL>
+				<LI>Gets the payload and identifies the identity of the peer by decrypting the encrypted msg.</LI>
+				<LI>Encrypts the peer IP with K and sends it to the peer.</LI>
+				<LI>Marks the IKE peer for phase II negotiation.</LI>
+			</UL>
+			<LI>If the packet is the sixth packet of the main mode negotiation initiator:</LI>
+			<UL>
+				<LI>Gets the payload and identifies the identity of the peer by decrypting the encrypted message.</LI>
+				<LI>Marks the IKE peer for phase II negotiation.</LI>
+				<LI>Initiator also starts phase II by encrypting (with the key) the existing SAs and sends it to the peer.</LI>
+			</UL>
+		</UL>
+		<LI>IKE peer exists and marks with the phase II negotiation.</LI>
+		<UL>
+			<LI>If the received packet is the first packet of the quick mode negotiation the responder processes it and sends the second message:</LI>
+			<UL>
+				<LI>It gets the ISAKMP data and decrypts it with the key that has been calculated in phase I.</LI>
+				<LI>Goes through all the security associates that the peer has sent.</LI>
+				<UL>
+					<LI>If it finds a match</LI>
+					<UL>
+						<LI>Generates outbound SAs.</LI>
+						<LI>Encrypts and sends the accepting SA to the peer.</LI>
+						<LI>Creates an IPsec peer.</LI>
+					</UL>
+					<LI>If no matching SA found,</LI>
+					<UL>
+						<LI>Sends a packet and denies continuing the negotiation.</LI>
+					</UL>
+				</UL>
+			</UL>
+			<LI>If the packet has received is the second message of the quick mode, the initiator processes it and sends the third message:</LI>
+			<UL>
+				<LI>It gets the ISAKMP data and decrypts it with they key that has been calculated in phase I.</LI>
+				<LI>If SA has been accepted by the peer:</LI>
+				<UL>
+					<LI>Gets the accepted security associate that the peer has accepted.</LI>
+					<LI>Generates outbound SAs.</LI>
+					<LI>Creates IPsec peer.</LI>
+					<LI>Encrypts and sends an ACK to the peer.</LI>
+				</UL>
+				<LI>If SA has not been accepted by the peer:</LI>
+				<UL>
+					<LI>Discontinues the negotiation.</LI>
+				</UL>
+			</UL>
+			<LI>If the received packet is the third message of the quick mode, the responder gets the ACK and creates SAs and IPSec peers. IT marks the peer with phase II completed.</LI>
+		</UL>
+	</UL>
+</UL>
+
+
+<P class="myList">&nbsp;</P>
+<P class="MainHeading2">How PCs Handle ISAKMP Segments</P>
+<P class="myList">If PC, which is an easy VPN client, has a request to connect to an easy VPN server  (<A href="flowcharts/Easy_VPN_connect.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>PC sends ISAKMP policies that it has been configured with plus nonce, a key, and identification payload.</LI>
+	<LI>Server sends a reply back after getting the first packet and checking for AAA values.</LI>
+	<UL>
+		<LI>If the AAA authorization is not configured, it drops the packet.</LI>
+		<LI>Otherwise, it continues with the IKE phase I negotiation:</LI>
+		<LI>Either finds a matching policy</LI>
+		<UL>
+			<LI>Server sends the accepting policy back plus ID, nonce, and key payload back to the client.</LI>
+			<LI>The IKE peer on the server enters XAUTH mode</LI>
+		</UL>
+		<LI>Otherwise
+		<UL>
+			<LI>It does not find a matching policy, it drops the packet.</LI>
+			<LI>If the group name and group key, that the client has sent the request to, do not match or do not exist, it drops the packet.</LI>
+		</UL>
+	</UL>
+	<LI>If the server has sent back its ID, Key and nonce with the matching policy.</LI>
+	<UL>
+		<LI>PC sends back an ACK.</LI>
+		<LI>This ACK packet is encrypted with the DH shared key that has been calculated with nonce, and key of the received packet from the server.</LI>
+		<LI>IKE peer on the PC enters XAUTH negotiation phase.</LI>
+	</UL>
+	<LI>Otherwise, it drops the packet and removes the PKE peer.</LI>
+	<LI>Server sends its first XAUTH packet to the client:</LI>
+	<UL>
+		<LI>If server is configured with AAA authentication for the client it sends a prompt to the client and requests the client's username/password.</LI>
+		<LI>Otherwise server authenticates the user and continues with the next message.</LI>
+	</UL>
+	<LI>The client sends username/password when it receives the prompt from the server.</LI>
+	<LI>The server receives the username/password. It consults with either AAA server or its local configuration (based on the configuration):</LI>
+	<UL>
+		<LI>If match found:</LI>
+		<UL>
+			<LI>Authenticates the client</LI>
+			<LI>Gets an IP from the IP pool and sends it to the client.</LI>
+		</UL>
+		<LI>Otherwise, it denies the client to access the server and sends a notification back to the client.</LI>
+	</UL>
+	<LI>The client receives the packet:</LI>
+	<UL>
+		<LI>If it is a notification, the client stops the negotiation.</LI>
+		<LI>Otherwise, the client gets the IP, assigns the IP to its tunnel interface, and sends the last message of XAUTH mode, which is an ACK to the server.</LI>
+	</UL>
+	<LI>Server gets the ACK and:</LI>
+	<UL>
+		<LI>Creates a new route in its routing table to the tunnel IP address of the new client.</LI>
+		<LI>Creates an interesting traffic for the client.</LI>
+		<LI>Marks the IKE peer with XAUTH mode complete .</LI>
+		<LI>Sends a packet to the client to notify the PC to start the phase II.</LI>
+	</UL>
+	<LI>Client receives the notification from the server and sends first phase II packet to the server. (for phase II please refer to router's phase II)</LI>
+	</UL>
+</UL>
+
+<P class="myList">If PC which is an easy VPN client has a request to disconnect from an easy VPN server  (<A href="flowcharts/Easy_VPN_disconnect.jpg" target="_blank">flowchart</A> here):</P>
+<P class="myList">&nbsp;</P>
+<UL>
+	<LI>The client sends an informational packet to the server and requests to disconnect.</LI>
+	<LI>The server receives the request to disconnect from the client:</LI>
+	<UL>
+		<LI>Removes the static route to the client.</LI>
+		<LI>Releases the borrowed IP to the pool.</LI>
+		<LI>Removes the interesting traffic and its associated SA for the client from its interested traffic table.</LI>
+		<LI>Sends an informational packet back to the client.</LI>
+	</UL>
+	<LI>The client receives the informational packet that sever has been disconnected:</LI>
+	<UL>
+		<LI>Removes the tunnel interface and disconnects.</LI>
+	</UL>
+</UL>
+
+	</body>
+</html>

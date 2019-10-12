@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Multiuser</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+
+  <p class="MainHeading1">Multiuser</p>
+  <hr>
+
+<p>Multiuser communication allows multiple point-to-point (peer) connections between multiple instances of Packet Tracer. By allowing communication between Packet Tracer instances, a new door has been opened to a fun, interactive, social, collaborative, and competitive learning environment. Instructors will now be able to create a variety of activities for students to learn in groups that will facilitate greater social interaction between students. Students will benefit from this environment by working together to solve problems and share ideas. Both students and teachers should take full advantage that Multiuser will offer in their learning environment.</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Technical Information</p>
+<ul>
+  <li>Communicates between instances using PTMP.</li>
+  <li>PTMP is TCP based.</li>
+  <li>By default, uses TCP port 38000, is customizable, and each new instances on the same PC will use the next available port.</li>
+  <li>On by default.</li>
+  <li>UPnP will attempt to establish port forwarding to facilitate home networks.</li>
+  <li>All network communication allowed between instances.</li>
+  <li>Console cable also allowed.</li>
+  <li>Transparent to the simulated network.</li>
+  <li>Default password: cisco</li>
+  <li>Wireless is not supported over Multiuser.</li>
+</ul>
+<p>&nbsp;</p>
+<p class="MainHeading2">Dialogs</p>
+<p>Multiuser is on by default, users who wish to turn this feature off may do so in the <strong>Extensions</strong> > <strong>Multiuser</strong> > <strong>Listen</strong> menu. The server settings can be configured from this dialog. The default password is "<strong>cisco</strong>", it is highly recommended to change this password. To configure the port number, click <strong>Stop Listening</strong> and then change it and click <strong>Listen</strong> again.</p>
+<p><strong>Existing Remote Networks</strong> refers to multiuser connection clouds that already exist on your desktop.  The options allow the user to <strong>Always Accept</strong> a remote connection request with no prompt, which is very handy in gaming and central connection scenarios. The second option will <strong>Always Deny</strong> connections, refusing any connectivity to existing multiuser clouds on the desktop. The third option <strong>Prompts</strong> the user on the receiving side of the connection to manually accept or deny the connection.</p>
+<p><strong>New Remote Networks</strong> supports the same three options as the previous option. The key difference is that the multiuser clouds don't yet exist on the receiving user's workspace. If the option is set to <strong>Always Accept</strong> a new multiuser cloud is created on the workspace and connection to the initiating copy of Packet Tracer is established. If the option is set to <strong>Always Deny</strong> nothing happens as the connection is refused. If the option is set to <strong>Prompt</strong> the user on the receiving side of the connection to manually accept or deny the connection, if accepted a new multiuser cloud is created on that user’s workspace.</p>
+<p class="myPic">
+<img src="images/multiuser_1.jpg">
+</p>
+<p>The <strong>Extensions</strong> > <strong>Multiuser</strong> > <strong>Options</strong> dialog can be used to configure other settings. <strong>Allow Remote Saving</strong> controls whether this network can be saved from a remote network using offline saving. <strong>Depth for Remote Saving</strong> configures how far deep into the remote user sessions will be saved. For example, if the users are connected as such:</p>
+<p>
+<strong>A</strong> <-> <strong>B</strong><br>
+<strong>B</strong> <-> <strong>C</strong><br>
+<strong>C</strong> <-> <strong>D</strong><br>
+<strong>D</strong> <-> <strong>E</strong><br>
+<strong>E</strong> <-> <strong>F</strong><br>
+<strong>F</strong> <-> <strong>A</strong></p>
+<p>If <strong>A</strong> is configured with a depth of 2 and attempts to offline save, <strong>A</strong> will receive a copy of <strong>B</strong>, <strong>C</strong>, <strong>E</strong>, and <strong>F</strong>'s networks, but not <strong>D</strong>'s. <strong>Always Start Listening When Application Starts</strong> controls whether Multiuser will be on or off during startup. <strong>Allow Peers to see connected devices and port names</strong> controls whether the remote user will see the device name and port name when they create a cable connection to your networks. <strong>Forward remote PTMP broadcast messages</strong> works in conjunction with Packet Tracer External Applications (ExApps). Its function is to allow the ExApp to communicate with all connected copies of Packer Tracer. This option has no effect on the Packet Tracer program by itself.</p>
+<p class="myPic">
+<img src="images/multiuser_2.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Port Visibility</p>
+<p>The <strong>Port Visibility</strong> dialog allows you to control what ports on which devices in your network will automatically show up as an available port on connected remote peer's networks. The remote peer can connect to these ports without requiring your end to create the link.</p>
+<p class="myPic">
+<img src="images/multiuser_3.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Connection States</p>
+<p>Multiuser has four different connection states. The Multiuser cloud is in the <strong>Disconnected</strong> state when there is no remote network connection to a remote peer. The Multiuser cloud goes into the <strong>Connecting</strong> state when a request is sent to a remote peer to make a remote network connection. When two remote peers make a remote network connection, the Multiuser cloud goes into the <strong>Connected</strong> state. The <strong>Error</strong> state indicates there is a remote network connection error with the remote peer. For example, if the remote peer's connection suddenly lost network connectivity, then the Error state would appear. </p>
+<p class="myPic">
+<img src="images/multiuser_4.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">User Guide</p>
+<p>To create a Multiuser connection to another user, click on the <strong>Multiuser Connection</strong> in the Device-Type Selection Box. Then select the <strong>Remote Network</strong> cloud and create it on the workspace. This cloud will represent one entry point to another user. Multiple multiuser entry-points to the same user are allowed. Click on the cloud to open the Multiuser Connection dialog.</p>
+<p class="myPic"><img src="images/multiuser_5.jpg"></p>
+<p>To create an outgoing connection, choose the <strong>Outgoing</strong> option for <strong>Connection Type</strong>. In the <strong>Peer Address</strong> field, enter the remote user's IP address. In the peer port number, enter the port their instance of Packet Tracer is listening on. <strong>Peer Network Name</strong> is optional. The option allows this outgoing connection to connect to a specific incoming cloud the remote peer has set up. For example, if the remote peer created an Incoming connection cloud named Routers, then you can enter Routers in this field and it will connect to the Routers cloud in the remote peer's network. Leaving this field blank will create a new cloud in the remote peer's network. The new cloud will have the same name as the cloud that initiated the connection unless that name already exists, and then the name will be incremented to the next available “name+number”. The password field is the password set in the <strong>Listen</strong> dialog from the remote peer's Packet Tracer instance. When the fields are set properly, click on the <strong>Connect</strong> button.</p>
+<p class="myPic">
+<img src="images/multiuser_6.jpg">
+</p>
+<p>When an incoming connection happens, you will be prompted (by default, but can be changed under <strong>Extensions</strong> > <strong>Multiuser</strong> > <strong>Listen</strong>) to accept this connection. When the incoming connection has been accepted, a Multiuser session has started. Each peer will have a cloud for connecting a cable to the remote user. This cloud can be thought of as a universal patch panel. Both users must establish a connection to this cloud to create a link between two remote devices.</p>
+<p class="myPic">
+<img src="images/multiuser_7.jpg">
+</p>
+<p>To create a link between devices, it is very similar to a normal connection, except the other user must also make the connection. Start by selecting a connection type in the Device-Specific Selection Box, and create the link to your device on one end, and select the cloud on the other end. As with clusters, automatic connections are not allowed with Multiuser clouds. When you click on the cloud, a popup list similar to the list of ports in a device will appear. The first option will be Create New Link, and subsequent items will be available ports. Create New Link will connect your cable to the cloud as one side of a cable run. If ports are available, it means the other user has cables connected to their end of the cloud and you may connect to these ports. Connecting to one of these available ports will establish a fully connected cable between remote devices.</p>
+<table class="tableTip">
+  <tr>
+    <td class="TDtableTip">Although the cloud has so far been described as like a patch panel, it is not the same as a real patch panel. For example, both sides of the remote links must use the same cable type to work. A straight-through cable connected to a crossover cable will not result in a crossover cable, similarly with a rollover cable as well. If user A's side of a serial cable is a DCE, then on user B's side, the cloud end should be the DCE. With the <strong>Port Visibility</strong> turned on for a port, if the remote peer connects to one of your Port Visibility enabled ports, you will not need to create your end of the cable. It will automatically be created for you. If the remote user deletes that link, it will delete your end of that link also. However, if you delete your end of the link, the remote user's end will not be automatically deleted.</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="MainHeading2">Offline Saving</p>
+<p>There are now two options for saving networks. The normal <strong>Save</strong> in the Menu Bar and Main Tool Bar will create a save file with only your network and any remote peer connections will be saved as a remote peer connection. <strong>Offline Saving</strong> will save your network and remote peer networks as a cluster into a single large network. Offline Saving is controlled by the <strong>Depth for Remote Saving</strong> that you set and the permission the remote user set. Opening up a normal save file with a remote peer connection will cause Packet Tracer to attempt to reconnect these remote peer connections. Opening up an offline saved network will be a regular network with clusters for remote peer networks. Offline Saving is useful to examine others' networks or to use Simulation Mode.</p>
+
+<table class="tableTip">
+  <tr>
+    <td class="TDtableTip">When your instance of Packet Tracer is connected to a remote peer, you will not be able to switch to Simulation Mode. When you attempt to switch to Simulation Mode, you will be prompted to save an offline copy that is to be opened in a new instance of Packet Tracer. Clicking Yes will cause Packet Tracer to use the current offline saving settings to create an offline save and open it in a new Packet Tracer instance immediately. From there, you will be able to use Simulation Mode to examine packets in detail.</td>
+  </tr>
+</table>
+</body>
+</html>

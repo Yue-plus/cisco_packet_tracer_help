@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Layer 1 Models</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+		<p class="MainHeading1">Layer 1 Models</p>
+		<hr>
+		<p class="MainHeading2">How hubs process frames</p>
+		<p class="myList">When a hub receives a frame (<a href="flowcharts/HubRepeaterReceive.jpg" target="_blank">flowchart</a>
+			here):</p>
+		<p class="myList">&nbsp;</p>
+		<ul>
+			<li>
+			If two or more ports receive frames at the same time, a collision occurs and 
+			the hub forwards a jam signal to all ports.
+			<li>
+				If one port receives a frame, the hub forwards the frame to all ports except 
+				the receiving port.</li>
+		</ul>
+		<p class="myList">&nbsp;</p>
+		<p class="MainHeading2">How repeaters process frames</p>
+		<p class="myList">When a repeater receives a frame:</p>
+		<p class="myList">&nbsp;</p>
+		<UL>
+			<li>
+				The repeater forwards the frame to the other port.</li></UL>
+		<P>&nbsp;</P>
+		<P class="MainHeading2">How Wireless is modeled</P>
+		<P class="myList">Packet Tracer models only certain aspects of the wireless 
+			protocols.</P>
+		<UL>
+			<LI>Wireless A, B, G, and N are supported.</LI>
+			<LI>Infrastructure wireless mode is supported. Ad-hoc is not supported.</LI>
+			<LI>Authentication methods are none and WEP. WEP requires a 10 digit hex key. The authentication method and configuration must match on both the wireless client and wireless server in order for them to be associated.</LI>
+			<LI>An antenna's coverage area is set to a specific area and cannot be changed. The signal strength based on distance is not calculated modeling real physics.</LI>
+		</UL>
+	</body>
+</html>

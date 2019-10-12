@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Configuring PCs</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+
+
+<p class="MainHeading1">
+  
+  Configuring PCs, Laptops, Tablet PCs, and PDAs
+<hr>
+
+<p>You can configure the global settings and interface settings on the PC, laptop, tablet PC, and PDA end devices with the <strong>Config</strong> tab. Additionally, the <strong>Desktop</strong> tab provides tools to configure IP settings, configure dial-up settings, use a terminal window, open a host command line interface, open a web browser,  configure wireless settings, establish a VPN connection, generate PDUs, and issue SNMP requests.</p>
+<p class="myPic">
+<img src="images/config_PCs_1.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Global Settings</p>
+<p>In the global settings, you can change the <strong>Display Name</strong> of the end device. You may set the end device to either automatically obtain IPv4 or IPv6 configurations with <strong>DHCP</strong> or manually set the <strong>Gateway</strong> and <strong>DNS Server</strong> with <strong>Static</strong>. For IPv6, <strong>Auto Config</strong> will automatically configure the Gateway and DNS Server IP addresses.</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Algorithm Settings</p>
+<p>In the <strong>Algorithm Settings</strong>, you can override the global Algorithm Settings by removing the check mark from <strong>Global Settings</strong> and then setting your own values for the <strong>Maximum Number of Connections</strong>, <strong>Maximum Number of Opened Sessions</strong>, and <strong>Maximum Retransmission Timeout in Milliseconds</strong>.</p>
+<p class="myPic">
+<img src="images/config_PCs_2.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Interface Configuration</p>
+<p>PCs and laptops support Ethernet (copper or fiber), modem, and wireless interfaces. On the tablet PC and PDA, only the wireless interface is supported. In general, you can set the interface <strong>Port Status</strong>, <strong>Bandwidth</strong>, <strong>Duplex</strong>, <strong>MAC Address</strong>, <strong>SSID</strong>, <strong>IP Address</strong>, <strong>Subnet Mask</strong>, <strong>Link Local Address</strong>, and <strong>IPv6 Address</strong>. These options vary slightly for each interface type.</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">IP Configuration Utility</p>
+<p>On the <strong>Desktop</strong> tab, click the <strong>IP Configuration</strong> icon to bring up the configuration utility. If the end device is connected to a DHCP configured router or server, you can use DHCP to automatically obtain the IP configuration by clicking on the <strong>DHCP</strong> button. Otherwise, you may use the <strong>Static</strong> button to manually set the IP configuration.</p>
+<p class="myPic">
+<img src="images/config_PCs_3.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Modem Dial-up Utility</p>
+<p class="myList">On the <strong>Desktop</strong> tab, click the <strong>Dial-up</strong> icon to bring up the Dial-up utility. Before you can access the dial-up utility, the end device must have the modem interface installed. As a result, only the PC and laptop devices are supported. You can establish a modem connection by connecting a PC or laptop to a cloud that is connected to a router. The cloud acts like a phone company between the PC or laptop and the router. Several conditions must be met before the connection can be successful: </p>
+<p class="myList">&nbsp;</p>
+<ul>
+  <li>The router has a modem, and you have established user name authentication on the router (using the Cisco IOS global configuration mode command <strong>username WORD password LINE</strong>).</li>
+  <li>The modem ports on the cloud have valid phone numbers.</li>
+  <li>You entered the correct user name, password, and number to dial on the modem utility of the PC or laptop.</li>
+</ul>
+<p>If all the requirements are met, click the <strong>Dial</strong> button to make the call. The status line (as well as link lights) will tell you if the connection is successful. Note that you still must configure all relevant IP settings manually if you want to ping between the router and the PC or laptop. Use the <strong>Disconnect</strong> button to terminate the connection at any time.</p>
+<p class="myPic">
+<img src="images/config_PCs_4.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Terminal Utility</p>
+<p>If the end device is connected to a router or a switch by a console connection (using the <strong>RS 232</strong> port on the PC), use the <strong>Terminal</strong> application to gain access to the Command Line Interface (CLI) of the device. In the Desktop tab, click the Terminal icon to bring up this utility. Choose the appropriate port configuration parameters for the console session, and then click on the <strong>OK</strong> button. The <strong>Terminal</strong> window appears with the CLI of the device.</p>
+<p class="myPic">
+<img src="images/config_PCs_5.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Command Prompt Utility</p>
+<p>On the <strong>Desktop</strong> tab, click the <strong>Command Prompt</strong> button to bring up the command line utility. At the prompt, you can issue the following commands:</p>
+<table class="IOStable">
+  <tr>
+    <td class="TDpadded"><ul>
+		<li><strong>?</strong></li>
+		<li><strong>arp</strong></li>
+		<li><strong>delete</strong></li>
+		<li><strong>dir</strong></li>
+		<li><strong>ftp</strong></li>
+		<li><strong>help</strong></li>
+		<li><strong>ipconfig</strong></li>
+		<li><strong>ipv6config</strong></li>
+		<li><strong>netstat</strong></li>
+		<li><strong>nslookup</strong></li>
+		<li><strong>ping</strong></li>
+		<li><strong>snmpget</strong></li>
+		<li><strong>snmpgetbulk</strong></li>
+		<li><strong>snmpset</strong></li>
+		<li><strong>ssh</strong></li>
+		<li><strong>telnet</strong></li>
+		<li><strong>tracert</strong></li>
+    </ul></td>
+  </tr>
+</table>
+<p class="myPic">
+<img src="images/config_PCs_6.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Web Browser Utility</p>
+<p>On the <strong>Desktop</strong> tab, click the <strong>Web Browser</strong> button to bring up the web browser. The web browser allows you to access a web server or the Web Configuration interface. If the end device is directly or indirectly connected to a server with HTTP service enabled, you can type in the IP address of the server to access the website on the server. If the end device is connected to a properly configured DNS server, covered in another help topic, you can type in the domain name of the server. If the end device is connected to a WRT300N wireless router, you can type in the IP address of the WRT300N wireless router to access the Web Configuration. A prompt will appear asking for user name and password. The default is admin for both user name and password.</p>
+<p class="myPic">
+<img src="images/config_PCs_7.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">PC Wireless Utility</p>
+<p>On the <strong>Desktop</strong> tab, click the <strong>PC Wireless</strong> button to bring up the wireless client software. Note that the WMP300N wireless hardware module is required for access so only PCs and laptops are supported. In the wireless client software, you can check <strong>Link Information</strong> to view wireless network status and statistics, <strong>Connect</strong> to any available  wireless networks within range, and add/edit/delete <strong>Profiles</strong> to connect to wireless routers not broadcasting their SSID.</p>
+<p class="myPic">
+<img src="images/config_PCs_8.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">VPN Utility</p>
+<p>On the <strong>Desktop</strong> tab, click the <strong>VPN</strong> button to bring up the VPN client utility that allows you to create a VPN connection to a VPN server. To create a VPN connection, enter the <strong>GroupName</strong>, <strong>Group Key</strong>, <strong>Host IP (Server IP)</strong>, <strong>Username</strong>, <strong>Password</strong>, and then click on the <strong>Connect</strong> button. To disconnect the VPN connection, click on the <strong>Disconnect</strong> button.</p>
+<p class="myPic">
+<img src="images/config_PCs_9.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Traffic Generator Utility</p>
+<p>The <strong>Traffic Generator</strong> utility is similar in functionality to the <strong>Add Simple PDU</strong> and <strong>Add Complex PDU</strong> tool in the Common Tools Bar, but with some key differences. First of all, when you load a save file, packets are not sent automatically by a Traffic Generator. The Traffic Generator utility must be open to generate traffic, although it can be minimized. Another key difference is that the Traffic Generator is unable to send multiple PDUs simultaneously.</p>
+<p>Visually, the Traffic Generator is similar to the Add Complex PDU dialog with some exceptions. Instead of a One Shot parameter, the Traffic Generator has a <strong>Single Shot</strong> option. There is no field to enter a time value to send the PDU as the PDU will be sent the moment you click on the <strong>Send</strong> button. With the Periodic option, when you click on the Send button, the Send button will become a <strong>Stop</strong> button and the dialog will become gray. The Traffic Generator  will then send a PDU at the interval that you entered. If you want to stop sending PDUs, click on the <strong>Stop</strong> button or close the utility.</p>
+<p class="myPic">
+<img src="images/config_PCs_10.jpg">
+</p>
+<table class="tableTip">
+  <tr>
+    <td class="TDtableTip"><p class="myList">PDUs generated by the Traffic Generator are not added to the User Created PDU Window. As such, if you want to see if the PDUs failed or were successful, you will need to view the PDU's status in Simulation Mode.</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="MainHeading2">MIB Browser Utility</p>
+<p>On the <strong>Desktop</strong> tab, click the <strong>MIB Browser</strong> button to issue SNMP requests. This allows you to retrieve router and switch data or make changes to the devices. To set up the MIB Browser for SNMP requests, click on the <strong>Advanced</strong> button and set the <strong>Address</strong>, <strong>Port</strong>, <strong>Read Community</strong>, and <strong>Write Community</strong> that is configured on the router or switch. Then, select the desired <strong>SNMP Version</strong> and click the <strong>OK</strong> button. The next step is to browse through the SNMP MIB tree and select the desired object instance (OID) for the router or switch. If you want to retrieve data, set <strong>Operations</strong> to either <strong>Get</strong> or <strong>Get Bulk</strong> and then click on the <strong>Go</strong> button. The data for the OID will be shown in the <strong>Result Table</strong>. If you want to change a writable OID, select <strong>Set</strong> in the Operations menu to reveal the <strong>SNMP Set</strong> dialog. In the SNMP Set dialog, select the appropriate <strong>Data Type</strong> for the OID, enter a <strong>Value</strong>, and then click the <strong>OK</strong> button. Finally, click on the <strong>Go</strong> button in the main MIB Browser dialog to set the OID value.</p>
+<p class="myPic">
+<img src="images/config_PCs_11.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Cisco IP Communicator Utility</p>
+<p>On the <strong>Desktop</strong> tab, click the <strong>Cisco IP Communicator</strong> button to place or answer a  call.  To place a phone call, enter the number of the recipient phone using the <strong>keypad</strong> and then click the <strong>Dial</strong> button. Alternatively, you may click the <strong>NewCall</strong> button or <strong>Speakerphone</strong> button first and then enter the recipient's number. If you accidentally enter an incorrect number, you may click the <strong>Cancel</strong> button to clear. Once the call has been placed, a message will indicate that the phone is ringing on the recipient's phone. To answer a call with the Cisco IP Communicator, click the <strong>Answer</strong> button. Once the recipient has answered the call, the status message will indicate that the Cisco IP Communicator is connected and a green light will show. While the call is still active, click on the <strong>Do</strong>, <strong>Re</strong>, or <strong>Mi</strong> buttons to send the respective sounds to the recipient. A message stating that the sound is playing will be displayed in case sound is disabled. To end the call, click the <strong>EndCall</strong> button. For the best possible experience while making calls, be sure that <strong>Sound</strong> is enabled in <strong>Preferences</strong>.</p>
+<p>If you want configure the Cisco IP Communicator to use a different <strong>TFTP server</strong> from the default TFTP server, follow these steps. On the upper right-hand corner of the Cisco IP Communicator GUI, there are four buttons above the words &quot;Cisco IP Phone.&quot; Click on the first button from the left to open a context menu and then select <strong>Preferences</strong>. Select the option <strong>Use these TFTP Servers:</strong> and then enter the IP address of the TFTP server that you wish to use.</p>
+<p class="myPic">
+<img src="images/config_PCs_12.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Email Utility</p>
+<p>On the <strong>Desktop</strong> tab, click the <strong>Email</strong> button to bring up the email client. On the first launch of the email client, you will need to configure the parameters <strong>Your Name</strong>, <strong>Email Address</strong>, <strong>Incoming Mail Server</strong>, <strong>Outgoing Mail Server</strong>, <strong>User Name</strong>, and <strong>Password</strong> in order to send and receive email. Once the email client has been configured, you may <strong>Compose</strong>, <strong>Receive</strong>, view, and <strong>Delete</strong> emails. If you need to change configuration, click on the <strong>Configure Mail</strong> button to open the email configuration dialog. </p>
+<p class="myPic">
+<img src="images/config_PCs_13.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">PPPoE Dialer Utility</p>
+<p>On the <strong>Desktop</strong> tab, click the <strong>PPPoE Dialer</strong> button to bring up the PPPoE Dialer utility. This utility allows you to establish a point-to-point connection to a PPPoE server. To establish a PPPoE connection, enter the <strong>User Name</strong> and <strong>Password</strong> and then click on the <strong>Connect</strong> button. To disconnect the PPPoE connection, click on the <strong>Disconnect</strong> button.</p>
+<p class="myPic">
+<img src="images/config_PCs_14.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Text Editor Utility</p>
+<p>On the <strong>Desktop</strong> tab, click the <strong>Text Editor</strong> icon to bring up the text editor. You can create <strong>New</strong> text files, <strong>Open</strong> existing text files, and <strong>Save</strong> text files through the <strong>File</strong> menu in the text editor. There are no formatting choices available in the text editor.</p>
+<p class="myPic">
+<img src="images/config_PCs_15.jpg">
+</p>
+</body>
+</html>

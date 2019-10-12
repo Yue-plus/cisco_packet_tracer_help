@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>IPC</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+
+<p class="MainHeading1">IPC (Inter-Process Communication)</p>
+<hr>
+<p>The IPC (Inter-Process Communication) feature controls an external programming extension for Packet Tracer that enables external applications (ExApps) to be added to Packet Tracer to extend its functionality. ExApps are being created by Cisco and other interested groups for use in the Academy Program. An example ExApp use case might include a program that can automate the task of remotely sending and receiving activity assessments between students and instructors. Because of the control that the IPC provides in relation to the ExApps, it greatly expands the capabilities that Packet Tracer can provide without having to wait for the actual Packet Tracer core program to be enhanced.</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Configure Apps</p>
+<p>The <strong>Configure Apps</strong> dialog allows you to <strong>Add</strong>, <strong>Remove</strong>, and <strong>Launch</strong> ExApps from the <strong>Apps List</strong>. To add an ExApp, click on the <strong>Add</strong> button and then open the ExApp's <strong>App Meta File (*.pta)</strong>. The default directory to store ExApps is in the <strong>extensions</strong> directory in the Packet Tracer directory. To remove an ExApp, select the ExApp from the Apps List and then click on the <strong>Remove</strong> button. To manually launch an ExApp, select the ExApp from the Apps List and then click on the <strong>Launch</strong> button.</p>
+<p>In the <strong>Description</strong> tab, you can view various information about the ExApp such as its description, version number, the ExApp author's name, the ExApp author's contact info, and the path of the ExApp's executable.</p>
+<p class="myPic">
+<img src="images/ipc_1.jpg">
+</p>
+<p>In the <strong>Settings</strong> tab, you can change how the ExApp launches. You can set it to <strong>On Startup</strong>, <strong>On Demand</strong>, or <strong>Disabled</strong>. If the setting is set to <strong>On Startup</strong>, when a Packet Tracer instance launches, the ExApp will launch as well. If the setting is set to <strong>On Demand</strong>, Packet Tracer will launch the ExApp when a file indicates to load it or another ExApp launches it. Otherwise, if  the startup option is set to <strong>Disabled</strong>,  Packet Tracer will not accept connections from this ExApp and the ExApp will need to be launched manually.</p>
+<p class="myPic">
+<img src="images/ipc_2.jpg">
+</p>
+<p>In the <strong>Security</strong> tab, you can view the ExApp's <strong>Security Privileges</strong> which are determined by the ExApp itself and cannot be changed manually.</p>
+<p class="myPic">
+<img src="images/ipc_3.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Show Active Apps</p>
+<p>In the <strong>Show Active Apps</strong> dialog, you can view a list of active ExApps and disconnect them from Packet Tracer. To disconnect an active ExApp, select the 32 hexadecimal UUID (Universally Unique Identifier) enclosed in the curly brackets associated with the active ExApp then click on <strong>Disconnect</strong>. For example, in the screenshot below, the UUID for the UPnP ExApp is da7df6ee-4709-4380-ba25-4e27cc374ae4.</p>
+<p class="myPic">
+<img src="images/ipc_4.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Options</p>
+<p>In the <strong>Options</strong> dialog, you can change the <strong>Listen Port Number</strong> of the Packet Tracer instance. By default, IPC uses TCP port 39000. You may change the Listen Port Number to any available port. Also, each new instance of Packet Tracer on the same machine will use the next available port. You may also toggle the <strong>Allow Remote Applications</strong> option which allows remote ExApps to connect and communicate with the Packet Tracer instance on the local machine. You may also toggle Listening by either clicking on the Stop Listening or Start Listening buttons. To prevent the IPC from listening when Packet Tracer launches, uncheck the <strong>Always Listen On Start</strong> option.</p>
+<p class="myPic">
+<img src="images/ipc_5.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Log</p>
+<p>The <strong>Log</strong> dialog allows you to view debug messages output from active ExApps. To clear the log, click on the <strong>Clear</strong> button.</p>
+<p class="myPic">
+<img src="images/ipc_6.jpg">
+</p>
+</body>
+</html>

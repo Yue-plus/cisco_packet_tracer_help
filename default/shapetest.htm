@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Shape Tests</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+<script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
+	</head>
+	<body>	
+<p class="MainHeading2">Shape Test</p>
+<p > Students can draw around a feature in the network that can be scored in the Activity Wizard </p>	
+<p > Shape Tests is an activity feature in Packet Tracer that allows for the grading of shapes being drawn over devices and link lights. </p>
+<p>Shape tests are a feature that allows a student to perform tasks besides configurations in Packet Tracer.</p>
+<p>It is useful for testing whether a student can identify certain portion of a network or individual devices.  Any logical grouping can be done as long as circling either a device icon and/or a link light indicator satisfies the condition.</p>
+<P class="myPic"> <img src="images/shape-test1.png" style="width:50%;" alt="Screenshot of Packet Tracer workspace with a group of router devices, repeater devices, and switch devices, with a red circle encompassing all repeater devices."> 
+<P class="myPic"> <img src="images/shape-test2.png"  alt="Screenshot of Packet Tracer workspace with three 1841 routers and a label loopback zero: 15.0.0.0/8. Router 1 connects to Router 0 with a serial cable with a label 10.0.0.0/8 on the serial cable. Router 0 connects to Router 2 with a serial cable with a label 11.0.0.0/8. An ellipse is drawn encompassing the link between Router 0 and Router 2 with link lights inside the ellipse but Router 0 and Router 1 are outside the ellipse."> 
+<p > Examples of such activities may have the student perform the following tasks: “Circle all the hubs only”, or “Circle a broadcast domain”. </p>
+<p>
+<p class="MainHeading2">How to make and use a Shape Test</p>
+<p>These are the eight steps needed to have a shape test score inside the Packet Tracer Activity Wizard using the assessment tree.
+<li>Step 1: Create the desired answer and initial networks .
+<li>Step 2: Create a Shape Test by going to the Answer network.
+<li>Step 3: Open the Encircling Tests node. In the Answer Tree
+<li>Step 4: Choose whether to have the student perform this task in Logical Workspace or Physical Workspace. 
+<li>Step 5: Decide what shape should be used and is it Named
+<li>Step 6: Select what is included in what the student will draw the shape around.
+<li>Step 7: Select what will be excluded in the shape .  NOTE: If you don’t do this a student can encompass the whole window and get the correct points.
+<li>Step 8: Save File then Test the Activity 
+</p>
+<p class="MainHeading2">Step 1 Create your Networks</p>	
+<p>
+<li>Decide upon the concept meets the requirements you are testing.
+<li>Once the answer network is completed (Without Shapes) begin the PT Activity Wizard.
+<li>(Fast WAY) If only using the Shape Tests then in the Initial Network select Copy Answer Network to create your initial network.
+</p>
+<p class="MainHeading2">Step 2  Create the Shape Test </p>
+<p>
+<li>Click on the Answer network 
+<li>Just above the Answer tree click on the Add Shape Test Button 
+</p>
+<p>The shape tests are located at the very top of the Assessment Tree.
+ Remember you need a shape test for every shape you draw.</p>
+<P class="myPic"> <img src="images/shape-test3.png" style="width:50%;" alt="Screenshot of Packet Tracer Activity Wizard Answer Network Assessment Tree tab. The assessment tree contains top level network, second level resource, router 0, router 1, router 2."> 
+<P class="myPic"> <img src="images/shape-test4.png" style="width:50%;" alt="Screenshot of Packet Tracer Activity Wizard Answer Network Assessment Tree tab. The assessment tree contains top level network, second level encircling tests, resource, router 0, router 1, router 2."> 
+<p class="MainHeading2">Step 3-7 Select Options</p>
+<p>Select whether the student should use logical or physical mode to draw their shape. If the In Physical View is NOT Checked then the shape will score in logical mode.
+Then select the items on the  devices or links that you want the shape to encircle. 
+Select the items you do not want them to have in their drawing. Very Important if you check nothing then all a student has to do is draw around everything to get the points.
+Decide if you want to name the shape or not.
+</p>
+<P class="myPic"> <img src="images/shape-test5.png" style="width:50%;" alt="Screenshot of Packet Tracer Activity Wizard Answer Network Assessment Tree tab. The assessment tree contains top level network, second level encircling tests, third level Shape Test 0, fourth level Excluded, fifth level Router 0, Router 1, fourth level In Physical View, Included, fifth level Router 0, Router 1, Router 2, fourth level Must Match Name: Shape Name."> 
+<p class="MainHeading2">Example Network</p>
+<p > Lets use this network for some examples using the Shape Tests. </p>
+<P class="myPic"> <img src="images/shape-test6.png" style="width:50%;" alt="Screenshot of Packet Tracer workspace with two push buttons, one switch, one router, one pc, one garage door, one window. Push buttons connect to switch. PC connects to switch. Switch connects to router. Garage door and window connects to router."> 
+<p class="MainHeading2">Example of What to Include</p>
+<p > We want to draw around the garage door and the window in logical mode excluding all other devices. Look at what we checked to meet the condition.
+</p>
+<P class="myPic"> <img src="images/shape-test7.png" style="width:50%;" alt="Screenshot of Packet Tracer Activity Wizard Answer Network Assessment Tree tab. The assessment tree has checks on selected assessment items."> 
+<p class="MainHeading2">Student would do this to gain the points</p>
+<p > By drawing around the two items without including any other device or link light gains the student the point assigned in the assessment tree. 
+You could use any shape, in this case the rectangle shape was used but the ellipse or freeform tool could have been used with any color also.
+ </p>
+<P class="myPic"> <img src="images/shape-test8.png" style="width:50%;" alt="Screenshot of Packet Tracer workspace with two push buttons, one switch, one router, one pc, one garage door, one window. Push buttons connect to switch. PC connects to switch. Switch connects to router. Garage door and window connects to router. A rectangle is drawn encompassing the garage door and window only."> 
+<p > In this example we are encircling the 172.1.1.0 broadcast domain. That means we only want the Gigabit port of the router and all the items that are attached to that network.
+We must exclude everything else which means the garage door, window and all the other ports of the router. We will name this encircling test when finished.
+Too name any object simply click on the edge of the object and then type the name in the box.
+ </p>
+<P class="myPic"> <img src="images/shape-test9.png" style="width:50%;" alt="Screenshot of Packet Tracer Activity Wizard Answer Network Assessment Tree tab. The assessment tree has checks on selected assessment items.">
+<p class="MainHeading2">What the student should encircle and name</p>
+<p > Here is one way that the student could answer properly. Notice only the Gig port of the router is included in the encircling.
+ </p>
+<P class="myPic"> <img src="images/shape-test10.png" style="width:50%;" alt="Screenshot of Packet Tracer workspace with two push buttons, one switch, one router, one pc, one garage door, one window. Push buttons connect to switch. PC connects to switch. Switch connects to router. Garage door and window connects to router. An ellipse is drawn encompassing the push buttons, switch, pc, and the links between those devices only."> 
+<p class="MainHeading2">Final step is to test the activity</p>
+<p > Be sure you have the points assigned the way you want the activity to score.  
+If you want only points for Items included then zero out the exclude items on the Points next to the items.
+If you are using multiple shape tests and decide to not use one of the shapes you CANNOT delete the shape test you must be sure all items in the shape test are unchecked.
+</p>
+<P class="myPic"> <img src="images/shape-test11.png" style="width:50%;" alt="Screenshot of Packet Tracer check answer assessment items tree. Check marks are green for select items.">  
+</body>
+</html>

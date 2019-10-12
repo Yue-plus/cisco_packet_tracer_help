@@ -1,0 +1,4705 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Cisco IOS Supported Commands: Routers</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+		<p class="MainHeading1">
+			Routers: IOS
+	<HR>
+		<p>Packet Tracer uses a simplified model of the Cisco IOS. Click on the <strong>CLI</strong> tab in the router configuration window to access the  Cisco IOS command line interface for the router. Use the <strong>Copy</strong> and <strong>Paste</strong> buttons to copy and paste text to and from the command line. This page lists the Cisco IOS command tree for Packet Tracer routers. For Cisco 1841 and 2811 routers with switching capabilities, refer to the &quot;Switch IOS&quot; page for additional  commands. The tree contains only Cisco IOS command chains that are supported in Packet Tracer.</p>
+		<p class="myPic">
+		<img src="images/CLI_routerIOS.jpg">
+		</p>
+		<p>&nbsp;</p>
+		<p class="MainHeading2">User Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded">
+					<ul>
+						<li>
+							<strong>&lt;1-99&gt;</strong>
+						<li>
+							<strong>connect </strong>[ WORD ]
+						<li>
+							<strong>disable </strong>
+						<li>
+							<strong>disconnect </strong>&lt;1-16&gt;
+						<li>
+							<strong>enable</strong> [ &lt;0-15&gt; | view [ WORD ] ]
+						<li>
+						  <strong>exit</strong>
+						<li>
+							<strong>logout</strong>
+						<li>
+							<strong>ping </strong>
+						[ ip | ipv6 ] WORD
+						<li>
+							<strong>resume </strong>
+						[ &lt;1-16&gt; | WORD ]
+						<li>
+							<strong>show</strong>
+						  <ul>
+						  <li>arp
+						  <li>cdp
+							  <ul>
+								  <li>
+									  entry
+									  <ul>
+										  <li>
+											* [ protocol | version ]
+										  <li>
+											  WORD [ protocol | version ]</li>
+									  </ul>
+								  <li>
+									  interface
+									  <ul>
+										  <li>
+											Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+										  <li>
+											FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+										  <li>
+											GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+										  <li>
+											  Serial &lt;0-9&gt;/&lt;0-24&gt;</li>
+									  </ul>
+								  <li>
+									  neighbors [ detail ]</li>
+							  </ul>
+							  <li>
+							    class-map [ WORD ]
+							  <li>
+								clock
+							  <li>
+								  controllers
+								  <ul>
+									  <li>
+										Ethernet &lt;0-9&gt;/&lt;0-24&gt;
+									  <li>
+										FastEthernet &lt;0-9&gt;/&lt;0-24&gt;
+									  <li>
+										GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;
+									  <li>
+										  Serial &lt;0-9&gt;/&lt;0-24&gt;</li>
+									  <li>
+									      Serial &lt;0-9&gt; &lt;0-24&gt; &lt;0-4294967295&gt;</li>
+									  <li>
+									      Serial &lt;0-9&gt; &lt;0-24&gt; &lt;0-4294967295&gt; &lt;16-1022&gt;</li>
+								  </ul>
+							  <li>
+							    crypto key mypubkey rsa
+							  <li>
+								dot11 interface
+							  <li>
+								flash:
+							  <li>
+								  frame-relay
+								  <ul>
+									  <li>
+										lmi
+									  <li>
+										map
+									  <li>
+										  pvc
+										  <ul>
+											  <li>
+												&lt;16-1022&gt;
+											  <li>
+												interface Serial &lt;0-9&gt;/&lt;0-24&gt; [ &lt;16-1022&gt; ]</li>
+											  <li>
+												interface Serial &lt;0-9&gt;/&lt;0-24&gt; [ &lt;16-1022&gt; ]
+											  <li>
+												interface Serial &lt;0-9&gt; &lt;0-24&gt; &lt;0-4294967295&gt;
+											  <li>
+												interface Serial &lt;0-9&gt; &lt;0-24&gt; &lt;0-4294967295&gt; &lt;16-1022&gt;
+										  </ul>
+									  </li>
+								  </ul>
+							  <li>
+								history
+							  <li>
+								hosts
+							  <li>
+								  interfaces
+								  <ul>
+								      <li>
+									    Dot11Radio &lt;0-9&gt;/&lt;0-24&gt;
+									  <li>
+										Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ] [ switchPort ]
+									  <li>
+										FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ] [ switchPort
+										]
+									  <li>
+										GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ] [
+										switchPort ]
+									  <li>
+										Loopback &lt;0-2147483647&gt;
+									  <li>
+										Serial &lt;0-9&gt;/&lt;0-24&gt;
+									  <li>
+										Serial &lt;0-9&gt; &lt;0-24&gt; &lt;0-4294967295&gt;
+									  <li>
+										Tunnel &lt;0-2147483647&gt;
+									  <li>
+										Virtual-Access &lt;1-2&gt;
+									  <li>
+										Virtual-Template &lt;1-200&gt;
+									  <li>
+										Vlan &lt;1-1005&gt;
+									  <li>
+										switchport
+									  <li>
+										  trunk</li>
+								  </ul>
+							  <li>
+								  ip
+								  <ul>
+									  <li>
+										arp
+									  <li>
+										bgp [ neighbors | summary ]
+									  <li>
+										dhcp binding
+									  <li>
+										  eigrp
+										  <ul>
+											  <li>
+												interfaces [ &lt;1-65535&gt; ]
+											  <li>
+												neighbors [ &lt;1-65535&gt; ]
+											  <li>
+												  topology 
+												  <ul>
+													 <li>[ &lt;1-65535&gt; ] 
+													 <ul><li>[ A.B.C.D A.B.C.D ]</ul>
+												     <li>[ A.B.C.D ][ A.B.C.D ]
+													 <li> all-links</li>
+													 </ul>
+											  <li>
+												  traffic [ &lt;1-65535&gt; ]</li>
+										  </ul>
+									  <li>
+										  interface
+										  <ul>
+											  <li>
+												Dot11Radio &lt;0-9&gt;/&lt;0-24&gt;/&lt;0-24&gt;
+											  <li>
+												Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+											  <li>
+												FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+											  <li>
+												GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+											  <li>
+												Loopback &lt;0-2147483647&gt;
+											  <li>
+												Serial &lt;0-9&gt;/&lt;0-24&gt;
+											  <li>
+												Tunnel &lt;0-2147483647&gt;
+											  <li>
+												Virtual-Access &lt;1-2&gt;
+											  <li>
+											    Virtual-Template &lt;1-200&gt;
+											  <li>
+												Vlan &lt;1-1005&gt;
+											  <li>
+											    brief</li>
+									  <li>
+										  nbar port-map
+									  <li>
+									      nat translations
+									  <li>
+										  ospf
+										  <ul>
+											  <li>
+												  &lt;1-65535&gt;
+												  <ul>
+													  <li>
+														  &lt;0-4294967295&gt;
+														  <ul>
+															  <li>
+																database
+															  <li>
+																  interface
+																  <ul>
+																	  <li>
+																		Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+																	  <li>
+																		FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+																	  <li>
+																		GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+																	  <li>
+																		Loopback &lt;0-2147483647&gt;
+																	  <li>
+																		Serial &lt;0-9&gt;/&lt;0-24&gt;</li>
+																  </ul>
+															  <li>
+																  neighbor
+																  <ul>
+																	  <li>
+																		Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ][ detail ]
+																	  <li>
+																		FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ][ detail ]
+																	  <li>
+																		GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ][ detail ]
+																	  <li>
+																		Loopback &lt;0-2147483647&gt;[ detail ]
+																	  <li>
+																		Serial &lt;0-9&gt;/&lt;0-24&gt;[ detail ]
+																	  <li>
+																	    detail</li>
+																  </ul>
+															  <li>virtual-links</li>
+														  </ul>
+													  <li>
+														  A.B.C.D
+														  <ul>
+															  <li>
+																database
+															  <li>
+																  interface
+																  <ul>
+																	  <li>
+																		Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+																	  <li>
+																		FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+																	  <li>
+																		GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+																	  <li>
+																		Loopback &lt;0-2147483647&gt;
+																	  <li>
+																		Serial &lt;0-9&gt;/&lt;0-24&gt;</li>
+																  </ul>
+															  <li>
+																  neighbor
+																  <ul>
+																	  <li>
+																		Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ][ detail ]
+																	  <li>
+																		FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ][ detail ]
+																	  <li>
+																		GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ][ detail ]
+																	  <li>
+																		Loopback &lt;0-2147483647&gt;[ detail ]
+																	  <li>
+																		  Serial &lt;0-9&gt;/&lt;0-24&gt;[ detail ]
+																	  <li>detail</li>
+																  </ul>
+															  </li>
+															  <li>virtual-links</li>
+														  </ul>
+													  <li>
+													    border-routers
+													  <li>
+														database
+													  <li>
+														  interface
+														  <ul>
+															  <li>
+																Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+															  <li>
+																FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+															  <li>
+																GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+															  <li>
+																Loopback &lt;0-2147483647&gt;
+															  <li>
+																  Serial &lt;0-9&gt;/&lt;0-24&gt;</li>
+														  </ul>
+													  <li>
+														  neighbor
+														  <ul>
+															  <li>
+																Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ][ detail ]
+															  <li>
+																FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ][ detail ]
+															  <li>
+																GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ][ detail ]
+															  <li>
+																Loopback &lt;0-2147483647&gt;[ detail ]
+															  <li>
+																  Serial &lt;0-9&gt;/&lt;0-24&gt;[ detail ]
+															  <li>detail</li>
+														  </ul>
+													  </li>
+													  <li>virtual-links</li>
+												  </ul>
+											  <li>
+											    border-routers
+											  <li>
+												database
+											  <li>
+												  interface
+												  <ul>
+													  <li>
+														Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+													  <li>
+														FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+													  <li>
+														GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+													  <li>
+														Loopback &lt;0-2147483647&gt;
+													  <li>
+														  Serial &lt;0-9&gt;/&lt;0-24&gt;</li>
+												  </ul>
+											  <li>
+												  neighbor
+												  <ul>
+													  <li>
+														Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ][ detail ]
+													  <li>
+														FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ][ detail ]
+													  <li>
+														GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ][ detail ]
+													  <li>
+														Loopback &lt;0-2147483647&gt;[ detail ]
+													  <li>
+														  Serial &lt;0-9&gt;/&lt;0-24&gt;[ detail ]
+													  <li>detail</li>
+												  </ul>
+											  <li>virtual-links</li>
+											  <li>
+										  </ul>
+									  <li>protocols
+								    <li>
+									  rip database
+								    <li>
+									  route [ WORD | bgp | connected | eigrp | ospf &lt;1-65535&gt; | rip | static ]
+								    <li>
+									  ssh</li>
+								  </ul>
+								</ul>
+							<li>ipv6
+								<ul>
+									<li>
+										access-list [ WORD ]
+									<li>
+										eigrp
+										<ul>
+											<li>interfaces &lt;1-65535&gt;
+											<li>neighbors &lt;1-65535&gt;
+											<li>topology
+											<ul>
+												<li>&lt;1-65535&gt;
+												<ul>
+													<li>X:X:X:X::X/&lt;0-128&gt;
+													</li>
+												<li>X:X:X:X::X/&lt;0-128&gt;
+												<li>all-links
+												</li>
+												</ul>
+											<li>traffic &lt;1-65535&gt;
+											</li>
+											</ul>
+										</ul>
+									<li>general-prefix
+									<li>interface
+									<ul>
+										<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+										<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+										<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+										<li>Loopback &lt;0-2147483647&gt;
+										<li>Serial &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+										<li>Tunnel &lt;0-2147483647&gt;
+										<li>brief</li>
+									</ul>
+									<li>neighbors
+									<ul>
+										<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+										<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+										<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+										<li>Loopback &lt;0-2147483647&gt;
+										<li>Serial &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+										<li>Vlan &lt;1-1005&gt;</li>
+									</ul>
+									<li>ospf
+									<ul>
+										<li>&lt;1-65535&gt;
+										<ul>
+											<li>&lt;0-4294967295&gt;
+											<ul>
+												<li>database
+												<li>interface
+												<ul>
+													<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+													<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+													<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+													<li>Loopback &lt;0-2147483647&gt;
+													<li>Serial &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+													</li>
+												</ul>
+												<li>neighbor
+												<ul>
+													<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;][detail]
+													<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;][detail]
+													<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;][detail]
+													<li>Loopback &lt;0-2147483647&gt; [detail]
+													<li>Serial &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;][detail]
+													<li>detail
+													</li>
+												</ul>
+											</ul>
+											<li>A.B.C.D
+											<ul>
+												<li>database
+												<li>interface
+												<ul>
+													<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+													<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+													<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+													<li>Loopback &lt;0-2147483647&gt;
+													<li>Serial &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+													</li>
+												</ul>
+												<li>neighbor
+												<ul>
+													<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;][detail]
+													<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;][detail]
+													<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;][detail]
+													<li>Loopback &lt;0-2147483647&gt;[detail]
+													<li>Serial &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;][detail]
+													<li>detail
+													</li>
+												</ul>
+											</ul>
+											<li>border-routers
+											<li>database
+											<li>interface
+											<ul>
+												<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+												<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+												<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+												<li>Loopback &lt;0-2147483647&gt;
+												<li>Serial &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+												</li>
+											</ul>
+											<li>neighbor
+											<ul>
+												<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;][detail]
+												<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;][detail]
+												<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;][detail]
+												<li>Loopback &lt;0-2147483647&gt; [detail]
+												<li>Serial &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;][detail]
+												<li>detail
+												</li>
+											</ul>
+										</ul>
+										<li>border-routers
+										<li>database
+										<li>interface
+										<ul>
+											<li>Ethernet&lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+											<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+											<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+											<li>Loopback &lt;0-2147483647&gt;
+											<li>Serial &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+											</li>
+										</ul>
+										<li>neighbor
+										<ul>
+											<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;][detail]
+											<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;][detail]
+											<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;][detail]
+											<li>Loopback &lt;0-2147483647&gt; [detail]
+											<li>Serial &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;][detail]
+											<li>detail
+											</li>
+										</ul>
+									</ul>
+								<li>protocols
+								<li>rip database
+								<li>route ospf
+								</li>
+							</ul>									
+							<li>policy-map [ WORD | interface [ Ethernet &lt;0-9&gt; &lt;0-24&gt; &lt;0-4294967295&gt; | FastEthernet &lt;0-9&gt; &lt;0-24&gt; &lt;0-4294967295&gt; | GigabitEthernet &lt;0-9&gt; &lt;0-24&gt; &lt;0-4294967295&gt;  | Serial &lt;0-9&gt; &lt;0-24&gt; | Serial &lt;0-9&gt; &lt;0-24&gt; &lt;0-4294967295&gt; ]
+							<li>privilege
+						    <li>protocols
+						    <li>queue
+							<ul>
+								<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+								<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+								<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+								<li>Serial &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+								</li>
+							</ul>
+							<li>queueing
+							<li>sessions
+						    <li>ssh
+							<li>tcp [brief]
+							<li>terminal
+						    <li>users
+						    <li>version
+						    <li>vlan-switch [ brief | id &lt;1-1005&gt; | name WORD ]
+						    <li>vtp
+								  <ul>
+									  <li>
+										counters
+									  <li>
+										  status</li>
+								  </ul>
+								</ul>
+						<li><strong>ssh</strong>
+						<ul>
+							<li>-l WORD [ WORD | -v 1 WORD] 
+							<li>-l WORD [ WORD | -v 2 WORD] 
+							<li>-v 1 -l WORD WORD
+							<li>-v 2 -l WORD WORD</li>
+						</ul>
+						<li><strong>telnet</strong>
+						[ WORD ][&lt;0-65535&gt;]
+						<li>
+							<strong>terminal history size</strong> &lt;0-256&gt;
+						<li>
+							<strong>traceroute</strong> WORD</li>
+				</ul>				</td>
+		  </tr>
+		</table>
+		<p class="MainHeading2">Enable Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+						<li>
+							<strong>&lt;1-99&gt;</strong>
+						<li>
+							<strong>auto secure</strong>
+						<li>
+							<strong>clear</strong>
+							<ul>
+								<li>aaa local user user lockout
+							    [ all | username WORD ]
+							  <li>access-list counters [ &lt;1-199&gt; | &lt;1300-2699&gt; | WORD ]
+							  <li>
+								arp-cache
+							  <li>
+								cdp table
+							  <li>
+								frame-relay [inarp | counter]
+							  <li>
+									ip
+									<ul>
+										<li>
+										bgp *
+										<li>
+										nat translation *
+										<li>ospf process
+										<li>
+											route [ * | A.B.C.D | A.B.C.D A.B.C.D ]</li>
+									</ul>
+							  <li>
+									ipv6
+									<ul>
+										<li>dhcp binding
+										<li>nat translation *
+										<li>neighbors
+										</li>
+									</ul>
+							  <li>line tty &lt;2-90&gt;
+							  <li>mac-address-table [ dynamic ]
+							  <li>vtp counters
+							  </li>
+							</ul>
+						<li>
+							<strong>clock </strong>
+						set hh:mm:ss [ &lt;1-31&gt; MONTH &lt;1993-2035&gt; | MONTH &lt;1-31&gt;
+						&lt;1993-2035&gt; ]
+						<li>
+							<strong>configure </strong>
+						[ terminal ]
+						<li>
+							<strong>connect </strong>
+						[ WORD ]
+						<li>
+							<strong>copy</strong>
+							<ul>
+								<li>flash:
+								<ul>
+									<li>ftp:
+									<li>running-config
+									<li>startup-config
+									<li>tftp:
+									</li>
+								</ul>
+								<li>ftp:
+								<ul>
+									<li>flash:
+									<li>running-config
+									<li>startup-config
+									</li>
+								</ul>
+								<li>
+									running-config
+									<ul>
+										<li>
+										flash:
+										<li>
+										ftp
+										<li>
+										startup-config
+										<li>
+											tftp:</li>
+									</ul>
+								<li>
+									startup-config
+									<ul>
+										<li>
+										flash:
+										<li>
+										ftp
+										<li>
+										running-config
+										<li>
+											tftp:</li>
+									</ul>
+								<li>
+									tftp:
+									<ul>
+										<li>
+										flash:
+										<li>
+										running-config
+										<li>
+											startup-config</li>
+									</ul>
+								</li>
+									</ul>
+								</li>
+							
+						<li>
+							<strong>debug</strong>
+							<ul>
+								<li>aaa authentication
+								<li>crypto [ isakmp | ipsec ]
+								<li>custom-queue
+								<li>eigrp
+								    <ul>
+										<li>
+										fsm
+										<li>
+											packets</li>
+								  </ul>
+							  <li>ephone register
+							  <li>frame-relay lmi
+							  <li>ip
+								  <ul>
+								    <li>icmp
+								    <li>inspect
+								      <ul>
+								        <li>detailed</li>
+						                <li>events</li>
+							            <li>function-trace</li>
+							            <li>object-creation</li>
+							            <li>object-deletion</li>
+							            <li>protocol [ http | icmp | tcp | udp ]</li>
+							            <li>timers  </li>
+							        </ul>
+								    <li>nat
+								    <li>ospf
+									      <ul>
+											  <li>
+												adj
+											  <li>
+												  events</li>
+								      </ul>
+								    <li>
+									  packet
+								    <li>
+										rip [ events ]
+								    <li>
+										  routing
+							    </ul>
+							  <li>
+									ipv6
+									<ul>
+										<li>inspect
+										<ul>
+											<li>detailed
+											<li>events
+											<li>function-trace
+											<li>icmp
+											<li>object-creation
+											<li>object-deletion
+											<li>tcp
+											<li>timers
+											<li>udp
+											</li>
+										</ul>
+										<li>ospf
+										<ul>
+											<li>
+											adj
+											<li>
+											events											</li>
+										</ul>
+										</li>
+									</ul>
+							  <li>
+								ntp packets
+							  <li>
+									ppp [ authentication | negotiation | packet ]</li>
+							</ul>
+						<li>
+							<strong>delete</strong>
+							<ul>
+								<li>
+								WORD
+								<li>
+									flash:</li>
+							</ul>
+						<li>
+							<strong>dir </strong><strong></strong>
+						[ WORD | flash: | nvram: ]
+						<li>
+							<strong>disable</strong>
+						<li>
+							<strong>disconnect</strong> <strong></strong><strong></strong>
+						&lt;1-16&gt;
+						<li>
+							<strong>enable</strong>
+						  [ &lt;1-15&gt; | view [ WORD ] ]
+						<li>
+						  <strong>erase </strong>
+						startup-config
+						<li>
+							<strong>exit</strong>
+						<li>
+							<strong>logout</strong>
+						<li><strong>mkdir </strong>[ WORD | flash: ]
+						<li>
+						  <strong>more</strong>
+						file
+						<li>
+							<strong>no</strong>
+							<ul>
+								<li>
+									debug
+									<ul>
+										<li>all
+										<li>aaa authentication
+									    <li>crypto [ isakmp | ipsec ]
+								        <li>custom-queue
+										<li>eigrp
+										<ul>
+                                            <li> fsm
+                                            <li> packets</li>
+								        </ul>
+										<li>ephone register
+										<li>frame-relay lmi
+										<li> ip
+										<ul>
+                                            <li>icmp
+                                            <li>inspect
+                                                <ul>
+                                                  <li>detailed</li>
+                                                  <li>events</li>
+                                                  <li>function-trace</li>
+                                                  <li>object-creation</li>
+                                                  <li>object-deletion</li>
+                                                  <li>protocol [ http | icmp | tcp | udp ]</li>
+                                                  <li>timers </li>
+                                                </ul>
+                                              <li>nat
+                                              <li>ospf
+                                                <ul>
+                                                    <li> adj
+                                                    <li> events</li>
+                                                </ul>
+                                              <li> packet
+                                              <li> rip [ events ]
+                                              <li> routing
+                                              </ul>
+								      <li> ipv6
+										    <ul>
+												<li>inspect
+												<ul>
+													<li>detailed
+													<li>events
+													<li>function-trace
+													<li>icmp
+													<li>object-creation
+													<li>object-deletion
+													<li>tcp
+													<li>timers
+													<li>udp
+													</li>
+												</ul>
+												<li> ospf
+												<ul>
+                                                    <li> adj
+                                                    <li> events </li>
+                                                </ul>
+                                              </li>
+							            </ul>
+									  <li> ntp packets
+							          <li> ppp [ authentication | negotiation | packet ]</li>
+						          </ul>
+								</li>
+							</ul>
+						<li>
+							<strong>ping </strong>[ WORD ]
+							<ul>
+								<li>
+									[ Protocol ] [ Target IP address ] [ Repeat count ] [ Datagram size ] [ Timeout
+									in seconds ] [ Extended commands ] [ Sweep range of sizes ]</li>
+							</ul>
+						<li>
+							<strong>reload</strong>
+						<li>
+							<strong>resume</strong> <strong></strong>
+						[ &lt;1-16&gt; | WORD ]
+						<li><strong>rmdir </strong>[ WORD | flash: ]
+						<li>
+							<strong>setup</strong>
+						<li>
+							<strong>show</strong>
+							<ul>
+								<li>aaa
+                                  <ul>
+                                    <li>local user lockout</li>
+                                    <li>sessions</li>
+                                    <li>user [ &lt;1-4294967295&gt; | all ] </li>
+                                  </ul>
+								<li>access-lists [ &lt;1-999&gt; | WORD ]
+								<li>
+								arp
+								<li>
+									cdp
+									<ul>
+										<li>
+											entry
+											<ul>
+												<li>
+												* [ protocol | version ]
+												<li>
+													WORD [ protocol | version ]</li>
+											</ul>
+										<li>
+											interfaces
+											<ul>
+												<li>
+												Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+												<li>
+												FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+												<li>
+												GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+												<li>
+													Serial &lt;0-9&gt;/&lt;0-24&gt;</li>
+											</ul>
+										<li>
+											neighbors [ detail ]</li>
+									</ul>
+								<li>class-map [ WORD ]
+								<li>
+								clock
+								<li>
+									controllers
+									<ul>
+										<li>
+										Ethernet &lt;0-9&gt;/&lt;0-24&gt;
+										<li>
+										FastEthernet &lt;0-9&gt;/&lt;0-24&gt;
+										<li>
+										GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;
+										<li>
+											Serial &lt;0-9&gt;/&lt;0-24&gt;</li>
+										<li>
+											Serial &lt;0-9&gt; &lt;0-24&gt; &lt;0-4294967295&gt;</li>
+								    </ul>
+								<li>crypto
+								  <ul>
+								    <li>isakmp [ policy | sa ]</li>
+						            <li>ipsec [ sa | transform-set ]</li>
+								    <li>map  </li>
+									<li>crypto key mypubkey rsa</li>
+								  </ul>
+								</li>
+								<li>
+								debugging
+								<li>
+								dhcp lease
+								<li>
+								dot11 interface
+								<li>
+								ephone [attempted-registrations]
+								<li>
+								file systems
+								<li>
+								flash:
+								<li>
+									frame-relay
+									<ul>
+										<li>
+										lmi
+										<li>
+										map
+										<li>
+											pvc
+											<ul>
+												<li>
+												&lt;16-1022&gt;
+												<li>
+													interface Serial &lt;0-9&gt;/&lt;0-24&gt; [ &lt;16-1022&gt; ]</li>
+											</ul>
+										</li>
+									</ul>
+								<li>
+								history
+								<li>
+								hosts
+								<li>
+									interfaces
+									<ul>
+									    <li>
+										dot11Radio &lt;0-9&gt;/&lt;0-24&gt;/&lt;0-24&gt;
+										<li>
+										Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ] [ switchPort ]
+										<li>
+										FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ] [ switchPort
+										]
+										<li>
+										GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ] [
+										switchPort ]
+										<li>
+										Loopback &lt;0-2147483647&gt;
+										<li>
+										Serial &lt;0-9&gt;/&lt;0-24&gt;
+										<li>
+										Serial &lt;0-9&gt; &lt;0-24&gt; &lt;0-4294967295&gt;
+										<li>
+										Tunnel &lt;0-2147483647&gt;
+										<li>
+										Virtual-Access &lt;1-2&gt;
+										<li>
+										Virtual-Template &lt;1-200&gt;
+										<li>
+										Vlan &lt;1-1005&gt;
+										<li>
+										switchport
+										<li>
+											trunk</li>
+									</ul>
+								<li>
+									ip
+									<ul>
+										<li>
+										access-lists [ &lt;1-199&gt; | WORD ]
+										<li>
+										arp
+										<li>
+										bgp [ neighbors | summary ]
+										<li>
+										dhcp binding
+										<li>eigrp
+											<ul>
+												<li>
+												interfaces [ &lt;1-65535&gt; ]
+												<li>
+												neighbors [ &lt;1-65535&gt; ]
+												<li>
+													topology [ &lt;1-65535&gt; ] [ A.B.C.D A.B.C.D ]
+													<ul>
+														<li>
+															all-links</li>
+													</ul>
+												<li>
+													traffic [ &lt;1-65535&gt; ]</li>
+											</ul>
+										<li>inspect
+										  <ul>
+										    <li>all</li>
+								            <li>config</li>
+								            <li>interfaces</li>
+								            <li>name WORD</li>
+								            <li>sessions [ detail ]</li>
+									        <li>statistics </li>
+									    </ul>
+										<li>interface
+										    <ul>
+												<li>
+												dot11Radio &lt;0-9&gt;/&lt;0-24&gt;/&lt;0-24&gt;
+												<li>
+												Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+												<li>
+												FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+												<li>
+												GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+												<li>
+												Loopback &lt;0-2147483647&gt;
+												<li>
+												Serial &lt;0-9&gt;/&lt;0-24&gt;
+												<li>
+												Serial &lt;0-9&gt; &lt;0-24&gt; &lt;0-4294967295&gt;
+												<li>
+												Tunnel &lt;0-2147483647&gt;
+												<li>
+												Virtual-Access &lt;1-2&gt;
+												<li>
+												Virtual-Template &lt;1-200&gt;
+												<li>
+												Vlan &lt;1-1005&gt;
+												<li>
+													brief</li>
+										    </ul>
+									    <li>ips
+									      <ul>
+									        <li>all</li>
+					                        <li>configuration</li>
+									        <li>signatures
+									          <ul>
+									            <li>count</li>
+								                <li>sigid WORD subid WORD </li>
+									          </ul>
+									        </li>
+								          </ul>
+								      </li>
+						              <li>
+										nat [translations | statistics]
+									  <li>nbar port-map
+									  <li>ospf
+											<ul>
+												<li>
+													&lt;1-65535&gt;
+													<ul>
+														<li>
+															&lt;0-4294967295&gt;
+															<ul>
+																<li>
+																database
+																<li>
+																	interface
+																	<ul>
+																		<li>
+																		Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+																		<li>
+																		FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+																		<li>
+																		GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+																		<li>
+																		Loopback &lt;0-2147483647&gt;
+																		<li>
+																			Serial &lt;0-9&gt;/&lt;0-24&gt;</li>
+																	</ul>
+																<li>
+																	neighbor [ detail ]
+																	<ul>
+																		<li>
+																		Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ][ detail ]
+																		<li>
+																		FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ][ detail ]
+																		<li>
+																		GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ][ detail ]
+																		<li>
+																		Loopback &lt;0-2147483647&gt;[ detail ]
+																		<li>
+																			Serial &lt;0-9&gt;/&lt;0-24&gt;</li>[ detail ]
+																	</ul>
+																</li>
+																<li>virtual-links</li>
+															</ul>
+														<li>
+															A.B.C.D
+															<ul>
+																<li>
+																database
+																<li>
+																	interface
+																	<ul>
+																		<li>
+																		Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+																		<li>
+																		FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+																		<li>
+																		GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+																		<li>
+																		Loopback &lt;0-2147483647&gt;
+																		<li>
+																			Serial &lt;0-9&gt;/&lt;0-24&gt;</li>
+																	</ul>
+																<li>
+																	neighbor [ detail ]
+																	<ul>
+																		<li>
+																		Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ][ detail ]
+																		<li>
+																		FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ][ detail ]
+																		<li>
+																		GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ][ detail ]
+																		<li>
+																		Loopback &lt;0-2147483647&gt;[ detail ]
+																		<li>
+																			Serial &lt;0-9&gt;/&lt;0-24&gt;	[ detail ]																	</li>
+																	</ul>
+																</li>
+																<li>virtual-links</li>
+															</ul>
+														<li>border-routers
+														<li>database
+														<li>
+															interface
+															<ul>
+																<li>
+																Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+																<li>
+																FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+																<li>
+																GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+																<li>
+																Loopback &lt;0-2147483647&gt;
+																<li>
+																	Serial &lt;0-9&gt;/&lt;0-24&gt;</li>
+															</ul>
+														<li>
+															neighbor [ detail ]
+															<ul>
+																<li>
+																Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ][ detail ]
+																<li>
+																FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ][ detail ]
+																<li>
+																GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ][ detail ]
+																<li>
+																Loopback &lt;0-2147483647&gt;[ detail ]
+																<li>
+																	Serial &lt;0-9&gt;/&lt;0-24&gt;</li>[ detail ]
+															</ul>
+														</li>
+														<li>virtual-links</li>
+													</ul>
+												<li>border-routers
+												<li>database
+												<li>
+													interface
+													<ul>
+														<li>
+														Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+														<li>
+														FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+														<li>
+														GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+														<li>
+														Loopback &lt;0-2147483647&gt;
+														<li>
+															Serial &lt;0-9&gt;/&lt;0-24&gt;</li>
+													</ul>
+												<li>
+													neighbor [ detail ]
+													<ul>
+														<li>
+														Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ][ detail ]
+														<li>
+														FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ][ detail ]
+														<li>
+														GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ][ detail ]
+														<li>
+														Loopback &lt;0-2147483647&gt;[ detail ]
+														<li>
+															Serial &lt;0-9&gt;/&lt;0-24&gt;</li>[ detail ]
+													</ul>
+												</li>
+												<li>virtual-links</li>
+											</ul>
+									  <li>
+										protocols
+									  <li>
+										rip database
+									  <li>
+											route [ WORD | bgp | connected | eigrp | ospf &lt;1-65535&gt; | rip | static ]</li>
+									  <li>
+										ssh
+									</ul>
+								<li>ipv6
+								<ul>
+									<li>access-list [ WORD ]
+									<li>dhcp [ binding | interface | pool ]
+									<li>eigrp
+									<ul>
+										<li>interfaces &lt;1-65535&gt;
+										<li>neighbors &lt;1-65535&gt;
+										<li>topology
+										<ul>
+											<li>&lt;1-65535&gt;
+											<ul>
+												<li>X:X:X:X::X/&lt;0-128&gt;
+												</li>
+											</ul>
+											<li>X:X:X:X::X/&lt;0-128&gt;
+											<li>all-links
+											</li>
+										<li>traffic &lt;1-65535&gt;
+										</li>
+									</ul>
+									<li>general-prefix
+									<li>inspect
+									<ul>
+										<li>all
+										<li>config
+										<li>interfaces
+										<li>name [ WORD ]
+										<li>sessions [ detail ]
+										</li>
+									</ul>
+									<li>interface
+									<ul>
+										<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+										<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+										<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+										<li>Serial &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+										<li>Tunnel &lt;0-2147483647&gt;
+										<li>brief
+										</li>
+									</ul>
+									<li>nat
+									<ul>
+										<li>statistics
+										<li>translations
+										</li>
+									</ul>
+									<li>neighbors
+									<ul>
+										<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+										<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+										<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+										<li>Loopback &lt;0-2147483647&gt;[detail]
+										<li>Serial &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+										</li>
+									</ul>
+								</ul>
+								<li>ospf
+								<ul>
+									<li>&lt;1-65535&gt;
+									<ul>
+										<li>&lt;0-4294967295&gt;
+										<ul>
+											<li>database
+											<li>interface
+											<ul>
+												<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+												<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+												<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+												<li>Loopback &lt;0-2147483647&gt;
+												<li>Serial &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+												</li>
+											</ul>
+											<li>neighbor
+											<ul>
+												<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;][detail]
+												<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;][detail]
+												<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;][detail]
+												<li>Loopback &lt;0-2147483647&gt;[detail]
+												<li>detail
+												</li>
+											</ul>
+										</ul>
+										<li>A.B.C.D
+										<ul>
+											<li>database
+											<li>interface
+											<ul>
+												<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+												<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+												<li>GigabitEthernet&lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+												<li>Loopback &lt;0-2147483647&gt;
+												<li>Serial &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+												</li>
+											</ul>
+											<li>neighbor
+											<ul>
+												<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;][detail]
+												<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;][detail]
+												<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;][detail]
+												<li>Loopback &lt;0-2147483647&gt;[detail]
+												<li>Serial &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;][detail]
+												<li>detail
+												</li>
+											</ul>
+										</ul>
+										<li>border-routers
+										<li>database
+										<li>interface
+										<ul>
+											<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+											<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+											<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+											<li>Loopback &lt;0-2147483647&gt;
+											<li>Serial &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+											</li>
+										</ul>
+										<li>neighbor
+										<ul>
+											<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;][detail]
+											<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;][detail]
+											<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;][detail]
+											<li>Loopback &lt;0-2147483647&gt;[detail]
+											<li>Serial &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;][detail]
+											<li>detail
+											</li>
+										</ul>
+									</ul>
+									<li>protocols
+									<li>rip database
+									<li>route [ ospf ]
+									</li>
+								</ul>
+								</li>
+							</ul>
+							<li>line
+							<li>logging
+							<li>login [ failures ]
+							<li>mac-address-table [ static ]
+						<li>ntp status
+							<li>parser view
+							<li>policy-map
+							  <ul>
+							    <li>WORD</li>
+					            <li>interface
+					              <ul>
+					                <li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+				                    <li> FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+				                    <li> GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+		                            <li> Serial &lt;0-9&gt;/&lt;0-24&gt;
+									<li> Serial &lt;0-9&gt; &lt;0-24&gt; &lt;0-4294967295&gt;
+				                  </ul>
+					            </li>
+				                <li>type inspect zone-pair sessions                                         </li>
+						    </ul>
+							<li>privilege
+							<li>processes
+							<li>protocols
+							<li>queue
+							  <ul>
+							    <li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+						        <li> FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+						        <li> GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+					            <li> Serial &lt;0-9&gt;/&lt;0-24&gt;
+								<li> Serial &lt;0-9&gt; &lt;0-24&gt; &lt;0-4294967295&gt;
+						    </ul>
+							<li>queueing
+							<li>running-config
+							<li>secure [ bootset ]
+							<li>sessions
+							<li>snmp
+							<li>spanning-tree 
+							<ul>
+								<li>active
+								<li>detail
+								<li>interface
+								<ul>
+									<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[portfast]
+									<li>Gigabit &lt;0-9&gt;/&lt;0-24&gt;[portfast]
+									<li>Port-channel &lt;1-6&gt;
+									<li>Vlan &lt;1-4094&gt;[portfast]
+									</li>
+								</ul>
+								<li>summary totals
+								<li>vlan &lt;1-1005&gt;
+								</li>
+							</ul>
+							<li>ssh
+							<li>standby
+							<ul>
+								<li>FastEthernet &lt;0-2&gt;/&lt;0-1&gt;[brief]
+								<li>brief
+								</li>
+							</ul>
+							<li>
+							startup-config
+							<li>
+							storm-control broadcast
+							<li>
+							tcp [ brief ]
+							<li>
+							tech-support
+							<li>
+							terminal
+							<li>
+							users
+							<li>
+							version
+							<li>
+							vlan-switch [ brief | id &lt;1-1005&gt; | name WORD ]
+							<li>
+								vtp
+								<ul>
+									<li>
+									counters
+									<li>
+										status</li>
+								</ul>
+							</li>
+						</ul>
+					<li><strong>ssh</strong>
+					<ul>
+						<li>-l WORD [ WORD | -v 1 WORD] 
+						<li>-l WORD [ WORD | -v 2 WORD] 
+						<li>-v 1 -l WORD WORD
+						<li>-v 2 -l WORD WORD</li>
+					</ul>
+					</li>
+			  <li> <strong>terminal</strong> history size &lt;0-256&gt;
+			  <li><strong>telnet</strong>
+			    [ WORD ]
+		      <li>
+				  <strong>traceroute</strong> [ WORD ]
+				  <ul>
+					  <li>
+						  [ Protocol ] [ Target IP address ] [ Source address ] [ Numeric display ] [
+								Timeout in seconds ] [ Probe count ] [ Minimum Time to Live ] [ Maximum Time to
+						  Live ]</li>
+				  </ul>
+			  <li>
+						<strong>undebug</strong>
+						<ul>
+							<li>
+							all
+							<li>aaa authentication
+						    <li>crypto [ isakmp | ipsec ]
+					        <li>custom-queue
+					          <li>eigrp
+							    <ul>
+                                           <li> fsm
+                                           <li> packets</li>
+					        </ul>
+					      <li> ip
+							      <ul>
+                                           <li>icmp
+                                           <li>inspect
+                                             <ul>
+                                                       <li>detailed</li>
+                                               <li>events</li>
+                                               <li>function-trace</li>
+                                               <li>object-creation</li>
+                                                <li>object-deletion</li>
+                                                <li>protocol [ http | icmp | tcp | udp ]</li>
+                                                <li>timers </li>
+                                              </ul>
+                                            <li>nat
+                                            <li>ospf
+                                              <ul>
+                                                        <li> adj
+                                                        <li> events</li>
+                                              </ul>
+                                            <li> packet
+                                            <li> rip [ events ]
+                                            <li> routing
+                                </ul>
+					        </ul>
+				  <li>
+							<strong>vlan</strong>
+						database
+				  <li>
+							<strong>write</strong> [ erase | memory | terminal ]</li>
+				</ul>				</td>
+		  </tr>
+		</table>
+		<p class="MainHeading2">Global Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+						<li><strong>aaa                        </strong>
+						  <ul>
+						    <li>authentication
+						      <ul>
+						        <li>enable default
+						          <ul>
+						            <li>enable</li>
+				                    <li>group [ radius | tacacs+ ]</li>
+						            <li>local</li>
+						            <li>none</li>
+					              </ul>
+								  <li>login [ WORD | default ]
+								  <ul>
+									<li>enable
+									<li>group [ radius | tacacs+ ]
+									<li>local
+									<ul>
+										<li>enable
+										<li>group [ radius | tacacs+ ]
+										<li>none [ group | local ]
+										</li>
+									</ul>
+									<li>ppp [ WORD | default ]
+									<ul>
+										<li>enable
+										<li>group [ radius | tacacs+ ]
+										<li>local [ enable | group [ radius | tacacs+ ] | none ]
+										<li>none [ group [ radius | tacacs+ ] | local ]
+										</li>
+									</ul>
+						        </li>
+		                      </ul>
+						    </li>
+				            <li>authorization
+				              <ul>
+				                <li>[ exec | network ] [ WORD | default ]
+				                  <ul>
+				                    <li>group [ radius | tacacs+ ]</li>
+			                        <li>if-authenticated</li>
+				                    <li>local [ group [ radius | tacacs+ ] | if-authenticated | none ]</li>
+				                    <li>none [ group [ radius | tacacs+ ] | if-authenticated | none ]</li>
+			                      </ul>
+				                </li>
+	                          </ul>
+				            </li>
+				            <li>new-model                                                   </li>
+							</ul>
+					    </ul>
+						<li><strong>access-list</strong> <i>(named ACL is under the "ip access-list" branch in
+							  Global Mode)</i>
+					        <ul>
+						        <li>
+							        &lt;1-99&gt;
+							        <ul>
+							          <li>
+							            [ deny | permit ] [ A.B.C.D | any | host A.B.C.D ]
+						              <li>
+							              [ deny | permit ] [ A.B.C.D A.B.C.D ]
+					                  <li>
+							                remark LINE</li>
+								    </ul>
+							    <li>
+								    &lt;100-199&gt;
+								    <ul>
+								      <li>[ deny | permit ][ ahp | eigrp | esp | gre | ospf ][ A.B.C.D A.B.C.D | any | host A.B.C.D ][ A.B.C.D A.B.C.D | any | host A.B.C.D ]
+									  <li>
+								        [ deny | permit ] [ icmp ] [ A.B.C.D A.B.C.D | any | host A.B.C.D ] [
+								        A.B.C.D A.B.C.D | any | host A.B.C.D ]
+										<ul>
+											<li>&lt;0-256&gt;
+											<li>echo
+											<li>echo-reply
+											<li>host-unreachable
+											<li>net-unreachable
+											<li>port-unreachable
+											<li>protocol-unreachable
+											<li>ttl-exceeded
+											<li>unreachable
+											</li>
+										</ul>
+										<li>[ deny | permit ] [ ip ] [ A.B.C.D A.B.C.D | any | host A.B.C.D ] [ A.B.C.D A.B.C.D | any | host A.B.C.D ]
+										<ul>
+											<li>dscp [ &lt;0-63&gt; | af11 |af12 |af13 | af21 | af22 | af23 | af31 | af32 | af33 | af41 | af42 | af43 | cs1 | cs2 | cs3 | cs4 | cs5 |cs6 | cs7 | default | ef ]
+											<li>precedence [ &lt;0-7&gt; | critical | flash | flash=override | immediate | internet | network | priority | routine ]
+											</li>
+										</ul>
+										<li>
+								          [ deny | permit ] [ tcp | udp ] [ A.B.C.D A.B.C.D | any | host A.B.C.D ] [
+								          A.B.C.D A.B.C.D | any | eq &lt;0-65535&gt; | host A.B.C.D | gt &lt;0-65535&gt;
+								          | lt &lt;0-65535&gt; | neq &lt;0-65535&gt; | range &lt;0-65535&gt;
+								          &lt;0-65535&gt; ] [ eq &lt;0-65535&gt; | gt &lt;0-65535&gt; | lt
+								          &lt;0-65535&gt; | neq &lt;0-65535&gt; | range &lt;0-65535&gt; &lt;0-65535&gt; ]
+						              <li>
+								            remark LINE</li>
+								    </ul>
+							    </li>
+					      </ul>
+				  <li>
+					  <strong>banner</strong>
+					  <ul>
+						  <li>
+							motd LINE
+						  <li>
+						  login LINE								</li>
+					  </ul>
+				  <li>
+							<strong>boot</strong>
+						system [ flash ] WORD
+				  <li>
+							<strong>cdp </strong>
+						run
+				  <li><strong>class-map</strong>
+						  [ type inspect ] [ match-all | match-any ]
+					    WORD
+				  <li>
+							<strong>clock </strong>
+						timezone WORD &lt;-23 - 23&gt; [ &lt;0-59&gt; ]
+				  <li>
+							<strong>config-register</strong>
+						WORD
+				  <li>
+							<strong>crypto</strong>
+							<ul>
+								<li>dynamic-map WORD &lt;1-65535&gt; [ ipsec-isakmp ]
+								<li>ipsec
+								  <ul>
+								    <li>security-association lifetime seconds &lt;120-86400&gt;</li>
+				                    <li>transform-set WORD [ ah-md5-hmac | ah-sha-hmac ]
+									<ul>
+										<li>esp-3des [ esp-md5-hmac | esp-sha-hmac ]
+										<li>esp-aes [ 128 | 192 | 256 ] [ esp-md5-hmac | esp-sha-hmac ]
+										<li>esp-des [ esp-md5-hmac | esp-sha-hmac ]
+										<li>esp-md5-hmac
+										<li>esp-sha-hmac
+										</li>
+									</ul>
+				                    </li>
+					              </ul>
+								<li>isakmp
+								  <ul>
+								    <li>client configuration group WORD </li>
+									<li>enable
+				                    <li>key WORD address A.B.C.D [ A.B.C.D ] </li>
+				                    <li>policy &lt;1-10000&gt;</li>
+								  </ul>
+								<li>key [ generate | zeroize ] rsa
+				              <li>map WORD
+					              <ul>
+					                <li>&lt;1-65535&gt; [ ipsec-isakmp ] [dynamic WORD ]</li>
+			                        <li>client [ authentication list WORD | configuration address respond ]</li>
+				                    <li>isakmp authorization list WORD                                                                    </li>
+				              </ul>
+						    </ul>
+				  <li>
+							<strong>do</strong>
+						LINE
+				  <li>
+							<strong>enable</strong>
+							<ul>
+								<li>
+									password
+									<ul>
+										<li>
+										7 WORD
+										<li>
+											LINE</li>
+									    <li>level &lt;1-15&gt;
+									      <ul>
+									        <li>7 WORD
+								            <li> LINE</li>
+								          </ul>
+									    </li>
+								    </ul>
+								<li> secret
+								  <ul>
+								    <li>[ 0 | 5 ] LINE</li>
+							        <li>level &lt;1-15&gt;
+                                      <ul>
+                                        <li>[ 0 | 5 ] LINE
+                                      </ul>
+							        </li>
+								  </ul>
+								</li>
+						    </ul>
+				  <li>
+							<strong>end</strong>
+				  <li>
+							<strong>exit</strong>
+				  <li>
+							<strong>hostname</strong>
+						WORD
+				  <li>
+							<strong>interface</strong>
+							<ul>
+								<li>Dot11Radio &lt;0-9&gt;/&lt;0-24&gt;/&lt;0-24&gt;
+								<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+								<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+								<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+								<li>Loopback &lt;0-2147483647&gt;
+								<li>Serial &lt;0-9&gt;/&lt;0-24&gt; [ multipoint | point-to-point ]
+								<li>Tunnel &lt;0-2147483647&gt;
+								<li>Virtual-Template &lt;1-200&gt;
+								<li>Vlan &lt;1-1005&gt;
+								<li>range
+								<ul>
+									<li>
+									Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+									<li>
+									FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+									<li>
+									GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+									<li>
+									Loopback &lt;0-2147483647&gt;
+									<li>
+									Serial &lt;0-9&gt;/&lt;0-24&gt; [ multipoint | point-to-point ]
+									<li>
+									Vlan &lt;1-1005&gt;									</li>
+								</ul>
+							</ul>
+				  <li>
+							<strong>ip</strong>
+							<ul>
+								<li>
+									access-list
+									<ul>
+										<li>
+											extended
+											<ul>
+												<li>
+												&lt;100-199&gt;
+												<li>
+													WORD</li>
+											</ul>
+										<li>
+											standard
+											<ul>
+												<li>
+												&lt;1-99&gt;
+												<li>
+													WORD												</li>
+											</ul>
+										</li>
+									</ul>
+								<li>
+								default-network A.B.C.D
+								<li>
+									dhcp
+									<ul>
+										<li>
+										excluded-address A.B.C.D [ A.B.C.D ]
+										<li>
+											pool WORD</li>
+									</ul>
+								<li>
+								domain-lookup
+								<li>
+								domain-name WORD
+								<li>
+								host WORD [ &lt;0-65535&gt; | A.B.C.D ] [ A.B.C.D ] [ A.B.C.D ]
+								<li>helper-address A.B.C.D
+								<li>inspect
+							      <ul>
+							        <li>alert-off</li>
+					                <li>audit-trail</li>
+					                <li>dns-timeout &lt;1-2147483&gt;</li>
+					                <li>max-incomplete [ high | low ] &lt;1-2147483647&gt;</li>
+					                <li>name WORD [ http | icmp | tcp | telnet | udp ]
+							          <ul>
+							            <li>alert [ off | on ]</li>
+						                <li>audit-trail [ off | on ]</li>
+					                    <li>timeout &lt;5-43200&gt;</li>
+							          </ul>
+					                </li>
+					                <li>one-minute [ high | low ] &lt;1-2147483647&gt;</li>
+						            <li>tcp
+				                    [ finwait-time | idle-time | synwait-time ] &lt;1-2147483&gt;</li>
+						            <li>udp idle-time &lt;1-2147483&gt;</li>
+						          </ul>
+								<li>ips
+								  <ul>
+								    <li>config location [ WORD [ retries &lt;1-5&gt;] ]</li>
+							        <li>fail closed</li>
+							        <li>name WORD [ list [ &lt;1-199&gt; | WORD ] ]</li>
+								    <li>notify log </li>
+								    <li>signature-category</li>
+								    <li>signature-definition</li>
+								  </ul>
+								</li>
+								<li>local pool WORD A.B.C.D A.B.C.D</li>
+								<li>
+								name-server [A.B.C.D] [X:X:X:X::X]
+								<li>
+									nat
+									<ul>
+										<li>
+											inside source
+											<ul>
+												<li>
+												list [ &lt;1-199&gt; | WORD ] interface [ Ethernet | FastEthernet |
+												GigabitEthernet | Serial ] &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt;
+												] [ overload ]
+												<li>
+												list [ &lt;1-199&gt; | WORD ] pool WORD [ overload ]
+												<li>
+													static
+													<ul>
+														<li>
+														A.B.C.D A.B.C.D
+														<li>
+														tcp A.B.C.D &lt;1-65535&gt; A.B.C.D &lt;1-65535&gt;
+														<li>
+															udp A.B.C.D &lt;1-65535&gt; A.B.C.D &lt;1-65535&gt;														</li>
+													</ul>
+												</li>
+											</ul>
+										<li>outside source
+										  <ul>
+										    <li>list [ &lt;1-199&gt; | WORD ] pool WORD</li>
+									        <li>static
+									          <ul>
+									            <li>A.B.C.D A.B.C.D</li>
+								                <li> tcp A.B.C.D &lt;1-65535&gt; A.B.C.D &lt;1-65535&gt; </li>
+									            <li> udp A.B.C.D &lt;1-65535&gt; A.B.C.D &lt;1-65535&gt; </li>
+									          </ul>
+									        </li>
+									      </ul>
+										</li>
+									    <li>pool WORD A.B.C.D A.B.C.D netmask A.B.C.D</li>
+									</ul>
+								<li>
+									route A.B.C.D A.B.C.D
+									<ul>
+										<li>
+										A.B.C.D [ &lt;1-255&gt; ]
+										<li>
+										Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ] [ &lt;1-255&gt;
+										]
+										<li>
+										FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ] [
+										&lt;1-255&gt; ]
+										<li>
+										GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ] [
+										&lt;1-255&gt; ]
+										<li>
+										Loopback &lt;0-2147483647&gt; [ &lt;1-255&gt; ]
+										<li>
+										Serial &lt;0-9&gt;/&lt;0-24&gt; [ &lt;1-255&gt; ]
+										<li>
+											Vlan &lt;1-1005&gt; [ &lt;1-255&gt; ]										</li>
+									</ul>
+								<li>
+								ssh
+								<ul>
+									<li>authentication retries &lt;0-5&gt;
+									<li>time-out &lt;1-120&gt;
+									<li>version &lt;1-2&gt;
+									</li>
+								</ul>
+					        </ul>
+				  <li><strong>ipv6</strong>
+							<ul>
+							<li>access-list WORD
+							<li>dhcp pool WORD
+							<li>general-prefix WORD X:X:X:X::X/&lt;0-128&gt;
+							<li>host WORD
+							<ul>
+								<li>&lt;0-65535&gt; X:X:X:X::X [ X:X:X:X::X ] [ X:X:X:X::X ]
+								<li>X:X:X:X::X [ X:X:X:X::X ] [ X:X:X:X::X ]
+								</li>
+							</ul>
+							<li>inspect
+							<ul>
+								<li>alert-off
+								<li>audit-trail
+								<li>max-incomplete [ high | low ] &lt;1-2147483647&gt;
+								<li>name WORD [ icmp | tcp | udp ]
+								<ul>
+									<li>alert [ off | on ]
+									<li>audit-trail [ off | on ]
+									<li>timeout &lt;5-43200&gt;
+									</li>
+								</ul>
+								<li>one-minute [ high | low ] &lt;1-2147483647&gt;
+								<li>tcp
+								<ul>
+									<li>finwait-time &lt;1-2147483&gt;
+									<li>idle-time &lt;1-2147483&gt;
+									<li>synwait-time &lt;1-2147483&gt;
+									</li>
+								</ul>
+								<li>udp idle-time &lt;1-2147483&gt;
+								</li>
+							</ul>
+							<li>local pool WORD X:X:X:X::X/&lt;0-128&gt;&lt;0-128&gt;
+							<li>nat
+							<ul>
+								<li>prefix X:X:X:X::X/&lt;0-128&gt;
+								<li>v4v6
+								<ul>
+									<li>pool WORD X:X:X:X::X X:X:X:X::X prefix-length &lt;1-128&gt;
+									<li>source A.B.C.D X:X:X:X::X
+									<li>source list WORD [pool] WORD
+									</li>
+								</ul>
+								<li>v6v4
+								<ul>
+									<li>pool WORD A.B.C.D A.B.C.D prefix-length
+									<li>source X:X:X:X::X A.B.C.D
+									<li>source list WORD [ pool WORD | interface ] [ overload ]
+									</li>
+								</ul>
+							</ul>
+							<li>neighbor X:X:X:::X
+							<ul>
+								<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;] H.H.H
+								<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;] H.H.H
+								<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;] H.H.H
+								<li>Loopback &lt;0-2147483647&gt; H.H.H
+								<li>Serial &lt;0-9&gt;/&lt;0-24&gt; H.H.H
+								<li>Vlan &lt;1-1005&gt; H.H.H
+								</li>
+							</ul>
+							<li>route X:X:X:X::X/&lt;0-128&gt;
+							<ul>
+								<li>Ethernet <0-9>/<0-24>[ . ][ <0-4294967295> ] [ <1-254> ] 
+								<li>FastEthernet <0-9>/<0-24>[ . ][ <0-4294967295> ] [ <1-254> ] 
+								<li>GigabitEthernet <0-9>/<0-24>[ . ][ <0-4294967295> ] [ <1-254> ] 
+								<li>Loopback <0-2147483647> [ <1-254> ] 
+								<li>Serial <0-9>/<0-24> [ <1-254> ] 
+								<li>Vlan <1-1005> [ <1-254> ] 
+								<li>X:X:X:X::X [ <1-254> ]
+								</li>
+							</ul>
+							<li>router
+							<ul>
+								<li>eigrp &lt;1-65535&gt;
+								<li>ospf &lt;1-65535&gt;
+								<li>rip WORD
+								</li>
+							</ul>
+							<li>unicast-routing
+							</li>
+						</ul>
+						<li>
+						<strong>line</strong>
+							<ul>
+							<li>&lt;2-499&gt; [&lt;3-499&gt;]
+							<li>aux &lt;0-0&gt;
+							<li>console &lt;0-0&gt;
+							<li>tty &lt;2-90&gt; [&lt;2-90&gt;]
+							<li>vty &lt;0-15&gt; [&lt;0-15&gt;]
+							<li>x/y/z
+							</li>
+							</ul>
+						<li><strong>logging</strong>
+						  <ul>
+						    <li>A.B.C.D</li>
+					        <li>buffered &lt;4096-2147483647&gt;</li>
+					        <li>console</li>
+					        <li>host A.B.C.D </li>
+					        <li>on</li>
+				            <li>trap [ debugging ] </li>
+						    <li>userinfo</li>
+						  </ul>
+						</li>
+						<li><strong>login</strong></li>
+					      <ul>
+						    <li>block-for &lt;1-65535&gt; attempts &lt;1-65535&gt;  within &lt;1-65535&gt;
+						    <li>on-failure [ log | trap ]
+						    <li>on-success [ log | trap ]
+						  </ul>
+						</li>
+						<li>
+							<strong>mac-address-table</strong> static H.H.H interface
+							<ul>
+								<li>
+								Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ] vlan
+								&lt;1-1005&gt;
+								<li>
+								FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ] vlan
+								&lt;1-1005&gt;
+								<li>
+									GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ] vlan
+									&lt;1-1005&gt;</li>
+							</ul>
+						<li>
+							<strong>no</strong>
+							<ul>
+							  <li>aaa
+							    <ul>
+							      <li>authentication
+							        <ul>
+							          <li>enable default
+							            <ul>
+							              <li>enable</li>
+							              <li>group [ radius | tacacs+ ]</li>
+							              <li>local</li>
+							              <li>none</li>
+						                </ul>
+						              </li>
+						            </ul>
+						          </li>
+							      <li>authorization
+							        <ul>
+							          <li>[ exec | network ] [ WORD | default ]
+							            <ul>
+							              <li>group [ radius | tacacs+ ]</li>
+							              <li>if-authenticated</li>
+							              <li>local</li>
+							              <li>none</li>
+						                </ul>
+						              </li>
+						            </ul>
+						          </li>
+							      <li>new-model</li>
+						        </ul>
+							  </li>
+							  <li>access-list [ &lt;1-99&gt; | &lt;100-199&gt; ]
+							  <li>
+								banner [login | motd]
+							  <li>
+								boot system [ flash ] WORD
+							  <li>
+								cdp run
+							  <li>class-map [ type inspect ] [ match-all | match-any ]
+					    WORD
+
+							  <li>
+								clock timezone
+							  <li>
+								config-register
+							  <li>crypto
+                                  <ul>
+                                    <li>dynamic-map WORD &lt;1-65535&gt; [ ipsec-isakmp ]
+                                    <li>ipsec
+                                      <ul>
+                                          <li>security-association lifetime seconds &lt;120-86400&gt;</li>
+                                        <li>transform-set WORD
+                                        </li>
+                                      </ul>
+                                    <li>isakmp
+                                      <ul>
+                                          <li>client configuration group WORD </li>
+                                          <li>key WORD address A.B.C.D [ A.B.C.D ] </li>
+                                        <li>policy &lt;1-10000&gt;</li>
+                                      </ul>
+                                    <li>map WORD
+                                      <ul>
+                                        <li>&lt;1-65535&gt; [ ipsec-isakmp ] [dynamic WORD ]</li>
+                                        <li>client [ authentication list WORD | configuration address respond ]</li>
+                                        <li>isakmp authorization list WORD </li>
+                                      </ul>
+                                    </li>
+                                </ul>
+							  <li>dot11 ssid LINE
+							  <li>enable
+									<ul>
+										<li> password
+										  <ul>
+                                              <li> 7 WORD
+                                              <li>level &lt;1-15&gt;</li>
+									      </ul>
+									  <li> secret<ul><li>level &lt;1-15&gt;
+                                        </li>
+								        </ul>
+								      </li>
+								</ul>
+							  <li>
+								hostname
+							  <li>
+									interface
+									<ul>
+										<li>Dot11Radio &lt;0-9&gt;/&lt;0-24&gt;/&lt;0-24&gt;
+										<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+										<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+										<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ]
+										<li>Loopback &lt;0-2147483647&gt;
+										<li>Serial &lt;0-9&gt;/&lt;0-24&gt;
+										<li>Tunnel &lt;0-2147483647&gt;
+										<li>Virtual-Template &lt;1-200&gt;
+										<li>Vlan &lt;1-1005&gt;
+										</li>
+									</ul>
+							  <li>
+									ip
+									<ul>
+										<li>
+											access-list
+											<ul>
+												<li>
+												extended [ &lt;100-199&gt; | WORD ]
+												<li>
+													standard [ &lt;1-99&gt; | WORD ]</li>
+											</ul>
+										<li>
+										default-network A.B.C.D
+										<li>
+											dhcp
+											<ul>
+												<li>
+												excluded-address A.B.C.D [ A.B.C.D ]
+												<li>
+													pool WORD</li>
+											</ul>
+										<li>
+										domain-lookup
+										<li>
+										domain-name
+										<li>
+										host WORD [ <0-65535> ] [ A.B.C.D ] [ A.B.C.D ] [ A.B.C.D ]
+										<li>inspect
+										  <ul>
+										    <li>alert-off</li>
+								            <li>audit-trail</li>
+								            <li>dns-timeout &lt;1-2147483&gt;</li>
+								            <li>max-incomplete [ high | low ] &lt;1-2147483647&gt;</li>
+								            <li>name WORD [ http | icmp | tcp | telnet | udp ]
+                                            <li>one-minute [ high | low ] &lt;1-2147483647&gt;</li>
+										    <li>tcp [ finwait-time | idle-time | synwait-time ] &lt;1-2147483&gt;</li>
+										    <li>udp idle-time &lt;1-2147483&gt;</li>
+							              </ul>
+										<li>ips
+                                          <ul>
+								            <li>config location [ WORD [ retries &lt;1-5&gt;] ]</li>
+								            <li>fail closed</li>
+								            <li>name WORD [ list [ &lt;1-199&gt; | WORD ] ]</li>
+								            <li>notify log </li>
+								            <li>signature-category</li>
+							              </ul>
+										</li>
+										<li>local pool WORD A.B.C.D A.B.C.D </li>
+										<li>
+										name-server
+										<li>
+											nat
+											<ul>
+												<li>
+													inside source
+													<ul>
+														<li>
+														list [ &lt;1-199&gt; | WORD ]
+														<li>
+															static
+															<ul>
+																<li>
+																A.B.C.D A.B.C.D
+																<li>
+																tcp A.B.C.D &lt;1-65535&gt; A.B.C.D &lt;1-65535&gt;
+																<li>
+																	udp A.B.C.D &lt;1-65535&gt; A.B.C.D &lt;1-65535&gt;																</li>
+															</ul>
+														</li>
+													</ul>
+												<li>outside source
+                                                  <ul>
+                                                    <li>list [ &lt;1-199&gt; | WORD ] pool WORD</li>
+                                                    <li>static
+                                                      <ul>
+                                                          <li>A.B.C.D A.B.C.D</li>
+                                                        <li> tcp A.B.C.D &lt;1-65535&gt; A.B.C.D &lt;1-65535&gt; </li>
+                                                        <li> udp A.B.C.D &lt;1-65535&gt; A.B.C.D &lt;1-65535&gt; </li>
+                                                      </ul>
+                                                    </li>
+                                                  </ul>
+</li>
+											    <li>pool WORD</li>
+											</ul>
+										<li>
+											route A.B.C.D A.B.C.D
+											<ul>
+												<li>&lt;1-255&gt;
+												<li>A.B.C.D [ &lt;1-255&gt; ]
+												<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ] [ &lt;1-255&gt;
+												]
+												<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ] [
+												&lt;1-255&gt; ]
+												<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ] [
+												&lt;1-255&gt; ]
+												<li>Loopback &lt;0-2147483647&gt; [ &lt;1-255&gt; ]
+												<li>Null &lt;0-0&gt; &lt;1-255&gt;
+												<li>Serial &lt;0-9&gt;/&lt;0-24&gt; [ &lt;1-255&gt; ]
+												<li>Vlan &lt;1-1005&gt; [ &lt;1-255&gt; ]												</li>
+											</ul>
+										<li>ssh version
+										<ul>
+											<li>authentication-retries
+											<li>time-out
+											<li>version [ 1 | 2 ]
+											</li>
+										</ul>
+									</ul>
+							<li>ipv6
+							<ul>
+								<li>access-list WORD
+								<li>dhcp pool WORD
+								<li>general-prefix WORD X:X:X:X::X/&lt;0-128&gt;
+								<li>host WORD
+								<li>inspect
+								<ul>
+									<li>alert-off
+									<li>audit-trail
+									<li>max-incomplete [ low | high ]
+									<li>name WORD [ icmp | tcp | udp ]
+									<li>one-minute [ high | low ]
+									<li>tcp [ finwait-time | idle-time | synwait-time ]
+									<li>udp idle-time
+									</li>
+								</ul>
+								<li>nat
+								<ul>
+									<li>prefix X:X:X:X::X/&lt;0-128&gt;
+									<li>v4v6
+									<ul>
+										<li>pool WORD X:X:X:X::X X:X:X:X::X
+										<li>source A.B.C.D X:X:X:X::X
+										<li>source list WORD [pool] WORD
+										</li>
+									</ul>
+									<li>v6v4
+									<ul>
+										<li>pool WORD A.B.C.D A.B.C.D
+										<li>source X:X:X:X::X A.B.C.D
+										</li>
+									</ul>
+									<li>source list WORD
+									<ul>
+										<li>pool WORD [ overload ]
+										<li>interface
+										<ul>
+											<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;] [ overload ]
+											<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;] [ overload ]
+											<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;] [ overload ]
+											<li>Serial &lt;0-9&gt;/&lt;0-24&gt; [ overload ]
+											</li>
+										</ul>
+									</ul>
+									<li>neighbor X:X:X:X::X
+									<ul>
+										<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+										<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+										<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+										<li>Loopback &lt;0-2147483647&gt;
+										<li>Serial &lt;0-9&gt;/&lt;0-24&gt;
+										<li>Vlan &lt;1-1005&gt;
+										</li>
+									</ul>
+									<li>route X:X:X:X::X/&lt;0-128&gt;
+									<ul>
+										<li><1-254>
+										<li>Ethernet <0-9>/<0-24>[ . ][ <0-4294967295> ] [ <1-254> ] 
+										<li>FastEthernet <0-9>/<0-24>[ . ][ <0-4294967295> ] [ <1-254> ] 
+										<li>GigabitEthernet <0-9>/<0-24>[ . ][ <0-4294967295> ] [ <1-254> ] 
+										<li>Loopback <0-2147483647> [ <1-254> ] 
+										<li>Serial <0-9>/<0-24> [ <1-254> ] 
+										<li>X:X:X:X::X [ <1-254> ] 
+										</li>
+									</ul>
+									<li>router
+									<ul>
+										<li>eigrp &lt;1-65535&gt;
+										<li>ospf &lt;1-65535&gt;
+										<li> rip WORD
+										</li>
+									</ul>
+									<li>unicast-routing
+									</li>
+								</ul>
+							</ul>
+							  <li>logging
+								  <ul>
+								    <li>A.B.C.D</li>
+						            <li>buffered</li>
+						            <li>console</li>
+						            <li>host A.B.C.D</li>
+						            <li>on                                                                                                       </li>
+							        <li>trap [ debugging ] </li>
+								    <li>userinfo</li>
+								  </ul>
+							  <li>login
+							<ul>
+								<li>block-for
+								<li>on-failure [ log | trap ]
+								<li>on-succes [ log | trap ]
+								</li>
+							</ul>
+							  <li>mac-address-table static H.H.H int
+								    <ul>
+										<li>
+										Ethernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ] vlan
+										&lt;1-1005&gt;
+										<li>
+										FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ] vlan
+										&lt;1-1005&gt;
+										<li>
+											GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[ . ][ &lt;0-4294967295&gt; ] vlan
+											&lt;1-1005&gt;										</li>
+							    </ul>
+							  <li>ntp
+                                <ul>
+                                  <li>authenticate</li>
+                                  <li>authentication-key &lt;1-4294967295&gt;</li>
+                                  <li>server A.B.C.D</li>
+                                  <li>trusted-key &lt;1-4294967295&gt;</li>
+                                  <li>update-calendar</li>
+                              </ul>
+							  <li>parser view
+							    WORD
+						      <li>policy-map [ type inspect ] WORD
+                                <br>
+						      <li>priority-list &lt;1-16&gt;
+                                <ul>
+                                  <li>default</li>
+                                  <li>protocol
+                                    <ul>
+                                        <li>ip [ high | low | medium | normal ]
+                                          [
+                                          list &lt;1-199&gt; |
+                                          tcp  &lt;0-65535&gt; |
+                                          udp &lt;0-65535&gt; ]</li>
+                                      <li>ipv6 [ high | low | medium | normal ]</li>
+                                    </ul>
+                                  </li>
+                                  <li>queue-limit</li>
+                              </ul>
+						      <li>privilege [ configure | exec | interface | line | router ] [ all ]
+                        [ level &lt;0-15&gt; ] LINE
+							  <li>queue-list &lt;1-16&gt;
+                                <ul>
+                                  <li>default</li>
+                                  <li>protocol
+                                    <ul>
+                                        <li>ip &lt;0-16&gt;
+                                            <ul>
+                                              <li>list [ &lt;1-199&gt; | &lt;1300-2699&gt; ]</li>
+                                              <li>tcp  &lt;0-65535&gt;</li>
+                                              <li>udp &lt;0-65535&gt;</li>
+                                            </ul>
+                                        </li>
+                                      <li>ipv6 &lt;0-16&gt; </li>
+                                    </ul>
+                                  </li>
+                                  <li>queue &lt;0-16&gt;
+                                      <ul>
+                                        <li>byte-count &lt;1-16777215&gt; [ limit &lt;0-32767&gt; ]</li>
+                                        <li>limit &lt;0-32767&gt; [ byte-count &lt;1-16777215&gt; ] </li>
+                                      </ul>
+                                  </li>
+                              </ul>
+							  <li>radius-server
+							  <ul>
+									<li>host [ A.B.C.D ] [ auth-port &lt;0-65535&gt; ] [ key LINE ]
+									<li>key LINE
+									</li>
+							</ul>
+							  <li>router
+								    <ul>
+									  <li>
+										bgp &lt;1-65535&gt;
+									  <li>
+										eigrp &lt;1-65535&gt;
+									  <li>
+										ospf &lt;1-65535&gt;
+									  <li>
+										  rip</li>
+								    </ul>
+							  <li>secure
+							<ul>
+									<li>boot-config
+									<li>boot-image
+									</li>
+							</ul>
+							<li>security passwords min-length &lt;0-16&gt;
+							  <li>service
+                                <ul>
+                                  <li>nagle</li>
+                                  <li>password-encryption </li>
+                                  <li>timestamps [ debug | log ] datetime msec</li>
+                                </ul>
+						    <li>snmp-server [ community WORD [ ro | rw ] ] </li>
+						    <li>spanning-tree
+							<ul>
+								<li>mode
+								<li>portfast default
+								<li>vlan &lt;1-1005&gt; [ priority | root ]
+								</li>
+							</ul>
+							  <li>tacacs-server
+                                  <ul>
+                                    <li>host A.B.C.D
+                                      <ul>
+                                          <li>key LINE</li>
+                                        <li>single-connection key LINE </li>
+                                      </ul>
+                                    </li>
+                                    <li>key LINE </li>
+                                  </ul>
+</li>
+							    <li>username WORD</li>
+								<li>vpdn enable
+								<li>vpdn-group WORD
+							    <li>zone security WORD</li>
+							    <li>zone-pair security WORD source [ WORD | self ] destination [ WORD | self ] </li>
+						    </ul>
+				  <li><strong>ntp</strong>
+				    <ul>
+				      <li>authenticate</li>
+		              <li>authentication-key &lt;1-4294967295&gt; md5 WORD [ &lt;0-4294967295&gt; ] </li>
+			          <li>server A.B.C.D [ key &lt;0-4294967295&gt; ]</li>
+			          <li>trusted-key &lt;1-4294967295&gt;</li>
+			          <li>update-calendar</li>
+			      </ul>
+				  <li><strong>parser </strong>view
+						  WORD
+				  <li><strong>policy-map</strong> [ type inspect ] WORD
+				  <li><strong>priority-list</strong>                         &lt;1-16&gt;
+                          <ul>
+                            <li>default [ high | low | medium | normal ]</li>
+                            <li>protocol
+                              <ul>
+                                <li>ip [ high | low | medium | normal ]
+                                  [
+                                  list &lt;1-199&gt; |
+                                  tcp  &lt;0-65535&gt; |
+                                udp &lt;0-65535&gt; ]</li>
+                                <li>ipv6 [ high | low | medium | normal ]</li>
+                              </ul>
+                            </li>
+                            <li>queue-limit &lt;0-32767&gt; &lt;0-32767&gt; &lt;0-32767&gt; &lt;0-32767&gt;</li>
+                          </ul>
+
+				  <li><strong>privilege</strong> [ configure | exec | interface | line | router ] [ all ]
+                  [ level &lt;0-15&gt; | reset ] LINE
+				  <li><strong>queue-list</strong> &lt;1-16&gt;
+                    <ul>
+                      <li>default &lt;0-16&gt;</li>
+                      <li>protocol
+                        <ul>
+                          <li>ip &lt;0-16&gt;
+                            <ul>
+                              <li>list [ &lt;1-199&gt; | &lt;1300-2699&gt; ]</li>
+                              <li>tcp  &lt;0-65535&gt;</li>
+                              <li>udp &lt;0-65535&gt;</li>
+                            </ul>
+                          </li>
+                          <li>ipv6 &lt;0-16&gt; </li>
+                        </ul>
+                      </li>
+                      <li>queue &lt;0-16&gt;
+                        <ul>
+                          <li>byte-count &lt;1-16777215&gt; [ limit &lt;0-32767&gt; ]</li>
+                          <li>limit &lt;0-32767&gt; [ byte-count &lt;1-16777215&gt; ] </li>
+                        </ul>
+                      </li>
+                  </ul>
+				  <li>radius-server
+				  <ul>
+						<li>host A.B.C.D [ auth-port &lt;0-65535&gt; ] [ key LINE ]
+						<li>key LINE
+						</li>
+				  </ul>
+                  <li><strong>router</strong>
+                      <ul>
+                        <li>
+						  bgp &lt;1-65535&gt;
+					    <li>
+                          eigrp &lt;1-65535&gt;
+                        <li>
+                            ospf &lt;1-65535&gt;
+                        <li>
+                              rip</li>
+			        </ul>
+				  <li><strong>secure </strong>[ boot-config | boot-image ]
+				  <li><strong>security passwords min-length </strong>&lt;0-16&gt;
+                  <li>
+					  <strong>service</strong>
+					  <ul>
+					    <li>nagle</li>
+				        <li>password-encryption</li>
+			            <li>timestamps [ debug | log ] datetime msec </li>
+				    </ul>
+				  <li><strong>snmp-server</strong> community WORD [ ro | rw ]</li>
+						<li>
+						  <strong>spanning-tree</strong> vlan &lt;1-1005&gt;
+						<ul>
+							<li>priority &lt;0-61440&gt;
+							<li>root [ primary | secondary ]
+							</li>
+						</ul>
+						<li><strong>tacacs-server</strong>
+						  <ul>
+						    <li>host A.B.C.D
+						      <ul>
+						        <li>key LINE</li>
+					            <li>single-connection key LINE  						</li>
+					          </ul>
+						    </li>
+				            <li>key LINE </li>
+						  </ul>
+						</li>
+					    <li><strong>username</strong> WORD
+					      [ privilege &lt;0-15&gt; ]
+					      <ul>
+					        <li>password
+					          <ul>
+					            <li> 0 LINE </li>
+					            <li> 7 WORD </li>
+					            <li> LINE</li>
+		                      </ul>
+				            </li>
+			                <li>secret
+			                  <ul>
+			                    <li>0 LINE</li>
+		                        <li>5 WORD</li>
+			                    <li>LINE  </li>
+		                      </ul>
+			                </li>
+	                      </ul>
+					    </li>
+						<li><strong>vpdn enable</strong>
+						<li><strong>vpdn-group</strong> WORD
+		                <li><strong>zone</strong> security WORD</li>
+				        <li><strong>zone-pair  </strong>security WORD source [ WORD | self ] destination [ WORD | self ] </li>
+				</ul>				</td>
+		  </tr>
+		</table>
+		<p class="MainHeading2">Standard Access List Configuration Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded">
+					<ul>
+						<li><strong>&lt;1-2147483647&gt;</strong>
+						<ul>
+							<li>deny
+							<ul>
+								<li>A.B.C.D [ A.B.C.D ]
+								<li>any
+								<li>host A.B.C.D
+								</li>
+							</ul>
+							<li>permit
+							<ul>
+								<li>A.B.C.D [ A.B.C.D ]
+								<li>any
+								<li>host A.B.C.D
+								</li>
+							</ul>
+						<li><strong>default</strong>
+							<ul>
+								<li>
+									deny
+									<ul>
+										<li>
+										A.B.C.D [ A.B.C.D ]
+										<li>
+										any
+										<li>
+											host A.B.C.D</li>
+									</ul>
+								<li>
+									permit
+									<ul>
+										<li>
+										A.B.C.D [ A.B.C.D ]
+										<li>
+										any
+										<li>
+											host A.B.C.D</li>
+									</ul>
+								</li>
+							</ul>
+						<li>
+							<strong>deny</strong>
+							<ul>
+								<li>
+								A.B.C.D [ A.B.C.D ]
+								<li>
+								any
+								<li>
+									host A.B.C.D</li>
+							</ul>
+						<li>
+							<strong>exit</strong>
+						<li>
+							<strong>no</strong>
+							<ul>
+								<li>
+									deny
+									<ul>
+										<li>
+										A.B.C.D [ A.B.C.D ]
+										<li>
+										any
+										<li>
+											host A.B.C.D</li>
+									</ul>
+								<li>
+									permit
+									<ul>
+										<li>
+										A.B.C.D [ A.B.C.D ]
+										<li>
+										any
+										<li>
+											host A.B.C.D</li>
+									</ul>
+								</li>
+							</ul>
+						<li>
+							<strong>permit</strong>
+							<ul>
+								<li>
+								A.B.C.D [ A.B.C.D ]
+								<li>
+								any
+								<li>
+									host A.B.C.D</li>
+							</ul>
+						<li>
+							<strong>remark</strong> LINE</li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+		<p class="MainHeading2">Extended Access List Configuration Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded">
+					<ul>
+						<li><strong>&lt;1-2147483647&gt; </strong>
+						<ul>
+							<li>deny
+							<ul>
+								<li>[ icmp | ip ] [ A.B.C.D A.B.C.D | any | host A.B.C.D ] [ A.B.C.D A.B.C.D | any | host A.B.C.D ]
+								<li>[ tcp | udp ] [ A.B.C.D A.B.C.D | any | host A.B.C.D ] [ A.B.C.D A.B.C.D | any | eq&lt;0-65535&gt; | host A.B.C.D | gt&lt;0-65535&gt; | lt &lt;0-65535&gt; | neq&lt;0-65535&gt; | range&lt;0-65535&gt;&lt;0-65535&gt; ]
+								</li>
+							</ul>
+							<li>permit
+							<ul>
+								<li>[ icmp | ip ] [ A.B.C.D A.B.C.D | any | host A.B.C.D ] [ A.B.C.D A.B.C.D | any | host A.B.C.D ]
+								<li>[ tcp | udp ] [ A.B.C.D A.B.C.D | any | host A.B.C.D ] [ A.B.C.D A.B.C.D | any | eq&lt;0-65535&gt; | host A.B.C.D | gt&lt;0-65535&gt; | lt &lt;0-65535&gt; | neq&lt;0-65535&gt; | range&lt;0-65535&gt;&lt;0-65535&gt; ]
+								</li>
+								</ul>
+							</ul>
+						<li><strong>default</strong>
+							<ul>
+								<li>
+								[ deny | permit ] [ icmp | ip ] [ A.B.C.D A.B.C.D | any | host A.B.C.D ] [
+								A.B.C.D A.B.C.D | any | host A.B.C.D ]
+								<li>
+									[ deny | permit ] [ tcp | udp ] [ A.B.C.D A.B.C.D | any | host A.B.C.D ] [
+									A.B.C.D A.B.C.D | any | eq &lt;0-65535&gt; | host A.B.C.D | gt &lt;0-65535&gt;
+									| lt &lt;0-65535&gt; | neq &lt;0-65535&gt; | range &lt;0-65535&gt;
+									&lt;0-65535&gt; ] [ eq &lt;0-65535&gt; | gt &lt;0-65535&gt; | lt
+									&lt;0-65535&gt; | neq &lt;0-65535&gt; | range &lt;0-65535&gt; &lt;0-65535&gt; ]</li>
+							</ul>
+						<li>
+							<strong>deny</strong>
+							<ul>
+								<li>
+								[ icmp | ip ] [ A.B.C.D A.B.C.D | any | host A.B.C.D ] [ A.B.C.D A.B.C.D | any
+								| host A.B.C.D ]
+								<li>
+									[ tcp | udp ] [ A.B.C.D A.B.C.D | any | host A.B.C.D ] [ A.B.C.D A.B.C.D | any
+									| eq &lt;0-65535&gt; | host A.B.C.D | gt &lt;0-65535&gt; | lt &lt;0-65535&gt; |
+									neq &lt;0-65535&gt; | range &lt;0-65535&gt; &lt;0-65535&gt; ] [ eq
+									&lt;0-65535&gt; | gt &lt;0-65535&gt; | lt &lt;0-65535&gt; | neq &lt;0-65535&gt;
+									| range &lt;0-65535&gt; &lt;0-65535&gt; ]</li>
+							</ul>
+						<li>
+							<strong>exit</strong>
+						<li>
+							<strong>no</strong>
+							<ul>
+								<li>
+								[ deny | permit ] [ icmp | ip ] [ A.B.C.D A.B.C.D | any | host A.B.C.D ] [
+								A.B.C.D A.B.C.D | any | host A.B.C.D ]
+								<li>
+									[ deny | permit ] [ tcp | udp ] [ A.B.C.D A.B.C.D | any | host A.B.C.D ] [
+									A.B.C.D A.B.C.D | any | eq &lt;0-65535&gt; | host A.B.C.D | gt &lt;0-65535&gt;
+									| lt &lt;0-65535&gt; | neq &lt;0-65535&gt; | range &lt;0-65535&gt;
+									&lt;0-65535&gt; ] [ eq &lt;0-65535&gt; | gt &lt;0-65535&gt; | lt
+									&lt;0-65535&gt; | neq &lt;0-65535&gt; | range &lt;0-65535&gt; &lt;0-65535&gt; ]</li>
+							</ul>
+						<li>
+							<strong>permit</strong>
+							<ul>
+								<li>
+								[ icmp | ip ] [ A.B.C.D A.B.C.D | any | host A.B.C.D ] [ A.B.C.D A.B.C.D | any
+								| host A.B.C.D ]
+								<li>
+									[ tcp | udp ] [ A.B.C.D A.B.C.D | any | host A.B.C.D ] [ A.B.C.D A.B.C.D | any
+									| eq &lt;0-65535&gt; | host A.B.C.D | gt &lt;0-65535&gt; | lt &lt;0-65535&gt; |
+									neq &lt;0-65535&gt; | range &lt;0-65535&gt; &lt;0-65535&gt; ] [ eq
+									&lt;0-65535&gt; | gt &lt;0-65535&gt; | lt &lt;0-65535&gt; | neq &lt;0-65535&gt;
+									| range &lt;0-65535&gt; &lt;0-65535&gt; ]</li>
+							</ul>
+						<li>
+							<strong>remark</strong> LINE</li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+		<p class="MainHeading2">Ethernet / FastEthernet / GigabitEthernet Interface Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+						<li><strong>arp </strong>timeout &lt;0-2147483&gt;
+						<li><strong>bandwidth </strong>&lt;1-10000000&gt;
+						<li><strong>cdp </strong>enable
+						<li><strong>crypto </strong>map WORD
+						<li><strong>custom-queue-list </strong>&lt;1-16&gt;
+
+						<li>
+						  <strong>delay</strong> &lt;1-16777215&gt;
+				  <li>
+					  <strong>description</strong>
+					LINE
+				  <li>
+						<strong>duplex</strong>
+					  [ auto | full | half ]
+				  <li>
+							<strong>exit</strong>
+				  <li><strong>fair-queue</strong>   [ &lt;16-4096&gt; ] [ &lt;16-4096&gt; ] [ &lt;0-1000&gt; ]
+				  <li><strong>hold-queue</strong> &lt;0-4096&gt; out
+				  <li>
+							<strong>ip </strong>
+							<ul>
+								<li>
+								access-group [ &lt;1-199&gt; | WORD ] [ in | out ]
+								<li>
+									address
+									<ul>
+										<li>
+										A.B.C.D A.B.C.D
+										<li>
+											dhcp</li>
+									</ul>
+								<li>
+								hello-interval eigrp &lt;1-65535&gt; &lt;1-65535&gt;
+								<li>inspect WORD [ in | out ]
+						      <li>ips WORD [ in | out ]
+						      <li>mtu &lt;68-1500&gt; <br>
+					          <li>
+								nat [ inside | outside ]
+							  <li>
+									ospf
+									<ul>
+										<li>
+										authentication [ message-digest | null ]
+										<li>
+										authentication-key [ &lt;0-7&gt; ] WORD
+										<li>
+										cost &lt;1-65535&gt;
+										<li>
+										dead-interval &lt;1-65535&gt;
+										<li>
+										hello-interval &lt;1-65535&gt;
+										<li>
+										message-digest-key &lt;1-255&gt; md5 LINE
+										<li>
+											priority &lt;0-255&gt;										</li>
+									</ul>
+							  <li>proxy-arp
+							  <li>
+								split-horizon
+							  <li>
+									summary-address eigrp &lt;1-65535&gt; A.B.C.D A.B.C.D [ &lt;1-255&gt; ]								</li>
+							    <li>virtual-reassembly</li>
+							</ul>
+				  <li> <strong>ipv6</strong>
+                        <ul>
+							<li>address
+							<ul>
+								<li>WORD X:X:X:X::X/&lt;0-128&gt;
+								<li>X:X:X:X::X link-local
+								<li>X:X:X:X::X/&lt;0-128&gt; [ anycast | eui-64 ]
+								<li>autoconfig
+								</li>
+							</ul>
+							<li>dhcp
+							<ul>
+								<li>client pd WORD
+								<li>server WORD
+								</li>
+							</ul>
+							<li>eigrp&lt;1-65535&gt;
+							<li>enable
+							<li>hello-interval eigrp&lt;1-65535&gt;&lt;1-65535&gt;
+							<li>inspect WORD [ in | out ]
+							<li>mtu&lt;1280-1500&gt;
+							<li>nat
+							<ul>
+								<li>prefix X:X:X:X::X/&lt;0-128&gt; [ v4-mapped ] [ WORD ]
+								</li>
+							</ul>
+							<li>nd
+							<ul>
+								<li>other-config-flag
+								<li>ra suppress
+								</li>
+							</ul>
+							<li>ospf
+							<ul>
+								<li>&lt;1-65535&gt; area <i>area-id</i> [ instance <i>instance-id</i> ]
+								<li>cost &lt;1-65535&gt;
+								<li>dead-interval &lt;1-65535&gt;
+								<li>hello-interval &lt;1-65535&gt;
+								<li>priority &lt;0-255&gt;
+								</li>
+							</ul>
+							<li>rip WORD
+							<ul>
+								<li>default-information originate
+								<li>enable
+								</li>
+							</ul>
+							<li>summary-address eigrp &lt;1-65535&gt; X:X:X:X::X/&lt;0-128&gt; [ &lt;1-255&gt; ]
+							<li>traffic-filter WORD [ in | out ]
+							</li>
+						</ul>
+				  <li><strong>mac-address</strong>
+						H.H.H
+				  <li><strong>mtu</strong> &lt;64-1600&gt;
+				  <li>
+							<strong>no</strong>
+							<ul>
+								<li>
+								arp timeout
+								<li>
+								bandwidth
+								<li>
+								cdp enable
+							  <li>crypto map [ WORD ]
+							  <li>custom-queue-list &lt;1-16&gt;
+                              <li>delay
+							  <li>
+								description
+							  <li>
+								duplex
+							  <li>fair-queue [ &lt;16-4096&gt; ] [ &lt;16-4096&gt; ] [ &lt;0-1000&gt; ]
+							  <li>hold-queue [ &lt;0-4096&gt; ]  out
+
+							  <li>ip
+								    <ul>
+										<li>
+										access-group [ &lt;1-199&gt; | WORD ] [ in | out ]
+										<li>
+										address [ dhcp ]
+										<li>
+										hello-interval eigrp &lt;1-65535&gt;
+										<li>inspect WORD [ in | out ]
+										<li>ips WORD [ in | out ]
+									    <li>mtu &lt;68-1500&gt;
+								      <li>
+										nat [ inside | outside ]
+									  <li>
+											ospf
+											<ul>
+												<li>
+												authentication
+												<li>
+												authentication-key
+												<li>
+												cost
+												<li>
+												dead-interval
+												<li>
+												hello-interval
+												<li>
+												message-digest-key &lt;1-255&gt;
+												<li>
+													priority</li>
+											</ul>
+									  <li>proxy-arp	
+									  <li>
+										split-horizon
+									  <li>
+											summary-address eigrp &lt;1-65535&gt; A.B.C.D A.B.C.D [ &lt;1-255&gt; ]										</li>
+									    <li>virtual-reassembly</li>
+							    </ul>
+							  <li>
+								ipv6
+								<ul>
+									<li>address
+									<ul>
+										<li>autoconfig
+										<li>X:X:X:X::X/&lt;0-128&gt; [ anycast | eui-64 ]
+										<li>X:X:X:X::X link-local
+										<li>WORD
+										</li>
+									</ul>
+									<li>dhcp
+									<ul>
+										<li>client pd WORD
+										<li>server WORD
+										</li>
+									</ul>
+									<li>eigrp &lt;1-65535&gt;
+									<li>enable
+									<li>hello-interval eigrp &lt;1-65535&gt; &lt;1-65535&gt;
+									<li>inspect WORD [ in | out ]
+									<li>mtu &lt;1280-1500&gt;
+									<li>nat
+									<ul>
+										<li>prefix X:X:X:X::X/&lt;0-128&gt; [ v4-mapped ] [ WORD ]
+										</li>
+									</ul>
+									<li>nd
+									<li>ospf
+									<ul>
+										<li>&lt;1-65535&gt; area <i>area-id</i> [ instance <i>instance-id</i> ]
+										<li>cost &lt;1-65535&gt;
+										<li>dead-interval &lt;1-65535&gt;
+										<li>hello-interval &lt;1-65535&gt;
+										<li>network
+										<li>priority &lt;0-255&gt;
+										</li>
+									</ul>
+									<li>summary-address eigrp &lt;1-65535&gt; X:X:X:X::X/&lt;0-128&gt; [ &lt;1-255&gt; ]
+									<li>rip WORD
+									<ul>
+										<li>default-information originate
+										<li>enable
+										</li>
+									</ul>
+									<li>traffic-filter [ in | out ] WORD
+									</li>
+								</ul>
+								<li>
+							  <li>mac-address
+							  <li>mtu
+							  <li>pppoe enable
+							  <li>priority-group
+							  <li>service-policy [ input | output ] WORD
+                              <li>shutdown
+							  <li>speed</li>
+							  <li>tx-ring-limit</li>
+							  <li>zone-member security WORD </li>
+							</ul>
+				  <li><strong>pppoe </strong>enable
+				  <li><strong>priority-group</strong> &lt;1-16&gt;
+				  <li><strong>service-policy</strong> [ input | output ] WORD
+				  <li><strong>shutdown</strong>
+			      <li><strong>speed</strong> [ 10 | 100 | 1000 | auto ] <font size="-1"><em>(10/100 options
+									are only available for FastEthernet and GigabitEthernet interfaces and
+									10/100/1000 options are only available for GigabitEthernet interfaces
+									respectively)</em></font></li>
+				  <li><strong>tx-ring-limit</strong> &lt;1-32767&gt;</li>
+				  <li><strong>zone-member</strong> security WORD </li>
+				</ul>				</td>
+		  </tr>
+		</table>
+		<p class="MainHeading2">Ethernet / FastEthernet / GigabitEthernet Sub-Interface
+			Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+						<li><strong>arp </strong>timeoute &lt;0-2147483&gt;
+						<li><strong>bandwidth </strong>&lt;1-10000000&gt;
+						<li><strong>delay </strong>&lt;1-16777215&gt;
+						<li><strong>description </strong>LINE
+						<li><strong>encapsulation </strong>dot1q &lt;1-1005&gt; [ native ]
+						<li><strong>exit </strong>
+						<li><strong>ip </strong>
+						<ul>
+							<li>access-group [ &lt;1-99&gt; | WORD ] [ in | out ]
+							<li>address
+							<ul>
+								<li>A.B.C.D A.B.C.D
+								<li>dhcp
+								</li>
+							</ul>
+							<li>hello-interval eigrp &lt;1-65535&gt; &lt;1-65535&gt;
+							<li>helper-address A.B.C.D
+							<li>mtu &lt;68-1500&gt;
+							<li>nat [ inside | outside ]
+							<li>ospf
+							<ul>
+								<li>authentication [ message-digest | null ]
+								<li>authentication [ &lt;0-7&gt; ] WORD
+								<li>cost &lt;1-65535&gt;
+								<li>dead-interval &lt;1-65535&gt;
+								<li>hello-interval &lt;1-65535&gt;
+								<li>message-digest-key &lt;1-255&gt; md5 LINE
+								<li>priority &lt;0-255&gt;
+								</li>
+							</ul>
+							<li>proxy-arp
+							<li>split-horizon
+							<li>summary-address eigrp &lt;1-65535&gt; A.B.C.D A.B.C.D [ &lt;1-255&gt; ]
+						</ul>
+						<li><strong>ipv6 </strong>
+						<ul>
+							<li>address
+							<ul>
+								<li>WORD X:X:X:X::X/&lt;0-128&gt;
+								<li>X:X:X:X::X link-local
+								<li>X:X:X:X::X/&lt;0-128&gt; [ anycast | eui-64 ]
+								<li>autoconfig
+								</li>
+							</ul>
+							<li>dhcp
+							<ul>
+								<li>client pd WORD
+								<li>server WORD
+								</li>
+							</ul>
+							<li>eigrp &lt;1-65535&gt;
+							<li>enable
+							<li>hello-interval eigrp &lt;1-65535&gt; &lt;1-65535&gt;
+							<li>inspect WORD [ in | out ]
+							<li>mtu &lt;1280-1500&gt;
+							<li>nat prefix X:X:X:X::X/&lt;0-128&gt; [ v4-mapped WORD ]
+							<li>nd [ other-config-flag | ra suppress ]
+							<li>ospf
+							<ul>
+								<li>&lt;1-65535&gt; area [ [ &lt;0-4294967295&gt; | A.B.C.D ] instance &lt;0-255&gt; ]
+								<li>cost &lt;1-65535&gt;
+								<li>dead-interval &lt;1-65535&gt;
+								<li>hello-interval &lt;1-65535&gt;
+								<li>network [ broadcast | point-to-point ]
+								<li>priority &lt;0-255&gt;
+								</li>
+							</ul>
+							<li>rip WORD [ default-information originate | enable ]
+							<li>summary-address eigrp &lt;1-65535&gt; X:X:X:X::X/&lt;0-128&gt; &lt;1-255&gt;
+							<li>traffic-filter WORD [ in | out ]
+							</li>
+						</ul>
+						<li><strong>mtu &lt;64-1600&gt;</strong>
+						<li><strong>no</strong>
+						<ul>
+							<li>arp timeout
+							<li>bandwidth
+							<li>delay
+							<li>description
+							<li>encapsulation dot1Q
+							<li>ip
+							<ul>
+								<li>access-group [ &lt;1-199&gt; | WORD ] [ in | out ]
+								<li>address [ dhcp ]
+								<li>hello-interval eigrp &lt;1-65535&gt;
+								<li>helper-address A.B.C.D 
+								<li>mtu
+								<li>nat [ inside | outside ]
+								<li>ospf
+								<ul>
+									<li>authentication
+									<li>authentication-key
+									<li>cost
+									<li>dead-interval
+									<li>hello-interval
+									<li>message-digest-key &lt;1-255&gt;
+									<li>priority
+									</li>
+								</ul>
+								<li>proxy-arp
+								<li>split-horizon
+								<li>summary-address eigrp &lt;1-65535&gt; A.B.C.D A.B.C.D [ &lt;1-255&gt; ]
+								</li>
+							</ul>
+							<li>ipv6
+							<ul>
+								<li>address
+								<ul>
+									<li>WORD X:X:X:X::X/&lt;0-128&gt;
+									<li>X:X:X:X::X link-local
+									<li>X:X:X:X::X/&lt;0-128&gt; [ anycast | eui-64 ]
+									<li>autoconfig
+									</li>
+								</ul>
+								<li>dhcp
+								<ul>
+									<li>client pd WORD
+									<li>server WORD
+									</li>
+								</ul>
+								<li>eigrp &lt;1-65535&gt;
+								<li>enable
+								<li>hello-interval eigrp &lt;1-65535&gt;
+								<li>inspect WORD [ in | out ]
+								<li>mtu
+								<li>nat prefix X:X:X:X::X/&lt;0-128&gt; [ v4-mapped WORD ]
+								<li>nd [ other-config-flag | ra suppress ]
+								<li>ospf
+								<ul>
+									<li>&lt;1-65535&gt; area [ &lt;0-4294967295&gt; | A.B.C.D ] [ instance &lt;0-255&gt; ]
+									<li>cost
+									<li>dead-interval
+									<li>hello-interval
+									<li>network
+									<li>priority
+									</li>
+								</ul>
+								<li>rip WORD [ default-information originate | enable ]
+								<li>summary-address eigrp &lt;1-65535&gt; X:X:X:X::X/&lt;0-128&gt; &lt;1-255&gt;
+								<li>traffic-filter [ WORD [ in | out ] | [ in | out ] ]
+								</li>
+							</ul>
+							<li>mtu
+							<li>shutdown
+							<li>standby
+							<ul>
+								<li>&lt;0-4095&gt;
+								<ul>
+									<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+									<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+									<li>Serial &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+									<li>ip A.B.C.D
+									<li>ipv6
+									<li>preempt
+									<li>priority
+									<li>track
+									<ul>
+										<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+										<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+										<li>Serial &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+										</li>
+									</ul>
+									</li>
+								</ul>
+								<li>preempt
+								<li>priority
+								<li>track
+								<ul>
+									<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+									<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+									<li>Serial &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+									</li>
+								</ul>
+							</ul>
+							</li>
+						</ul>
+						<li><strong>shutdown </strong>
+						<li><strong>standby </strong>
+						<ul>
+							<li>&lt;0-4095&gt;
+							<ul>
+								<li>ip A.B.C.D
+								<li>ipv6 autoconfig
+								<li>preempt
+								<li>priority &lt;0-255&gt;
+								<li>track
+								<ul>
+									<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+									<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+									<li>Serial &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+									</li>
+								</ul>
+							</ul>
+							<li>ip A.B.C.D
+							<li>ipv6 autoconfig
+							<li>preempt
+							<li>priority &lt;0-255&gt;
+							<li>timers &lt;1-254&gt;
+							<li>track
+							<ul>
+								<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+								<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+								<li>Serial &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+								</li>
+							</ul>
+							</li>
+						</ul>
+						</li>						
+				</td>
+			</tr>
+		</table>
+		<p class="MainHeading2">Serial Interface Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+						<li><strong>bandwidth </strong>&lt;1-10000000&gt;
+						<li><strong>cdp </strong>enable
+						<li><strong>clock rate </strong>&lt;1200-4000000&gt;
+						<li><strong>crypto </strong>map WORD
+						<li><strong>custom-queue-list </strong>&lt;1-16&gt;
+						<li><strong>delay </strong>&lt;1-16777215&gt;
+						<li><strong>description </strong>LINE
+						<li><strong>encapsulation </strong>
+						<ul>
+							<li>hdlc
+							<li>ppp
+							<li>frame-relay [ ietf ]
+							</li>
+						</ul>
+						<li><strong>exit </strong>
+						<li><strong>fair-queue </strong>[ &lt;1-4096&gt; ] [ &lt;16-4096&gt; ] [ &lt;0-1000&gt; ]
+						<li><strong>frame-relay </strong>
+						<ul>
+							<li>interface-dlci &lt;16-1007&gt;
+							<li>lmi-type [ ansi | cisco | q933a ]
+							<li>map
+							<ul>
+								<li>ip A.B.C.D &lt;16-1007&gt;
+								<ul>
+									<li>broadcast [ cisco | ietf ]
+									<li>cisco [ broadcast ]
+									<li>ietf [ broadcast ]
+									</li>
+								</ul>
+								<li>ipv6 X:X:X:X::X &lt;16-1007&gt;
+								<ul>
+									<li>broadcast [ cisco | ietf ]
+									<li>cisco [ broadcast ]
+									<li>ietf [ broadcast ]
+									</li>
+								</ul>
+								</li>
+							</ul>
+							</li>
+						</ul>
+						<li><strong>hold-queue </strong>&lt;0-4096&gt; out
+						<li><strong>ip </strong>
+						<ul>
+							<li>access-group [ &lt;1-199&gt; | WORD ] [ in | out ]
+							<li>address A.B.C.D A.B.C.D
+							<li>hello-interval eigrp &lt;1-65535&gt; &lt;1-65535&gt;
+							<li>inspect WORD [ in | out ]
+							<li>ips WORD [ in | out ]
+							<li>mtu &lt;68-1500&gt;
+							<li>nat [ inside | outside ]
+							<li>ospf
+							<ul>
+								<li>authentication [ message-digest | null ]
+								<li>authentication-key [ &lt;0-7&gt; ] WORD
+								<li>cost &lt;1-65535&gt;
+								<li>dead-interval &lt;1-65535&gt;
+								<li>hello-interval &lt;1-65535&gt;
+								<li>message-digest-key &lt;1-255&gt; md5 LINE
+								<li>network [ broadcast | point-to-point ]
+								<li>priority &lt;0-255&gt;
+								</li>
+							</ul>
+							<li>split-horizon
+							<li>summary-address eigrp &lt;1-65535&gt; A.B.C.D A.B.C.D [ &lt;1-255&gt; ]
+							<li>virtual-reassembly
+							</li>
+						</ul>
+						<li><strong>ipv6 </strong>
+						<ul>
+							<li>address
+							<ul>
+								<li>WORD X:X:X:X::X/&lt;0-128&gt;
+								<li>X:X:X:X::X link-local
+								<li>X:X:X:X::X/&lt;0-128&gt; [ anycast | eui-64 ]
+								<li>autoconfig
+								</li>
+							</ul>
+							<li>dhcp
+							<ul>
+								<li>client pd WORD
+								<li>server WORD
+								</li>
+							</ul>
+							<li>eigrp &lt;1-65535&gt;
+							<li>enable
+							<li>hello-interval eigrp &lt;1-65535&gt; &lt;1-65535&gt;
+							<li>inspect WORD [ in | out ]
+							<li>mtu &lt;1280-1500&gt;
+							<li>nat prefix X:X:X:X::X/&lt;0-128&gt; [ v4-mapped WORD ]
+							<li>nd [ other-config-flag | ra suppress ]
+							<li>ospf
+							<ul>
+								<li>&lt;1-65535&gt; area [ &lt;0-4294967295&gt; | A.B.C.D ] [ instance &lt;0-255&gt; ]
+								<li>cost &lt;1-65535&gt;
+								<li>dead-interval &lt;1-65535&gt;
+								<li>hello-interval &lt;1-65535&gt;
+								<li>network [ broadcast | point-to-point ]
+								<li>priority &lt;0-255&gt;
+								</li>
+							</ul>
+							<li>rip WORD [ default-information originate | enable ]
+							<li>summary-address eigrp &lt;1-65535&gt; X:X:X:X::X/&lt;0-128&gt; [ &lt;1-255&gt; ]
+							<li>traffic-filter WORD [ in | out ]
+							</li>
+						</ul>
+						<li><strong>keepalive </strong>&lt;0-30&gt;
+						<li><strong>mtu </strong>&lt;64-17940&gt;
+						<li><strong>no </strong>
+						<ul>
+							<li>bandwidth &lt;1-10000000&gt;
+							<li>cdp enable
+							<li>clock rate
+							<li>crypto map [ WORD ]
+							<li>custom-queue-list &lt;1-16&gt;
+							<li>delay
+							<li>description
+							<li>encapsulation
+							<li>fair-queue [ &lt;1-4096&gt; ] [ &lt;16-4096&gt; ] [ &lt;0-1000&gt; ]
+							<li>frame-relay
+							<ul>
+								<li>interface-dlci &lt;16-1007&gt;
+								<li>lmi-type [ ansi | cisco | q933a ]
+								<li>map [ ip A.B.C.D | ipv6 X:X:X:X::X ]
+								</li>
+							</ul>
+							<li>hold-queue [ &lt;0-4096&gt; ] out
+							<li>ip
+							<ul>
+								<li>access-group [ &lt;1-199&gt; | WORD ] [ in | out ]
+								<li>address [ dhcp ]
+								<li>hello-interval eigrp &lt;1-65535&gt;
+								<li>helper-address A.B.C.D
+								<li>inspect WORD [ in | out ]
+								<li>ips WORD [ in | out ]
+								<li>mtu &lt;68-1500&gt;
+								<li>nat [ inside | outside ]
+								<li>ospf
+								<ul>
+									<li>authentication
+									<li>authentication-key
+									<li>cost
+									<li>dead-interval
+									<li>hello-interval
+									<li>message-digest-key &lt;1-255&gt;
+									<li>network
+									<li>priority
+									</li>
+								</ul>
+								<li>split-horizon
+								<li>summary-address eigrp &lt;1-65535&gt; A.B.C.D A.B.C.D [ &lt;1-255&gt; ]
+								<li>virtual-reassembly
+								</li>
+							</ul>
+							<li>ipv6
+							<ul>
+								<li>address
+								<ul>
+									<li>WORD X:X:X:X::X/&lt;0-128&gt;
+									<li>X:X:X:X::X link-local
+									<li>X:X:X:X::X/&lt;0-128&gt; [ anycast | eui-64 ]
+									</li>
+								</ul>
+								<li>dhcp
+								<ul>
+									<li>client pd WORD
+									<li>server WORD
+									</li>
+								</ul>
+								<li>eigrp &lt;1-65535&gt;
+								<li>enable
+								<li>hello-interval eigrp &lt;1-65535&gt;
+								<li>inspect WORD [ in | out ]
+								<li>mtu
+								<li>nat [ prefix X:X:X:X::X/&lt;0-128&gt; ] [ v4-mapped WORD ]
+								<li>nd [ other-config-flag | ra suppress ]
+								<li>ospf
+								<ul>
+									<li>&lt;1-65535&gt; area [ &lt;0-4294967295&gt; | A.B.C.D ] [ instance &lt;0-255&gt; ]
+									<li>cost
+									<li>dead-interval
+									<li>hello-interval
+									<li>network
+									<li>priority
+									</li>
+								</ul>
+								<li>rip WORD [ default-information originate | enable ]
+								<li>summary-address eigrp &lt;1-65535&gt; X:X:X:X::X/&lt;0-128&gt; [ &lt;1-255&gt; ]
+								<li>traffic-filter [ WORD ] [ in | out ]
+								</li>
+							</ul>
+							<li>keepalive
+							<li>mtu
+							<li>ppp
+							<ul>
+								<li>authentication
+								<li>pap sent-username
+								</li>
+							</ul>
+							<li>priority-group &lt;1-16&gt;
+							<li>service-policy [ input | output ] WORD
+							<li>shutdown
+							<li>speed
+							<li>tx-ring-limit
+							<li>zone-member security WORD
+							</li>
+						</ul>
+						<li><strong>ppp </strong>
+						<ul>
+							<li>authentication chap [ pap ]
+							<li>authentication pap [ chap ]
+							<li>pap sent-username WORD password [ 0 LINE | LINE ]
+							</li>
+						</ul>
+						<li><strong>priority-group </strong> &lt;1-16&gt;
+						<li><strong>service-policy </strong> [ input | output ] WORD
+						<li><strong>shutdown </strong>
+						<li><strong>tx-ring-limit </strong>&lt;1-32767&gt;
+						<li><strong>zone-member </strong>security WORD
+						</li>												
+				</td>
+			</tr>
+		</table>
+		<p class="MainHeading2">Tunnel Interface Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+						<li><strong>exit </strong>
+						<li><strong>ip </strong>address A.B.C.D A.B.C.D
+						<li><strong>ipv6 </strong>
+						<ul>
+							<li>address
+							<ul>
+								<li>WORD X:X:X:X::X/&lt;0-128&gt;
+								<li>X:X:X:X::X link-local
+								<li>X:X:X:X::X/&lt;0-128&gt; [ anycast | eui-64 ]
+								<li>autoconfig
+								</li>
+							</ul>
+							<li>eigrp &lt;1-65535&gt;
+							<li>enable
+							<li>enable
+							<li>hello-interval eigrp &lt;1-65535&gt;
+							<li>nd ra suppress
+							<li>ospf
+							<ul>
+								<li>&lt;1-65535&gt; area [ 0-4294967295 | A.B.C.D ] [ instance &lt;0-255&gt; ]
+								<li>cost &lt;1-65535&gt;
+								<li>dead-interval &lt;1-65535&gt;
+								<li>hello-interval &lt;1-65535&gt;
+								<li>network [ broadcast | point-to-point ]
+								<li>priority &lt;0-255&gt;
+								</li>
+							</ul>
+							<li>rip WORD [ default-information originate | enable ]
+							<li>summary-address eigrp &lt;1-65535&gt; X:X:X:X::X/&lt;0-128&gt; [ &lt;1-255&gt; ]
+							</li>
+						</ul>
+						<li><strong>no
+						<ul>
+							<li>ip address [ A.B.C.D A.B.C.D ]
+							<li>ipv6
+							<ul>
+								<li>address
+								<ul>
+									<li>WORD X:X:X:X::X/&lt;0-128&gt;
+									<li>X:X:X:X::X link-local
+									<li>X:X:X:X::X/&lt;0-128&gt; [ anycast | eui-64 ]
+									<li>autoconfig
+									</li>
+								</ul>
+								<li>eigrp &lt;1-65535&gt;
+								<li>enable
+								<li>hello-interval eigrp &lt;1-65535&gt;
+								<li>nd ra suppress
+								<li>ospf
+								<ul>
+									<li>&lt;1-65535&gt; area [ &lt;0-4294967295&gt; | A.B.C.D ] [ instance &lt;0-255&gt;
+									<li>cost
+									<li>dead-interval
+									<li>hello-interval
+									<li>network
+									<li>priority
+									</li>
+								</ul>
+								<li>rip WORD [ default-information originate | enable ]
+								<li>summary-address eigrp &lt;1-65535&gt; X:X:X:X::X/&lt;0-128&gt; [ &lt;1-255&gt; ]
+								</li>
+							</ul>
+							<li>shutdown
+							<li>tunnel [ destination | mode | source ]
+							</li>
+						</ul>
+						<li>shutdown
+						<li>tunnel
+						<ul>
+							<li>destination A.B.C.D
+							<li>mode [ gre ip | ipv6ip isatap ]
+							<li>source
+							<ul>
+								<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][ &lt;0-4294967295&gt; ]
+								<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][ &lt;0-4294967295&gt; ]
+								<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][ &lt;0-4294967295&gt; ]
+								<li>Loopback &lt;0-2147483647&gt;
+								<li>Serial &lt;0-9&gt;/&lt;0-24&gt;
+								</li>
+							</ul>
+						</ul>					
+						</td>
+		  </tr>
+		</table>
+		<p class="MainHeading2">VLAN Interface Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+				<li><strong>arp </strong>timeout &lt;0-2147483&gt;
+				<li><strong>bandwidth </strong>&lt;1-10000000&gt;
+				<li><strong>delay </strong>&lt;1-16777215&gt;
+				<li><strong>description </strong>LINE
+				<li><strong>exit </strong>
+				<li><strong>ip </strong>
+				<ul>
+					<li>access-group [ &lt;1-199&gt; | WORD ] [ in | out ]
+					<li>address
+					<ul>
+						<li>A.B.C.D A.B.C.D
+						<li>dhcp
+						</li>
+					</ul>
+					<li>hello-interval eigrp &lt;1-65535&gt; &lt;1-65535&gt;
+					<li>helper-address A.B.C.D
+					<li>nat [ inside | outside ]
+					<li>ospf
+					<ul>
+						<li>authentication [ message-digest | null ]
+						<li>authentication-key [ &lt;0-7&gt; ] WORD
+						<li>cost &lt;1-65535&gt;
+						<li>dead-interval &lt;1-65535&gt;
+						<li>hello-interval &lt;1-65535&gt;
+						<li>message-digest-key &lt;1-255&gt; md5 LINE
+						<li>priority &lt;0-255&gt;
+						</li>
+					</ul>
+					<li>proxy-arp
+					<li>split-horizon
+					<li>summary-address eigrp &lt;1-65535&gt; A.B.C.D A.B.C.D [ &lt;1-255&gt; ]
+					</li>
+				</ul>
+				<li><strong>ipv6</strong>
+				<ul>
+					<li>address
+					<ul>
+					<li>WORD X:X:X:X::X/&lt;0-128&gt;
+					<li>X:X:X:X::X link-local
+					<li>X:X:X:X::X/&lt;0-128&gt; [ anycast | eui-64 ]
+					<li>autoconfig
+					</li>
+				</ul>
+				<li>dhcp
+				<ul>
+					<li>client pd WORD
+					<li>server WORD
+					</li>
+				</ul>
+				<li>eigrp &lt;1-65535&gt;
+				<li>enable
+				<li>hello-interval eigrp &lt;1-65535&gt; &lt;1-65535&gt;
+				<li>inspect WORD [ in | out ]
+				<li>mtu &lt;1280-1500&gt;
+				<li>nat prefix [ X:X:X:X::X/&lt;0-128&gt; ] [ v4-mapped WORD ]
+				<li>nd [ other-config-flag | ra suppress ]
+				<li>ospf
+				<ul>
+					<li>&lt;1-65535&gt; area [ &lt;0-4294967295&gt; | A.B.C.D ] [ instance &lt;0-255&gt; ]
+					<li>cost &lt;1-65535&gt;
+					<li>dead-interval &lt;1-65535&gt;
+					<li>hello-interval &lt;1-65535&gt;
+					<li>network [ broadcast | point-to-point ]
+					<li>priority &lt;0-255&gt;
+					</li>
+				</ul>
+				<li>rip WORD [ default-information originate | enable ]
+				<li>summary-address eigrp &lt;1-65535&gt; X:X:X:X::X/&lt;0-128&gt; [ &lt;1-255&gt; ]
+				<li>traffic-filter WORD [ in | out ]
+				</li>
+			</ul>
+			<li><strong>no </strong>
+			<ul>
+				<li>arp timeout
+				<li>bandwidth
+				<li>delay
+				<li>description
+				<li>ip
+				<ul>
+					<li>access-group [ &lt;1-199&gt; | WORD ] [ in | out ]
+					<li>address [ dhcp ]
+					<li>hello-interval eigrp &lt;1-65535&gt;
+					<li>helper-address A.B.C.D 
+					<li>nat [ inside | outside ]
+					<li>ospf
+					<ul>
+						<li>authentication
+						<li>authentication-key
+						<li>cost
+						<li>dead-interval
+						<li>hello-interval
+						<li>message-digest-key &lt;1-255&gt;
+						<li>priority
+						</li>
+					</ul>
+					<li>proxy-arp
+					<li>split-horizon
+					<li>summary-address eigrp &lt;1-65535&gt; A.B.C.D A.B.C.D [ &lt;1-255&gt; ]
+					</li>
+				</ul>
+				<li>ipv6
+				<ul>
+					<li>address
+					<ul>
+						<li>WORD X:X:X:X::X/&lt;0-128&gt;
+						<li>X:X:X:X::X link-local
+						<li>X:X:X:X::X/&lt;0-128&gt; [ anycast | eui-64 ]
+						<li>autoconfig
+						</li>
+					</ul>
+					<li>dhcp
+					<ul>
+						<li>client pd WORD
+						<li>server WORD
+						</li>
+					</ul>
+					<li>eigrp &lt;1-65535&gt;
+					<li>enable
+					<li>hello-interval eigrp &lt;1-65535&gt;
+					<li>mtu &lt;1280-1500&gt;
+					<li>nat prefix [ X:X:X:X::X/&lt;0-128&gt; ] [ v4-mapped WORD ]
+					<li>nd [ other-config-flag | ra suppress ]
+					<li>ospf
+					<ul>
+						<li>&lt;1-65535&gt; area [ &lt;0-4294967295&gt; | A.B.C.D ] [ instance &lt;0-255&gt; ]
+						<li>cost
+						<li>dead-interval
+						<li>hello-interval
+						<li>network
+						<li>priority
+						</li>
+					</ul>
+					<li>rip WORD [ default-information originate | enable ]
+					<li>summary-address eigrp &lt;1-65535&gt; X:X:X:X::X/&lt;0-128&gt; [ &lt;1-255&gt; ]
+					<li>traffic-filter [ WORD ] [ in | out ]
+					</li>
+				</ul>
+				<li>shutdown
+				<li>standby
+				<ul>
+					<li>&lt;0-4095&gt;
+					<ul>
+						<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][ &lt;0-4294967295&gt; ]
+						<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][ &lt;0-4294967295&gt; ]
+						<li>Serial &lt;0-9&gt;/&lt;0-24&gt;[.][ &lt;0-4294967295&gt; ]
+						<li>ip A.B.C.D
+						<li>ipv6
+						<li>preempt
+						<li>priority
+						<li>track
+						<ul>
+							<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][ &lt;0-4294967295&gt; ]
+							<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][ &lt;0-4294967295&gt; ]
+							<li>Serial &lt;0-9&gt;/&lt;0-24&gt;[.][ &lt;0-4294967295&gt; ]
+							</li>
+						</ul>
+						</li>
+					</ul>
+					<li>preempt
+					<li>priority
+					<li>track
+					<ul>
+						<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][ &lt;0-4294967295&gt; ]
+						<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][ &lt;0-4294967295&gt; ]
+						<li>Serial &lt;0-9&gt;/&lt;0-24&gt;[.][ &lt;0-4294967295&gt; ]
+						</li>
+					</ul>
+					</li>
+				</ul>
+				</li>
+			</ul>
+			<li><strong>shutdown </strong>
+			<li><strong>standby </strong>
+			<ul>
+				<li>&lt;0-4095&gt;
+				<ul>
+					<li>ip A.B.C.D
+					<li>ipv6 autoconfig
+					<li>preempt
+					<li>priority &lt;0-255&gt;
+					<li>track
+					<ul>
+						<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][ &lt;0-4294967295&gt; ]
+						<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][ &lt;0-4294967295&gt; ]
+						<li>Serial &lt;0-9&gt;/&lt;0-24&gt;[.][ &lt;0-4294967295&gt; ]
+						</li>
+					</ul>
+					<li>ip A.B.C.D
+					<li>ipv6 autoconfig
+					<li>preempt
+					<li>priority &lt;0-255&gt;
+					<li>timers &lt;1-254&gt;
+					<li>track
+					<ul>
+						<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][ &lt;0-4294967295&gt; ]
+						<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][ &lt;0-4294967295&gt; ]
+						<li>Serial &lt;0-9&gt;/&lt;0-24&gt;[.][ &lt;0-4294967295&gt; ]
+						</li>
+					</ul>
+					</li>
+				</ul>
+				</li>
+			</ul>
+			</li>
+			
+			
+			
+								
+				</td>
+			</tr>
+		</table>
+		<p class="MainHeading2">VLAN Configuration Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+				<li><strong>exit </strong>
+				<li><strong>no </strong>
+				<ul>
+					<li>vlan &lt;1-1005&gt;
+					<li>vtp
+					<ul>
+						<li>client
+						<li>password
+						<li>transparent
+						<li>v2-mode
+						</li>
+					</ul>
+					</li>
+				</ul>
+				<li><strong>vlan </strong>&lt;1-1005&gt; [ name ] [ WORD ]
+				<li><strong>vtp </strong>
+				<ul>
+					<li>client
+					<li>domain WORD
+					<li>password WORD
+					<li>server
+					<li>transparent
+					<li>v2-mode
+					</li>
+				</ul>
+				</li>
+									
+				</td>
+			</tr>
+		</table>
+		<p class="MainHeading2">Line Configuration Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+				<li><strong>access-class </strong>[ &lt;1-199&gt; | &lt;1300-2699&gt; | WORD ] [ in | out ]
+				<li><strong>databits </strong>[ 5 | 6 | 7 | 8 ]
+				<li><strong>default </strong>[ databits | flowcontrol | history size | parity | speed | stopbits ]
+				<li><strong>exit </strong>
+				<li><strong>exec-timeout </strong>&lt;0-35791&gt; [ &lt;0-2147483&gt; ]
+				<li><strong>flowcontrol </strong>[ NONE | hardware | software ]
+				<li><strong>history </strong>size &lt;0-256&gt;
+				<li><strong>ipv6 </strong>access-class WORD [ in | out ]
+				<li><strong>logging </strong>synchronous
+				<li><strong>login 
+				<ul>
+					<li>authentication [ WORD | default ]
+					<li>local
+					</li>
+				</ul>
+				<li><strong>motd-banner </strong>
+				<li><strong>no </strong>
+				<ul>
+					<li>[ access-class [ &lt;1-199&gt; | &lt;1300-2699&gt; | WORD ] [ in | out ] | databits | flowcontrol | history size | login | motd-banner | parity | password | session-limit | speed | stopbits ]
+					<li>databits
+					<li>exec-timeout
+					<li>flowcontrol
+					<li>history size
+					<li>ipv6 access-class WORD [ in | out ]
+					<li>logging synchronous
+					<li>motd-banner
+					<li>parity
+					<li>password
+					<li>privilege level
+					<li>session-limit
+					<li>speed
+					<li>stopbits
+					<li>transport output
+				</ul>
+				<li><strong>parity </strong>[ even | mark | none | odd | space ]
+				<li><strong>password </strong>[ 7 WORD | LINE ]
+				<li><strong>privilege </strong>level &lt;0-15&gt;
+				<li><strong>session-limit </strong>&lt;0-4294967295&gt;
+				<li><strong>speed </strong>&lt;0-4294967295&gt;
+				<li><strong>stopbits </strong>[ 1 | 1.5 | 2 ]
+				<li><strong>transport </strong>output [ all | none | ssh | telnet ]
+				</li>
+			</ul>
+				
+				
+				</td>
+		  </tr>
+		</table>
+		<p class="MainHeading2">Class-Map Configuration Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+				<li><strong>description </strong>LINE
+				<li><strong>exit </strong>
+				<li><strong>match </strong>
+				<ul>
+					<li>access-group
+					<ul>
+						<li>&lt;1-2699&gt;
+						<li>name WORD
+						</li>
+					</ul>
+					<li>any
+					<li>class-map WORD
+					<li>cos &lt;0-7&gt;
+					<li>destination-address mac H.H.H
+					<li>input-interface
+					<ul>
+						<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][ &lt;0-4294967295&gt; ]
+						<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][ &lt;0-4294967295&gt; ]
+						<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][ &lt;0-4294967295&gt; ]
+						<li>Loopback &lt;0-2147483647&gt;
+						<li>Serial &lt;0-9&gt;/&lt;0-24&gt;
+						</li>
+					</ul>
+					<li>ip
+					<ul>
+						<li>dscp [ <0-63> | af11 | af12 | af13 | af21 | af22 | af23 | af31 | af32 | af33 | af41 | af42 | af43 | cs1 | cs2 | cs3 | cs4 | cs5 | cs6 | cs7 | default | ef ]
+						<li>precedence [ <0-7> | critical | flash | flash-override | immediate | internet | network | priority | routine ]
+						</li>
+					</ul>
+					<li>not
+					<ul>
+						<li>access-group
+						<ul>
+							<li>&lt;1-2699&gt;
+							<li>name WORD
+							</li>
+						</ul>
+						<li>class-map WORD
+						<li>cos &lt;0-7&gt;
+						<li>destination-address mac H.H.H
+						<li>input-interface
+						<ul>
+							<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+							<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+							<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+							<li>Loopback &lt;0-2147483647&gt;
+							<li>Serial &lt;0-9&gt;/&lt;0-24&gt;
+							</li>
+						</ul>
+						<li>ip
+						<ul>
+							<li>dscp [ <0-63> | af11 | af12 | af13 | af21 | af22 | af23 | af31 | af32 | af33 | af41 | af42 | af43 | cs1 | cs2 | cs3 | cs4 | cs5 | cs6 | cs7 | default | ef ]
+							<li>precedence [ <0-7> | critical | flash | flash-override | immediate | internet | network | priority | routine ]
+							</li>
+						</ul>
+						<li>precedence [ <0-7> | critical | flash | flash-override | immediate | internet | network | priority | routine ]
+						<li>protocol [ arp | bgp | cdp | dhcp | dns | eigrp | ftp | gre | h323 | http | icmp | ip | ipsec | ipv6 | ntp | ospf | pop3 | rip | rtp | skinny | smtp | snmp | ssh | syslog | tcp | telnet | tftp | udp ]
+						<li>qos-group <0-1023> 
+						</li>
+					</ul>
+					<li>precedence [ <0-7> | critical | flash | flash-override | immediate | internet | network | priority | routine ]
+					<li>protocol 
+					<ul>
+						<li>arp
+						<li>bgp
+						<li>cdp
+						<li>dhcp
+						<li>dns
+						<li>eigrp
+						<li>ftp
+						<li>gre
+						<li>h323
+						<li>http [ host WORD | mime WORD | url WORD ]
+						<li>icmp
+						<li>ip
+						<li>ipsec
+						<li>ipv6
+						<li>ntp
+						<li>ospf
+						<li>pop3
+						<li>rip
+						<li>rtp
+						<li>skinny
+						<li>smtp
+						<li>snmp
+						<li>ssh
+						<li>syslog
+						<li>tcp
+						<li>telnet
+						<li>tftp
+						<li>udp
+						</li>
+					</ul>
+					<li>qos-group &lt;0-1023&gt;
+					</li>
+				</ul>
+				<li><strong>no </strong>
+				<ul>
+					<li>description [ LINE ]
+					<li>match
+					<ul>
+						<li>access-group
+						<ul>
+							<li>&lt;1-2699&gt;
+							<li>name WORD
+							</li>
+						</ul>
+						<li>any
+						<li>class-map WORD
+						<li>cos &lt;0-7&gt;
+						<li>destination-address mac H.H.H
+						<li>input-interface
+						<ul>
+							<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+							<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+							<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+							<li>Loopback &lt;0-2147483647&gt;
+							<li>Serial &lt;0-9&gt;/&lt;0-24&gt;
+							</li>
+						</ul>
+						<li>ip
+						<ul>
+							<li>dscp [ <0-63> | af11 | af12 | af13 | af21 | af22 | af23 | af31 | af32 | af33 | af41 | af42 | af43 | cs1 | cs2 | cs3 | cs4 | cs5 | cs6 | cs7 | default | ef ]
+							<li>precedence [ <0-7> | critical | flash | flash-override | immediate | internet | network | priority | routine ]
+							</li>
+						</ul>
+						<li>not
+						<ul>
+							<li>access-group
+							<ul>
+								<li>&lt;1-2699&gt;
+								<li>name WORD
+								</li>
+							</ul>
+							<li>class-map WORD
+							<li>cos &lt;0-7&gt;
+							<li>destination-address mac H.H.H
+							<li>input-interface
+							<ul>
+								<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;
+								<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;
+								<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;
+								<li>Loopback &lt;0-2147483647&gt;
+								<li>Serial &lt;0-9&gt;/&lt;0-24&gt;
+								</li>
+							</ul>
+							<li>ip
+							<ul>
+								<li>dscp [ <0-63> | af11 | af12 | af13 | af21 | af22 | af23 | af31 | af32 | af33 | af41 | af42 | af43 | cs1 | cs2 | cs3 | cs4 | cs5 | cs6 | cs7 | default | ef ]
+								<li>precedence [ <0-7> | critical | flash | flash-override | immediate | internet | network | priority | routine ]
+								</li>
+							</ul>
+							<li>precedence [ &lt;0-7&gt; | critical | flash | flash-override | immediate | internet | network | priority | routine ]
+							<li>protocol
+							<ul>
+								<li>arp
+								<li>bgp
+								<li>cdp
+								<li>dhcp
+								<li>dns
+								<li>eigrp
+								<li>ftp
+								<li>gre
+								<li>h323
+								<li>http [ host WORD | mime WORD | url WORD ]
+								<li>icmp
+								<li>ip
+								<li>ipsec
+								<li>ipv6
+								<li>ntp
+								<li>ospf
+								<li>pop3
+								<li>rip
+								<li>rtp
+								<li>skinny
+								<li>smtp
+								<li>snmp
+								<li>ssh
+								<li>syslog
+								<li>tcp
+								<li>telnet
+								<li>tftp
+								<li>udp
+								</li>
+							</ul>
+							<li>qos-group &lt;0-1023&gt;
+							</li>
+						</ul>
+						<li>precedence [ &lt;0-7&gt; | critical | flash | flash-override | immediate | internet | network | priority | routine ]
+						<li>protocol [ arp | bgp | cdp | dhcp | dns | eigrp | ftp | gre | h323 | http | icmp | ip | ipsec | ipv6 | ntp | ospf | pop3 | rip | rtp | skinny | smtp | snmp | ssh | syslog | tcp | telnet | tftp | udp ]
+						<li>qos-group &lt;0-1023&gt;
+						</li>
+					</ul>
+					</li>
+				</ul>
+									
+				</td>
+		  </tr>
+		</table>
+		<p class="MainHeading2">Zone Security Configuration Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul><li><strong>exit</strong>
+				</ul>				</td>
+		  </tr>
+		</table>
+		<p class="MainHeading2">Zone-Pair Security Configuration Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul><li><strong>exit</strong>
+				    <li><strong>no</strong>
+				      <ul>
+				        <li>service-policy type inspect WORD </li>
+		          </ul>
+				    <li><strong>service-policy</strong> type inspect WORD
+				</ul>				</td>
+		  </tr>
+		</table>
+		<p class="MainHeading2">Crypto Map Configuration Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+				  <li><strong>description </strong>LINE
+
+				  <li><strong>exit                                    </strong>
+				  <li><strong>match</strong> address [ &lt;100-199&gt; |
+				    WORD ]
+				  <li><strong>no</strong>
+				      <ul>
+						<li>description LINE
+				        <li>match address
+				        <li>set
+                          <ul>
+                            <li>peer A.B.C.D</li>
+                            <li>pfs [ group1 | group2 | group5 ]</li>
+                            <li>security-association lifetime seconds</li>
+                            <li>transform-set</li>
+                        </ul>
+				      </ul>
+			      <li><strong>set                    </strong>
+                    <ul>
+                      <li>peer A.B.C.D</li>
+                      <li>pfs [ group1 | group2 | group5 ]</li>
+                      <li>security-association lifetime seconds &lt;120-86400&gt;</li>
+                      <li>transform-set WORD [ WORD ] [ WORD ] [ WORD ] [ WORD ] [ WORD ]</li>
+                    </ul>
+			    </ul>				</td>
+		  </tr>
+		</table>
+		<p class="MainHeading2">ISAKMP Configuration Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded">
+				<ul>
+						<li>
+						<strong>authentication </strong>pre-share
+				        <li><strong>encryption</strong> [ 3des | aes [ 128 | 192 | 256 ] | des ]
+				        <li><strong>exit                        </strong>
+				        <li><strong>group</strong> [ 1 | 2 | 5 ]
+				        <li><strong>hash</strong> [	md5 | sha ]
+				        <li><strong>lifetime</strong> &lt;60-86400&gt;
+                        <li><strong>no</strong>
+                          <ul>
+                            <li>authentication pre-share
+                            <li>encryption [ 3des | aes [ 128 | 192 | 256 ] | des ]
+                            <li>group [ 1 | 2 | 5 ]
+                            <li>hash [ md5 | sha ]
+                            <li>lifetime &lt;60-86400&gt;
+                  </ul>
+	            </ul>				</td>
+		  </tr>
+		</table>
+		<p class="MainHeading2">IPS Signature Category Configuration Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded">
+				<ul>
+						<li><strong>category</strong> [ all | ios_ips basic ]
+	              <li><strong>exit</strong>
+	              <li><strong>no</strong>
+<ul>
+			                <li>category [ all | ios_ips basic ]</li>
+                    </ul>
+	            </ul>				</td>
+		  </tr>
+		</table>
+		<p class="MainHeading2">IPS Signature Category Action Configuration Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+				  <li><strong>exit</strong><li><strong>no</strong>
+	                <ul>
+	                  <li>retired [ false | true ]</li>
+                    </ul>
+                  <li><strong>retired</strong> [ false | true ] </li>
+			  </ul>				</td>
+		  </tr>
+		</table>
+		<p class="MainHeading2">IPS Signature Definition  Configuration Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+				  <li><strong>exit</strong>
+				  <li><strong>retired</strong> &lt;1-65535&gt; [ &lt;0-65535&gt; ] </li>
+			  </ul>				</td>
+		  </tr>
+		</table>
+		<p class="MainHeading2">IPS Signature Definition Sig Configuration Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+				  <li><strong>engine                  </strong>
+				  <li><strong>exit</strong>
+			      <li><strong>status</strong></li>
+			  </ul>				</td>
+		  </tr>
+		</table>
+		<p class="MainHeading2">IPS Signature Definition Sig Engine Configuration Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+				  <li><strong>event-action </strong>[ deny-packet-inline | produce-alert ]
+				  <li><strong>exit</strong>
+			      <li><strong>no</strong>
+			        <ul>
+			          <li>event-action [ deny-packet-inline | produce-alert ]</li>
+		            </ul>
+			      </li>
+		        </ul>				</td>
+		  </tr>
+		</table>
+		<p class="MainHeading2">IPS Signature Definition Sig Status Configuration Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+				  <li><strong>enabled</strong> [ false | true ]
+
+				  <li><strong>exit</strong>
+			      <li><strong>no</strong>
+			        <ul>
+			          <li>enabled [ false | true ] </li>
+	                  <li>retired [ false | true ] </li>
+			        </ul>
+			      </li>
+		          <li><strong>retired</strong> [ false | true ] </li>
+				</ul>				</td>
+		  </tr>
+		</table>
+		<p class="MainHeading2">Parser View Configuration Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+				  <li><strong>commands</strong> [ configure | exec | interface | line | router ]
+				  include [ all ] LINE 
+				  <li>default
+				  <ul>
+					<li>commands [ configure | exec | interface | line | router ] include [ all ] LINE
+					<li>secret
+					</li>
+				  </ul>
+				  <li><strong>exit</strong>
+			      <li><strong>no</strong>
+			        <ul>
+			          <li>commands [ configure | exec | interface | line | router ]
+				  include [ all ] LINE </li>
+                      <li>secret</li>
+			        </ul>
+			      </li>
+		          <li><strong>secret</strong> [ 0 | 5 ] LINE </li>
+				</ul>				</td>
+		  </tr>
+		</table>
+		<p class="MainHeading2">Router Bgp Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded">
+				<ul>
+					<li><strong>bgp </strong>
+					<ul>
+						<li>log-neighbor-changes
+						<li>redistribute-internal
+						<li>router-id A.B.C.D
+						</li>
+					</ul>
+					<li><strong>exit </strong>
+					<li><strong>neighbor </strong>
+					<ul>
+						<li>A.B.C.D next-hop-self
+						<li>A.B.C.D remote-as &lt;1-65535&gt;
+						</li>
+					</ul>
+					<li><strong>network </strong>
+					<ul>
+						<li>A.B.C.D mask A.B.C.D
+						</li>
+					</ul>
+					<li><strong>no </strong>
+					<ul>
+						<li>bgp
+						<ul>
+							<li>log-neighbor-changes
+							<li>redistribute-internal
+							<li>router-id A.B.C.D
+							</li>
+						</ul>
+						<li>neighbor
+						<ul>
+							<li>A.B.C.D next-hop-self
+							<li>A.B.C.D remote-as &lt;1-65535&gt;
+							</li>
+						</ul>
+						<li>network [ A.B.C.D mask A.B.C.D ]
+						<li>redistribute
+						<ul>
+							<li>connected
+							<li>eigrp &lt;1-65535&gt;
+							<li>ospf &lt;1-65535&gt;
+							<ul>
+								<li>match
+								<ul>
+									<li>external
+									<li>internal
+									<li>nssa-external
+									</li>
+								</ul>
+								</li>
+							<li>static
+							</li>
+						</ul>
+						<li>synchronization
+						<li>timers bgp &lt;0-65535&gt; &lt;0-65535&gt;
+						</li>
+					</ul>
+					</li>
+				</ul>
+				<li><strong>redistribute </strong>
+				<ul>
+					<li>connected
+					<li>eigrp &lt;1-65535&gt;
+					<li>ospf &lt;1-65535&gt;
+					<ul>
+						<li>match
+						<ul>
+							<li>external
+							<li>internal
+							<li>nssa-external
+							</li>
+						</li>
+						</ul>
+					<li>static
+					</li>
+				</ul>
+				<li><strong>synchronization </strong>
+				<li><strong>timers </strong>&lt;0-65535&gt; &lt;0-65535&gt;
+			</ul>
+					
+					
+				</td>
+			</tr>
+		</table>
+		<p class="MainHeading2">Router EIGRP Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+					<li><strong>auto-summary </strong>
+					<li><strong>distance </strong> eigrp &lt;1-255&gt; &lt;1-255&gt;
+					<li><strong>exit </strong>
+					<li><strong>metric </strong>weights &lt;0-8&gt; &lt;0-256&gt; &lt;0-256&gt; &lt;0-256&gt; &lt;0-256&gt;
+					<li><strong>network </strong>A.B.C.D [ A.B.C.D ]
+					<li><strong>no </strong>
+					<ul>
+						<li>auto-summary
+						<li>distance eigrp
+						<li>metric weights
+						<li>network A.B.C.D [ A.B.C.D ]
+						<li>redistribute
+						<ul>
+							<li>bgp &lt;1-65535&gt; [ metric &lt;1-4294967295&gt; ] [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ]
+							<li>connected [ metric &lt;1-4294967295&gt; ] [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ]
+							<li>eigrp &lt;1-65535&gt; [ metric &lt;1-4294967295&gt; ] [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ]
+							<li>metric [ &lt;1-4294967295&gt; ] [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ]
+							<li>ospf &lt;1-65535&gt; [ match { external [ 1 | 2 ] internal | nssa-external } ] [ metric &lt;1-4294967295&gt; ] [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ]
+							<li>rip [ metric &lt;1-4294967295&gt; ] [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ]
+							<li>static [ metric &lt;1-4294967295&gt; ] [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ]
+							</li>
+						</ul>
+						<li>passive-interface
+						<ul>
+							<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][ &lt;0-4294967295&gt; ]
+							<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][ &lt;0-4294967295&gt; ]
+							<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][ &lt;0-4294967295&gt; ]
+							<li>Loopback &lt;0-2147483647&gt;
+							<li>Serial &lt;0-9&gt;/&lt;0-24&gt;
+							<li>Vlan &lt;1-1005&gt;
+							<li>default
+							</li>
+						</ul>
+						<li>variance
+						</li>
+					</ul>
+					<li><strong>passive-interface </strong>
+					<ul>
+						<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][ &lt;0-4294967295&gt; ]
+						<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][ &lt;0-4294967295&gt; ]
+						<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][ &lt;0-4294967295&gt; ]
+						<li>Loopback &lt;0-2147483647&gt;
+						<li>Serial &lt;0-9&gt;/&lt;0-24&gt;
+						<li>default
+						</li>
+					</ul>
+					<li><strong>redistribute </strong>
+					<ul>
+						<li>bgp &lt;1-65535&gt; [ metric &lt;1-4294967295&gt; ] [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ]
+						<li>connected [ metric &lt;1-4294967295&gt; ] [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ]
+						<li>eigrp &lt;1-65535&gt; [ metric &lt;1-4294967295&gt; ] [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ]
+						<li>metric [ &lt;1-4294967295&gt; ] [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ]
+						<li>ospf &lt;1-65535&gt; [ match { external [ 1 | 2 ] internal | nssa-external } ] [ metric &lt;1-4294967295&gt; ] [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ]
+						<li>rip [ metric &lt;1-4294967295&gt; ] [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ]
+						<li>static [ metric &lt;1-4294967295&gt; ] [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ]
+						</li>
+					</ul>
+					<li><strong>variance </strong>&lt;1-128&gt;
+					
+						
+				</td>
+			</tr>
+		</table>
+
+		<p class="MainHeading2">IPv6 Router EIGRP Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+				<li><strong>exit </strong>
+				<li><strong>metric </strong>weights &lt;0-8&gt; &lt;0-255&gt; &lt;0-255&gt; &lt;0-255&gt; &lt;0-255&gt; 
+				<li><strong>no </strong>
+				<ul>
+					<li>metric weights &lt;0-8&gt; &lt;0-255&gt; &lt;0-255&gt; &lt;0-255&gt; &lt;0-255&gt;
+					<li>redistribute
+					<ul>
+						<li>bgp &lt;1-65535&gt; [ metric &lt;1-4294967295&gt; [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ] ]
+						<li>connected [ metric &lt;1-4294967295&gt; [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ] ]
+						<li>eigrp &lt;1-65535&gt; [ metric &lt;1-4294967295&gt; [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ] ]
+						<li>ospf &lt;1-65535&gt; [ match { external [ 1 | 2 ] | internal | nssa-external } ] [ metric bandwidth delay reliability effective BW MTU ]
+						<li>rip WORD [ metric &lt;1-4294967295&gt; [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ] ]
+						<li>static [ metric &lt;1-4294967295&gt; [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ] ]
+						</li>
+					</ul>
+					</li>
+				</ul>
+				<li><strong>redistribute </strong>
+				<ul>
+					<li>bgp &lt;1-65535&gt; [ metric &lt;1-4294967295&gt; [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ] ]
+					<li>connected [ metric &lt;1-4294967295&gt; [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ] ]
+					<li>eigrp &lt;1-65535&gt; [ metric &lt;1-4294967295&gt; [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ] ]
+					<li>ospf &lt;1-65535&gt; [ match { external [ 1 | 2 ] | internal | nssa-external } ] [ metric bandwidth delay reliability effective BW MTU ]
+					<li>rip WORD [ metric &lt;1-4294967295&gt; [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ] ]
+					<li>static [ metric &lt;1-4294967295&gt; [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ] ]
+					</li>
+				</ul>
+				<li><strong>router-id </strong>A.B.C.D
+				<li><strong>metric </strong> weights &lt;0-8&gt; &lt;0-255&gt; &lt;0-255&gt; &lt;0-255&gt; &lt;0-255&gt;
+				<li><strong>shutdown </strong>
+						
+				</td>
+			</tr>
+		</table>
+
+		<p class="MainHeading2">Router OSPF Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+				<li><strong>area </strong>
+				<ul>
+					<li>[ &lt;0-4294967295&gt; | A.B.C.D ]
+					<ul>
+						<li>authenticate message-digest
+						<li>default-cost &lt;0-16777215&gt;
+						<li>nssa no-summary
+						<li>stub no-summary
+						<li>virtual-link A.B.C.D
+						</li>
+					</ul>
+					</li>
+				</ul>
+				<li><strong>default-information originate </strong>
+				<li><strong>distance </strong>&lt;1-255&gt;
+				<li><strong>exit </strong>
+				<li><strong>log-adjacency-changes </strong>[ detail ]
+				<li><strong>network </strong>A.B.C.D A.B.C.D area [ &lt;0-4294967295&gt; | A.B.C.D ]
+				<li><strong>no </strong>
+				<ul>
+					<li>area
+					<ul>
+						<li>[ &lt;0-4294967295&gt; | A.B.C.D ]
+						<ul>
+							<li>authenticate message-digest
+							<li>default-cost &lt;0-16777215&gt;
+							<li>nssa no-summary
+							<li>stub no-summary
+							<li>virtual-link A.B.C.D
+							</li>
+						</ul>
+					</ul>
+					<li>default-information originate
+					<li>distance &lt;1-255&gt;
+					<li>log-adjacency-changes [ detail ]
+					<li>network A.B.C.D A.B.C.D area [ <0-4294967295> | A.B.C.D ] 
+					<li>redistribute
+					<ul>
+						<li>bgp &lt;1-65535&gt; [ metric &lt;1-4294967295&gt; ] [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ]
+						<li>connected [ metric &lt;1-4294967295&gt; ] [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ]
+						<li>eigrp &lt;1-65535&gt; [ metric &lt;1-4294967295&gt; ] [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ]
+						<li>metric [ &lt;1-4294967295&gt; ] [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ]
+						<li>ospf &lt;1-65535&gt; [ match { external [ 1 | 2 ] internal | nssa-external } ] [ metric &lt;1-4294967295&gt; ] [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ]
+						<li>rip [ metric &lt;1-4294967295&gt; ] [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ]
+						<li>static [ metric &lt;1-4294967295&gt; ] [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ]
+						</li>
+					</ul>
+					<li>passive-interface
+					<ul>
+						<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+						<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+						<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+						<li>Loopback &lt;0-2147483647&gt;
+						<li>Serial &lt;0-9&gt;/&lt;0-24&gt;
+						<li>Vlan &lt;1-1005&lt;
+						<li>default
+						</li>
+					</ul>
+					<li>router-id
+					</li>
+				</ul>
+				<li><strong>passive-interface </strong>
+				<ul>
+					<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+					<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+					<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+					<li>Loopback &lt;0-2147483647&gt;
+					<li>Serial &lt;0-9&gt;/&lt;0-24&gt;
+					<li>Vlan &lt;1-1005&lt;
+					<li>default
+					</li>
+				</ul>
+				<li><strong>redistribute </strong>
+				<ul>
+					<li>bgp &lt;1-65535&gt; [ metric &lt;1-4294967295&gt; ] [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ]
+					<li>connected [ metric &lt;1-4294967295&gt; ] [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ]
+					<li>eigrp &lt;1-65535&gt; [ metric &lt;1-4294967295&gt; ] [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ]
+					<li>metric [ &lt;1-4294967295&gt; ] [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ]
+					<li>ospf &lt;1-65535&gt; [ match { external [ 1 | 2 ] internal | nssa-external } ] [ metric &lt;1-4294967295&gt; ] [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ]
+					<li>rip [ metric &lt;1-4294967295&gt; ] [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ]
+					<li>static [ metric &lt;1-4294967295&gt; ] [ &lt;0-4294967295&gt; &lt;0-255&gt; &lt;1-255&gt; &lt;1-65535&gt; ]
+					</li>
+				</ul>
+				<li><strong>router-id </strong> A.B.C.D			
+				
+				</td>
+			</tr>
+		</table>
+		<p class="MainHeading2">IPv6 Router Ospf Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+				<li><strong>area </strong><i>area-id</i>
+				<ul>
+					<li>default-cost &lt;0-16777215&gt;
+					<li>nssa [ no-summary ]
+					<li>stub [ no-summary ]
+					<li>virtual-link A.B.C.D
+					</li>
+				</ul>
+				<li><strong>distance </strong> &lt;1-254&gt;
+				<li><strong>exit </strong>
+				<li><strong>log-adjacency-changes </strong> [ detail ]
+				<li><strong>no </strong>
+				<ul>
+					<li>area <i>area-id</i>
+					<ul>
+						<li>default-cost &lt;0-16777215&gt;
+						<li>nssa [ no-summary ]
+						<li>stub [ no-summary ]
+						<li>virtual-link A.B.C.D
+						</li>
+					</ul>
+					<li>distance &lt;1-254&gt;
+					<li>log-adjacency-changes [ detail ]
+					<li>passive-interface
+					<ul>
+						<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+						<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+						<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+						<li>Loopback &lt;0-2147483647&gt;
+						<li>Serial &lt;0-9&gt;/&lt;0-24&gt;
+						<li>default
+						</li>
+					</ul>
+					<li>redistribute
+					<ul>
+						<li>bgp &lt;1-65535&gt; [ metric &lt;0-16777214&gt; | subnets | tag &lt;0-4294967295&gt; ]
+						<li>connected [ metric &lt;0-16777214&gt; | subnets | tag &lt;0-4294967295&gt; ]
+						<li>eigrp [ metric &lt;0-16777214&gt; | subnets | tag &lt;0-4294967295&gt; ]
+						<li>metric &lt;0-16777214&gt;
+						<li>ospf &lt;1-65535&gt; [ match { external [ 1 | 2 ] | internal | nssa-external } ] [ metric &lt;0-16777214&gt; | subnets | tag &lt;0-4294967295&gt; ]
+						<li>rip WORD [ metric &lt;0-16777214&gt; | subnets | tag &lt;0-4294967295&gt; ]
+						<li>static [ metric &lt;0-16777214&gt; | subnets | tag &lt;0-4294967295&gt; ]
+						</li>
+					</ul>
+					<li>router-id
+					</li>
+				</ul>
+				<li><strong>passive-interface </strong>
+				<ul>
+					<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+					<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+					<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+					<li>Loopback &lt;0-2147483647&gt;
+					<li>Serial &lt;0-9&gt;/&lt;0-24&gt;
+					<li>default
+					</li>
+				</ul>
+				<li><strong>redistribute </strong>
+				<ul>
+					<li>bgp &lt;1-65535&gt; [ metric &lt;0-16777214&gt; | subnets | tag &lt;0-4294967295&gt; ]
+					<li>connected [ metric &lt;0-16777214&gt; | subnets | tag &lt;0-4294967295&gt; ]
+					<li>eigrp [ metric &lt;0-16777214&gt; | subnets | tag &lt;0-4294967295&gt; ]
+					<li>metric &lt;0-16777214&gt;
+					<li>ospf &lt;1-65535&gt; [ match { external [ 1 | 2 ] | internal | nssa-external } ] [ metric &lt;0-16777214&gt; | subnets | tag &lt;0-4294967295&gt; ]
+					<li>rip WORD [ metric &lt;0-16777214&gt; | subnets | tag &lt;0-4294967295&gt; ]
+					<li>static [ metric &lt;0-16777214&gt; | subnets | tag &lt;0-4294967295&gt; ]
+					</li>
+				</ul>
+				<li><strong>router-id A.B.C.D </strong>
+				</li>
+								
+				</td>
+			</tr>
+		</table>
+		<p class="MainHeading2">Router RIP Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+				<li><strong>auto-summary </strong>
+				<li><strong>default-information </strong> originate
+				<li><strong>distance </strong>&lt;1-255&gt;
+				<li><strong>exit </strong>
+				<li><strong>network A.B.C.D</strong>
+				<li><strong>no </strong>
+				<ul>
+					<li>auto-summary
+					<li>default-information
+					<li>distance &lt;1-255&gt;
+					<li>network A.B.C.D
+					<li>passive-interface
+					<ul>
+						<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+						<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+						<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+						<li>Loopback &lt;0-2147483647&gt;
+						<li>Serial &lt;0-9&gt;/&lt;0-24&gt;
+						<li>Vlan &lt;1-1005&gt;
+						<li>default
+						</li>
+					</ul>
+					<li>redistribute
+					<ul>
+						<li>connected [ metric [ &lt;0-16&gt; | transparent ] ]
+						<li>eigrp &lt;1-65535&gt; [ metric [ &lt;0-16&gt; | transparent ] ]
+						<li>metric [ &lt;0-16&gt; | transparent ]
+						<li>ospf &lt;1-65535&gt; [ match { external [ 1 | 2 ] | internal | nssa-external } ] [ metric default-metric ]
+						<li>rip [ metric [ &lt;0-16&gt; | transparent ] ]
+						<li>static [ metric [ &lt;0-16&gt; | transparent ] ]
+						</li>
+					</ul>
+					<li>timers basic
+					<li>versions &lt;1-2&gt;
+					</li>
+				</ul>
+				<li><strong>passive-interface </strong>
+				<ul>
+					<li>Ethernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+					<li>FastEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+					<li>GigabitEthernet &lt;0-9&gt;/&lt;0-24&gt;[.][&lt;0-4294967295&gt;]
+					<li>Loopback &lt;0-2147483647&gt;
+					<li>Serial &lt;0-9&gt;/&lt;0-24&gt;
+					<li>Vlan &lt;1-1005&gt;
+					<li>default
+					</li>
+				</ul>
+				<li><strong>redistribute </strong>
+				<ul>
+					<li>connected [ metric [ &lt;0-16&gt; | transparent ] ]
+					<li>eigrp &lt;1-65535&gt; [ metric [ &lt;0-16&gt; | transparent ] ]						<li>metric [ &lt;0-16&gt; | transparent ]
+					<li>ospf &lt;1-65535&gt; [ match { external [ 1 | 2 ] | internal | nssa-external } ] [ metric default-metric ]
+					<li>rip [ metric [ &lt;0-16&gt; | transparent ] ]
+					<li>static [ metric [ &lt;0-16&gt; | transparent ] ]
+					</li>
+				</ul>
+				<li><strong>timers </strong>basic &lt;0-4294967295&gt; &lt;1-4294967295&gt; &lt;0-4294967295&gt; &lt;1-4294967295&gt;
+				<li><strong>version </strong>&lt;1-2&gt;
+				
+						
+						
+				</td>
+			</tr>
+		</table>
+		<p class="MainHeading2">IPv6 Router RIP Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+				<li><strong>distance </strong>&lt;1-254&gt;
+				<li><strong>exit </strong>
+				<li><strong>no </strong>
+				<ul>
+					<li>distance
+					<li>redistribute
+					<ul>
+						<li>connected [ metric [ &lt;1-16&gt; | transparent ]
+						<li>eigrp &lt;1-65535&gt; [ metric [ &lt;1-16&gt; | transparent ]
+						<li>metric [ &lt;1-16&gt; | transparent ]
+						<li>ospf &lt;1-65535&gt; [ match { external [ 1 | 2 ] | internal | nssa-external } ] [ metric [ &lt;1-16&gt; | transparent ]
+						<li>rip WORD [ metric [ &lt;1-16&gt; | transparent ]
+						<li>static [ metric [ &lt;1-16&gt; | transparent ]
+						</li>
+					</ul>
+					</li>
+				</ul>
+				<li><strong>redistribute </strong>
+				<ul>
+					<li>connected [ metric [ &lt;1-16&gt; | transparent ]
+					<li>eigrp &lt;1-65535&gt; [ metric [ &lt;1-16&gt; | transparent ]
+					<li>metric [ &lt;1-16&gt; | transparent ]
+					<li>ospf &lt;1-65535&gt; [ match { external [ 1 | 2 ] | internal | nssa-external } ] [ metric [ &lt;1-16&gt; | transparent ]
+					<li>rip WORD [ metric [ &lt;1-16&gt; | transparent ]
+					<li>static [ metric [ &lt;1-16&gt; | transparent ]
+					</li>
+				</ul>
+				</li>
+				</td>
+			</tr>
+		</table>
+		<p class="MainHeading2">DHCP Pool Configuration Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+						<li>
+							<strong>default-router </strong>
+						A.B.C.D
+						<li>
+							<strong>dns-server</strong>
+						A.B.C.D
+						<li>
+							<strong>exit</strong>
+						<li>
+							<strong>network </strong>
+						A.B.C.D A.B.C.D
+						<li>
+							<strong>no </strong>dns-server</li>
+						<li><strong>option </strong><0-254> ip A.B.C.D 
+					</ul>
+				</td>
+			</tr>
+		</table>
+		<p class="MainHeading2">IPv6 DHCP Pool Configuration Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+				<li><strong>dns-server </strong>X:X:X:X::X
+				<li><strong>domain-name </strong>WORD
+				<li><strong>exit </strong>
+				<li><strong>no </strong>
+				<ul>
+					<li>dns-server X:X:X:X::X
+					<li>domain-name WORD
+					<li>prefix-delegation
+					<ul>
+						<li>X:X:X:X::X/&lt;0-128&gt; WORD [ lifetime ] &lt;60-4294967295&gt; &lt;60-4294967295&gt;
+						<li>pool WORD [ lifetime ] &lt;60-4294967295&gt; &lt;60-4294967295&gt;
+						</li>
+					</ul>
+					</li>
+				</ul>
+				<li><strong>prefix-delegation </strong>
+				<ul>
+					<li>X:X:X:X::X/&lt;0-128&gt; WORD [ lifetime ] &lt;60-4294967295&gt; &lt;60-4294967295&gt;
+					<li>pool WORD [ lifetime ] &lt;60-4294967295&gt; &lt;60-4294967295&gt;
+					</li>
+				</ul>
+				
+				
+				
+				</td>
+			</tr>
+		</table>
+		<p class="MainHeading2">Rommon Mode</p>
+		<table class="IOStable">
+			<tr>
+				<td class="TDpadded"><ul>
+						<li>
+							<strong>boot</strong>
+						<li>
+							<strong>confreg</strong> <em>config-register-number</em>
+						<li>
+							<strong>dir</strong>
+						flash:
+						<li>
+							<strong>help</strong>
+						<li>
+							<strong>reset</strong>
+						<li>
+							<strong>set</strong>
+						<li>
+							<strong>tftpdnld</strong>
+						<li>
+							<strong>unset</strong> <em>variable</em>
+						<li><em>variable</em><strong>=</strong><em>value</em></li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

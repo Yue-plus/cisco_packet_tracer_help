@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Answer Network</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="styleNormal.css">
+	</head>
+	<body>
+
+  <p class="MainHeading1">
+    
+    Answer Network
+  <hr>
+<p class="myPic">
+<img src="images/activityWizard_answerNetwork_1.jpg">
+</p>
+
+<p> In the Answer Network panel, you construct the answer network, and mark the elements of the network on which you want to assess the students.</p>
+</p>
+<p> Click on the <strong>Show Answer Network</strong> button to view the workspace for the answer network. If you chose to convert the existing workspace to the answer network when you first entered the Activity Wizard, that network will already be in place, and you may further edit it here. If you did not do the conversion, you will have a blank workspace from which to work. Another option is to import an existing .pkt file and use it as the answer network using the <strong>Import File to Answer Network</strong> button. After you have completed the answer network, you can export it (saving it as another .pkt file) using the <strong>Export Answer Network to File</strong> button. Note: any changes to an imported .pkt file will be lost upon exiting the Activity Wizard unless you export the answer network to file.</p>
+<p class="myPic">
+<img src="images/activityWizard_answerNetwork_2.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Setting the Assessment Items</p>
+<p> An assessment item is a feature in the student configuration that must match the configuration of that feature in the answer network. Choose the assessment options by checking items in the expandable tree. You can check specific features or entire categories. For example, you can check just the IP address of a port of a particular router, or click on the <strong>Ports </strong> category to check all settings of all ports on the router. A regular check indicates a specific feature or an entire category is assessed. A gray checkbox indicates that only some of the features in the category are assessed. In general, it is better to check specific features rather than checking entire categories. Take care to uncheck irrelevant items that are not being tested.  Carefully setting up the assessment tree avoids frustrating students who essentially complete an activity but whose work had a few insignificant differences with the answer network. With this system, the student solution may be different from the instructor answer network, but it still can be correct as long as the assessed features match.</p>
+<p>For convenience, you can show only certain components in the tree by using the <strong>View Filter</strong>. For example, entering the keyword &quot;Ip&quot; will hide assessment items that are not under the &quot;Ip&quot; component. Also, checking <strong>Show Checked Only</strong> will only show assessment items that are checked. By Expand/Collapse All button the Assessment Items tree gets expanded or collapsed. You can also Add Shape Test as assessment items.</p>
+<p>Additionally, you can manually set the amount of points a particular assessment item is worth and categorize which component(s) the assessment item belongs to. Also, you can set per-assessment item feedbacks, which provide hints to students if their assessed item is incorrect. The per-assessment item feedback is displayed in the <strong>Assessment Items</strong> tab in the <strong>Check Results</strong> for incorrect assessment items only.</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Connectivity Tests</p>
+<p><strong>Connectivity Testing</strong> is another method of assessment. Unlike the assessment items, which look up the student's network configuration and compare it to the answer network configuration, connectivity testing is based on Realtime PDUs that are sent when the user clicks <strong>Check Results</strong>. Connectivity Testing allows the activity to be graded based on network functionality and performance rather than matching of static configuration parameters. The types of connectivity testing supported are the types of User Created PDUs contained in the first scenario of the answer network. For each PDU, you may set the <strong>Test Condition</strong> to <strong>Do Not Test</strong>, <strong>Successful</strong>, or <strong>Fail</strong>.</p>
+<p class="myPic">
+<img src="images/activityWizard_answerNetwork_3.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Overall Feedback</p>
+<p>The <strong>Overall Feedback</strong> allows you to set custom feedback messages for completed and incomplete activities. The <strong>Completed Feedback</strong> message is shown when the activity is 100% complete. Otherwise, the <strong>Incomplete Feedback</strong> message is shown. There is also support for a subset of HTML tags, as with the <strong>Instructions</strong>.</p>
+<p class="myPic">
+<img src="images/activityWizard_answerNetwork_4.jpg">
+</p>
+<p>&nbsp;</p>
+<p class="MainHeading2">Settings</p>
+<p>In the <strong>Settings</strong> tab, you may time the activity (keeping track of the elapsed time as students work on the activity with the <strong>Time Elapsed</strong> option) or set a time limit (with the <strong>Countdown</strong> option).</p> <p>You may also set Feedback Settings which will assess the user network against the assessment tree every few seconds. Enabling <strong>Dynamic percentage feedback</strong> will assess the user network against the assessment tree every few seconds. Connectivity tests will not be assessed. Note that large activities may degrade system performance. You have these options for dynamic feedback: No Dynamic Feedback, Show Score, Show Item Count Percentage, Show Item Count and Show Score Percentage.</p> <p>To prevent students from changing their user profile during an activity, you may enable <strong>User Profile Locking</strong>. If an attempt to change the user profile is made while an activity is running, a dialog will appear warning that the activity will reset if the user information is changed. Optionally, you may set the amount of time (in ms) to forward the answer network using the <strong>Answer Network Convergence</strong> option. A typical use case of Answer Network Convergence is when you check the activity results after loading an activity, the results may show that the activity is incomplete as the answer network has not converged in time. By setting an arbitrary time to forward the answer network, this issue would be resolved.</p>
+<p class="myPic">
+<img src="images/activityWizard_answerNetwork_5.jpg">
+</p>
+</body>
+</html>

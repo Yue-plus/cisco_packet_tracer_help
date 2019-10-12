@@ -1,0 +1,6063 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE>Python API</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice 4.1.0  (Win32)">
+	<META NAME="CREATED" CONTENT="0;0">
+	<META NAME="CHANGEDBY" CONTENT="Alex Bilyk">
+	<META NAME="CHANGED" CONTENT="20180711;23140292">
+    <LINK rel="stylesheet" type="text/css" href="styleNormal.css">
+</HEAD>
+<BODY LANG="en-US" TEXT="#000000" LINK="#1152b1" BGCOLOR="#fdf1af" DIR="LTR">
+<P CLASS="mainheading1">Python API</P>
+<HR>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD>
+			<H3 CLASS="western"><A NAME="PythonAPI-ProgramStructureandEvents"></A>
+			Program Structure and Events</H3>
+		</TD>
+		<TD COLSPAN=3>
+			<H3 CLASS="western"><A NAME="PythonAPI-Package=N/A"></A>Package =
+			N/A</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>cleanUp()</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>If defined, this function is called once just before the
+			program stops.</P>
+		</TD>
+		<TD>
+			<PRE CLASS="western">def cleanUp():
+  print(&quot;program is stopping.&quot;)</PRE>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>mouseEvent(pressed, x, y, firstPress)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>If defined, this function is called when the user clicks and/or
+			moves the mouse on the workspace icon of this device.</P>
+			<UL>
+				<LI><P STYLE="margin-bottom: 0in">pressed - a boolean indicating
+				whether the left mouse button is pressed down 
+				</P>
+				<LI><P STYLE="margin-bottom: 0in">x - the x coordinate (in
+				pixels) of the mouse relative to the workspace icon's top left
+				corner 
+				</P>
+				<LI><P STYLE="margin-bottom: 0in">y - the y coordinate (in
+				pixels) of the mouse relative to the workspace icon's top left
+				corner 
+				</P>
+				<LI><P>firstPress - a boolean indicating whether the left mouse
+				button is the first time being pressed down after the last call
+				to this function; pressed is true when the mouse button is
+				pressed and moved, but firstPress is true only when the mouse
+				button is first pressed but not when moved. 
+				</P>
+			</UL>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<PRE CLASS="western">def mouseEvent(pressed, x, y, firstPress):
+  if firstPress:
+    doSomething()</PRE>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>measurementSystemChangeEvent()</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>If defined, this function is called when the user changes the
+			measurement system between Metric and Imperial in Preferences. Use
+			Options.isUsingMetric() in the options package to get the current
+			setting.</P>
+		</TD>
+		<TD>
+			<PRE CLASS="western">from options import *
+def measurementSystemChangeEvent():
+  METRIC = Options.isUsingMetric()
+  unit = &quot;C&quot; if METRIC else &quot;F&quot;
+  refresh()</PRE>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD>
+			<H3 CLASS="western"><A NAME="PythonAPI-DigitalI/O"></A>Digital
+			I/O&nbsp;</H3>
+		</TD>
+		<TD COLSPAN=3>
+			<H3 CLASS="western"><A NAME="PythonAPI-Package=gpio"></A>Package =
+			gpio</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>pinMode(slot, mode)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Set a digital&nbsp;slot&nbsp;to INPUT or OUTPUT.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>pinMode(1, OUT)</P>
+			<P>pinMode(2, IN)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>digitalRead(slot)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Reads from a digital&nbsp;slot, returns HIGH or LOW.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>val = digitalRead(1)&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>digitalWrite(slot, value)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Writes to a digital&nbsp;slot&nbsp;with HIGH or LOW.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>digitalWrite(1, HIGH)&nbsp;</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD>
+			<H3 CLASS="western"><A NAME="PythonAPI-AnalogI/O"></A>Analog I/O&nbsp;</H3>
+		</TD>
+		<TD COLSPAN=3>
+			<H3 CLASS="western"><A NAME="PythonAPI-Package=gpio.1"></A>Package
+			= gpio</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>Function&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>analogRead(slot)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Reads from an analog slot, returns 0 to 1023.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>val = analogRead(A1)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>analogWrite(slot, value)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Writes a PWM wave to a digital slot, from 0 to 255.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>analogWrite(A1, 128)</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD>
+			<H3 CLASS="western"><A NAME="PythonAPI-CustomI/O"></A>Custom I/O&nbsp;</H3>
+		</TD>
+		<TD COLSPAN=3>
+			<H3 CLASS="western"><A NAME="PythonAPI-Package=gpio.2"></A>Package
+			= gpio</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>Function&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P>Description&nbsp;</P>
+		</TD>
+		<TD>
+			<P>Example&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>customRead(slot)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>str</P>
+		</TD>
+		<TD>
+			<P>Reads from an custom slot, returns a String</P>
+		</TD>
+		<TD>
+			<P>val = customRead(1)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>customWrite(slot, value)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Writes a string to a digital slot. You can use customRead
+			directly from the other side</P>
+		</TD>
+		<TD>
+			<P>customWrite(1, &quot;hello&quot;)</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD>
+			<H3 CLASS="western"><A NAME="PythonAPI-InputInterrupts/Events"></A>
+			Input Interrupts/Events&nbsp;</H3>
+		</TD>
+		<TD COLSPAN=3>
+			<H3 CLASS="western"><A NAME="PythonAPI-Package=gpio.3"></A>Package
+			= gpio</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>Function&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P>Description&nbsp;</P>
+		</TD>
+		<TD>
+			<P>Example&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>add_event_detect(slot, callback)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Registers a function to be called when the input of a slot
+			changes.</P>
+			<P>This works for analog, digital and custom inputs. Whenever the
+			input changes, the callback is called.</P>
+			<P>Only one function is registered per slot. Calling this a second
+			time for the same slot will remove the first callback.</P>
+		</TD>
+		<TD>
+			<PRE CLASS="western">def detect():
+  input = analogRead(0)
+  # do something
+add_event_detect(0, detect)</PRE>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>remove_event_detect(slot)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Unregisters the slot for input changes.</P>
+		</TD>
+		<TD>
+			<P>remove_event_detect(0)</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD>
+			<H3 CLASS="western"><A NAME="PythonAPI-Time"></A>Time</H3>
+		</TD>
+		<TD COLSPAN=3>
+			<H3 CLASS="western"><A NAME="PythonAPI-Package=time"></A>Package =
+			time</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>delay(tmsec) 
+			</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Pauses the program for tmsec milliseconds. Value of 0 has the
+			meaning of sleeping until the next execution cycle, as determined
+			by the run-time.</P>
+		</TD>
+		<TD>
+			<P>delay(1700) same as sleep(1.7)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>sleep(tsec)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Pauses the program for tsec seconds. Fractional seconds values
+			for tsec are acceptable. Value of 0 has the meaning of sleeping
+			until the next execution cycle, as determined by the run-time.</P>
+		</TD>
+		<TD>
+			<P>sleep(0.25)same as delay(250)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>uptime()</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Returns the time since the device was started in seconds.</P>
+		</TD>
+		<TD>
+			<P>print(uptime())</P>
+		</TD>
+	</TR>
+
+	<tr>
+		<td>gmtime([secs])</td>
+		<td>struct_time</td>
+		<td>Converts a time in seconds since epoch to struct_time in UTC. If secs is not provided, it uses the current
+			time as returned by time().</td>
+		<td>print(gmtime())</td>
+	</tr>
+	<tr>
+		<td>localtime([secs])</td>
+		<td>struct_time</td>
+		<td>Converts a time in seconds since epoch to struct_time in local time. If secs is not provided, it uses the
+			current time as returned by time().</td>
+		<td>print(localtime())</td>
+	</tr>
+	<tr>
+		<td>asctime([time])</td>
+		<td>string</td>
+		<td>Converts a time in struct_time to a string in the form of
+			<span class="pre" style="color: rgb(0,0,0);">'Sun</span>
+			<span style="color: rgb(0,0,0);">&nbsp;</span>
+			<span class="pre" style="color: rgb(0,0,0);">Jun</span>
+			<span style="color: rgb(0,0,0);">&nbsp;</span>
+			<span class="pre" style="color: rgb(0,0,0);">20</span>
+			<span style="color: rgb(0,0,0);">&nbsp;</span>
+			<span class="pre" style="color: rgb(0,0,0);">23:21:05 </span>
+			<span class="pre" style="color: rgb(0,0,0);">1993'. If time is not provided, it uses the current time as returned by localtime().</span>
+		</td>
+		<td>print(asctime())</td>
+	</tr>
+	<tr>
+		<td>ctime([secs])</td>
+		<td>string</td>
+		<td>Converts a time in seconds since epoch to a string in the form of
+			<span class="pre" style="color: rgb(0,0,0);">'Sun</span>
+			<span style="color: rgb(0,0,0);">&nbsp;</span>
+			<span class="pre" style="color: rgb(0,0,0);">Jun</span>
+			<span style="color: rgb(0,0,0);">&nbsp;</span>
+			<span class="pre" style="color: rgb(0,0,0);">20</span>
+			<span style="color: rgb(0,0,0);">&nbsp;</span>
+			<span class="pre" style="color: rgb(0,0,0);">23:21:05 </span>
+			<span class="pre" style="color: rgb(0,0,0);">1993'. If secs is not provided, it uses the current time as returned by time().</span>
+		</td>
+		<td>print(ctime())</td>
+	</tr>
+	<tr>
+		<td>mktime(time)</td>
+		<td>int</td>
+		<td>Converts a time in struct_time to a time in seconds since epoch.</td>
+		<td>mktime(localtime())</td>
+	</tr>
+	<tr>
+		<td>timezone</td>
+		<td>int</td>
+		<td>
+			<span style="color: rgb(0,0,0);">The local (non-DST) timezone's offset in seconds west of UTC.</span>
+		</td>
+		<td>print(timezone)</td>
+	</tr>
+	<tr>
+		<td>altzone</td>
+		<td>int</td>
+		<td>The local (DST) timezone's offset in seconds west of UTC.</td>
+		<td>print(altzone)</td>
+	</tr>
+	<tr>
+		<td>tzname</td>
+		<td>tuple(string, string)</td>
+		<td>A tuple of two strings with the first being the local non-DST timezone name, and second being the local DST
+			timezone name.</td>
+		<td>print(tzname)</td>
+	</tr>
+	<tr>
+		<td>daylight</td>
+		<td>int</td>
+		<td>Nonzero if in a DST timezone.</td>
+		<td>print(daylight)</td>
+	</tr>
+	<tr>
+		<td>accept2dyear</td>
+		<td>bool</td>
+		<td>Whether two digit year will be accepted.</td>
+		<td>print(accept2dyear)</td>
+	</tr>
+	<tr>
+		<td>
+			<div>strftime(format[, time])</div>
+		</td>
+		<td>string</td>
+		<td>
+			<p>Converts a time in struct_time to a string in the format.</p>
+			<p>Format directives:</p>
+			<ul>
+				<li>
+					<p>%a - Locale's abbreviated weekday name.
+						<br>%A - Locale's full weekday name.
+						<br>%b - Locale's abbreviated month name.
+						<br>%B - Locale's full month name.
+						<br>%c - Locale's appropriate date and time representation.
+						<br>%d - Day of the month as a decimal number [01,31].
+						<br>%H - Hour (24-hour clock) as a decimal number [00,23].
+						<br>%I - Hour (12-hour clock) as a decimal number [01,12].
+						<br>%j - Day of the year as a decimal number [001,366].
+						<br>%m - Month as a decimal number [01,12].
+						<br>%M - Minute as a decimal number [00,59].
+						<br>%p - Locale's equivalent of either AM or PM.
+						<br>%S - Second as a decimal number [00,61].
+						<br>%U - Week number of the year (Sunday as the first day of the week) as a decimal number [00,53].
+						All days in a new year preceding the first Sunday are considered to be in week 0.
+						<br>%w - Weekday as a decimal number [0(Sunday),6].
+						<br>%W - Week number of the year (Monday as the first day of the week) as a decimal number [00,53].
+						All days in a new year preceding the first Monday are considered to be in week 0.
+						<br>%x - Locale's appropriate date representation.
+						<br>%X - Locale's appropriate time representation.
+						<br>%y - Year without century as a decimal number [00,99].
+						<br>%Y - Year with century as a decimal number.
+						<br>%Z - Time zone name (no characters if no time zone exists).
+						<br>%% - A literal '%' character.</p>
+				</li>
+			</ul>
+		</td>
+		<td>print(strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime()))</td>
+	</tr>
+	<tr>
+		<td>
+			<span style="color: rgb(0,0,0);">strptime(string[, format])</span>
+		</td>
+		<td>struct_time</td>
+		<td>Converts a time in string format to a time in struct_time. The format parameter uses the same directives
+			as those used by strftime(); it defaults to "%a %b %d %H:%M:%S %Y" which matches the formatting returned
+			by ctime().</td>
+		<td>print(strptime("30 Nov 00", "%d %b %y"))</td>
+	</tr>
+	<tr>
+		<td>
+			<br>
+		</td>
+		<td>
+			<br>
+		</td>
+		<td>
+			<br>
+		</td>
+		<td>
+			<br>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<strong>struct_time class</strong>
+		</td>
+		<td>
+			<br>
+		</td>
+		<td>
+			<br>
+		</td>
+		<td>
+			<br>
+		</td>
+	</tr>
+	<tr>
+		<td>tm_year</td>
+		<td>int</td>
+		<td>year, for example, 1993</td>
+		<td>
+			<br>
+		</td>
+	</tr>
+	<tr>
+		<td>tm_mon</td>
+		<td>
+			<span>int</span>
+		</td>
+		<td>month of year, range [1, 12]</td>
+		<td>
+			<br>
+		</td>
+	</tr>
+	<tr>
+		<td>tm_mday</td>
+		<td>
+			<span>int</span>
+		</td>
+		<td>day of month, range [1, 31]</td>
+		<td>
+			<br>
+		</td>
+	</tr>
+	<tr>
+		<td>tm_hour</td>
+		<td>
+			<span>int</span>
+		</td>
+		<td>hours, range [0, 23]</td>
+		<td>
+			<br>
+		</td>
+	</tr>
+	<tr>
+		<td>tm_min</td>
+		<td>
+			<span>int</span>
+		</td>
+		<td>minutes, range [0, 59]</td>
+		<td>
+			<br>
+		</td>
+	</tr>
+	<tr>
+		<td>tm_sec</td>
+		<td>
+			<span>int</span>
+		</td>
+		<td>seconds, range [0, 61]</td>
+		<td>
+			<br>
+		</td>
+	</tr>
+	<tr>
+		<td>tm_wday</td>
+		<td>
+			<span>int</span>
+		</td>
+		<td>day of week, range [0, 6], Monday is 0</td>
+		<td>
+			<br>
+		</td>
+	</tr>
+	<tr>
+		<td>tm_yday</td>
+		<td>
+			<span>int</span>
+		</td>
+		<td>day of year, range [1, 366]</td>
+		<td>
+			<br>
+		</td>
+	</tr>
+	<tr>
+		<td>tm_isdst</td>
+		<td>
+			<span>int</span>
+		</td>
+		<td>1 if summer time is in effect, 0 if not, and -1 if unknown</td>
+		<td>
+			<br>
+		</td>
+	</tr>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD>
+			<H3 CLASS="western"><A NAME="PythonAPI-BasicNetworking"></A>Basic
+			Networking&nbsp;</H3>
+		</TD>
+		<TD COLSPAN=3>
+			<H3 CLASS="western"><A NAME="PythonAPI-Package=networking"></A>Package
+			= networking</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>localIP()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>str</P>
+		</TD>
+		<TD>
+			<P>Returns the local IP.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>ip = localIP()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>subnetMask()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>str</P>
+		</TD>
+		<TD>
+			<P>Returns the subnet mask.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>mask = subnetMask()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>gatewayIP()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>str</P>
+		</TD>
+		<TD>
+			<P>Returns the gateway IP.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>gateway = gatewayIP()&nbsp;&nbsp;</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD>
+			<H3 CLASS="western"><A NAME="PythonAPI-HTTPClient"></A>HTTP Client</H3>
+		</TD>
+		<TD COLSPAN=3>
+			<H3 CLASS="western"><A NAME="PythonAPI-Package=http"></A>Package =
+			http</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>HTTPClient()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>HTTPClient</P>
+		</TD>
+		<TD>
+			<P>Creates a HTTP Client.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>http = HTTPClient()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>open(url)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Gets an URL.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>http.open(&ldquo;<A HREF="http://www.cisco.com/">http://www.cisco.com</A>&rdquo;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>stop()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Stops the request.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>http.stop()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>onDone(callback)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for when the request is done.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>def&nbsp;onHTTPDone(status, data):&nbsp;<BR>print(data)</P>
+			<P>...</P>
+			<P>http.onDone(onHTTPDone)</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD>
+			<H3 CLASS="western"><A NAME="PythonAPI-HTTPServer(SBConly)"></A>HTTP&nbsp;Server&nbsp;(SBC
+			only)</H3>
+		</TD>
+		<TD COLSPAN=3>
+			<P>&nbsp;&nbsp;&nbsp;Package = http</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>Function</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P>Description</P>
+		</TD>
+		<TD>
+			<P>Example</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>route(path, callback);</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets up a route for path and calls callback when it is
+			requested.&nbsp;Routes also support wildcards using *.</P>
+		</TD>
+		<TD>
+			<P>def&nbsp;onRouteHello(url,
+			response):<BR>response.send(&quot;hello&quot;)<BR>HTTPServer.route(&quot;/hello&quot;,&nbsp;onRouteHello)</P>
+			<P><BR><BR>
+			</P>
+			<P>def&nbsp;onRouteAll(url,
+			response):<BR>response.send(&quot;world&quot;)<BR>HTTPServer.route(&quot;/*&quot;,&nbsp;onRouteAll)</P>
+			<P STYLE="margin-bottom: 0in">&nbsp; 
+			</P>
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>start(port)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Starts listening on port.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>HTTPServer.start(80)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>stop()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Stops listening.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>HTTPServer.stop()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Response class</STRONG></P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>Passed into the HTTPServer route handler.</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>send(content)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sends content back as response.</P>
+		</TD>
+		<TD>
+			<P>response.send(&quot;hello&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setContentType(type)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the content type in the response.</P>
+		</TD>
+		<TD>
+			<P>response.setContentType(&quot;text/plain&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>sendFile(filePath)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sends a file back as response. The file path is in the device's
+			file manager, not relative to the source code of the current
+			project/script.</P>
+		</TD>
+		<TD>
+			<P>response.sendFile(&quot;/test.txt&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>sendNotFound()</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sends a file not found as response.</P>
+		</TD>
+		<TD>
+			<P>response.sendNotFound()</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD>
+			<H3 CLASS="western"><A NAME="PythonAPI-Email"></A>Email</H3>
+		</TD>
+		<TD COLSPAN=3>
+			<H3 CLASS="western"><A NAME="PythonAPI-Package=email"></A>Package
+			= email</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setup(email,&nbsp;server, username, password)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets up the email client to be used.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>EmailClient.setup(&ldquo;user@cisco.com&rdquo;,&nbsp;&quot;cisco.com&quot;,
+			&quot;username&quot;, &quot;password&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>send(address, subject, body)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sends an email.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>EmailClient.send(&quot;pt@cisco.com&quot;, &quot;subject&quot;,
+			&quot;body)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>receive()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Receives emails.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>EmailClient.receive()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>onSend(callback)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for when sending an email is done.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>def&nbsp;onEmailSend(success):&nbsp;<BR>print(success)</P>
+			<P>...</P>
+			<P>EmailClient.onSend(onEmailSend)&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>onReceive(callback)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for when emails are received.&nbsp;</P>
+		</TD>
+		<TD>
+			<P STYLE="margin-bottom: 0in">def&nbsp;onEmailReceive(sender,
+			subject, body):&nbsp;<BR>print(body)</P>
+			<P STYLE="margin-bottom: 0in">...</P>
+			<P>EmailClient.onReceive(onEmailReceive)</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD>
+			<H3 CLASS="western"><A NAME="PythonAPI-TCP"></A>TCP</H3>
+		</TD>
+		<TD COLSPAN=3>
+			<H3 CLASS="western"><A NAME="PythonAPI-Package=tcp"></A>Package =
+			tcp</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>TCPClient()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>TCPClient</P>
+		</TD>
+		<TD>
+			<P>Creates a TCP Client.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client = TCPClient()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>connect(ip, port)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Connects to ip and port.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.connect(&quot;1.1.1.1&quot;, 2000)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>connected()</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Returns true if connected</P>
+		</TD>
+		<TD>
+			<P>client.connected()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>close()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Disconnects.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.close()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>state()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the state of the connection.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.state()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>remoteIP()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>str</P>
+		</TD>
+		<TD>
+			<P>Returns the remote IP.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.remoteIP()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>remotePort()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the remote port.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.remotePort()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>localIP()</P>
+		</TD>
+		<TD>
+			<P>str</P>
+		</TD>
+		<TD>
+			<P>Returns the local IP</P>
+		</TD>
+		<TD>
+			<P>client.localIP()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>localPort()</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the local port</P>
+		</TD>
+		<TD>
+			<P>client.localPort()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>send(data)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sends data to remote connection</P>
+		</TD>
+		<TD>
+			<P>client.send(&quot;hello&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>sendWithPDUInfo(data, pduInfo) 
+			</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Sends data to remote connection with PDU info.</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">data = &quot;hello&quot;pduInfo =
+			PDUInfo(0xffff00)</FONT> <FONT COLOR="#000000">pduInfo.setOutFormat(&quot;MyProtocol&quot;,
+			&quot;MyPDU&quot;, {&quot;type&quot;: &quot;REPLY&quot;, &quot;data&quot;:
+			data})pduInfo.addOutMessage(&quot;I am sending some data.&quot;)</FONT>
+			<FONT COLOR="#000000">client.sendWithPDUInfo(data, pduInfo) </FONT>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>onReceive(callback)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for when data is received.&nbsp;</P>
+		</TD>
+		<TD>
+			<P STYLE="margin-bottom: 0in">def&nbsp;onTCPReceive(data):&nbsp;<BR>print(data)</P>
+			<P STYLE="margin-bottom: 0in">...</P>
+			<P>client.onReceive(onTCPReceive)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>onReceiveWithPDUInfo(callback)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">Sets the callback for when data is
+			received and includes the PDU info.</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<PRE CLASS="western" STYLE="margin-bottom: 0.2in">client = TCPClient()...def onTCPReceiveWithPDUInfo(data, pduInfo):   print(client.remoteIP() + &quot;: &quot; + data)  pduInfo.addInMessage(&quot;I got some data.&quot;)  pduInfo.setAccepted()...
+client.onReceiveWithPDUInfo(onTCPReceiveWithPDUInfo)</PRE>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>onConnectionChange(callback)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for when the connection changes.&nbsp;</P>
+		</TD>
+		<TD>
+			<P STYLE="margin-bottom: 0in">def&nbsp;onTCPConnectionChange(type):&nbsp;<BR>print(type)</P>
+			<P STYLE="margin-bottom: 0in">...</P>
+			<P>client.onConnectionChange(onTCPConnectionChange)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>TCPServer()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>TCPServer</P>
+		</TD>
+		<TD>
+			<P>Creates a TCP Server.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>server = TCPServer()&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>listen(port)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Starts listening on port.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>server.listen(2000)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>stop()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Stops listening.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>server.stop()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>onNewClient(callback)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for when a new client comes in.&nbsp;</P>
+		</TD>
+		<TD>
+			<P STYLE="margin-bottom: 0in">def&nbsp;onTCPNewClient(client):&nbsp;<BR>print(client)</P>
+			<P STYLE="margin-bottom: 0in">...</P>
+			<P>server.onNewClient(onTCPNewClient)</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD>
+			<H3 CLASS="western"><A NAME="PythonAPI-UDP"></A>UDP</H3>
+		</TD>
+		<TD COLSPAN=3>
+			<H3 CLASS="western"><A NAME="PythonAPI-Package=udp"></A>Package =
+			udp</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>UDPSocket()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>UDPSocket</P>
+		</TD>
+		<TD>
+			<P>Creates an UDP Socket.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>udp = UDPSocket()&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>begin(port)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Starts listening on port.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>udp.begin(2000)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>stop()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Stops listening.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>udp.stop()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>send(ip, port, data)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Sends data.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>udp.send(&quot;1.1.1.1&quot;, 2000, &quot;hello&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>sendWithPDUInfo(ip, port, data, pduInfo) 
+			</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">Sends data with PDU info.</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P>data = &quot;hello&quot;pduInfo = PDUInfo(0xffff00)
+			pduInfo.setOutFormat(&quot;MyProtocol&quot;, &quot;MyPDU&quot;,
+			{&quot;type&quot;: &quot;REPLY&quot;, &quot;data&quot;:
+			data})pduInfo.addOutMessage(&quot;I am sending some data.&quot;)
+			udp.sendWithPDUInfo(&quot;1.1.1.1&quot;, 2000, data, pduInfo) 
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>onReceive(callback)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for when data is received.&nbsp;</P>
+		</TD>
+		<TD>
+			<P STYLE="margin-bottom: 0in">def&nbsp;onUDPReceive(ip, port,
+			data):</P>
+			<P STYLE="margin-bottom: 0in">print(data)</P>
+			<P>...</P>
+			<P>udp.onReceive(onUDPReceive)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>onReceiveWithPDUInfo(callback)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">Sets the callback for when data is
+			received and includes PDU info.</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<PRE CLASS="western" STYLE="margin-bottom: 0.2in">def onUDPReceiveWithPDUInfo(ip, port, data, pduInfo):  print(data)
+  pduInfo.addInMessage(&quot;I got some data.&quot;)  pduInfo.setAccepted()...
+udp.onReceiveWithPDUInfo(onUDPReceiveWithPDUInfo)</PRE>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD>
+			<H3 CLASS="western"><A NAME="PythonAPI-File(SBConly)"></A>File&nbsp;(SBC
+			only)</H3>
+		</TD>
+		<TD COLSPAN=3>
+			<H3 CLASS="western"><A NAME="PythonAPI-Package=file,os,os.path"></A>
+			Package =&nbsp;file, os, os.path</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>bool exists(path)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Returns whether a file exists in the file system.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>exists(&quot;/file.txt&quot;)&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>File open(path,&nbsp; mode)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>File</P>
+		</TD>
+		<TD>
+			<P>Opens a file for reading or writing.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>file = open(&quot;/file.txt&quot;, &quot;r&quot;)&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>bool remove(path)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Removes a file.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>remove(&quot;/file.txt&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>bool mkdir(path)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Creates a directory including all intermediate directories.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>mkdir(&quot;/dir1/dir2&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>bool rmdir(path)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Removes a directory.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>rmdir(&quot;/dir1/dir2&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>listdir(path)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>list</P>
+		</TD>
+		<TD>
+			<P>Lists all files in a directory.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>files = listdir(&quot;/dir1&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>exists(path)&nbsp;&nbsp;</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Test if path exists&nbsp;&nbsp;</P>
+		</TD>
+		<TD>
+			<P>val = exists(&quot;/file&quot;)&nbsp;&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>isfile(path)</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Test if path is a file</P>
+		</TD>
+		<TD>
+			<P>val = exists(&quot;/file&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>isdir(path)</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Test if path is a directory</P>
+		</TD>
+		<TD>
+			<P>val = exists(&quot;/file&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>tell()</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Return read/write pointer of the file</P>
+		</TD>
+		<TD>
+			<P>file.tell()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>close()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Closes the file.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>file.close()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>seek(position)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Seeks to position in file.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>file.seek(0)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>readline()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>str</P>
+		</TD>
+		<TD>
+			<P>Reads a line of string or to the end of file.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>val = file.readline()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>read(length)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>str</P>
+		</TD>
+		<TD>
+			<P>Reads the length of byte into string</P>
+		</TD>
+		<TD>
+			<P>val =&nbsp;file.read()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>write(val)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Writes as binary.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>file.write(val)</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD>
+			<H3 CLASS="western"><A NAME="PythonAPI-USB"></A>USB</H3>
+		</TD>
+		<TD COLSPAN=3>
+			<H3 CLASS="western"><A NAME="PythonAPI-Package=usb"></A>Package =
+			usb</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>USB( usbNum, speed)</P>
+		</TD>
+		<TD>
+			<P>USB</P>
+		</TD>
+		<TD>
+			<P>The variable for USB port.</P>
+		</TD>
+		<TD>
+			<P>usb = USB(0, 9600);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>close()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Ends communication.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>usb.close();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>inWaiting()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int&nbsp;</P>
+		</TD>
+		<TD>
+			<P># of bytes available for reading in buffer.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>bytes = usb.inWaiting();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>readLine()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Reads a line of string or to the end of stream.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>val = usb.readLine();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>read()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Reads the first character and removes from buffer.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>val = usb.read();&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>peek()</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Reads one character without removing from buffer.</P>
+		</TD>
+		<TD>
+			<P>val = usb.peek();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>write(val)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Prints to USB, returns the number of bytes written.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>val = usb.write(val);&nbsp;</P>
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>PTmata(usbNum, speed)</P>
+		</TD>
+		<TD>
+			<P>PTmata</P>
+		</TD>
+		<TD>
+			<P>The variable for PTmata communication over USB port.</P>
+		</TD>
+		<TD>
+			<P>ptmata = PTmata(0, 9600)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>close()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Ends communication.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>ptmata.close()&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>pinMode(slot, mode)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Set a digital&nbsp;slot&nbsp;on other side to INPUT or OUTPUT.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>ptmata.pinMode(1, OUT)</P>
+			<P>ptmata.pinMode(2, IN)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>digitalRead(slot)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Reads from a digital&nbsp;slot on other side, returns HIGH or
+			LOW.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>val =&nbsp;ptmata.digitalRead(1)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>digitalWrite(slot, value)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Writes to a digital&nbsp;slot on other side&nbsp;with HIGH or
+			LOW.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>ptmata.digitalWrite(1, HIGH)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>analogRead(slot)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Reads from an analog slot on other side, returns 0 to 1023.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>val =&nbsp;ptmata.analogRead(A1);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>analogWrite(slot, value)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Writes a PWM wave to a digital slot on other side, from 0 to
+			255.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>ptmata.analogWrite(A1, 128);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>customRead(slot)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>string</P>
+		</TD>
+		<TD>
+			<P>Reads from an custom slot on other side, returns a String</P>
+		</TD>
+		<TD>
+			<P>val =&nbsp;ptmata.customRead(1);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>customWrite(slot, value)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Writes a string to a digital slot on other side. You can use
+			customRead directly from the other side</P>
+		</TD>
+		<TD>
+			<P>ptmata.customWrite(1, &quot;hello&quot;);&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>inWaiting()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int&nbsp;</P>
+		</TD>
+		<TD>
+			<P># of bytes available for reading in buffer.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>bytes =&nbsp;ptmata.inWaiting();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>processInput()</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Reads from buffer and processes inputs for commands and reports
+			of states.</P>
+		</TD>
+		<TD>
+			<PRE CLASS="western">def loop() :
+  while ptmata.inWaiting():
+    ptmata.processInput()
+  ptmata.readAndReportData()</PRE>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>readAndReportData()</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Reads this side's slot values and report to other side if they
+			are changed.</P>
+		</TD>
+		<TD>
+			<P>ptmata.readAndReportData();</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD>
+			<H3 CLASS="western"><A NAME="PythonAPI-IoEClient(SBConly)"></A>IoE
+			Client&nbsp;(SBC only)</H3>
+			<P><BR>
+			</P>
+		</TD>
+		<TD COLSPAN=3>
+			<H3 CLASS="western"><A NAME="PythonAPI-Package=ioeclient"></A>Package
+			= ioeclient</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>IoEClient.setup(api)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets up the API for remote monitor and control from IoE server.</P>
+			<P>The api is an object with the following properties describing
+			the device:</P>
+			<UL>
+				<LI><P STYLE="margin-bottom: 0in">type - a string for the type of
+				this device 
+				</P>
+				<LI><P STYLE="margin-bottom: 0in">states - an Array of objects
+				with the following properties describing the state: 
+				</P>
+				<UL>
+					<LI><P STYLE="margin-bottom: 0in">name - a string for this state
+										</P>
+					<LI><P STYLE="margin-bottom: 0in">type - a string for the type
+					of this state; can be &quot;bool&quot;, &quot;number&quot;,
+					&quot;options&quot;, &quot;string&quot; 
+					</P>
+					<LI><P STYLE="margin-bottom: 0in">options (required if type is
+					&quot;options&quot;) - an object that maps values to names 
+					</P>
+					<LI><P STYLE="margin-bottom: 0in">unit (optional if type is
+					&quot;number&quot;) - the default or Metric unit label; the
+					value of a number state sent to the IoE Server should be in this
+					unit 
+					</P>
+					<LI><P STYLE="margin-bottom: 0in">imperialUnit (optional if type
+					is &quot;number&quot;) - the Imperial System unit label 
+					</P>
+					<LI><P STYLE="margin-bottom: 0in">toImperialConversion (optional
+					if type is &quot;number&quot;) - a string to be evaluated to
+					convert the default value to Imperial unit where x is the
+					default value 
+					</P>
+					<LI><P STYLE="margin-bottom: 0in">toMetricConversion (optional
+					if type is &quot;number&quot;) - a string to be evaluated to
+					convert the value in Imperial unit to the default or Metric
+					unit, where x is the Imperial value 
+					</P>
+					<LI><P STYLE="margin-bottom: 0in">decimalDigits (optional if
+					type is &quot;number&quot;) - the number of decimal digits to
+					round to on IoE Server pages; default is to not round 
+					</P>
+					<LI><P STYLE="margin-bottom: 0in">controllable - a boolean
+					indicating whether it is remotely controllable 
+					</P>
+					<LI><P STYLE="margin-bottom: 0in">minValue (required if type is
+					&quot;number&quot; and controllable is true) - the minimum value
+					to allow the IoE Server to set in default or Metric unit 
+					</P>
+					<LI><P>maxValue (required if type is &quot;number&quot; and
+					controllable is true) - the maximum value to allow the IoE
+					Server to set in default or Metric unit 
+					</P>
+				</UL>
+			</UL>
+			<P>For measurement systems other than Metric and Imperial, use
+			only the &quot;unit&quot; property. That means if you want a
+			device to show more than Metric and Imperial, you need to create
+			another device for other measurement systems.</P>
+			<P>&nbsp;</P>
+		</TD>
+		<TD>
+			<PRE CLASS="western">IoEClient.setup({
+  &quot;type&quot;: &quot;Door&quot;,
+  &quot;states&quot;: [{
+    &quot;name&quot;: &quot;Open&quot;,
+    &quot;type&quot;: &quot;bool&quot;
+  }, {
+    &quot;name&quot;: &quot;Lock&quot;,
+    &quot;type&quot;: &quot;options&quot;,
+    &quot;options&quot;: {
+      &quot;0&quot;: &quot;Unlock&quot;,
+      &quot;1&quot;: &quot;Lock&quot;
+    },
+    &quot;controllable&quot;: True
+  }]
+});
+IoEClient.setup({
+ &quot;type&quot;: &quot;Thermostat&quot;,
+ &quot;states&quot;: [{
+  &quot;name&quot;: &quot;Status&quot;,
+  &quot;type&quot;: &quot;options&quot;,
+  &quot;options&quot;: {
+   &quot;0&quot;: &quot;Off&quot;,
+   &quot;1&quot;: &quot;Cooling&quot;,
+   &quot;2&quot;: &quot;Heating&quot;,
+   &quot;3&quot;: &quot;Auto&quot;
+  },
+  &quot;controllable&quot;: True
+ }, {
+  &quot;name&quot;: &quot;Temperature&quot;,
+  &quot;type&quot;: &quot;number&quot;,
+  &quot;unit&quot;: &quot;&amp;deg;C&quot;,
+  &quot;imperialUnit&quot;: &quot;&amp;deg;F&quot;,
+  &quot;toImperialConversion&quot;: &quot;x*1.8+32&quot;,
+  &quot;toMetricConversion&quot;: &quot;(x-32)/1.8&quot;,
+  &quot;decimalDigits&quot;: 1
+ }, {
+  &quot;name&quot;: &quot;Auto Cool Temperature&quot;,
+  &quot;type&quot;: &quot;number&quot;,
+  &quot;unit&quot;: &quot;&amp;deg;C&quot;,
+  &quot;imperialUnit&quot;: &quot;&amp;deg;F&quot;,
+  &quot;toImperialConversion&quot;: &quot;x*1.8+32&quot;,
+  &quot;toMetricConversion&quot;: &quot;(x-32)/1.8&quot;,
+  &quot;decimalDigits&quot;: 1,
+  &quot;controllable&quot;: True,
+  &quot;minValue&quot;: 10,
+  &quot;maxValue&quot;: 100
+ }, {
+  &quot;name&quot;: &quot;Auto Heat Temperature&quot;,
+  &quot;type&quot;: &quot;number&quot;,
+  &quot;unit&quot;: &quot;&amp;deg;C&quot;,
+  &quot;imperialUnit&quot;: &quot;&amp;deg;F&quot;,
+  &quot;toImperialConversion&quot;: &quot;x*1.8+32&quot;,
+  &quot;toMetricConversion&quot;: &quot;(x-32)/1.8&quot;,
+  &quot;decimalDigits&quot;: 1,
+  &quot;controllable&quot;: True,
+  &quot;minValue&quot;: -100,
+  &quot;maxValue&quot;: 20
+ }]
+});</PRE>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>IoEClient.reportStates(states)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Reports the states of this device to the IoE server.<BR>The
+			argument can be a string representing all states of this device.
+			Each state is separated by a comma. The argument can also be an
+			array representing all states.<BR>The number of states must match
+			the length of the states property in setup().</P>
+		</TD>
+		<TD>
+			<P>IoEClient.reportStates(&quot;0,1&quot;)</P>
+			<P>IoEClient.reportStates([0, 1, &quot;str&quot;])</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>IoEClient.onInputReceive(callback)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for processing inputs received from IoE
+			server.<BR>The argument to the callback is a string containing all
+			states of this device.</P>
+			<P>This is called with all states info. onStateSet is called with
+			only the state that was changed.</P>
+		</TD>
+		<TD>
+			<P>def onInputReceiveDone(input):&nbsp;<BR>print(input)</P>
+			<P>...<BR>IoEClient.onInputReceive(onInputReceiveDone)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>IoEClient.onStateSet(callback)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for processing inputs received from IoE
+			server.<BR>The arguments to the callback are state name and state
+			value.</P>
+			<P>This is called with only the state that was changed.
+			onInputReceive is called with all states info.</P>
+		</TD>
+		<TD>
+			<P>def onStateSet(stateName, value):<BR>print(stateName + &quot;:
+			&quot; + value)<BR>...<BR>IoEClient.onStateSet(onStateSet)&nbsp;</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD>
+			<H3 CLASS="western"><A NAME="PythonAPI-Physical"></A>Physical</H3>
+		</TD>
+		<TD COLSPAN=3>
+			<H3 CLASS="western"><A NAME="PythonAPI-Package=physical"></A>Package
+			= physical</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>move(x,y)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Move thing to position x and y in screen coordinates.&nbsp;The
+			parameters expect x and y are ints. Casting may be required.</P>
+		</TD>
+		<TD>
+			<P>move(200,200)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>moveBy(x,y)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Increment position of thing by x and y in screen
+			coordinates.&nbsp;The parameters expect x and y are ints. Casting
+			may be required.</P>
+		</TD>
+		<TD>
+			<P>moveBy(1,0)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>moveItemInWorkspace(name, x, y)</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Moves the item defined by name to x and y in screen coordinates
+			in the active workspace</P>
+		</TD>
+		<TD>
+			<P>moveItemInWorkspace(&quot;building&quot;, 300,300)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getX()</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Gets the x position of thing in screen coordinates.</P>
+		</TD>
+		<TD>
+			<P>x = getX()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getY()</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Gets the y position of thing in screen coordinates.</P>
+		</TD>
+		<TD>
+			<P>y = getY()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>devicesAt(x, y, width, height)</P>
+		</TD>
+		<TD>
+			<P>list</P>
+		</TD>
+		<TD>
+			<P>Gets a list of devices at position x and y with a boundary of
+			width and height.&nbsp;The parameters expect x and y are ints.
+			Casting may be required.</P>
+		</TD>
+		<TD>
+			<P>devices = devicesAt(10,10,100,100)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>devicesIncludingClustersAt(x, y, width, height)</P>
+		</TD>
+		<TD>
+			<P>Array of string</P>
+		</TD>
+		<TD>
+			<P>Gets a list of devices at position x and y with a boundary of
+			width and height including clusters</P>
+		</TD>
+		<TD>
+			<P>devicesIncludingClustersAt(10, 10, 100, 100)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getName()</P>
+		</TD>
+		<TD>
+			<P>str</P>
+		</TD>
+		<TD>
+			<P>Gets the name of the thing</P>
+		</TD>
+		<TD>
+			<P>devName = getName()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getDeviceProperty(deviceName, property)</P>
+		</TD>
+		<TD>
+			<P>str</P>
+		</TD>
+		<TD>
+			<P>Gets the property of a device with the specified property</P>
+		</TD>
+		<TD>
+			<P>prop = getDeviceProperty(&quot;Car&quot;, &quot;material&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setDeviceProperty(deviceName, property, value)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Set property for device</P>
+		</TD>
+		<TD>
+			<P>prop= setDeviceProperty(&quot;Car&quot;, &quot;material&quot;,
+			&quot;metal&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setComponentOpacity(componentName, value)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Set the opacity of a component in the thing. The value is from
+			0 to 1, where 1 is opaque.</P>
+		</TD>
+		<TD>
+			<P>setComponentOpacity(&quot;light&quot;, 0.5)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setComponentRotation(componentName, value)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the component rotation in degrees</P>
+		</TD>
+		<TD>
+			<P>setComponentRotation(&quot;hourHand&quot;, 90)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setThingRotation(value)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the entire thing rotation in degrees</P>
+		</TD>
+		<TD>
+			<P>setThingRotation(180)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getSerialNumber()</P>
+		</TD>
+		<TD>
+			<P>str</P>
+		</TD>
+		<TD>
+			<P>Gets the serial number of the thing</P>
+		</TD>
+		<TD>
+			<P>serialNo = getSerialNumber()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setCustomText(x,y,width,height,text)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Write some text on the Thing viewable on the workspace.</P>
+		</TD>
+		<TD>
+			<P>setCustomText(0,0,100,100,&quot;Device is On&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>fillColor(componentName, red, green, blue)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Fill the component with the specified RGB values. The component
+			original image will have to be transparent for the color to show
+			up.</P>
+		</TD>
+		<TD>
+			<P>fillColor(&quot;led&quot;, 0,0,255)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>addSound(soundID, soundPath)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Adds a sound to the device so it can be used.&nbsp; Sound is
+			referenced by the ID for later use.&nbsp; PT sound folder is:</P>
+			<P>&quot;/../Sounds/&quot;</P>
+		</TD>
+		<TD>
+			<P>addSound('sound1', '/../Sounds/buzzLow.wav');</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>playSound(soundID, playLength)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Plays a sound that has been added to the device.&nbsp; soundID
+			references the ID the sound was added with, playLength is how many
+			times the sound should run.&nbsp; -1 will make the sound loop
+			forever.</P>
+		</TD>
+		<TD>
+			<P>playSound('sound1', 2);</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>stopSound(soundID)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Stops a sound.&nbsp; soundID references the ID the sound
+			played.</P>
+		</TD>
+		<TD>
+			<P>stopSound('sound1');</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>destroySounds()</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Stops any sounds playing in the devices and removes them.&nbsp;
+			They can't be played again unless re-added.</P>
+		</TD>
+		<TD>
+			<P>destroySounds();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setParentGraphicFromComponent(componentName, index)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the parent container of both physical and logical view to
+			a graphic from component.</P>
+		</TD>
+		<TD>
+			<P>setParentGraphicFromComponent(&quot;name&quot;, 0)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setLogicalParentGraphicFromComponent(componentName, index)</P>
+		</TD>
+		<TD>
+			<P>N/A 
+			</P>
+		</TD>
+		<TD>
+			<P>Sets the parent container of logical view to a graphic from
+			component.</P>
+		</TD>
+		<TD>
+			<P>setLogicalParentGraphicFromComponent(&quot;name&quot;, 0)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setPhysicalParentGraphicFromComponent(componentName, index)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the parent container of physical view to a graphic from
+			component.</P>
+		</TD>
+		<TD>
+			<P>setPhysicalParentGraphicFromComponent(&quot;name&quot;, 0)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setLogicalBackgroundPath(path)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the logical view background to an image at path.</P>
+		</TD>
+		<TD>
+			<P>setLogicalBackgroundPath(&quot;path&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getAttributeOfDeviceAtSlot(attribute, slot)</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Returns the attribute value of the device connected at the
+			specified slot.</P>
+		</TD>
+		<TD>
+			<P>value = getAttributeOfDeviceAtSlot(&quot;name&quot;, 0)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getAttributeOfDevice(attribute)</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Returns the attribute value of this device.</P>
+		</TD>
+		<TD>
+			<P>value = getAttributeOfDevice(&quot;name&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getSlotsCount()</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the number of slots this device has.</P>
+		</TD>
+		<TD>
+			<P>slots = getSlotsCount()</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE  CELLPADDING=2 CELLSPACING=2>
+	<COL WIDTH=243>
+	<COL WIDTH=63>
+	<COL WIDTH=511>
+	<COL WIDTH=326>
+	<TR>
+		<TD WIDTH=243>
+			<H3 CLASS="western"><A NAME="PythonAPI-Environment"></A>Environment</H3>
+		</TD>
+		<TD COLSPAN=3 WIDTH=907>
+			<H3 CLASS="western"><A NAME="PythonAPI-Package=environment(fromenvironmentimport*)or(fromenvironmentimportEnvironment)"></A>
+			Package = environment (from environment import *) or (from
+			environment import Environment)</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=243>
+			<P>Function</P>
+		</TD>
+		<TD WIDTH=63>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD WIDTH=511>
+			<P>Description</P>
+		</TD>
+		<TD WIDTH=326>
+			<P>Example</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=243>
+			<P>get(environmentID)</P>
+		</TD>
+		<TD WIDTH=63>
+			<P>float</P>
+		</TD>
+		<TD WIDTH=511>
+			<P>Gets the value of the environment by its ID. You can get the ID
+			by placing your mouse over the environment name in the Environment
+			GUI.</P>
+			<P>If the environment does not exist, it will return -1.</P>
+		</TD>
+		<TD WIDTH=326>
+			<P>Environment.get(&quot;Ambient Temperature&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=243>
+			<P>setGlobalProperty(propertyName, value)&nbsp;</P>
+		</TD>
+		<TD WIDTH=63>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=511>
+			<P>Sets a global property with a value. Both are strings.</P>
+		</TD>
+		<TD WIDTH=326>
+			<P>Environment.setGlobalProperty(&quot;CLOCK&quot;, &quot;12:00:00
+			pm&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=243>
+			<P>getGlobalProperty(propertyName)</P>
+		</TD>
+		<TD WIDTH=63>
+			<P>string</P>
+		</TD>
+		<TD WIDTH=511>
+			<P>Returns the global property value.</P>
+		</TD>
+		<TD WIDTH=326>
+			<P>Environment.getGlobalProperty(&quot;CLOCK&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=243>
+			<P>hasGlobalProperty(propertyName)</P>
+		</TD>
+		<TD WIDTH=63>
+			<P>boolean</P>
+		</TD>
+		<TD WIDTH=511>
+			<P>Returns true if the property name exists, otherwise false.</P>
+		</TD>
+		<TD WIDTH=326>
+			<P>Environment.hasGlobalProperty(&quot;CLOCK&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=243>
+			<P>setContribution(environmentID, rate, limit, bCumulative)</P>
+		</TD>
+		<TD WIDTH=63>
+			<P>&nbsp;</P>
+		</TD>
+		<TD WIDTH=511>
+			<P>Set the things contribution to an environment based on it's
+			environment ID. You do not need to worry about how much time has
+			passed and you only need to call this function when you need
+			different parameters.</P>
+			<P>rate: the rate to add or subtract from the total environment
+			value in value/second. Value should be in metric.</P>
+			<P>limit: the maximum or minimum this thing is allowed to
+			contribute. The limit should be in metric.</P>
+			<P>bCumulative: add up contributed values over time. For
+			environments like light sources that disappear when off,
+			bCumulative should be set to false.</P>
+		</TD>
+		<TD WIDTH=326>
+			<P>// increase the Ambient Temperature at 0.05C/second until 100C.</P>
+			<P>Environment.setContribution(&quot;Ambient Temperature&quot;,
+			0.05, 100, true)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=243>
+			<P>removeCumulativeContribution(environmentID)</P>
+		</TD>
+		<TD WIDTH=63>
+			<P>&nbsp;</P>
+		</TD>
+		<TD WIDTH=511>
+			<P>Remove the overall cumulative contribution from the Thing. In
+			most cases, you do not need to do this. Rather, you should set up
+			the container to use transference or other things to remove
+			accumulated contributions.</P>
+		</TD>
+		<TD WIDTH=326>
+			<P>Environment.removeCumulativeContribution(&quot;Ambient
+			Temperature&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=243>
+			<P>setTransferenceMultiplier(environmentID, multiplier)</P>
+		</TD>
+		<TD WIDTH=63>
+			<P>&nbsp;</P>
+		</TD>
+		<TD WIDTH=511>
+			<P>Increase or decrease the current transference value by
+			multiplier.</P>
+			<P>For example, if you open the door to the house, you may want to
+			speed up the Ambient Temperature convergence with the outside by
+			increasing the container's transference by the multiplier.</P>
+		</TD>
+		<TD WIDTH=326>
+			<P>Environment.setTransferenceMultiplier(&quot;Ambient
+			Temperature&quot;, 2)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=243>
+			<P>getTotalContributions(environmentID)</P>
+		</TD>
+		<TD WIDTH=63>
+			<P>float</P>
+		</TD>
+		<TD WIDTH=511>
+			<P>Returns the total value of contributions by all things</P>
+		</TD>
+		<TD WIDTH=326>
+			<P>Environment.getTotalContributions(&quot;Wind Speed&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=243>
+			<P>getCumulativeContribution(environmentID)</P>
+		</TD>
+		<TD WIDTH=63>
+			<P>&nbsp;</P>
+		</TD>
+		<TD WIDTH=511>
+			<P>Returns the cumulativeContribution for just the thing that is
+			calling the function</P>
+		</TD>
+		<TD WIDTH=326>
+			<P>Environment.getCumulativeContribution(&quot;Wind Speed&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=243>
+			<P>getMetricValue(environmentID)</P>
+		</TD>
+		<TD WIDTH=63>
+			<P>float</P>
+		</TD>
+		<TD WIDTH=511>
+			<P>Returns the metric value of the environmentID regardless of
+			user preference</P>
+		</TD>
+		<TD WIDTH=326>
+			<P>Environment.getMetricValue(&quot;Ambient Temperature&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=243>
+			<P>getValueWithUnit(environmentID)</P>
+		</TD>
+		<TD WIDTH=63>
+			<P>string</P>
+		</TD>
+		<TD WIDTH=511>
+			<P>Returns the value in metric or imperial based on the user
+			preference and also append the unit</P>
+		</TD>
+		<TD WIDTH=326>
+			<P>Environment.getValueWithUnit(&quot;Ambient Temperature&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=243>
+			<P>getUnit(environmentID)</P>
+		</TD>
+		<TD WIDTH=63>
+			<P>string</P>
+		</TD>
+		<TD WIDTH=511>
+			<P>Returns the unit for the environmentID. The unit can be metric
+			or imperial based on the user preferences</P>
+		</TD>
+		<TD WIDTH=326>
+			<P>Environment.getUnit(&quot;Ambient Temperature&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=243>
+			<P>getVolume()</P>
+		</TD>
+		<TD WIDTH=63>
+			<P>float</P>
+		</TD>
+		<TD WIDTH=511>
+			<P>Returns the volume size of the container in meters^3 that
+			caller of the function is in</P>
+		</TD>
+		<TD WIDTH=326>
+			<P>Environment.getVolume()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=243>
+			<P>getTimeInSeconds()</P>
+		</TD>
+		<TD WIDTH=63>
+			<P>int</P>
+		</TD>
+		<TD WIDTH=511>
+			<P>Returns the current time</P>
+		</TD>
+		<TD WIDTH=326>
+			<P>Environment.getTimeInSeconds();</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=243>
+			<P>getElapsedTime(lastTime)</P>
+		</TD>
+		<TD WIDTH=63>
+			<P>int</P>
+		</TD>
+		<TD WIDTH=511>
+			<P>Returns the time passed since the lastTime value</P>
+		</TD>
+		<TD WIDTH=326>
+			<P>var time = Environment.getTimeInSeconds();</P>
+			<P>delay(1000);</P>
+			<P>Environment.getElapsedTime(time);</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE WIDTH=1137  CELLPADDING=2 CELLSPACING=2 >
+	<COL WIDTH=206>
+	<COL WIDTH=103>
+	<COL WIDTH=141>
+	<COL WIDTH=281>
+	<COL WIDTH=386>
+	<TR>
+		<TD WIDTH=206>
+			<H3 CLASS="western">Real HTTP Server (External Network Access)</H3>
+		</TD>
+		<TD COLSPAN=4 WIDTH=923>
+			<H3 CLASS="western">Package = realhttp</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 WIDTH=313>
+			<P><STRONG>Function</STRONG></P>
+		</TD>
+		<TD WIDTH=141>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD WIDTH=281>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD WIDTH=386>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 WIDTH=313>
+			<P>RealHTTPServer()&nbsp;</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>RealHTTPServer</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Creates a Real HTTP Server.&nbsp;</P>
+		</TD>
+		<TD WIDTH=386>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>http =
+			RealHTTPServer()</FONT></FONT></P>
+			<P>&nbsp;&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 WIDTH=313>
+			<P>start( port )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Start server listening on <I>port</I>.</P>
+		</TD>
+		<TD WIDTH=386>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>http.start(
+			8765 )</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 WIDTH=313>
+			<P>stop( )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Stop server listening.</P>
+		</TD>
+		<TD WIDTH=386>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>http.stop()</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 WIDTH=313>
+			<P>isListening( )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>boolean</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Returns the listening status of the server.</P>
+		</TD>
+		<TD WIDTH=386>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>if
+			http.isListening() :<BR>   ...</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 WIDTH=313>
+			<P>route( url-pattern, request-types, callback, context=None)</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Adds <I>callback</I> to be run for all <I>request-types</I>
+			matching <I>url-pattern</I>.</P>
+			<P>callback: f<I>unction ( context, request, reply);<BR></I><SPAN STYLE="font-style: normal">requst:</SPAN>
+			<I>RealHttpServerRequest<BR></I><SPAN STYLE="font-style: normal">response:</SPAN>
+			<I>RealHttpServerResponse</I></P>
+			<P>url-pattern: <I>string</I><BR>request-types: <I>array of
+			strings (&ldquo;GET&rdquo;, &ldquo;POST&rdquo;, &ldquo;PUT&rdquo;,
+			&ldquo;UPDATE&rdquo;, &ldquo;DELETE&rdquo;)<BR><BR></I><SPAN STYLE="font-style: normal">context:
+			</SPAN><I>object</I><SPAN STYLE="font-style: normal">. <BR>If </SPAN><I>None</I><SPAN STYLE="font-style: normal">
+			the </SPAN><I>server</I><SPAN STYLE="font-style: normal"> </SPAN><I>object</I><SPAN STYLE="font-style: normal">
+			will be passed in as context.</SPAN></P>
+		</TD>
+		<TD WIDTH=386>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>def
+			on_get_files( context, request, reply ):<BR>     ...<BR>def
+			on_posts( context, request, reply ):<BR>     ...<BR>def
+			on_everything( context, request, reply ):<BR>     ...<BR>http.route(
+			&ldquo;/files/*&rdquo;, [&ldquo;GET&rdquo;],
+			on_get_files)<BR>http.route( &ldquo;*&rdquo;, [&ldquo;POST&rdquo;],
+			on_posts)<BR>http.route( &ldquo;*&rdquo;, <SPAN STYLE="font-style: normal">[]</SPAN>,
+			on_everything)</FONT></FONT></P>
+		</TD>
+	</TR>
+	<tr>
+		<TD COLSPAN=2 WIDTH=313>
+		websocket(
+			<span style="color: rgb(57,57,59);">url-pattern, callback)</span>
+		</td>
+		<TD WIDTH=141>
+			N/A</td>
+		<TD WIDTH=281>
+			<p>Adds&nbsp;
+				<em>callback</em>&nbsp;to be run for incoming websocket connections&nbsp;matching&nbsp;
+				<em>url-pattern</em>.</p>
+			<p>callback: 
+				<em>function (client);
+					<br>
+				</em>
+				<em>client</em>:&nbsp;
+				<em>RealWSClient</em>
+			</p>
+			<p>url-pattern:&nbsp;
+				<em>string</em>
+			</p>
+		</td>
+		<TD WIDTH=386>
+			<pre><span style="color: rgb(57,57,59);">def callback( client ):<br></span>  pass</pre>
+			<pre><span style="color: rgb(57,57,59);">server.websocket("/ws", callback)</span></pre>
+		</td>
+	</tr>
+	<TR>
+		<TD COLSPAN=2 WIDTH=313>
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=141>
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=281>
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=386>
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 WIDTH=313>
+			<P><B>RealHTTPServerRequest</B></P>
+		</TD>
+		<TD WIDTH=141>
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Request object passed to routing callbacks.</P>
+		</TD>
+		<TD WIDTH=386>
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 WIDTH=313>
+			<P>headers( )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>object</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Returns object containing request headers.</P>
+		</TD>
+		<TD WIDTH=386>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>headers =
+			request.headers( )<BR>... headers[&ldquo;Content-Type&rdquo;] ...</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 WIDTH=313>
+			<P>method( )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>string</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Returns request's method (&ldquo;GET&rdquo;, etc.)</P>
+		</TD>
+		<TD WIDTH=386>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>if 
+			request.method() == &ldquo;POST&rdquo;:<BR>    ...<BR></FONT></FONT><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 WIDTH=313>
+			<P>body( )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>string</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Returns the body of the request.</P>
+		</TD>
+		<TD WIDTH=386>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>request.body();</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 WIDTH=313>
+			<P>url( )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>string</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Returns requested URL.</P>
+		</TD>
+		<TD WIDTH=386>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>request.url();</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 WIDTH=313>
+			<P>ip( )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>string</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Returns IP address of the request origin.</P>
+		</TD>
+		<TD WIDTH=386>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>if
+			request.ip() == &ldquo;1.1.1.1&rdquo;: <BR>    ...</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 WIDTH=313>
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=141>
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=281>
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=386>
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 WIDTH=313>
+			<P><B>RealHTTPServerResponse</B></P>
+		</TD>
+		<TD WIDTH=141>
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Response object passed to routing callbacks.</P>
+		</TD>
+		<TD WIDTH=386>
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 WIDTH=313>
+			<P>setStatus( code )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Sets response status to <I>code</I><SPAN STYLE="font-style: normal">.<BR><BR>code:
+			number</SPAN></P>
+		</TD>
+		<TD WIDTH=386>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2><BR>response.setCode(
+			200 ) # for OK response</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 WIDTH=313>
+			<P>setHeaders( headers )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Sets response headers in bulk. Object properties define header
+			names and values.<BR><BR>headers: object</P>
+		</TD>
+		<TD WIDTH=386>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>response.setHeaders({<BR>
+			  &ldquo;Authorization&rdquo;: &ldquo;basic&rdquo;,<BR>  
+			&ldquo;Cookie&rdquo;: &ldquo;Id=1234; Group=users&rdquo;<BR>})</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 WIDTH=313>
+			<P>addHeader( name, value )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Sets header <I>name</I> <SPAN STYLE="font-style: normal">to
+			</SPAN><I>value</I><SPAN STYLE="font-style: normal">.<BR><BR>name:
+			string<BR>value: string</SPAN></P>
+		</TD>
+		<TD WIDTH=386>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>response.addHeader(
+			&ldquo;Cookie&rdquo;, &ldquo;Group=inner&rdquo; )</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 WIDTH=313>
+			<P>appendContent( content )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Appends <I>content</I> <SPAN STYLE="font-style: normal">to
+			response body.</SPAN></P>
+			<P STYLE="font-style: normal">content: string</P>
+		</TD>
+		<TD WIDTH=386>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>response.appendContent(
+			&ldquo;more stuff&ldquo; )</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 WIDTH=313>
+			<P>resetContent( )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Resets the body of the response to empty.</P>
+		</TD>
+		<TD WIDTH=386>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>response.resetContent()</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 WIDTH=313>
+			<P>end( )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Initiates network transfer for the response.</P>
+		</TD>
+		<TD WIDTH=386>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>response.setContent(
+			&ldquo;Hello, world!&rdquo; )<BR>response.end()</FONT></FONT></P>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>response.setToPath(
+			&ldquo;my-file.txt&rdquo; )<BR>response.end()</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 WIDTH=313>
+			<P>setContent( content )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Sets the body of the response to <I>content</I><SPAN STYLE="font-style: normal">.</SPAN></P>
+			<P STYLE="font-style: normal">content: string</P>
+		</TD>
+		<TD WIDTH=386>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>response.setContent(
+			&ldquo;Hello, world!&rdquo; )</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 WIDTH=313>
+			<P>setToFile( path )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Sets content of the response to the contents of the file at
+			<I>path.</I> <SPAN STYLE="font-style: normal">The path must be
+			local to the device running the server.</SPAN></P>
+			<P STYLE="font-style: normal">path: string</P>
+		</TD>
+		<TD WIDTH=386>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>response.setToFile(
+			&ldquo;intro.html&rdquo; )</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 WIDTH=313>
+			<P>setToNotFound( ) 
+			</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Canned response for when a requested resource can not be
+			located.</P>
+		</TD>
+		<TD WIDTH=386>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>response.setToNoFound()</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 WIDTH=313>
+			<P>send( content ) 
+			</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Sends <I>content</I> <SPAN STYLE="font-style: normal">as plain
+			text.</SPAN></P>
+			<P STYLE="font-style: normal">content: string</P>
+		</TD>
+		<TD WIDTH=386>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>response.send(
+			&ldquo;Hello, world!&rdquo; )</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 WIDTH=313>
+			<P>setContentType( type ) 
+			</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Sets <I>Content-Type</I> <SPAN STYLE="font-style: normal">header
+			to </SPAN><I>type</I><SPAN STYLE="font-style: normal">.</SPAN></P>
+			<P STYLE="font-style: normal">type: string</P>
+		</TD>
+		<TD WIDTH=386>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>response.setContentType(
+			&ldquo;text/html&rdquo; )</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 WIDTH=313>
+			<P>sendFile( path )</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Sends the contents of the file at <I>path</I><SPAN STYLE="font-style: normal">.</SPAN></P>
+			<P STYLE="font-style: normal">path: file path local to the device
+			running the server.</P>
+		</TD>
+		<TD WIDTH=386>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>response.send(
+			&ldquo;my-file.txt&rdquo; )</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 WIDTH=313>
+			<P>sendNotFound( ) 
+			</P>
+		</TD>
+		<TD WIDTH=141>
+			<P>N/A</P>
+		</TD>
+		<TD WIDTH=281>
+			<P>Sends canned response for when a requested resource can not be
+			located.</P>
+		</TD>
+		<TD WIDTH=386>
+			<P><FONT FACE="Courier New, monospace"><FONT SIZE=2>response.sendNotFound()</FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><BR>
+</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD>
+			<H3 CLASS="western"><A NAME="PythonAPI-RealHTTP(ExternalNetworkAccess)"></A>
+			Real HTTP Client<BR>(External Network Access)</H3>
+		</TD>
+		<TD COLSPAN=3>
+			<H3 CLASS="western"><A NAME="PythonAPI-Package=realhttp"></A>Package
+			= realhttp</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>RealHTTPClient()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>RealHTTPClient</P>
+		</TD>
+		<TD>
+			<P>Creates a Real HTTP Client.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>http = RealHTTPClient()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>get(url)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Gets an URL.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>http.get(&ldquo;<A HREF="http://www.cisco.com/">http://www.cisco.com</A>&rdquo;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>post(url, data)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Posts data to an URL.</P>
+			<P>data can be a string or a dictionary; if dictionary, it will be
+			URL-encoded into the body.</P>
+		</TD>
+		<TD>
+			<P>http.post(url, {&quot;num&quot;:1, &quot;str&quot;:&quot;hello&quot;})</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>put(url, data)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Puts data to an URL.</P>
+			<P>data can be a string or a dictionary; if dictionary, it will be
+			URL-encoded into the body.</P>
+		</TD>
+		<TD>
+			<P>http.put(url, {&quot;num&quot;:1, &quot;str&quot;:&quot;hello&quot;})</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>deleteResource(url)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sends a delete to an URL.</P>
+		</TD>
+		<TD>
+			<P>http.deleteResource(url)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getWithHeader(url, header)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Gets an URL with custom header fields as a dictionary.</P>
+		</TD>
+		<TD>
+			<P>http.getWithHeader(&quot;<A HREF="https://api.ciscospark.com/v1/people/me">https://api.ciscospark.com/v1/people/me</A>&quot;,
+			{&quot;Authorization&quot;: &quot;Bearer xxyyzz&quot;})</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>postWithHeader(url, data, header)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Posts data to an URL with custom header fields as a dictionary.</P>
+			<P>data can be a string or a dictionary; if dictionary and custom
+			header field has &quot;application/json&quot; as the
+			&quot;content-type&quot;, it will be json-encoded, otherwise it
+			will be URL-encoded into the body.</P>
+		</TD>
+		<TD>
+			<P>http.postWithHeader(&quot;<A HREF="https://api.ciscospark.com/v1/messages">https://api.ciscospark.com/v1/messages</A>&quot;,
+			{&quot;toPersonId&quot;: &quot;722bb271-d7ca-4bce-a9e3-471e4412fa77&quot;,
+			&quot;text&quot;: &quot;Hi Sparky&quot;}, {&quot;Authorization&quot;:
+			&quot;Bearer xxyyzz&quot;, &quot;Content-Type&quot;:
+			&quot;application/json&quot;})</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>putWithHeader(url, data, header)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Puts data to an URL with custom header fields as a dictionary.</P>
+			<P>data can be a string or a dictionary; if dictionary and custom
+			header field has &quot;application/json&quot; as the
+			&quot;content-type&quot;, it will be json-encoded, otherwise it
+			will be URL-encoded into the body.</P>
+		</TD>
+		<TD>
+			<P>http.putWithHeader(&quot;<A HREF="https://api.ciscospark.com/v1/rooms/">https://api.ciscospark.com/v1/rooms/</A>xxyyzz&quot;,
+			{&quot;title&quot;: &quot;New room name&quot;}, {&quot;Authorization&quot;:
+			&quot;Bearer xxyyzz&quot;})</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>deleteResourceWithHeader(url, header)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sends a delete to an URL with custom header fields as a
+			dictionary.</P>
+		</TD>
+		<TD>
+			<P>http.deleteResourceWithHeader(&quot;<A HREF="https://api.ciscospark.com/v1/messages/">https://api.ciscospark.com/v1/messages/</A>xxyyzz&quot;,
+			{&quot;Authorization&quot;: &quot;Bearer xxyyzz&quot;})</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>onDone(callback) 
+			</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for when the request is done.</P>
+			<P>replyHeader is a dictionary of header fields in the reply. It
+			is added to 7.1 and is optional.</P>
+		</TD>
+		<TD>
+			<P>def onHTTPDone(status, data, replyHeader): print(data)</P>
+			<P>...</P>
+			<P>http.onDone(onHTTPDone)</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD>
+			<H3 CLASS="western">
+				<A NAME="PythonAPI-RealWebSocketClient(ExternalNetworkAccess)"></A>
+				Real WebSocket Client
+				<BR>(External Network Access)</H3>
+		</TD>
+		<TD COLSPAN=3>
+			<H3 CLASS="western">
+				<A NAME="PythonAPI-Package=realhttp"></A>Package = realhttp</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>
+				<STRONG>Function</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>
+				<STRONG>Return Type</STRONG>
+			</P>
+		</TD>
+		<TD>
+			<P>
+				<STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P>
+				<STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<tr>
+		<td>
+			<div>
+				<div style="margin-left: 0.0px;">
+					<p>
+						<span>RealWSClient()</span>
+						<span>&nbsp;</span>
+					</p>
+				</div>
+			</div>
+		</td>
+		<td colspan="1">RealWSClient</td>
+		<td>
+			<div>
+				<div style="margin-left: 0.0px;">
+					<p>
+						<span>Creates a Real WebSocket Client.</span>
+						<span>&nbsp;</span>
+					</p>
+				</div>
+			</div>
+		</td>
+		<td>
+			<div>
+				<div style="margin-left: 0.0px;">
+					<p>
+						<span>client = RealWSClient()</span>
+					</p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div>
+				<div style="margin-left: 0.0px;">
+					<p>
+						<span>connect(url)</span>
+						<span>&nbsp;</span>
+					</p>
+				</div>
+			</div>
+		</td>
+		<td colspan="1">N/A</td>
+		<td>
+			<div>
+				<div style="margin-left: 0.0px;">
+					<p>
+						<span>Connects to a server URL</span>
+					</p>
+				</div>
+			</div>
+		</td>
+		<td>
+			<div>
+				<div style="margin-left: 0.0px;">
+					<p>
+						<span>client</span>
+						<span>.connect(</span>
+						<span>"ws://1.1.1.1:2000")</span>
+					</p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="1">connected()</td>
+		<td colspan="1">bool</td>
+		<td colspan="1">Returns true if connected.</td>
+		<td colspan="1">client.connected()</td>
+	</tr>
+	<tr>
+		<td>
+			<div>
+				<div style="margin-left: 0.0px;">
+					<p>
+						<span>close</span>
+						<span>()</span>
+						<span>&nbsp;</span>
+					</p>
+				</div>
+			</div>
+		</td>
+		<td colspan="1">N/A</td>
+		<td>
+			<div>
+				<div style="margin-left: 0.0px;">
+					<p>
+						<span>Disconnects.</span>
+						<span>&nbsp;</span>
+					</p>
+				</div>
+			</div>
+		</td>
+		<td>
+			<div>
+				<div style="margin-left: 0.0px;">
+					<p>
+						<span>client</span>
+						<span>.</span>
+						<span>close</span>
+						<span>()</span>
+					</p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div>
+				<div style="margin-left: 0.0px;">
+					<p>
+						<span>
+							<span>state</span>
+							<span>()</span>
+						</span>
+						<span>&nbsp;</span>
+					</p>
+				</div>
+			</div>
+		</td>
+		<td colspan="1">int</td>
+		<td>
+			<div>
+				<div style="margin-left: 0.0px;">
+					<p>
+						<span>Returns the state of the connection.</span>
+						<span>&nbsp;</span>
+					</p>
+				</div>
+			</div>
+		</td>
+		<td>
+			<div>
+				<div style="margin-left: 0.0px;">
+					<p>
+						<span>client.state()</span>
+					</p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div>
+				<div style="margin-left: 0.0px;">
+					<p>
+						<span>
+							<span>remoteIP</span>
+							<span>()</span>
+						</span>
+						<span>&nbsp;</span>
+					</p>
+				</div>
+			</div>
+		</td>
+		<td colspan="1">str</td>
+		<td>
+			<div>
+				<div style="margin-left: 0.0px;">
+					<p>
+						<span>Returns the remote IP.</span>
+						<span>&nbsp;</span>
+					</p>
+				</div>
+			</div>
+		</td>
+		<td>
+			<div>
+				<div style="margin-left: 0.0px;">
+					<p>
+						<span>client</span>
+						<span>.remoteIP()</span>
+					</p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="1">remoteHost()</td>
+		<td colspan="1">str</td>
+		<td colspan="1">Returns the remote server host name.</td>
+		<td colspan="1">client.remoteHost()</td>
+	</tr>
+	<tr>
+		<td>
+			<div>
+				<div style="margin-left: 0.0px;">
+					<p>
+						<span>remotePort()</span>
+						<span>&nbsp;</span>
+					</p>
+				</div>
+			</div>
+		</td>
+		<td colspan="1">int</td>
+		<td>
+			<div>
+				<div style="margin-left: 0.0px;">
+					<p>
+						<span>Returns the remote port.</span>
+						<span>&nbsp;</span>
+					</p>
+				</div>
+			</div>
+		</td>
+		<td>
+			<div>
+				<div style="margin-left: 0.0px;">
+					<p>
+						<span>client</span>
+						<span>.remotePort()</span>
+					</p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="1">localIP()</td>
+		<td colspan="1">str</td>
+		<td colspan="1">Returns the local IP.</td>
+		<td colspan="1">client.localIP()</td>
+	</tr>
+	<tr>
+		<td colspan="1">localPort()</td>
+		<td colspan="1">int</td>
+		<td colspan="1">Returns the local port.</td>
+		<td colspan="1">client.localPort()</td>
+	</tr>
+	<tr>
+		<td>
+			<div>
+				<div style="margin-left: 0.0px;">
+					<p>
+						<span>send(data)</span>
+						<span>&nbsp;</span>
+					</p>
+				</div>
+			</div>
+		</td>
+		<td colspan="1">N/A</td>
+		<td>
+			<div>
+				<div style="margin-left: 0.0px;">
+					<p>
+						<span>Sends data to remote connection.</span>
+					</p>
+				</div>
+			</div>
+		</td>
+		<td>
+			<div>
+				<div style="margin-left: 0.0px;">
+					<p>
+						<span>client</span>
+						<span>.send("hello")</span>
+					</p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="1">error()</td>
+		<td colspan="1">int</td>
+		<td colspan="1">Returns the last error code.</td>
+		<td colspan="1">client.error()</td>
+	</tr>
+	<tr>
+		<td colspan="1">errorString()</td>
+		<td colspan="1">str</td>
+		<td colspan="1">Returns the last error in string.</td>
+		<td colspan="1">client.errorString()</td>
+	</tr>
+	<tr>
+		<td>
+			<div>
+				<div style="margin-left: 0.0px;">
+					<p>
+						<span>onReceive(callback)</span>
+					</p>
+				</div>
+			</div>
+		</td>
+		<td colspan="1">N/A</td>
+		<td>
+			<div>
+				<div style="margin-left: 0.0px;">
+					<p>
+						<span>Sets the callback for when data is received.</span>
+						<span>&nbsp;</span>
+					</p>
+				</div>
+			</div>
+		</td>
+		<td>
+			<div>
+				<div style="margin-left: 0.0px;">def onWSReceive(data):
+					<br>&nbsp;&nbsp;print(data)</div>
+				<div style="margin-left: 0.0px;">...</div>
+				<div style="margin-left: 0.0px;">client.onReceive(onWSReceive)</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div>
+				<div style="margin-left: 0.0px;">
+					<p>
+						<span>onConnectionChange(callback)</span>
+						<span>&nbsp;</span>
+					</p>
+				</div>
+			</div>
+		</td>
+		<td colspan="1">N/A</td>
+		<td>
+			<div>
+				<div style="margin-left: 0.0px;">
+					<p>
+						<span>Sets the callback for when the connection changes.</span>
+						<span>&nbsp;</span>
+					</p>
+				</div>
+			</div>
+		</td>
+		<td>
+			<div>def onWSConnectionChange(type):
+				<br>&nbsp;&nbsp;print(type)</div>
+			<div>...</div>
+			<div>
+				<div style="margin-left: 0.0px;">client.onConnectionChange(onWSConnectionChange)</div>
+			</div>
+		</td>
+	</tr>
+</TABLE>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><BR>
+</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD>
+			<H3 CLASS="western"><A NAME="PythonAPI-RealTCP(ExternalNetworkAccess)"></A>
+			Real TCP<BR>(External Network Access)&nbsp;</H3>
+		</TD>
+		<TD COLSPAN=3>
+			<H3 CLASS="western"><A NAME="PythonAPI-Package=realtcp"></A>Package
+			= realtcp</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>RealTCPClient()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>RealTCPClient</P>
+		</TD>
+		<TD>
+			<P>Creates a Real TCP Client.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client = RealTCPClient()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>connect(ip, port)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Connects to ip and port.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.connect(&quot;1.1.1.1&quot;, 2000)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>connected()</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Returns true if connected.</P>
+		</TD>
+		<TD>
+			<P>client.connected()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>close()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Disconnects.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.close()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>state()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the state of the connection.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.state()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>remoteIP()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>str</P>
+		</TD>
+		<TD>
+			<P>Returns the remote IP.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.remoteIP()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>remoteHost()</P>
+		</TD>
+		<TD>
+			<P>str</P>
+		</TD>
+		<TD>
+			<P>Returns the remote server host name.</P>
+		</TD>
+		<TD>
+			<P>client.remoteHost()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>remotePort()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the remote port.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>client.remotePort()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>localIP()</P>
+		</TD>
+		<TD>
+			<P>str</P>
+		</TD>
+		<TD>
+			<P>Returns the local IP.</P>
+		</TD>
+		<TD>
+			<P>client.localIP()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>localPort()</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the local port.</P>
+		</TD>
+		<TD>
+			<P>client.localPort()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>send(data)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sends data to remote connection.</P>
+		</TD>
+		<TD>
+			<P>client.send(&quot;hello&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>error()</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the last error code.</P>
+		</TD>
+		<TD>
+			<P>client.error()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>errorString()</P>
+		</TD>
+		<TD>
+			<P>str</P>
+		</TD>
+		<TD>
+			<P>Returns the last error in string.</P>
+		</TD>
+		<TD>
+			<P>client.errorString()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>onReceive(callback)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for when data is received.&nbsp;</P>
+		</TD>
+		<TD>
+			<P STYLE="margin-bottom: 0in">def onTCPReceive(data):&nbsp;<BR>&nbsp;&nbsp;print(data)</P>
+			<P STYLE="margin-bottom: 0in">...</P>
+			<P>client.onReceive(onTCPReceive)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>onConnectionChange(callback)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for when the connection changes.&nbsp;</P>
+		</TD>
+		<TD>
+			<P STYLE="margin-bottom: 0in">def
+			onTCPConnectionChange(type):&nbsp;<BR>&nbsp;&nbsp;print(type)</P>
+			<P STYLE="margin-bottom: 0in">...</P>
+			<P>client.onConnectionChange(onTCPConnectionChange)</P>
+		</TD>
+	</TR>
+
+    <tr>
+        <td>
+            <br>
+        </td>
+        <td>
+            <br>
+        </td>
+        <td>
+            <br>
+        </td>
+        <td>
+            <br>
+        </td>
+    </tr>
+    <tr>
+        <td>RealTCPServer()</td>
+        <td>RealTCPServer</td>
+        <td>Creates a Real TCP Server.</td>
+        <td>server = RealTCPServer()</td>
+    </tr>
+    <tr>
+        <td>
+            <div>
+                <div>
+                    <p>
+                        <span>listen(port)</span>
+                        <span>&nbsp;</span>
+                    </p>
+                </div>
+            </div>
+        </td>
+        <td>bool</td>
+        <td>
+            <div>
+                <div>
+                    <p>Listens on port on host device and returns whether it was successful.</p>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div>
+                <div>
+                    <p>server.listen(1234)</p>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>isListening()</td>
+        <td>bool</td>
+        <td>Returns true if listening.</td>
+        <td>server.isListening()</td>
+    </tr>
+    <tr>
+        <td>
+            <div>
+                <div>
+                    <p>
+                        <span>stop</span>
+                        <span>()</span>
+                        <span>&nbsp;</span>
+                    </p>
+                </div>
+            </div>
+        </td>
+        <td>N/A</td>
+        <td>
+            <div>
+                <div>
+                    <p>
+                        <span>Stops listening. All connections remain open.</span>
+                        <span>&nbsp;</span>
+                    </p>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div>
+                <div>
+                    <p>server.stop()</p>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>listeningIP()</td>
+        <td>str</td>
+        <td>Returns the listening IP.</td>
+        <td>server.listeningIP()</td>
+    </tr>
+    <tr>
+        <td>listeningPort()</td>
+        <td>int</td>
+        <td>Returns the listening port.</td>
+        <td>server.listeningPort()</td>
+    </tr>
+    <tr>
+        <td>error()</td>
+        <td>int</td>
+        <td>Returns the last error code.</td>
+        <td>
+            <span>server</span>.error()</td>
+    </tr>
+    <tr>
+        <td>errorString()</td>
+        <td>str</td>
+        <td>Returns the last error in string.</td>
+        <td>
+            <span>server</span>.errorString()</td>
+    </tr>
+    <tr>
+        <td>
+            <div>
+                <div>
+                    <p>
+                        <span>onNewClient(callback)</span>
+                    </p>
+                </div>
+            </div>
+        </td>
+        <td>N/A</td>
+        <td>
+            <div>
+                <div>
+                    <p>
+                        <span>Sets the callback for when a new client is connected.</span>
+                        <span>&nbsp;</span>
+                    </p>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div>
+                <div>def onTCPNewClient(client):&nbsp;
+                    <br>&nbsp;&nbsp;print("new client")</div>
+                <div>...</div>
+                <div>server.onNewClient(
+                    <span>onTCPNewClient</span>)</div>
+            </div>
+        </td>
+	</tr>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD>
+			<H3 CLASS="western"><A NAME="PythonAPI-RealUDP(ExternalNetworkAccess)"></A>
+			Real UDP<BR>(External Network Access)&nbsp;</H3>
+		</TD>
+		<TD COLSPAN=3>
+			<H3 CLASS="western"><A NAME="PythonAPI-Package=realudp"></A>Package
+			= realudp</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>RealUDPSocket()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>RealUDPSocket</P>
+		</TD>
+		<TD>
+			<P>Creates an Real UDP Socket.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>udp = RealUDPSocket()&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>begin(port)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Starts listening on port.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>udp.begin(2000)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>stop()&nbsp;</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Stops listening.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>udp.stop()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>joinMulticastGroup(ip)</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Joins a multicast group. Must call begin() first.</P>
+		</TD>
+		<TD>
+			<P>udp.joinMulticastGroup(&quot;224.0.0.1&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>leaveMulticastGroup(ip)</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Leaves a multicast group.</P>
+		</TD>
+		<TD>
+			<P>udp.leaveMulticastGroup(&quot;224.0.0.1&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>localIP()</P>
+		</TD>
+		<TD>
+			<P>str</P>
+		</TD>
+		<TD>
+			<P>Returns the local IP.</P>
+		</TD>
+		<TD>
+			<P>udp.localIP()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>localPort()</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the local port.</P>
+		</TD>
+		<TD>
+			<P>udp.localPort()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>send(ip, port, data)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Sends data.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>udp.send(&quot;1.1.1.1&quot;, 2000, &quot;hello&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>onReceive(callback)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the callback for when data is received.&nbsp;</P>
+		</TD>
+		<TD>
+			<P STYLE="margin-bottom: 0in">def onUDPReceive(ip, port, data):</P>
+			<P STYLE="margin-bottom: 0in">print(data)</P>
+			<P>...</P>
+			<P>udp.onReceive(onUDPReceive)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>error()</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the last error code.</P>
+		</TD>
+		<TD>
+			<P>udp.error()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>errorString()</P>
+		</TD>
+		<TD>
+			<P>str</P>
+		</TD>
+		<TD>
+			<P>Returns the last error in string.</P>
+		</TD>
+		<TD>
+			<P>udp.errorString()</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD>
+			<H3 CLASS="western"><A NAME="PythonAPI-JSON"></A>JSON</H3>
+		</TD>
+		<TD COLSPAN=3>
+			<H3 CLASS="western"><A NAME="PythonAPI-Package=json"></A>Package =
+			json</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>dumps(obj)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>str</P>
+		</TD>
+		<TD>
+			<P>Serializes a Python object into JSON string.&nbsp;</P>
+		</TD>
+		<TD>
+			<P>jsonStr = json.dumps({&quot;num&quot;:1, &quot;s&quot;:&quot;str&quot;})</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>loads(jsonStr)&nbsp;</P>
+		</TD>
+		<TD>
+			<P>python object</P>
+		</TD>
+		<TD>
+			<P>Converts a JSON string into a Python object.</P>
+		</TD>
+		<TD>
+			<P>obj = json.loads(s)</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD>
+			<H3 CLASS="western"><A NAME="PythonAPI-GUI(SBCandThing,someEndDevices)"></A>
+			GUI <FONT COLOR="#ff0000">(SBC and Thing</FONT> <FONT COLOR="#ff0000">,
+			some End Devices</FONT>)</H3>
+		</TD>
+		<TD COLSPAN=3>
+			<H3 CLASS="western"><A NAME="PythonAPI-Package=gui"></A>Package =
+			gui</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>GUI.setup()</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Initializes the GUI and tells the GUI to display the html file
+			configured in the manifest file. If the app is not installed, it
+			throws an error.</P>
+		</TD>
+		<TD>
+			<P>GUI.setup()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>GUI.update(type, args)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Asynchronously calls the html file's update() function passing
+			in type and args. Type is a string and args can be any JSON valid
+			object.</P>
+		</TD>
+		<TD>
+			<P>GUI.update(&quot;status&quot;, &quot;playing&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>guiEvent(type, args)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>If defined, this function is called asynchronously when the
+			html file calls guiEvent(type, args). Type is a string and args
+			can be any JSON valid object.</P>
+		</TD>
+		<TD>
+			<PRE CLASS="western">def guiEvent(type, args):  print('guiEvent: ' + type + ',' + dumps(args));</PRE>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<COL WIDTH=0>
+	<COL WIDTH=0>
+	<COL WIDTH=0>
+	<COL WIDTH=0>
+	<TR>
+		<TD>
+			<H3 CLASS="western"><A NAME="PythonAPI-CLI(SBCandThing,someEndDevices)"></A>
+			CLI <FONT COLOR="#ff0000">(SBC and Thing</FONT> <FONT COLOR="#ff0000">,
+			some End Devices</FONT>)</H3>
+		</TD>
+		<TD COLSPAN=3>
+			<H3 CLASS="western"><A NAME="PythonAPI-Package=cli"></A>Package =
+			cli</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>CLI.setup()</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Initializes the CLI and will call the cliEvent() function if
+			the app was started from a command in the Command Prompt.</P>
+		</TD>
+		<TD>
+			<P>CLI.setup()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>CLI.exit()</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Exits the CLI mode and returns back to the Command Prompt.</P>
+		</TD>
+		<TD>
+			<P>CLI.exit()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>cliEvent(type, args)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>If defined, this function is called synchronously when
+			different CLI events happen. Type is a string and args can be any
+			JSON valid object.</P>
+			<P>Type can be:</P>
+			<UL>
+				<LI><P STYLE="margin-bottom: 0in">&quot;invoked&quot; - this is
+				called when the command is invoked from the Command Prompt; args
+				is a list of command arguments where the first element is the
+				command name. 
+				</P>
+				<LI><P>&quot;interrupted&quot; - this is called when the user
+				uses break shortcut (Ctrl+C) while this app is running in CLI
+				mode. 
+				</P>
+			</UL>
+		</TD>
+		<TD>
+			<PRE CLASS="western">def cliEvent(type, args):  print('cliEvent: ' + type + ',' + dumps(args));</PRE>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD>
+			<H3 CLASS="western"><A NAME="PythonAPI-Simulation"></A>Simulation</H3>
+		</TD>
+		<TD COLSPAN=3>
+			<H3 CLASS="western"><A NAME="PythonAPI-Package=simulation"></A>Package
+			= simulation</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>Simulation.isInSimulationMode()</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Returns whether PT is currently in Simulation Mode.</P>
+		</TD>
+		<TD>
+			<P>if Simulation.isInSimulationMode(): print(&quot;In sim mode&quot;)
+						</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>Simulation.addCustomProtocolType(protocol)</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Adds a new protocol type to the current file/network. The
+			protocol will show up in the Event List Filters. Returns true if
+			successful, false otherwise. 
+			</P>
+		</TD>
+		<TD>
+			<P>Simulation.addCustomProtocolType(&quot;MyProtocol&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>Simulation.hasCustomProtocolType(protocol)</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Returns whether the protocol type is already added to the
+			current file/network. 
+			</P>
+		</TD>
+		<TD>
+			<P>if not Simulation.hasCustomProtocolType(&quot;MyProtocol&quot;):
+			Simulation.addCustomProtocolType(&quot;MyProtocol&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>Simulation.addCustomPDU(protocol, pduType, definition)</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Adds a new protocol type and PDU type to the current
+			file/network. The protocol will show up in the Event List Filters,
+			and the PDU with its definition will show up in PDU details.
+			Returns true if successful, false if the definition is invalid. It
+			will replace existing definitions if using the same protocol and
+			PDU type names.</P>
+			<P>The definition argument is an object with the following
+			properties describing the layout and fields of the PDU:</P>
+			<UL>
+				<LI><P STYLE="margin-bottom: 0in">title - a string that shows up
+				as the title in PDU Details 
+				</P>
+				<LI><P STYLE="margin-bottom: 0in">units - a string 
+				</P>
+				<LI><P STYLE="margin-bottom: 0in">unit_marks - an array of
+				numbers indicating where the marks are to show up 
+				</P>
+				<LI><P STYLE="margin-bottom: 0in">width - an integer indicating
+				the width of PDU 
+				</P>
+				<LI><P STYLE="margin-bottom: 0in">fields - an array of objects
+				representing each field in the PDU; each object must contain the
+				following properties: 
+				</P>
+				<UL>
+					<LI><P>value - a label that can contain a variable inside curly
+					braces; the variable will be replaced with a value in the
+					PDUInfo fields object</P>
+					<LI><P>size - an integer indicating the size of the field 
+					</P>
+				</UL>
+			</UL>
+		</TD>
+		<TD>
+			<PRE CLASS="western">Simulation.addCustomPDU(&quot;MyProtocol&quot;, &quot;MyPDU&quot;, {  &quot;title&quot;: &quot;My PDU&quot;,  &quot;units&quot;: &quot;Bits&quot;,  &quot;unit_marks&quot;: [16],  &quot;width&quot;: 32,  &quot;fields&quot;: [    {      &quot;value&quot;: &quot;TYPE: {type}&quot;,      &quot;size&quot;: 32    },    {      &quot;value&quot;: &quot;DATA: {data}&quot;,      &quot;size&quot;: 32    }  ]})</PRE>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>Simulation.hasCustomPDU(protocol, pduType)</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Returns whether the protocol and PDU type is already added to
+			the current file/network.</P>
+		</TD>
+		<TD>
+			<P>if not Simulation.hasCustomPDU(&quot;MyProtocol&quot;,
+			&quot;MyPDU&quot;): # add it 
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD></TD>
+		<TD></TD>
+		<TD></TD>
+		<TD></TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>PDUInfo(color)</P>
+		</TD>
+		<TD>
+			<P>PDUInfo</P>
+		</TD>
+		<TD>
+			<P>Creates a PDU Info object with the pdu color. A PDUInfo is
+			required to show PDU with more details in Simulation Mode.</P>
+		</TD>
+		<TD>
+			<P>pduInfo = PDUInfo(0xffff00)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setOutFormat(protocol, pduType, fields)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the outgoing PDU to be displayed in a custom PDU
+			definition. The fields argument is an object with the variables
+			defined in the PDU definition fields property.</P>
+		</TD>
+		<TD>
+			<P>pduInfo.setOutFormat(&quot;MyProtocol&quot;, &quot;MyPDU&quot;,
+			{&quot;type&quot;: &quot;REPLY&quot;, &quot;data&quot;: data})</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>addOutMessage(message)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Adds a message to the outgoing OSI layer 7.</P>
+		</TD>
+		<TD>
+			<P>pduInfo.addOutMessage(&quot;I am sending some data.&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>addInMessage(message)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Adds a message to the incoming OSI layer 7.</P>
+		</TD>
+		<TD>
+			<P>pduInfo.addInMessage(&quot;I received some data.&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setAccepted()</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the PDU as accepted.</P>
+		</TD>
+		<TD>
+			<P>pduInfo.setAccepted()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setDropped()</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets the PDU as dropped.</P>
+		</TD>
+		<TD>
+			<P>pduInfo.setDropped()</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TD>
+			<H3 CLASS="western"><A NAME="PythonAPI-Workspace"></A>Workspace</H3>
+		</TD>
+		<TD COLSPAN=3>
+			<H3 CLASS="western"><A NAME="PythonAPI-Package=workspace"></A>Package
+			= workspace</H3>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P><STRONG>Function</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Return Type</STRONG></P>
+		</TD>
+		<TD>
+			<P><STRONG>Description</STRONG>&nbsp;</P>
+		</TD>
+		<TD>
+			<P><STRONG>Example</STRONG>&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getPhysicalObject()</P>
+		</TD>
+		<TD>
+			<P>PhysicalObject</P>
+		</TD>
+		<TD>
+			<P>Returns the current device's physical object. 
+			</P>
+		</TD>
+		<TD>
+			<P>po = getPhysicalObject()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getName()</P>
+		</TD>
+		<TD>
+			<P>str</P>
+		</TD>
+		<TD>
+			<P>Returns the name of this physical object.</P>
+		</TD>
+		<TD>
+			<P>print(po.getName())</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getType()</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the type of this physical object. Valid values are:</P>
+			<P>INTER_CITY = 0CITY = 1BUILDING = 2WIRING_CLOSET = 3RACK =
+			4TABLE = 5DEVICE = 6MULTIUSER = 7GENERIC_CONTAINER = 8</P>
+		</TD>
+		<TD>
+			<P>print(po.getType())</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getX() 
+			</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Returns the x coordinate relative to its parent in meters.</P>
+		</TD>
+		<TD>
+			<P>print(po.getX())</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getY() 
+			</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Returns the y coordinate relative to its parent in meters.</P>
+		</TD>
+		<TD>
+			<P>print(po.getY())</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getCenterX() 
+			</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Returns the center x coordinate relative to its parent in
+			meters.</P>
+		</TD>
+		<TD>
+			<P>print(po.getCenterX())</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getCenterY() 
+			</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Returns the center y coordinate relative to its parent in
+			meters.</P>
+		</TD>
+		<TD>
+			<P>print(po.getCenterY())</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getGlobalX() 
+			</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Returns the global x coordinate of this physical object in
+			meters.</P>
+		</TD>
+		<TD>
+			<P>print(po.getGlobalX())</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getGlobalY() 
+			</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">Returns the global y coordinate of this
+			physical object in meters.</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P>print(po.getGlobalX())</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getWidth() 
+			</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Returns the width of this physical object in meters.</P>
+		</TD>
+		<TD>
+			<P>print(po.getWidth())</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getHeight() 
+			</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Returns the height of this physical object in meters.</P>
+		</TD>
+		<TD>
+			<P>print(po.getHeight())</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>moveTo(x, y)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Moves this physical object's top left corner to the specified
+			coordinates in meters relative to its parent.</P>
+		</TD>
+		<TD>
+			<P>po.moveTo(10, 20)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>moveCenterTo(x, y)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Moves this physical object's center to the specified
+			coordinates in meters relative to its parent.</P>
+		</TD>
+		<TD>
+			<P>po.moveCenterTo(10, 20)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>moveBy(x, y)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Moves this physical object by the specified coordinates in
+			meters.</P>
+		</TD>
+		<TD>
+			<P>po.moveBy(10, 20)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setVelocity(x, y)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets this physical object's velocity in meters. This physical
+			object then moves automatically.</P>
+		</TD>
+		<TD>
+			<P>po.setVelocity(1, 2)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getXVelocity() 
+			</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P>Returns the x velocity of this physical object in meters.</P>
+		</TD>
+		<TD>
+			<P>print(po.getXVelocity())</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getYVelocity() 
+			</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">Returns the y velocity of this physical
+			object in meters.</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P>print(po.getYVelocity())</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getParent()</P>
+		</TD>
+		<TD>
+			<P>PhysicalObject</P>
+		</TD>
+		<TD>
+			<P>Returns this physical object's parent.</P>
+		</TD>
+		<TD>
+			<P>parentPO = po.getParent()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>moveOutOfParent()</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Moves this physical object out of its parent to the same level
+			as the parent, and returns whether it was successful.</P>
+		</TD>
+		<TD>
+			<P>po.moveOutOfParent()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>moveInto(name)</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Moves this physical object into a container with the specified
+			name that is in the same level as this physical object, and
+			returns whether it was successful.</P>
+		</TD>
+		<TD>
+			<P>po.moveInto(&quot;Corporate Office&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getChildCount()</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the number of children this physical object has.</P>
+		</TD>
+		<TD>
+			<P>print(po.getChildCount())</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getChildAt(index)</P>
+		</TD>
+		<TD>
+			<P>PhysicalObject</P>
+		</TD>
+		<TD>
+			<P>Returns the child physical object at the specified index.</P>
+		</TD>
+		<TD>
+			<P>childPO = po.getChildAt(0)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getChild(name)</P>
+		</TD>
+		<TD>
+			<P>PhysicalObject</P>
+		</TD>
+		<TD>
+			<P>Returns the child physical object with the specified name.</P>
+		</TD>
+		<TD>
+			<P>childPO = po.getChild(&quot;Wiring Closet&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD></TD>
+		<TD></TD>
+		<TD></TD>
+		<TD></TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getLogicalObject()</P>
+		</TD>
+		<TD>
+			<P>LogicalObject</P>
+		</TD>
+		<TD>
+			<P>Returns the current device's logical object. 
+			</P>
+		</TD>
+		<TD>
+			<P>lo = getLogicalObject()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getName()</P>
+		</TD>
+		<TD>
+			<P>str</P>
+		</TD>
+		<TD>
+			<P>Returns the name of this logical object.</P>
+		</TD>
+		<TD>
+			<P>print(lo.getName())</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getType()</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the type of this logical object. Valid values are:</P>
+			<P>ROOT = 1099DEVICE = 1100CLUSTER = 1104MULTIUSERITEM = 1108</P>
+		</TD>
+		<TD>
+			<P>print(lo.getType())</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getX() 
+			</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the x coordinate relative to its parent in pixels.</P>
+		</TD>
+		<TD>
+			<P>print(lo.getX())</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getY() 
+			</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">int</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">Returns the y coordinate relative to its
+			parent in pixels.</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P>print(lo.getY())</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getCenterX() 
+			</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">int</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">Returns the center x coordinate relative
+			to its parent in pixels.</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P>print(lo.getCenterX())</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getCenterY() 
+			</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">int</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">Returns the center y coordinate relative
+			to its parent in pixels.</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P>print(lo.getCenterY())</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getWidth() 
+			</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">int</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">Returns the width of this logical object
+			in pixels.</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P>print(lo.getWidth())</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getHeight() 
+			</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">int</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">Returns the height of this logical object
+			in pixels.</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P>print(lo.getHeight())</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>moveTo(x, y)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Moves this logical object's top left corner to the specified
+			coordinates in <FONT COLOR="#000000">pixels</FONT> relative to its
+			parent.</P>
+		</TD>
+		<TD>
+			<P>lo.moveTo(10, 20)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>moveCenterTo(x, y)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Moves this logical object's center to the specified coordinates
+			in <FONT COLOR="#000000">pixels</FONT> relative to its parent.</P>
+		</TD>
+		<TD>
+			<P>lo.moveCenterTo(10, 20)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>moveBy(x, y)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Moves this logical object by the specified coordinates in
+			<FONT COLOR="#000000">pixels</FONT>.</P>
+		</TD>
+		<TD>
+			<P>lo.moveBy(10, 20)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>setVelocity(x, y)</P>
+		</TD>
+		<TD>
+			<P>N/A</P>
+		</TD>
+		<TD>
+			<P>Sets this logical object's velocity in <FONT COLOR="#000000">pixels</FONT>.
+			This logical object then moves automatically.</P>
+		</TD>
+		<TD>
+			<P>lo.setVelocity(1, 2)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getXVelocity() 
+			</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">Returns the x velocity of this logical
+			object in pixels.</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P>print(lo.getXVelocity())</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getYVelocity() 
+			</P>
+		</TD>
+		<TD>
+			<P>float</P>
+		</TD>
+		<TD>
+			<P><FONT COLOR="#000000">Returns the y velocity of this logical
+			object in pixels.</FONT> 
+			</P>
+		</TD>
+		<TD>
+			<P>print(lo.getYVelocity())</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getParent()</P>
+		</TD>
+		<TD>
+			<P>LogicalObject</P>
+		</TD>
+		<TD>
+			<P>Returns this logical object's parent.</P>
+		</TD>
+		<TD>
+			<P>parentLO = lo.getParent()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>moveOutOfParent()</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Moves this logical object out of its parent to the same level
+			as the parent, and returns whether it was successful.</P>
+		</TD>
+		<TD>
+			<P>lo.moveOutOfParent()</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>moveInto(name)</P>
+		</TD>
+		<TD>
+			<P>bool</P>
+		</TD>
+		<TD>
+			<P>Moves this logical object into a container with the specified
+			name that is in the same level as this logical object, and returns
+			whether it was successful.</P>
+		</TD>
+		<TD>
+			<P>lo.moveInto(&quot;Cluster0&quot;)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getChildCount()</P>
+		</TD>
+		<TD>
+			<P>int</P>
+		</TD>
+		<TD>
+			<P>Returns the number of children this logical object has.</P>
+		</TD>
+		<TD>
+			<P>print(lo.getChildCount())</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getChildAt(index)</P>
+		</TD>
+		<TD>
+			<P>LogicalObject</P>
+		</TD>
+		<TD>
+			<P>Returns the child logical object at the specified index.</P>
+		</TD>
+		<TD>
+			<P>childlo = lo.getChildAt(0)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<P>getChild(name)</P>
+		</TD>
+		<TD>
+			<P>LogicalObject</P>
+		</TD>
+		<TD>
+			<P>Returns the child logical object with the specified name.</P>
+		</TD>
+		<TD>
+			<P>childlo = lo.getChild(&quot;Cluster0&quot;)</P>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+  	<TR>
+		<TD>
+			<H3 CLASS="western"><A NAME="PythonAPI-BluetoothManager"></A>Bluetooth Manager</H3>
+		</TD>
+		<TD COLSPAN=3>
+			<H3 CLASS="western"><A NAME="PythonAPI-Package=bluetooth"></A>Package
+			= bluetooth</H3>
+		</TD>
+	</TR>
+  <TR>
+    <TD><P><STRONG>Function</STRONG></P></TD>
+    <TD><P><STRONG>Return Type</STRONG></P></TD>
+    <TD><P><STRONG>Description</STRONG>&nbsp;</P></TD>
+    <TD><P><STRONG>Example</STRONG>&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD>init()</TD>
+    <TD>N/A</TD>
+    <TD>Initialize Bluetooth functionality for the device.</TD>
+    <TD><pre>
+def main():
+	Bluetooth.init()
+    </pre></TD>
+  </TR>
+  <TR>
+    <TD><P>onDeviceDiscovered(macAddress, deviceName)</P></TD>
+    <TD><P>N/A</P></TD>
+    <TD>This event handler is called when a device is discovered.</TD>
+    <TD><P>def handleDeviceDiscovered(macAddress, deviceName):...</P>
+      <P>Bluetooth.onDeviceDiscovered(handleDeviceDiscovered)</P>
+      <P>Bluetooth.discover()</P>
+      <P>&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD>onDevicePaired(macAddress)</TD>
+    <TD>N/A</TD>
+    <TD>This event handler is called when a device is paired.</TD>
+    <TD><p>def handleDevicePaired(macAddress):...</p>
+    <p>Bluetooth.onDevicePaired(handleDevicePaired)</p></TD>
+  </TR>
+  <TR>
+    <TD>onDeviceUnPaired(macAddress)</TD>
+    <TD>N/A</TD>
+    <TD>This event handler is called when a device is unpaired.</TD>
+    <TD><p>def handleDeviceUnpaired(macAddress):...</p>
+    <p>Bluetooth.onDeviceUnpaired(handleDeviceUnpaired)</p></TD>
+  </TR>
+  <TR>
+    <TD>onDeviceConnected(macAddress)</TD>
+    <TD>N/A</TD>
+    <TD>This event handler is called when a device is connected.</TD>
+    <TD><p>def handleDeviceConnected(macAddress):...</p>
+    <p>Bluetooth.onDeviceConnected(handleDeviceConnected)</p></TD>
+  </TR>
+  <TR>
+    <TD>onDeviceDisconnected(macAddress)</TD>
+    <TD>N/A</TD>
+    <TD>This event handler is called when a device is disconnected.</TD>
+    <TD><p>def handleDeviceDisconnected(macAddress):...</p>
+    <p>Bluetooth.onDeviceDisconnected(handleDeviceDisconnected)</p></TD>
+  </TR>
+  <TR>
+    <TD>setDiscoverable(discoverable)</TD>
+    <TD>N/A</TD>
+    <TD>Sets the bluetooth device to discoverable or not.</TD>
+    <TD>Bluetooth.setDiscoverable(true)</TD>
+  </TR>
+  <TR>
+    <TD>isDiscoverable()</TD>
+    <TD>bool</TD>
+    <TD>Returns true if discoverable otherwise false.</TD>
+    <TD>Bluetooth.isDiscoverable()</TD>
+  </TR>
+  <TR>
+    <TD>discover()</TD>
+    <TD>N/A</TD>
+    <TD>Starts the discovering process. If devices are discovered, the onDeviceDiscovered() event will trigger.</TD>
+    <TD>Bluetooth.discover()</TD>
+  </TR>
+  <TR>
+    <TD>pair(mac)</TD>
+    <TD>N/A</TD>
+    <TD>Starts pairing with mac address.</TD>
+    <TD>Bluetooth.pair(macAddress)</TD>
+  </TR>
+  <TR>
+    <TD>unpair(mac)</TD>
+    <TD>N/A</TD>
+    <TD>Starts unpairing with mac address.</TD>
+    <TD>Bluetooth.unpair(macAddress)</TD>
+  </TR>
+  <TR>
+    <TD>onPairRequest(macAddress, deviceName)</TD>
+    <TD>N/A</TD>
+    <TD>This event handler is called if there's a pair request and the bluetooth manager is set to accept pair requests.</TD>
+    <TD><p>Bluetooth.setAcceptingPairRequest(true)</p>
+      def handlePairRequest(macAddress, deviceName):...<br>
+      Bluetooth.onPairRequest = handlePairRequest</TD>
+  </TR>
+  <TR>
+    <TD>setAcceptingPairRequest(accepting)</TD>
+    <TD>N/A</TD>
+    <TD>Sets the bluetooth manager to accept pair requests</TD>
+    <TD>Bluetooth.setAcceptingPairRequest(true)</TD>
+  </TR>
+  <TR>
+    <TD>acceptPairRequest(macAddress, deviceName)</TD>
+    <TD>N/A</TD>
+    <TD>Accepts the pair request with macAddress and deviceName</TD>
+    <TD>Bluetooth.acceptPairRequest(macAddress, deviceName)</TD>
+  </TR>
+  <TR>
+    <TD>getPairedDevices()</TD>
+    <TD>Array</TD>
+    <TD>Returns an array of paired bluetooth devices.</TD>
+    <TD>var devices = Bluetooth.getPairedDevices()</TD>
+  </TR>
+  <TR>
+    <TD>getConnectedDevices()</TD>
+    <TD>Array</TD>
+    <TD>Returns an array of connected devices.</TD>
+    <TD>var devices = Bluetooth.getConnectedDevices()</TD>
+  </TR>
+  <TR>
+    <TD>enableBroadcast()</TD>
+    <TD>N/A</TD>
+    <TD>Enables bluetooth broadcast.</TD>
+    <TD>Bluetooth.enableBroadcast()</TD>
+  </TR>
+  <TR>
+    <TD>isBroadcastEnabled()</TD>
+    <TD>bool</TD>
+    <TD>Returns true if broadcast is enabled.</TD>
+    <TD>Bluetooth.isBroadcastEnabled()</TD>
+  </TR>
+  <TR>
+    <TD>broadcastBeacon(beaconUuid, data)</TD>
+    <TD>bool</TD>
+    <TD>Broadcast beacon with beaconUuid and data.</TD>
+    <TD>Bluetooth.broadcastBeacon(uuid, data)</TD>
+  </TR>
+</TABLE>
+<P>&nbsp;</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+  	<TR>
+		<TD>
+			<H3 CLASS="western"><A NAME="PythonAPI-BluetoothService"></A>Bluetooth Service</H3>
+		</TD>
+		<TD COLSPAN=3>
+			<H3 CLASS="western"><A NAME="PythonAPI-Package=bluetooth"></A>Package
+			= bluetooth</H3>
+		</TD>
+	</TR>
+  <TR>
+    <TD><P><STRONG>Function</STRONG></P></TD>
+    <TD><P><STRONG>Return Type</STRONG></P></TD>
+    <TD><P><STRONG>Description</STRONG>&nbsp;</P></TD>
+    <TD><P><STRONG>Example</STRONG>&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P>start(uuid)</P></TD>
+    <TD><P>N/A</P></TD>
+    <TD>Starts the bluetooth service.</TD>
+    <TD><P>bts = BluetoothService()</P>
+      <P>dstService = &quot;{00000000-0000-0000-0000-000000000001}&quot;</P>
+      <P>bts.start(dstService)</P>
+    <P>&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD>connect(dstMac, dstServiceUuid)</TD>
+    <TD>bool</TD>
+    <TD>Returns true if connected to dstMac and dstServiceUuid; false otherwise.</TD>
+    <TD>bts.connect(dstMac, dstServiceUuid)</TD>
+  </TR>
+  <TR>
+    <TD>stop()</TD>
+    <TD>N/A</TD>
+    <TD>Stops the bluetooth service.</TD>
+    <TD>bts.stop()</TD>
+  </TR>
+  <TR>
+    <TD>send(dstMac, dstServiceUuid, data)</TD>
+    <TD>N/A</TD>
+    <TD>Sends data to dstMac and dstServiceUuid with data.</TD>
+    <TD>bts.send(dstMac, dstServiceUuid, &quot;hello&quot;)</TD>
+  </TR>
+  <TR>
+    <TD>sendToConnected(data)</TD>
+    <TD>N/A</TD>
+    <TD>Sends data to connected device.</TD>
+    <TD>bts.sendToConnected(&quot;hello&quot;)</TD>
+  </TR>
+  <TR>
+    <TD>onReceive(srcMac, srcService, dstMac, dstService, data)</TD>
+    <TD>N/A</TD>
+    <TD>This event handler receives data from srcMac, srcService, dstMac and dstService with data.</TD>
+    <TD><p>def handleReceive(srcmac, srcData, dstMac, dstService, data){...}</p>
+    <p>bts.onReceive(handleReceive)</p></TD>
+  </TR>
+</TABLE>
+<P>&nbsp;</P>
+<P></P>
+</BODY>
+</HTML>
