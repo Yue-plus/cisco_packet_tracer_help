@@ -18,12 +18,12 @@ git clone https://github.com/Yue-plus/cisco_packet_tracer_help
 
 ## 目录说明
 ```
-default/					//英文版帮助文档
-Simplified Chinese/	//中文版帮助文档
-index.html				//！！！ 导航，查看帮助文档 ！！！
-LICENSE					//开源许可证
-README.md				//说明文档
-Simplified Chinese.ptl		//！！！ 官方的软件汉化包 ！！！
+default/                   //英文版帮助文档
+Simplified Chinese/        //中文版帮助文档
+index.html                 //！！！ 导航，查看帮助文档 ！！！
+LICENSE                    //开源许可证
+README.md                  //说明文档
+Simplified Chinese.ptl     //！！！ 官方的软件汉化包 ！！！
 ```
 > 如果你觉得官方汉化包翻译不全可以试试[第三方软件汉化包](https://github.com/lsy9202/CPT-Hanization)
 
