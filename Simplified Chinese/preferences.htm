@@ -161,49 +161,54 @@
       通常，当用户经历同一网络文件的多个创作周期时，这些自定义图像会累积。
       在这种情况下，该选项卡允许用户查看当前保存在文件中的自定义图像列表，并删除用户认为不再用于当前网络文件中的图像。<br />
       注意！！！一旦删除这些文件，它们可能无法恢复，除非在Packet Tracer外部保存了外部副本。<br />
-      删除仍由当前用户网络的组件之一使用的文件将导致占位符映像“找不到文件”映像被用于代替已删除的映像。
-      
-      In this case the panel at hand allows users to view the list
-      of custom images presently saved in the file and delete those that the
-      user believes are no longer used for anything in the current network file.
-      A note of caution needs to be voiced here that once these files are
-      removed from the file they may not be recoverable, unless there is an
-      external copy saved outside Packet Tracer. Removing a file that is still
-      being used by one of the components of the current user network would
-      result in the <em> placeholder image </em> <img src="images/gFileNotFound.png"
-
-        width="3%" alt="File Not Found Image">&nbsp;being used in place of the deleted one.</p>
-    <p class="myPic"> <img src="images/interfaceOverview_10.jpg" alt="Preferences Window - Image Cleanup Tab"> </p>
+      删除仍由当前用户网络的组件之一使用的文件将导致
+      <em>占位图标（placeholder image）</em>
+      <img src="images/gFileNotFound.png" width="3%" alt="找不到文件图标">用于代替已删除的映像。<br />
+    </p>
+    <p class="myPic"> <img src="images/interfaceOverview_10.jpg" alt="首选项窗口 - 图像清理选项卡"> </p>
     <p>&nbsp;</p>
-    <p class="MainHeading2" id="id_preferences_user_profile">Setting a User
-      Profile</p>
-    <p> You can set your user profile for activity assessment and Multiuser
-      identification. From the <strong>Menu Bar</strong>, select <strong>Options</strong>
-      &gt; <strong>User Profile</strong> to view the User Profile dialog. In
-      the User Profile dialog, you can enter your <strong>Name</strong>, <strong>E-Mail</strong>,
-      and any <strong>Additional Info</strong> about yourself that you may want
-      to share.</p>
+    <p class="MainHeading2" id="id_preferences_user_profile">设置用户资料</p>
+    <p>
+      里可以设置用户资料以进行活动评估和多用户表示。<br />
+      <strong>菜单栏（Menu Bar）</strong>中，
+      点击
+      <strong>Options</strong>->
+      <strong>用户资料（User Profile）</strong>，以显示用户资料对话框。<br />
+
+      在用户资料对话框中，您可以输入您的
+      <strong>姓名（Name）</strong>，
+      <strong>电子邮件（E-Mail）</strong>以及
+      <strong>附件信息（Additional Info）</strong>
+    </p>
     <p class="myPic"> <img src="images/interfaceOverview_7.jpg" alt="User Profile Window"> </p>
     <p>&nbsp;</p>
-    <p class="MainHeading2">Algorithm Settings</p>
-    <p>The <strong>Algorithms Settings</strong> dialog allows the user to make
-      configurations that are otherwise not available in IOS. It also allows
-      tweaking of algorithm settings to make visualization of certain
-      algorithm/protocol behaviors more easily viewable.</p>
-    <p>CBAC <strong>Half-Open Session Multiplier</strong>: If the number of
-      half-open CBAC sessions multiplied by this number exceeds the configured
-      max half-open session count, new sessions would not be opened.</p>
-    <p>TCP <strong>Maximum Number of Connections</strong>: If the number of
-      connections in SYN-RECEIVED state exceeds this number, any new connections
-      would be rejected.</p>
-    <p>TCP <strong>Maximum Number of Opened Sessions</strong>: If the number of
-      connections exceeds this number, any new connections would be rejected.</p>
-    <p>TCP <strong>Maximum Retransmission Timeout in Milliseconds </strong>:
-      If a TCP connection does not receive an acknowledgment to a segment it
-      transmitted in this number, it would retransmit the segment.</p>
-    <p>Switching <strong>Storm Control Multiplier</strong>: If the bandwidth
-      percentage of broadcast frames used multiplied by this number exceeds the
-      configured threshold, the broadcast frame would be dropped.</p>
-    <p class="myPic"> <img src="images/interfaceOverview_8.jpg" alt="Algorithm Settings Window"> </p>
+    <p class="MainHeading2">运算规则设置</p>
+    <p>
+      通过
+      <strong>运算规则设置（Algorithms Settings）</strong>，用户可以在IOS中进行不可用的配置。<br />
+      允许对运算规则设置进行调整，以使某些算法/协议的行为进行可视化处理。
+    </p>
+    <p>
+      CBAC
+      <strong>半开放会话倍数（Half-Open Session Multiplier）</strong>：
+      如果半开放会话倍数乘以该数字超过配置的最大限制，则不打开新会话。
+    </p>
+    <p>TCP
+      <strong>最大连接数（Maximum Number of Connections）</strong>：
+      如果处于SYN-RECEIVED状态的连接数超过此数目，则任何新连接都将被拒绝。
+    </p>
+    <p>TCP
+      <strong>最大开放会话数（Maximum Number of Opened Sessions）</strong>：
+      如果连接数超过此数目，则任何新连接都将被拒绝。
+    </p>
+    <p>TCP
+      <strong>最大重传超时（毫秒）（Maximum Retransmission Timeout in Milliseconds）</strong>:
+      如果TCP连接未收到以该编号传输的段的确认，将重新传输该段。
+    </p>
+    <p>Switching
+      <strong>风暴控制倍数（Storm Control Multiplier）</strong>：
+      如果使用的广播帧的带宽百分比乘以该数字超过配置的阈值，则广播帧将被丢弃。
+    </p>
+    <p class="myPic"><img src="images/interfaceOverview_8.jpg" alt="Algorithm Settings Window"></p>
   </body>
 </html>
