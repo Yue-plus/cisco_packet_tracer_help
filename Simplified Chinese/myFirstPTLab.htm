@@ -97,62 +97,71 @@
     <li>
       ARP 表：地址解析协议-ARP(Address Resolution Protocol)表，存储IP地址和MAC地址的配对。
     </li>
-    <li>Scenario: one topology with a set of PDUs placed in the network to be sent at specific times. Using different
-      scenarios, experiment with different combinations of packets using the same base topology.</li>
+    <li>方案（Scenario）:一种拓扑，在网络中放置了一组PDU，以在特定时间发送。 使用不同的场景，使用相同的基本拓扑尝试数据包的不同组合。</li>
   </ol>
   <a name="I"></a>
-  <p><span class="MainHeading2">I. Viewing Help and Tutorials</span></p>
+  <p><span class="MainHeading2">一、查看帮助和教程</span></p>
   <ol>
-    <li>Launch Packet Tracer.</li>
-    <li>Open the help content by clicking Help &gt; Contents on the Menu bar. You can also click the question mark on
-      the Main toolbar. Another option is the F1 shortcut key.</li>
-    <li>The menu will always be visible on the left side of the window while browsing through the help files. Skim
-      through the help sections to get an idea of the functionality of Cisco Packet Tracer.</li>
-    <li>The What's New section under Introduction provides an overview of features that have been added to this version
-      of Packet Tracer</li>
-    <li>Pay close attention to the Interface Overview section under Getting Started to familiarize yourself quickly to
-      the Packet Tracer interface.</li>
-    <li>Browse the Tutorials to be shown how various components in Packet Tracer work.</li>
-    <li>Open the Interface Overview tutorial to learn the basics of the Packet Tracer graphical user interface.
-      <strong>Note:</strong> The tutorials require Internet access and also some browsers may prevent the tutorial from
-      playing. Configure your browser to allow active content to enable the viewing of the tutorial.</li>
-    <li>Click the Forward button to start the tutorial. Then click Pause.</li>
-    <li>Continue viewing the tutorial by pressing the Play button. Parts of the tutorial can also be skipped by dragging
-      the slider to the right. If needed, click the Rewind button to restart the tutorial.</li>
-    <li>Click Exit (X) to close the tutorial window. Close the help content as well.</li>
+    <li>启动Packet Tracer。</li>
+    <li>点击菜单栏上，Help->内容，或者按下F1，来查看帮助</li>
+    <li>帮助文档左侧导航栏可以快速在多个页面间切换。浏览入门，以了解Cisco Packet Tracer的基本功能</li>
+    <li>介绍下的“更新内容”部分概述了此版本的Packet Tracer中已添加的功能。</li>
+    <li>请仔细查看“入门”下的“界面概述”部分，以快速熟悉Packet Tracer界面。</li>
+    <li>浏览教程查看Packet Tracer中的各个组件如何工作。</li>
+    <li>
+      点击“在线讲解（英文）”教程，以学习Packet Tracer基础知识。<br />
+      <strong>注意：</strong>本教程需要Internet访问，并且某些浏览器可能会阻止本教程的播放。 配置浏览器以允许活动内容来启用网络教程。
+    </li>
+    <li>单击“播放”按钮以开始教程。 然后单击暂停。</li>
+    <li>
+      按下“播放”按钮继续观看教程。
+      也可以通过向右拖动滑块来跳过本教程的某些部分。
+      如果需要，请单击“倒带”按钮以重新启动教程。
+    </li>
+    <li>单击Exit（X）以关闭教程窗口。也关闭帮助内容。</li>
   </ol>
-  <p>Congratulations on learning more about resources that will help you get the most out of Packet Tracer.</p>
+  <p>祝贺您了解了更多有关资源的信息，这些资源将帮助您充分利用Packet Tracer。</p>
   <p>&nbsp;</p>
   <a name="II"></a>
-  <p><span class="MainHeading2">II. Creating a First Network</span></p>
+  <p><span class="MainHeading2">二、创建首个网络</span></p>
   <ol>
-    <li>Start creating a network by first selecting the End Devices. Add a Generic PC and a Generic Server to the
-      workspace.</li>
-    <li>Under Connections, select the Copper Straight-through cable (solid black line) and connect the devices with it.
-      The red lights on the link indicate that the connection is not working. Now, use the Delete tool to remove the
-      Copper Straight-through cable, and use a Copper Cross-over cable (dashed line) instead. The lights should turn
-      green at this point. If the mouse pointer is held over either devices, the link status will be shown as “Up.” The
-      network should look similar to this:</li>
-
+    <li>点击“File->新建”以新建一个网络，首先选择[终端设备]。 将“PC-PT”和“Server-PT”添加到工作区。</li>
+    <li>
+      在[连接]下，选择直通线（黑色实线），将设备互相连接。链接上的红灯表示连接无效。<br />
+      现在，使用删除工具删除直通线，然后改用交叉线（黑色虚线）。此时，指示灯应变为绿色。<br />
+      如果将光标悬停在任一设备上，则链路状态将显示为“启用”。<br />
+      现在的连接看起来应该是这样的：
+    </li>
     <p align="center"><img src="images/myFirstPTLab_2.jpg"></p>
-
-    <li>Click on the PC. While paying attention to the link lights, turn the power off (as shown in the graphic below),
-      and on again. Follow the same steps for the server. The link lights turn red when the device is off. This means
-      that the link is down or is not working. The link lights turn green when the device is turned back on.</li>
-    <li>Try all three ways to learn about the devices. First, mouse over the devices to see basic configuration
-      information about them. Second, click on each device with the Select tool to show the device configuration window,
-      which provides several ways to configure the device. Third, use the Inspect tool to view the tables the network
-      device will build as it learns about the network around it. In this example, open the ARP table. Since the devices
-      have not been configured yet, the ARP tables are empty. Always remember to close the windows after viewing them or
-      they will clutter the workspace.</li>
-    <li>Open the PC configuration window and change the settings using the Config tab. Change the display name to Client
-      and set the DNS server to 192.168.0.105. Under Interface, click FastEthernet0 and set the IP address as
-      192.168.0.110. Packet Tracer automatically calculates other parameters. Make sure that the Port Status box is
-      checked. For future reference, note that other Ethernet interface settings, such as bandwidth, duplex, MAC
-      address, and subnet mask can be modified using this window.</li>
-    <li>Go to the Desktop Tab and click on IP Configuration. Notice that the IP address, subnet mask and DNS server can
-      be changed here as well.</li>
-    <li>Open the Server configuration window and go to the Config tab. Change the display name to Web Server. Click
+    <li>
+      点击PC。按下开机键的同时关注连接指示灯状态（如下图），然后再次点击。<br />
+      然后，对服务器进行相同的步骤。<br />
+      设备关闭时，链接指示灯将变为红色。
+      这意味着链接断开或不可用。<br />
+      重新打开设备电源后，链接指示灯将变成绿色。
+    </li>
+    <li>
+      有三种方法查看设备信息：<br />
+      光标悬停在设备上，将显示设备基本信息。<br />
+      使用“选择”工具单击设备将显示设备配置窗口。<br />
+      使用“检查”工具查看周围的网络构建表。<br />
+      在此示例中，打开ARP表。由于尚未配置设备，因此ARP表为空。<br />
+      请在查看完毕后将窗口关闭，不然的话工作区会非常混乱。
+    </li>
+    <li>
+      单击PC打开配置窗口，切换到“配置”选项卡。<br />
+      将显示名改为“客户端”并将DNS服务器设置为192.168.0.105。<br />
+      在“接口”下，单击“FastEthernet0”，并将IP地址设置为192.168.0.110。<br />
+      Packet Tracer将自动计算其他参数。
+      请确保选中了“端口状态”框。<br />
+      请查看其他的以太网接口设置（例如带宽，双工，MAC地址和子网掩码）可以在此窗口进行修改。
+    </li>
+    <li>转到桌面选项卡，然后单击IP配置。 请注意，这里也可以更改IP地址，子网掩码和DNS服务器。</li>
+    <li>
+      单击Server打开配置窗口，切换到“配置”选项卡。<br />
+      
+      
+      Open the Server configuration window and go to the Config tab. Change the display name to Web Server. Click
       FastEthernet0 and set the IP address as 192.168.0.105. Make sure that the Port Status is also on. Click on the
       Services Tab, then on the DNS selection and set the domain name as www.firstlab.com. Set the IP address as
       192.168.0.105 and click Add. Finally, check to make sure that the service for DNS is on.</li>
