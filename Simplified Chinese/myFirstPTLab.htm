@@ -210,71 +210,99 @@
       现在自动转到了Scenario 1。<br />
       现在看“PDU窗口列表”中的最后一行，双击“（删除）”以删除单条PDU。
     </li>
-    <li>单击删除按钮，删除整个方案。请注意，软件会默认新建一个Scenario 0。</li>
+    <li>单击删除按钮，删除整个Scenario。请注意，当没有Scenario时软件会默认新建一个Scenario 0。</li>
   </ol>
   <p>祝贺您能够在实时模式下发送和组织简单的测试消息。</p>
   <p>&nbsp;</p>
   <a name="IV"></a>
-  <p><span class="MainHeading2">IV. Establishing a Web Server Connection Using the PC’s Web Browser</span></p>
+  <p><span class="MainHeading2">四、使用PC的Web浏览器建立与Web服务器的连接</span></p>
   <ol>
-    <li>Open the file saved from the previous section.</li>
-    <li>Click on the PC to view the configuration window.</li>
-    <li>Select the Desktop tab, and then click Web Browser. Type in www.firstlab.com as the URL and click the Go button.
-      The Packet Tracer welcome page, shown below, appears, indicating that the web connection has been successfully
-      established.</li>
-    <li>Clear the URL, type www and click Go. Since the address entered is not complete, a “Host Name Unresolved”
-      message appears.</li>
-    <li>Type 192.168.0.105 as the URL entry and click on Go. Notice that the Packet Tracer welcome page appears again.
-      This is because the Server IP address can also be used to establish a web connection.</li>
-    <li>Close the window and try the same steps, detailed below, in Simulation Mode. In this mode, the user controls
-      time, so the network can be viewed running at a slower pace, allowing observation of the paths packets take and
-      inspection of packets in detail (packet tracing!).</li>
-    <li>Enter into Simulation mode by clicking on the stopwatch tab lin the lower right corner of the workspace. Select
-      the PC again and go to the Web Browser in the Desktop tab. Type www.firstlab.com as the URL again and click Go.
-      The welcome page should not appear yet.</li>
-    <li>Switch to the main interface of Packet Tracer without closing the PC configuration window. Notice that a DNS
-      packet is added to the event list.</li>
-    <li>Click Auto Capture/Play or repeatedly click the Capture/Forward button until the HTTP packet appears on the PC.
-      Go back to the PC configuration window. The Packet Tracer welcome page is now shown.</li>
-    <li>Close the PC configuration window.</li>
+    <li>打开在上一节保存的文件。</li>
+    <li>单击PC以查看配置窗口。</li>
+    <li>
+      选择“桌面”选项卡，然后单击Web浏览器。 输入www.firstlab.com作为URL，然后单击“跳转”按钮。 出现Packet Tracer欢迎页面，表明已成功建立Web连接。
+    </li>
+    <li>
+      清除URL，键入www并单击“跳转”。
+      由于输入的地址不完整，因此会出现信息：“Host Name Unresolved”。
+    </li>
+    <li>
+      URL输入“192.168.0.105”，然后单击“跳转”。<br />
+      注意，注意，Packet Tracer欢迎页面再次出现了。<br />
+      这是因为服务器IP地址也可直接用于建立Web连接。
+    </li>
+    <li>
+      关闭窗口，然后在“模拟模式”中尝试相同的步骤。<br />
+      在这种模式下，用户可以控制时间，因此可以观察到网络运行速度较慢，从而可以观察数据包所经过的路径并详细检查数据包（数据包跟踪！）。
+    </li>
+    <li>
+      通过单击工作区右下角的秒表选项卡进入模拟模式。<br />
+      再次选择PC，然后转到“桌面”选项卡中的“ Web浏览器”。 再次输入www.firstlab.com作为URL，然后单击“跳转”。 欢迎页面应该还没有出现。
+    </li>
+    <li>
+      在不关闭PC配置窗口的情况下，切换到Packet Tracer的主界面。 请注意，DNS数据包已添加到事件列表。
+    </li>
+    <li>
+      单击“播放控制”->播放键，或反复点击“下一曲”，直到HTTP数据包出现在PC上。<br />
+      返回到PC配置窗口。<br />
+      现在显示Packet Tracer欢迎页。
+    </li>
+    <li>关闭PC配置窗口。</li>
   </ol>
-  <p>Congratulations on successfully establishing a web server connection.</p>
+  <p>祝贺您成功建立了与Web服务器连接。</p>
   <p>&nbsp;</p>
   <a name="V"></a>
-  <p><span class="MainHeading2">V. Capturing Events and Viewing Animations in Simulation Mode</span></p>
+  <p><span class="MainHeading2">五、在模拟模式下捕获事件并查看动画</span></p>
   <ol>
-    <li>Open the previously saved file.</li>
-    <li>In Realtime Mode, send a simple PDU from the PC to the Server.</li>
-    <li>Delete the PDU by using the method learned in the previous section.</li>
-    <li>Switch to Simulation Mode.</li>
-    <li>Click All/None to uncheck all fields and click Edit Filters. Then click ICMP to only view ICMP packets in the
-      animation.</li>
-    <li>Add a simple PDU from the PC to the Server. Notice that the newly created PDU is added to the User Created PDU
-      List. This packet has been captured as the first event in the event list and a new packet icon (envelope) appears
-      in the workspace. The eye icon to the left of the event list indicates that this packet is currently displayed.
+    <li>打开在上一节保存的文件。</li>
+    <li>在实时模式下，将简单的PDU从PC发送到服务器。</li>
+    <li>使用上一节中学习的方法删除PDU。</li>
+    <li>切换到模拟模式。</li>
+    <li>
+      单击“Show All/None”按钮以取消选中所有字段，然后单击“编辑过滤器”。<br />
+      然后勾选“ICMP”以仅查看动画中的ICMP数据包。
     </li>
-    <li>Click the Capture/Forward button once. This simulates a network sniffing program, capturing the next event that
-      occurs on the network. Note that after clicking Capture/Forward, the packet in the workspace moves from one device
-      to another (this is the ICMP echo request message from the PC to the Server). Another event is added in the event
-      list – this reflects the change in the workspace. The first time through an animation, the meaning of the
-      Capture/Forward is capture; after resetting the simulation, the meaning is forward.</li>
-    <li>Adjust the speed of the animation by dragging the Play Speed slider to the right making it go faster. Dragging
-      the speed slider in the opposite direction (to the left) will slow down the animation.</li>
-    <li>Click the Capture/Forward button a second time. This captures the next network event (this is the echo reply
-      from the Server to the PC, shown as successful with a green check mark on the envelope).</li>
-    <li>Click Capture/Forward button again. The Server has already sent an echo reply to the PC therefore, there are no
-      more ICMP events left to capture.</li>
-
+    <li>
+      从PC向服务器添加一个简单的PDU。<br />
+      请注意，新创建的PDU已添加到用户创建的PDU列表中。<br />
+      并且，该数据包已被捕获为事件列表中的第一个事件，并且新的数据包图标（信封）出现在工作区中。<br />
+      事件列表左侧的眼睛图标表示此数据包当前正在显示。
+    </li>
+    <li>
+      单击“播放”按钮一次。<br />
+      这将模拟网络嗅探程序，捕获网络上发生的下一个事件。<br />
+      请注意，单击“播放”后，工作空间中的数据包将从一台设备移动到另一台设备（这是从PC到服务器的ICMP回显请求消息）。<br />
+      在事件列表中添加了另一个事件–这反映了工作空间中的更改。<br />
+      第一次观看动画，“播放”表示开始捕获；“重置模拟”表示清除之前的。
+    </li>
+    <li>
+      向右拖动滑块加快动画速度，向左拖动减慢动画速度。
+    </li>
+    <li>
+      再次单击“播放”按钮。
+      这将捕获下一个网络事件（这是从服务器到PC的回复，显示为成功，并在信封上带有绿色的勾）。
+    </li>
+    <li>
+      在此点击“播放”按钮。因为服务器以及回复了请求，所以不会捕捉到更多ICMP事件了。
+    </li>
     <p align="center"><img src="images/myFirstPTLab_4.jpg"></p>
   </ol>
-  <p>Congratulations on successfully capturing events and viewing animations in Simulation Mode.</p>
+  <p>祝贺您在模拟模式下成功捕获了事件并观看了动画。</p>
   <p>&nbsp;</p>
   <a name="VI"></a>
-  <p><span class="MainHeading2">VI. Looking Inside Packets in Simulation Mode</span></p>
+  <p><span class="MainHeading2">六、在模拟模式下查看数据包内部</span></p>
   <ol>
-    <li>Continuing from the last activity, click Reset Simulation. This clears the entries in the event list except for
-      the original packet.</li>
-    <li>Select the packet envelope on the workspace to show the PDU Information window like the one shown in the
+    <li>
+      从上一节继续，单击“重置模拟”。
+      这将清除事件列表中除原始数据包以外的条目。
+    </li>
+    <li>
+      选择工作区上的数据包信封，以显示“设备上的PDU信息”窗口，如下面的屏幕截图所示。<br />
+      
+      
+      
+      
+      Select the packet envelope on the workspace to show the PDU Information window like the one shown in the
       screenshot below. This window contains the OSI Model tab, which shows how the packet is processed at each layer of
       the OSI model by the current device. Close this window, noting that this packet is indicated in the event list by
       the eye icon. The whole row in the event list is also highlighted. Clicking on the color square in the Info column
