@@ -159,46 +159,60 @@
     <li>转到桌面选项卡，然后单击IP配置。 请注意，这里也可以更改IP地址，子网掩码和DNS服务器。</li>
     <li>
       单击Server打开配置窗口，切换到“配置”选项卡。<br />
-      
-      
-      Open the Server configuration window and go to the Config tab. Change the display name to Web Server. Click
-      FastEthernet0 and set the IP address as 192.168.0.105. Make sure that the Port Status is also on. Click on the
-      Services Tab, then on the DNS selection and set the domain name as www.firstlab.com. Set the IP address as
-      192.168.0.105 and click Add. Finally, check to make sure that the service for DNS is on.</li>
-    <li>Reposition the network devices by dragging them to a new location. Add a network description by using the “i”
-      button on the upper right corner. Then add some text labels within the Logical Workspace by using the Place Note
-      tool.</li>
-    <li>Save your work using the File &gt; Save As option and create a meaningful filename.</li>
+      将显示名改为WebServer。<br />
+      单击“接口”->FastEthernet0，将IP设置为192.168.0.105。<br />
+      确保“端口状态”开启。<br />
+      单击“服务”选项卡，选择“DNS”，并将“名称（域名）”设置为www.firstlab.com。<br />
+      将“地址”设置为192.168.0.105，然后单击“添加”。<br />
+      最后，检查以下“DNS服务”是否打开
+    </li>
+    <li>
+      您可以自由拖动设备来排列位置。<br />
+      您可以使用主工具栏的“i”按钮（添加网络信息）。<br />
+      然后，使用“Place Note”工具在“逻辑工作区”中添加一些文本框。<br />
+    </li>
+    <li>点击File->另存为来保存您的项目，并取一个有意义的文件名。</li>
   </ol>
-  <p>Congratulations on creating your first network.</p>
+  <p>祝贺您已成功创建了第一个网络。</p>
   <p>&nbsp;</p>
   <a name="III"></a>
-  <p><span class="MainHeading2">III. Sending Simple Test Messages in Realtime Mode</span></p>
+  <p><span class="MainHeading2">三、以实时模式发送简单的测试消息</span></p>
   <ol>
-    <li>Start by opening the file saved in the last section.</li>
-    <li>Notice that the file opens in Realtime Mode. Use the Add Simple PDU tool to send a simple one-time ping message,
-      called an echo request, to the server. The server responds with an echo reply because all devices have properly
-      configured IP address settings.</li>
-    <li>Open the User Created Packet Window by clicking on the left facing arrow in the lower right corner of the Packet
-      Tracer program to see the different capabilities of this ping message, including an indication that the ping was
-      successful.</li>
-    <li>Toggle the PDU List Window to see a larger display of this message. One or more of these messages can be saved
-      as a scenario. Scenario 0 is displayed when starting. Label this first scenario with an “i” note. Different
-      scenarios allow the use of the same topology for experiments with different groupings of user created packets.
+    <li>首先打开上一节保存的文件。</li>
+    <li>
+      请注意，该文件以实时模式（Realtime）打开。<br />
+      使用通用工具栏中的“添加简单PDU（Add Simple PDU）”工具发送一次ping请求到服务器。<br />
+      由于所有设备都以及正确配置了IP地址，因此服务器会正确响应请求。<br />
     </li>
-    <li>Click New to create a new scenario. New scenarios will initially be blank.</li>
-    <li>Add two packets using the Simple PDU tool, a PDU from the PC to the Server and a different PDU from the Server
-      to the PC. Then add an “i” note describing the scenario, to complete Scenario 1. An example is shown below:</li>
-
+    <li>
+      单击Packet Tracer程序右下角的向左箭头，打开“用户创建的数据包窗口”，以查看ping消息的不同功能，其中包括ping的成功提示。<br />
+    </li>
+    <li>
+      “切换PDU列表窗口”按钮可以显示一个大窗口来查看列表。<br />
+      这些消息中的一个或多个可以保存为方案。<br />
+      启动时默认方案为0。
+      可以用“ i”按钮，添加“场景描述”。<br />
+      不同的场景允许对用户创建的数据包的不同分组的实验使用相同的拓扑。
+    </li>
+    <li>
+      单击“新建”可创建一个新方案。
+      新方案最开始是空白的。
+    </li>
+    <li>
+      使用“添加简单PDU”工具添加两个数据包，一个从PC到服务器的PDU，另一个从服务器到PC的PDU。<br />
+      然后按“i”来添加一个场景描述，以完成Scenario 1。<br />
+      示例如下：
+    </li>
     <p align="center"><img src="images/myFirstPTLab_3.jpg"></p>
-
-    <li>Several scenarios can be saved with a single network. Alternate between Scenario 0 and 1.</li>
-    <li>Now, remove Scenario 0 using the Delete button.</li>
-    <li>Scenario 1 is now visible. Go to the last column in the User Created Packet Window and double-click (delete) to
-      remove a PDU.</li>
-    <li>Delete the whole scenario. Notice that the list went back to the default Scenario 0.</li>
+    <li>单个网络可以保存多个Scenario。也可在多个Scenario之间切换。</li>
+    <li>现在，使用“删除”按钮删除Scenario 0。</li>
+    <li>
+      现在自动转到了Scenario 1。<br />
+      现在看“PDU窗口列表”中的最后一行，双击“（删除）”以删除单条PDU。
+    </li>
+    <li>单击删除按钮，删除整个方案。请注意，软件会默认新建一个Scenario 0。</li>
   </ol>
-  <p>Congratulations on being able to send and organize simple test messages in Realtime Mode.</p>
+  <p>祝贺您能够在实时模式下发送和组织简单的测试消息。</p>
   <p>&nbsp;</p>
   <a name="IV"></a>
   <p><span class="MainHeading2">IV. Establishing a Web Server Connection Using the PC’s Web Browser</span></p>
