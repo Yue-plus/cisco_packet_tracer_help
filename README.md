@@ -6,7 +6,6 @@
 ## 在线查看：
 ### [English(default)](https://help.cisco.yueplus.ink/default/index.htm)
 ### [简体中文(Simplified Chinese)](https://help.cisco.yueplus.ink/Simplified%20Chinese/index.htm)
-> 此在线文档托管于[Coding Page](https://coding.net/)
 
 ---
 
