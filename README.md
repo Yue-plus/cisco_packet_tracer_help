@@ -4,8 +4,8 @@
 **此翻译未完成，且不保证完全准确，请以英文文档为准！**
 
 ## 在线查看：
-### [English(default)](https://help.cisco.yueplus.ink/default/index.htm)
-### [简体中文(Simplified Chinese)](https://help.cisco.yueplus.ink/Simplified%20Chinese/index.htm)
+### [English(default)](https://cisco_packet_tracer_help.yue.zone/default/index.htm)
+### [简体中文(Simplified Chinese)](https://cisco_packet_tracer_help.yue.zone/Simplified%20Chinese/index.htm)
 
 ---
 
